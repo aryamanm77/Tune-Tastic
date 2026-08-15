@@ -132,7 +132,7 @@ const MainView: React.FC = () => {
                     <Heart size={16} fill={isLiked(song.id) ? 'currentColor' : 'none'} />
                   </button>
                   <span className="hide-mobile" style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
-                    {formatTime(song.durationMs)}
+                    {formatTime(song.durationMs || 0)}
                   </span>
                 </td>
               </tr>

@@ -102,7 +102,7 @@ const SearchView: React.FC = () => {
                     <span className="ellipsis" style={{ display: 'block', maxWidth: '200px' }}>{song.album}</span>
                   </td>
                   <td className="hide-mobile" style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '14px', textAlign: 'right' }}>
-                    {formatTime(song.durationMs)}
+                    {formatTime(song.durationMs || 0)}
                   </td>
                 </tr>
               );
