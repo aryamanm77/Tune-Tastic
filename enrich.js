@@ -19,7 +19,10 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 async function enrichSongs() {
   console.log("🎵 Starting TuneTastic Metadata Enrichment...");
   
-  const rawData = fs.readFileSync(SONGS_FILE, 'utf8');
+  let rawData = fs.readFileSync(SONGS_FILE, 'utf8');
+  if (rawData.charCodeAt(0) === 0xFEFF) {
+    rawData = rawData.slice(1);
+  }
   const songs = JSON.parse(rawData);
   
   let updatedCount = 0;
