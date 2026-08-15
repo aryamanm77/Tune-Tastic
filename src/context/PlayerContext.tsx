@@ -9,6 +9,7 @@ export interface Song {
   album: string;
   durationMs: number;
   audioId: string;
+  coverArt?: string;
 }
 
 interface PlayerContextType {

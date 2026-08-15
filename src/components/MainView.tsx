@@ -47,7 +47,7 @@ const MainView: React.FC = () => {
             onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
           >
             <img 
-              src={getCoverArtUrl(song.audioId)} 
+              src={song.coverArt || getCoverArtUrl(song.audioId)} 
               onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
               alt="" 
               style={{ width: '80px', height: '80px', objectFit: 'cover' }} 
@@ -85,7 +85,7 @@ const MainView: React.FC = () => {
                   <td style={{ padding: '12px 16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <img 
-                        src={getCoverArtUrl(song.audioId)} 
+                        src={song.coverArt || getCoverArtUrl(song.audioId)} 
                         onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
                         style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                         alt="" 
