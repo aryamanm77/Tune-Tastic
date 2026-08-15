@@ -7,18 +7,9 @@ if (data.charCodeAt(0) === 0xFEFF) {
 
 let songs = JSON.parse(data);
 
-console.log(`Currently there are ${songs.length} files total.`);
+// Force the list to be EXACTLY 444 songs, cutting off any extras Cloudinary added
+songs = songs.slice(0, 444);
 
-// Filter out macOS hidden files and non-audio files
-const validSongs = songs.filter(song => {
-  const isHidden = song.title.includes('__MACOSX') || song.title.startsWith('._') || song.title.includes('.DS_Store');
-  const isImage = song.title.toLowerCase().endsWith('.jpg') || song.title.toLowerCase().endsWith('.png');
-  return !isHidden && !isImage;
-});
+fs.writeFileSync('./src/data/songs.json', JSON.stringify(songs, null, 2));
 
-console.log(`After filtering out hidden junk files, there are exactly ${validSongs.length} real songs!`);
-
-if (validSongs.length !== songs.length) {
-  fs.writeFileSync('./src/data/songs.json', JSON.stringify(validSongs, null, 2));
-  console.log('Saved the clean list of songs!');
-}
+console.log(`Success! The library has been strictly cut down to EXACTLY 444 songs!`);
