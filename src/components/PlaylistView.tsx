@@ -8,7 +8,7 @@ interface PlaylistViewProps {
 }
 
 const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
-  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs } = usePlayer();
+  const { currentSong, playSong, togglePlayPause, playlists, likedSongs } = usePlayer();
 
   if (!playlistId) return <div className="main-view"></div>;
 

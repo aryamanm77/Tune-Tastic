@@ -4,7 +4,7 @@ import { getAudioUrl } from '../utils/cloudinary';
 import { Play, Search } from 'lucide-react';
 
 const SearchView: React.FC = () => {
-  const { songs, currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
+  const { songs, currentSong, playSong, togglePlayPause } = usePlayer();
   const [query, setQuery] = useState('');
 
   const filteredSongs = useMemo(() => {

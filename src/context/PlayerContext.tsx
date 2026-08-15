@@ -6,7 +6,7 @@ export interface Song {
   title: string;
   artist: string;
   album: string;
-  durationMs: number;
+  durationMs: number | null;
   audioId: string;
   coverArt?: string;
 }
