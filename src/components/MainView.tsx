@@ -14,7 +14,7 @@ const MainView: React.FC = () => {
   })();
 
   const recentSongs = useMemo(() => songs.slice(0, 6), [songs]);
-  const allMusic = useMemo(() => [...songs].sort(() => Math.random() - 0.5).slice(0, 50), [songs]);
+  const allMusic = useMemo(() => [...songs], [songs]);
 
   const handlePlay = (song: Song) => {
     if (currentSong?.id === song.id) {
@@ -46,7 +46,12 @@ const MainView: React.FC = () => {
             onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
             onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
           >
-            <img src={getCoverArtUrl(song.audioId)} alt="" style={{ width: '80px', height: '80px', objectFit: 'cover' }} />
+            <img 
+              src={getCoverArtUrl(song.audioId)} 
+              onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+              alt="" 
+              style={{ width: '80px', height: '80px', objectFit: 'cover' }} 
+            />
             <span style={{ fontWeight: 'bold', padding: '0 16px', flex: 1 }} className="ellipsis">{song.title}</span>
           </div>
         ))}
@@ -79,7 +84,12 @@ const MainView: React.FC = () => {
                   </td>
                   <td style={{ padding: '12px 16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <img src={getCoverArtUrl(song.audioId)} style={{ width: '40px', height: '40px', borderRadius: '4px' }} alt="" />
+                      <img 
+                        src={getCoverArtUrl(song.audioId)} 
+                        onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                        style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
+                        alt="" 
+                      />
                       <span style={{ color: isCurrent ? 'var(--spotify-green)' : 'var(--text-primary)' }} className="ellipsis">
                         {song.title}
                       </span>
