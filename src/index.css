@@ -1,0 +1,106 @@
+:root {
+  --bg-base: #121212;
+  --bg-elevated: #242424;
+  --bg-highlight: #2a2a2a;
+  --bg-card: #181818;
+  --bg-now-playing: #181818;
+  
+  --spotify-green: #1db954;
+  --spotify-green-hover: #1ed760;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #6a6a6a;
+
+  --sidebar-width: 280px;
+  --player-height: 90px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #000000;
+  color: var(--text-primary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App Layout */
+.app-container {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: 1fr var(--player-height);
+  grid-template-areas:
+    "sidebar main"
+    "player player";
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #000000;
+  padding: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.main-view {
+  grid-area: main;
+  background-color: var(--bg-base);
+  border-radius: 8px;
+  margin: 8px 8px 0 0;
+  overflow-y: auto;
+  position: relative;
+}
+
+.player-bar {
+  grid-area: player;
+  background-color: var(--bg-now-playing);
+  border-top: 1px solid #282828;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 3px solid var(--bg-base);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Utility Classes */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+button:hover {
+  color: var(--text-primary);
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
