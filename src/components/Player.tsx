@@ -33,6 +33,7 @@ const Player: React.FC = () => {
           <>
             <img 
               src={getCoverArtUrl(currentSong.audioId)} 
+              onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
               alt={currentSong.title}
               style={{ width: '56px', height: '56px', borderRadius: '4px', objectFit: 'cover' }}
             />
