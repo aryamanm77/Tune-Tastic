@@ -4,7 +4,7 @@ import { getAudioUrl } from '../utils/cloudinary';
 import { Play, Heart } from 'lucide-react';
 
 const MainView: React.FC = () => {
-  const { songs, currentSong, playSong, togglePlayPause, toggleLike, isLiked } = usePlayer();
+  const { songs, currentSong, isPlaying, playSong, togglePlayPause, toggleLike, isLiked } = usePlayer();
 
   const greeting = (() => {
     const hour = new Date().getHours();
@@ -97,7 +97,16 @@ const MainView: React.FC = () => {
               >
                 <td className="hide-mobile" style={{ padding: '12px 16px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
                   <div className="song-index-col">
-                    <span className="song-index">{index + 1}</span>
+                    {isCurrent && isPlaying ? (
+                      <div className="eq-bars">
+                        <div className="eq-bar"></div>
+                        <div className="eq-bar"></div>
+                        <div className="eq-bar"></div>
+                        <div className="eq-bar"></div>
+                      </div>
+                    ) : (
+                      <span className="song-index">{index + 1}</span>
+                    )}
                     <button className="song-play-btn" style={{ color: isCurrent ? 'var(--spotify-green)' : 'white' }}>
                       <Play size={16} fill="currentColor" />
                     </button>

@@ -129,11 +129,34 @@ button:hover {
   display: none;
   position: absolute;
 }
-.song-row:hover .song-index {
+.song-row:hover .song-index,
+.song-row:hover .eq-bars {
   display: none;
 }
 .song-row:hover .song-play-btn {
   display: block;
+}
+
+/* EQ Animation */
+.eq-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+.eq-bar {
+  width: 3px;
+  background-color: var(--spotify-green);
+  animation: bounce 1.2s ease-in-out infinite;
+}
+.eq-bar:nth-child(1) { animation-delay: 0.1s; }
+.eq-bar:nth-child(2) { animation-delay: 0.4s; }
+.eq-bar:nth-child(3) { animation-delay: 0.2s; }
+.eq-bar:nth-child(4) { animation-delay: 0.5s; }
+
+@keyframes bounce {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
 }
 
 /* Mobile Responsiveness */
