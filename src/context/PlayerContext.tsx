@@ -43,6 +43,7 @@ interface PlayerContextType {
   addToPlaylist: (playlistId: string, song: Song) => void;
   toggleLike: (song: Song) => void;
   isLiked: (songId: string) => boolean;
+  clearSong: () => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -242,12 +243,21 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     return likedSongs.some(s => s.id === songId);
   };
 
+  const clearSong = () => {
+    setCurrentSong(null);
+    setIsPlaying(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = '';
+    }
+  };
+
   return (
     <PlayerContext.Provider value={{
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
       playlists, likedSongs,
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
-      createPlaylist, addToPlaylist, toggleLike, isLiked
+      createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong
     }}>
       {children}
     </PlayerContext.Provider>

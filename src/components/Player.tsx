@@ -7,8 +7,23 @@ const Player: React.FC = () => {
   const { 
     currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode,
     togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
-    toggleLike, isLiked
+    toggleLike, isLiked, clearSong
   } = usePlayer();
+
+  const [touchStartX, setTouchStartX] = React.useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!currentSong) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    // Swipe left or right to dismiss
+    if (Math.abs(touchEndX - touchStartX) > 100) {
+      clearSong();
+    }
+  };
 
   const formatTime = (time: number) => {
     if (!time || isNaN(time)) return '0:00';
@@ -26,7 +41,12 @@ const Player: React.FC = () => {
   };
 
   return (
-    <div className="player-bar">
+    <div 
+      className="player-bar"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      style={{ display: currentSong ? 'flex' : 'none' }} // Hide completely if no song
+    >
       
       {/* Left: Song Info */}
       <div style={{ width: '30%', display: 'flex', alignItems: 'center', gap: '16px' }}>
