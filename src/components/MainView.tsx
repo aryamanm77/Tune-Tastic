@@ -6,12 +6,20 @@ import { Play, Heart } from 'lucide-react';
 const MainView: React.FC = () => {
   const { songs, currentSong, isPlaying, playSong, togglePlayPause, toggleLike, isLiked } = usePlayer();
 
-  const greeting = (() => {
-    const hour = new Date().getHours();
-    if (hour < 12) return 'Good morning';
-    if (hour < 18) return 'Good afternoon';
-    return 'Good evening';
-  })();
+  const [greeting, setGreeting] = React.useState('');
+
+  React.useEffect(() => {
+    const updateGreeting = () => {
+      const hour = new Date().getHours();
+      if (hour < 12) setGreeting('Good morning');
+      else if (hour < 18) setGreeting('Good afternoon');
+      else setGreeting('Good evening');
+    };
+    
+    updateGreeting(); // Set immediately
+    const interval = setInterval(updateGreeting, 60000); // Check every minute
+    return () => clearInterval(interval);
+  }, []);
 
   const recentSongs = useMemo(() => {
     return [...songs].slice(0, 6);
