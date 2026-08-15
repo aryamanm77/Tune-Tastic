@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
-import songsData from '../data/songs.json';
 import { getAudioUrl } from '../utils/cloudinary';
 
 export interface Song {
@@ -12,18 +11,26 @@ export interface Song {
   coverArt?: string;
 }
 
+export interface Playlist {
+  id: string;
+  name: string;
+  songs: Song[];
+  coverArt?: string;
+}
+
 interface PlayerContextType {
   songs: Song[];
   currentSong: Song | null;
   isPlaying: boolean;
-  progress: number; // 0 to 1
-  currentTime: number; // seconds
-  duration: number; // seconds
-  volume: number; // 0 to 1
+  progress: number;
+  currentTime: number;
+  duration: number;
+  volume: number;
   isShuffled: boolean;
   repeatMode: 'none' | 'all' | 'one';
   queue: Song[];
-  
+  playlists: Playlist[];
+  likedSongs: Song[];
   playSong: (song: Song) => void;
   togglePlayPause: () => void;
   nextSong: () => void;
@@ -32,12 +39,16 @@ interface PlayerContextType {
   setVolume: (volume: number) => void;
   toggleShuffle: () => void;
   cycleRepeat: () => void;
+  createPlaylist: (name: string) => void;
+  addToPlaylist: (playlistId: string, song: Song) => void;
+  toggleLike: (song: Song) => void;
+  isLiked: (songId: string) => boolean;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
 
 export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const songs = songsData as Song[];
+  const [songs, setSongs] = useState<Song[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
@@ -49,7 +60,33 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   
   const [isShuffled, setIsShuffled] = useState(false);
   const [repeatMode, setRepeatMode] = useState<'none' | 'all' | 'one'>('none');
-  const [queue, setQueue] = useState<Song[]>(songs);
+  const [queue, setQueue] = useState<Song[]>([]);
+
+  // Local Storage State
+  const [playlists, setPlaylists] = useState<Playlist[]>(() => {
+    const saved = localStorage.getItem('tunetastic_playlists');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [likedSongs, setLikedSongs] = useState<Song[]>(() => {
+    const saved = localStorage.getItem('tunetastic_liked');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('tunetastic_playlists', JSON.stringify(playlists));
+  }, [playlists]);
+
+  useEffect(() => {
+    localStorage.setItem('tunetastic_liked', JSON.stringify(likedSongs));
+  }, [likedSongs]);
+
+  useEffect(() => {
+    import('../data/songs.json').then((module) => {
+      const allSongs = module.default as Song[];
+      setSongs(allSongs);
+      setQueue(allSongs);
+    });
+  }, []);
 
   // Initialize audio element
   useEffect(() => {
@@ -84,7 +121,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     };
   }, []);
 
-  // Use a ref for nextSong to use inside event listener
   const nextSongRef = useRef(() => {});
 
   useEffect(() => {
@@ -180,10 +216,38 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     setRepeatMode(prev => prev === 'none' ? 'all' : prev === 'all' ? 'one' : 'none');
   };
 
+  const createPlaylist = (name: string) => {
+    const newPlaylist: Playlist = { id: crypto.randomUUID(), name, songs: [] };
+    setPlaylists([...playlists, newPlaylist]);
+  };
+
+  const addToPlaylist = (playlistId: string, song: Song) => {
+    setPlaylists(playlists.map(p => {
+      if (p.id === playlistId && !p.songs.find(s => s.id === song.id)) {
+        return { ...p, songs: [...p.songs, song], coverArt: p.songs.length === 0 ? song.coverArt || getAudioUrl(song.audioId) : p.coverArt };
+      }
+      return p;
+    }));
+  };
+
+  const toggleLike = (song: Song) => {
+    if (likedSongs.find(s => s.id === song.id)) {
+      setLikedSongs(likedSongs.filter(s => s.id !== song.id));
+    } else {
+      setLikedSongs([...likedSongs, song]);
+    }
+  };
+
+  const isLiked = (songId: string) => {
+    return likedSongs.some(s => s.id === songId);
+  };
+
   return (
     <PlayerContext.Provider value={{
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
-      playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat
+      playlists, likedSongs,
+      playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
+      createPlaylist, addToPlaylist, toggleLike, isLiked
     }}>
       {children}
     </PlayerContext.Provider>

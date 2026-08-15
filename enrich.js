@@ -3,13 +3,18 @@ import https from 'https';
 
 const SONGS_FILE = './src/data/songs.json';
 
-// Simple fetch wrapper using https
 const fetchJson = (url) => {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(JSON.parse(data)));
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(data));
+        } catch (e) {
+          reject(new Error(data)); // pass the raw text if it's a rate limit error
+        }
+      });
     }).on('error', err => reject(err));
   });
 };
@@ -30,10 +35,11 @@ async function enrichSongs() {
   for (let i = 0; i < songs.length; i++) {
     const song = songs[i];
     
-    // Clean up title (remove bad text if any)
-    let cleanTitle = song.title.replace(/\[.*?\]|\(.*?\)|mp3|kbps|www\..*?\.com/gi, '').trim();
+    // Skip if we already found the HD cover for this song!
+    if (song.coverArt) continue;
     
-    console.log(`Searching for: ${cleanTitle}...`);
+    let cleanTitle = song.title.replace(/\[.*?\]|\(.*?\)|mp3|kbps|www\..*?\.com/gi, '').trim();
+    console.log(`[${i+1}/${songs.length}] Searching for: ${cleanTitle}...`);
     
     try {
       const url = `https://itunes.apple.com/search?term=${encodeURIComponent(cleanTitle)}&entity=song&limit=1`;
@@ -41,12 +47,8 @@ async function enrichSongs() {
       
       if (result.results && result.results.length > 0) {
         const track = result.results[0];
-        
-        // Only update if current artist is generic/empty, or just always update to be safe
         song.artist = track.artistName;
         song.album = track.collectionName;
-        
-        // Get 500x500 HD image instead of 100x100
         song.coverArt = track.artworkUrl100.replace('100x100bb', '500x500bb');
         updatedCount++;
         console.log(`  -> Found! Artist: ${song.artist}`);
@@ -54,15 +56,19 @@ async function enrichSongs() {
         console.log(`  -> No results found.`);
       }
     } catch (e) {
-      console.log(`  -> Failed to search: ${e.message}`);
+      console.log(`\n⚠️ Apple API Rate Limit hit or error: ${e.message}`);
+      console.log(`Stopping for now to avoid ban. Progress has been saved!`);
+      break;
     }
     
-    // Be nice to the API
-    await delay(200);
+    // Save progress after every single successful song so we never lose data
+    fs.writeFileSync(SONGS_FILE, JSON.stringify(songs, null, 2));
+    
+    // Slow down to prevent Apple from banning us (1.5 seconds per song)
+    await delay(1500);
   }
   
-  fs.writeFileSync(SONGS_FILE, JSON.stringify(songs, null, 2));
-  console.log(`\n✅ Done! Successfully updated metadata and HD photos for ${updatedCount} songs!`);
+  console.log(`\n✅ Finished batch! Safely updated ${updatedCount} songs!`);
 }
 
 enrichSongs();

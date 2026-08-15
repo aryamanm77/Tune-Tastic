@@ -6,7 +6,8 @@ import { getCoverArtUrl } from '../utils/cloudinary';
 const Player: React.FC = () => {
   const { 
     currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode,
-    togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat
+    togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
+    toggleLike, isLiked
   } = usePlayer();
 
   const formatTime = (time: number) => {
@@ -45,18 +46,23 @@ const Player: React.FC = () => {
                 {currentSong.artist}
               </span>
             </div>
-            <button style={{ marginLeft: '8px' }}><Heart size={16} /></button>
+            <button 
+              style={{ marginLeft: '8px', color: isLiked(currentSong.id) ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
+              onClick={() => toggleLike(currentSong)}
+            >
+              <Heart size={16} fill={isLiked(currentSong.id) ? 'currentColor' : 'none'} />
+            </button>
           </>
         ) : null}
       </div>
 
       {/* Center: Controls & Progress */}
-      <div style={{ width: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }} className="player-controls">
         <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-          <button onClick={toggleShuffle} style={{ color: isShuffled ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
+          <button onClick={toggleShuffle} className="hide-mobile" style={{ color: isShuffled ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
             <Shuffle size={16} />
           </button>
-          <button onClick={prevSong}><SkipBack size={20} /></button>
+          <button onClick={prevSong} className="hide-mobile"><SkipBack size={20} /></button>
           <button 
             onClick={togglePlayPause}
             style={{ 
@@ -66,13 +72,13 @@ const Player: React.FC = () => {
           >
             {isPlaying ? <Pause size={16} fill="black" /> : <Play size={16} fill="black" style={{ marginLeft: '2px' }} />}
           </button>
-          <button onClick={nextSong}><SkipForward size={20} /></button>
-          <button onClick={cycleRepeat} style={{ color: repeatMode !== 'none' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
+          <button onClick={nextSong} className="hide-mobile"><SkipForward size={20} /></button>
+          <button onClick={cycleRepeat} className="hide-mobile" style={{ color: repeatMode !== 'none' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
             <Repeat size={16} />
           </button>
         </div>
         
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', maxWidth: '600px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', maxWidth: '600px' }} className="player-progress">
           <span style={{ fontSize: '11px', color: 'var(--text-secondary)', minWidth: '40px', textAlign: 'right' }}>
             {formatTime(currentTime)}
           </span>
@@ -92,7 +98,7 @@ const Player: React.FC = () => {
       </div>
 
       {/* Right: Volume & Extras */}
-      <div style={{ width: '30%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '16px' }}>
+      <div style={{ width: '30%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '16px' }} className="player-volume">
         <button><ListMusic size={16} /></button>
         <button><MonitorSpeaker size={16} /></button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100px' }}>

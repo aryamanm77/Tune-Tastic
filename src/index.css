@@ -104,3 +104,125 @@ button:hover {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Desktop Defaults */
+.bottom-nav {
+  display: none;
+}
+.song-row {
+  cursor: pointer;
+}
+.song-row:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+.song-index-col {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.song-play-btn {
+  display: none;
+  position: absolute;
+}
+.song-row:hover .song-index {
+  display: none;
+}
+.song-row:hover .song-play-btn {
+  display: block;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr calc(var(--player-height) + 60px); /* 60px for bottom nav */
+    grid-template-areas:
+      "main"
+      "player";
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .main-view {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  /* Bottom Navigation */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 100;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    padding: 8px;
+  }
+  
+  .bottom-nav-item.active {
+    color: var(--text-primary);
+  }
+
+  /* Mini Player on Mobile */
+  .player-bar {
+    position: fixed;
+    bottom: 60px;
+    left: 8px;
+    right: 8px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: var(--bg-highlight);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 99;
+    padding: 0 12px;
+  }
+
+  .player-volume, .player-progress {
+    display: none !important;
+  }
+
+  .player-controls {
+    flex: 0 !important;
+    justify-content: flex-end !important;
+  }
+
+  .library-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .playlist-header {
+    flex-direction: column;
+    align-items: center !important;
+    text-align: center;
+    padding-top: 40px !important;
+  }
+  
+  .playlist-title {
+    font-size: 32px !important;
+  }
+  
+  .playlist-cover {
+    width: 160px !important;
+    height: 160px !important;
+  }
+}

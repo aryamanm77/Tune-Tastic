@@ -1,29 +1,60 @@
 import React from 'react';
 import { Home, Search, Library, PlusSquare, Heart } from 'lucide-react';
+import { usePlayer } from '../context/PlayerContext';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  activeTab: string;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist') => void;
+  onOpenPlaylist: (id: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlaylist }) => {
+  const { createPlaylist, playlists } = usePlayer();
+
+  const handleCreatePlaylist = () => {
+    const name = prompt("Enter a name for your new playlist:");
+    if (name && name.trim()) {
+      createPlaylist(name.trim());
+    }
+  };
+
   return (
-    <div className="sidebar">
+    <div className="sidebar hide-mobile">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <button style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold' }}>
+        <button 
+          onClick={() => setActiveTab('home')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'home' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
+        >
           <Home size={24} /> Home
         </button>
-        <button style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold' }}>
+        <button 
+          onClick={() => setActiveTab('search')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'search' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
+        >
           <Search size={24} /> Search
         </button>
-        <button style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold' }}>
+        <button 
+          onClick={() => setActiveTab('library')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'library' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
+        >
           <Library size={24} /> Your Library
         </button>
       </div>
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '24px' }}>
-        <button style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold' }}>
+        <button 
+          onClick={handleCreatePlaylist}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold' }}
+        >
           <div style={{ background: '#b3b3b3', color: 'black', padding: '4px', borderRadius: '2px' }}>
             <PlusSquare size={16} />
           </div>
           Create Playlist
         </button>
-        <button style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold' }}>
+        <button 
+          onClick={() => onOpenPlaylist('liked')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold' }}
+        >
           <div style={{ background: 'linear-gradient(135deg, #450af5, #c4efd9)', color: 'white', padding: '4px', borderRadius: '2px' }}>
             <Heart size={16} />
           </div>
@@ -32,8 +63,16 @@ const Sidebar: React.FC = () => {
       </div>
 
       <div style={{ flex: 1, overflowY: 'auto', marginTop: '16px', borderTop: '1px solid #282828', paddingTop: '16px' }}>
-        {/* Placeholder for playlists */}
-        <p style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>My Playlist #1</p>
+        {playlists.map(playlist => (
+          <button 
+            key={playlist.id}
+            onClick={() => onOpenPlaylist(playlist.id)}
+            style={{ fontSize: '14px', display: 'block', marginBottom: '12px', textAlign: 'left', width: '100%' }}
+            className="ellipsis"
+          >
+            {playlist.name}
+          </button>
+        ))}
       </div>
     </div>
   );
