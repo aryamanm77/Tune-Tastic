@@ -55,6 +55,8 @@ body {
 .main-view {
   grid-area: main;
   background-color: var(--bg-base);
+  background-image: linear-gradient(to bottom, #1e3a29 0%, var(--bg-base) 300px);
+  background-repeat: no-repeat;
   border-radius: 8px;
   margin: 8px 8px 0 0;
   overflow-y: auto;
