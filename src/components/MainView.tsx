@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
-import { Play } from 'lucide-react';
+
 
 const MainView: React.FC = () => {
   const { songs, currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
