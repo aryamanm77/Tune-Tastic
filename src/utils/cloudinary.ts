@@ -5,5 +5,6 @@ export const getAudioUrl = (audioId: string) => {
 };
 
 export const getCoverArtUrl = (audioId: string) => {
-  return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/w_500,h_500,c_fill,q_auto/${audioId}.jpg`;
+  // We use image/upload/ instead of video/upload/ so you can upload regular .jpg files
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_500,h_500,c_fill,q_auto/${audioId}.jpg`;
 };
