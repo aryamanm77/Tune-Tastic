@@ -94,7 +94,7 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
                   <td className="hide-mobile" style={{ padding: '12px 16px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
                     <div className="song-index-col">
                     {isCurrent ? (
-                      <div className={`eq-bars${isPlaying ? '' : ' paused'}`}>
+                      <div className={'eq-bars' + (isPlaying ? '' : ' paused')}>
                         <div className="eq-bar"></div>
                         <div className="eq-bar"></div>
                         <div className="eq-bar"></div>
