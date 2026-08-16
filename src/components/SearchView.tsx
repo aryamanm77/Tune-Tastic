@@ -64,15 +64,17 @@ const SearchView: React.FC = () => {
             marginBottom: '32px',
           }} className="library-grid">
             {[
-              { label: 'Hindi Hits', color: '#E13300', songs: songs.filter(s => s.artist.toLowerCase().includes('arijit') || s.title.toLowerCase().includes('pal')) },
-              { label: 'English Pop', color: '#1e3264', songs: songs.filter(s => s.title.toLowerCase().includes('love') || s.title.toLowerCase().includes('heart')) },
-              { label: 'Kannada', color: '#006450', songs: songs.filter(s => s.audioId.includes('Kannada') || s.audioId.includes('kannada')) },
-              { label: 'Trending', color: '#8D67AB', songs: songs.filter((_, i) => i % 5 === 0) },
-              { label: 'Romantic', color: '#c13584', songs: songs.filter(s => s.title.toLowerCase().includes('love') || s.title.toLowerCase().includes('ishq')) },
-              { label: 'Party', color: '#E8115B', songs: songs.filter(s => s.title.toLowerCase().includes('dance') || s.title.toLowerCase().includes('party') || s.title.toLowerCase().includes('blue')) },
-              { label: 'Chill', color: '#0d73ec', songs: songs.filter((_, i) => i % 3 === 0) },
-              { label: 'All Songs', color: '#1db954', songs },
-            ].map(cat => (
+              { label: 'Hindi Hits',  color: '#E13300', pick: 2 },
+              { label: 'English Pop', color: '#1e3264', pick: 8 },
+              { label: 'Kannada',     color: '#006450', pick: 15 },
+              { label: 'Trending',    color: '#8D67AB', pick: 30 },
+              { label: 'Romantic',    color: '#c13584', pick: 45 },
+              { label: 'Party',       color: '#E8115B', pick: 60 },
+              { label: 'Chill',       color: '#0d73ec', pick: 75 },
+              { label: 'All Songs',   color: '#1db954', pick: 90 },
+            ].map(cat => {
+              const coverSong = songs.find((s, i) => i === cat.pick && s.coverArt) || songs.find((_, i) => i > cat.pick && songs[i]?.coverArt);
+              return (
               <div
                 key={cat.label}
                 style={{
@@ -86,16 +88,16 @@ const SearchView: React.FC = () => {
                 }}
                 onMouseOver={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1.15)'}
                 onMouseOut={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1)'}
-                onClick={() => cat.songs[0] && playSong(cat.songs[0])}
+                onClick={() => coverSong && playSong(coverSong)}
               >
                 <span style={{
                   position: 'absolute', top: '14px', left: '14px',
                   fontWeight: 800, fontSize: '18px', color: 'white',
                   textShadow: '0 2px 8px rgba(0,0,0,0.4)',
                 }}>{cat.label}</span>
-                {cat.songs[0]?.coverArt && (
+                {coverSong?.coverArt && (
                   <img
-                    src={cat.songs[0].coverArt}
+                    src={coverSong.coverArt}
                     alt=""
                     style={{
                       position: 'absolute', bottom: '-4px', right: '-4px',
@@ -106,8 +108,8 @@ const SearchView: React.FC = () => {
                   />
                 )}
               </div>
-            ))}
-          </div>
+              );
+            })}          </div>
         </>
       )}
 
