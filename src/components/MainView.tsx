@@ -182,80 +182,83 @@ const MainView: React.FC = () => {
         })}
       </div>
 
-      <h2 style={{ marginBottom: '24px', fontSize: '24px' }}>All Music</h2>
+      <h2 style={{ marginBottom: '24px', fontSize: '24px', fontWeight: 700 }}>All Music</h2>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-        <thead>
-          <tr style={{ color: 'var(--text-secondary)', borderBottom: '1px solid #282828', fontSize: '14px' }}>
-            <th className="hide-mobile" style={{ padding: '8px 16px', width: '40px', fontWeight: 'normal' }}>#</th>
-            <th style={{ padding: '8px 16px', fontWeight: 'normal' }}>Title</th>
-            <th className="hide-mobile" style={{ padding: '8px 16px', fontWeight: 'normal' }}>Album</th>
-            <th style={{ padding: '8px 16px', textAlign: 'right', fontWeight: 'normal' }}>Duration</th>
-          </tr>
-        </thead>
-        <tbody>
-          {songs.map((song, index) => {
-            const isCurrent = currentSong?.id === song.id;
-            return (
-              <tr 
-                key={song.id}
-                className="song-row"
-                onClick={() => handlePlay(song)}
-              >
-                <td className="hide-mobile" style={{ padding: '12px 16px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
-                  <div className="song-index-col">
-                    {isCurrent ? (
-                      <div className={'eq-bars' + (isPlaying ? '' : ' paused')}>
-                        <div className="eq-bar"></div>
-                        <div className="eq-bar"></div>
-                        <div className="eq-bar"></div>
-                        <div className="eq-bar"></div>
-                      </div>
-                    ) : (
-                      <span className="song-index">{index + 1}</span>
-                    )}
-                    <button className="song-play-btn" style={{ color: isCurrent ? 'var(--spotify-green)' : 'white' }}>
-                      <Play size={16} fill="currentColor" />
-                    </button>
-                  </div>
-                </td>
-                <td style={{ padding: '12px 16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <img 
-                      src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')} 
-                      onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
-                      style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
-                      alt="" 
-                    />
-                    <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-                      <span style={{ color: isCurrent ? 'var(--spotify-green)' : 'var(--text-primary)' }} className="ellipsis">
-                        {song.title}
-                      </span>
-                      <span style={{ color: 'var(--text-secondary)', fontSize: '14px' }} className="ellipsis">
-                        {song.artist}
-                      </span>
-                    </div>
-                  </div>
-                </td>
-                <td className="hide-mobile" style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '14px' }}>
-                  <span className="ellipsis" style={{ display: 'block', maxWidth: '200px' }}>{song.album}</span>
-                </td>
-                <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); toggleLike(song); }}
-                    style={{ marginRight: '16px', color: isLiked(song.id) ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
-                  >
-                    <Heart size={16} fill={isLiked(song.id) ? 'currentColor' : 'none'} />
-                  </button>
-                  <span className="hide-mobile" style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
-                    {formatTime(song.durationMs || 0)}
-                  </span>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+        gap: '16px',
+        paddingBottom: '40px',
+      }} className="library-grid">
+        {songs.map(song => {
+          const isCurrent = currentSong?.id === song.id;
+          return (
+            <div
+              key={`all-${song.id}`}
+              onClick={() => handlePlay(song)}
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                borderRadius: '10px',
+                overflow: 'hidden',
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s',
+                position: 'relative',
+                boxShadow: isCurrent ? '0 0 0 2px var(--spotify-green)' : 'none',
+              }}
+              onMouseOver={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = isCurrent
+                  ? '0 8px 24px rgba(29,185,84,0.4)'
+                  : '0 8px 24px rgba(0,0,0,0.6)';
+              }}
+              onMouseOut={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = isCurrent ? '0 0 0 2px var(--spotify-green)' : 'none';
+              }}
+            >
+              {/* Album Art */}
+              <div style={{ position: 'relative', paddingTop: '100%' }}>
+                <img
+                  src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')}
+                  onError={e => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                  alt={song.title}
+                  style={{
+                    position: 'absolute', top: 0, left: 0,
+                    width: '100%', height: '100%', objectFit: 'cover',
+                  }}
+                />
+                {/* Hover play button */}
+                <div className="card-play-overlay" style={{
+                  position: 'absolute', bottom: '8px', right: '8px',
+                  background: 'var(--spotify-green)', borderRadius: '50%',
+                  width: '40px', height: '40px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  opacity: isCurrent ? 1 : 0,
+                  transform: isCurrent ? 'translateY(0)' : 'translateY(8px)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+                }}>
+                  <Play size={18} fill="black" color="black" style={{ marginLeft: '2px' }} />
+                </div>
+              </div>
+              {/* Info */}
+              <div style={{ padding: '12px 14px 14px' }}>
+                <p style={{
+                  fontWeight: 700, fontSize: '14px',
+                  color: isCurrent ? 'var(--spotify-green)' : 'var(--text-primary)',
+                  margin: 0, marginBottom: '4px',
+                  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                }}>{song.title}</p>
+                <p style={{
+                  fontSize: '12px', color: 'var(--text-secondary)',
+                  margin: 0,
+                  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                }}>{song.artist !== 'Unknown Artist' ? song.artist : 'TuneTastic'}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
