@@ -1,6 +1,7 @@
 import React from 'react';
 import { Home, Search, Library, PlusSquare, Heart } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
+import TuneTasticLogo from './TuneTasticLogo';
 
 interface SidebarProps {
   activeTab: string;
@@ -20,7 +21,21 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
 
   return (
     <div className="sidebar hide-mobile">
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      {/* Animated Logo */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+        <TuneTasticLogo size={40} />
+        <span style={{
+          fontSize: '20px',
+          fontWeight: 800,
+          background: 'linear-gradient(135deg, #1db954, #1ed760)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          letterSpacing: '-0.5px'
+        }}>
+          TuneTastic
+        </span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '16px' }}>
         <button 
           onClick={() => setActiveTab('home')}
           style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'home' ? 'var(--text-primary)' : 'var(--text-secondary)' }}

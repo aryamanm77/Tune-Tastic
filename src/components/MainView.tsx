@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getAudioUrl } from '../utils/cloudinary';
 import { Play, Heart } from 'lucide-react';
+import TuneTasticLogo from './TuneTasticLogo';
 
 const MainView: React.FC = () => {
   const { songs, currentSong, isPlaying, playSong, togglePlayPause, toggleLike, isLiked } = usePlayer();
@@ -42,6 +43,17 @@ const MainView: React.FC = () => {
 
   return (
     <div className="main-view" style={{ padding: '24px' }}>
+      {/* Mobile-only logo header */}
+      <div className="show-mobile" style={{ display: 'none', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+        <TuneTasticLogo size={34} />
+        <span style={{
+          fontSize: '22px',
+          fontWeight: 800,
+          background: 'linear-gradient(135deg, #1db954, #1ed760)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}>TuneTastic</span>
+      </div>
       <h1 style={{ marginBottom: '24px' }}>{greeting}</h1>
       
       {/* Recent Grid */}

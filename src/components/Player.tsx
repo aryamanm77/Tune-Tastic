@@ -82,7 +82,7 @@ const Player: React.FC = () => {
           <button onClick={toggleShuffle} className="hide-mobile" style={{ color: isShuffled ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
             <Shuffle size={16} />
           </button>
-          <button onClick={prevSong} className="hide-mobile"><SkipBack size={20} /></button>
+          <button onClick={prevSong}><SkipBack size={20} /></button>
           <button 
             onClick={togglePlayPause}
             style={{ 
@@ -92,7 +92,7 @@ const Player: React.FC = () => {
           >
             {isPlaying ? <Pause size={16} fill="black" /> : <Play size={16} fill="black" style={{ marginLeft: '2px' }} />}
           </button>
-          <button onClick={nextSong} className="hide-mobile"><SkipForward size={20} /></button>
+          <button onClick={nextSong}><SkipForward size={20} /></button>
           <button onClick={cycleRepeat} className="hide-mobile" style={{ color: repeatMode !== 'none' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
             <Repeat size={16} />
           </button>

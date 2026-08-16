@@ -180,7 +180,7 @@ button:hover {
 @media (max-width: 768px) {
   .app-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr calc(var(--player-height) + 60px); /* 60px for bottom nav */
+    grid-template-rows: 1fr calc(var(--player-height) + 60px);
     grid-template-areas:
       "main"
       "player";
@@ -188,6 +188,10 @@ button:hover {
 
   .hide-mobile {
     display: none !important;
+  }
+
+  .show-mobile {
+    display: flex !important;
   }
 
   .main-view {
@@ -224,28 +228,61 @@ button:hover {
     color: var(--text-primary);
   }
 
-  /* Full Player on Mobile */
+  /* Compact mini-player on mobile - single row */
   .player-bar {
     position: fixed;
     bottom: 60px;
     left: 8px;
     right: 8px;
     height: auto;
-    padding: 16px 12px;
-    flex-direction: column;
+    padding: 10px 14px;
+    flex-direction: row;
     align-items: center;
-    gap: 16px;
-    border-radius: 8px;
-    background-color: var(--bg-highlight);
-    border: none;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.8);
+    gap: 10px;
+    border-radius: 10px;
+    background: rgba(40, 40, 40, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 -4px 30px rgba(0,0,0,0.9);
     z-index: 99;
+    flex-wrap: wrap;
   }
 
-  /* Override the hardcoded 30%/40%/30% widths to stack them */
-  .player-bar > div {
+  /* Album art small on mobile */
+  .player-bar img {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 6px !important;
+    flex-shrink: 0;
+  }
+
+  /* Song info takes remaining space */
+  .player-bar > div:first-child {
+    width: auto !important;
+    flex: 1 !important;
+    min-width: 0;
+  }
+
+  /* Hide center controls section on mobile - only show play/pause */
+  .player-bar .player-controls {
+    display: flex !important;
+    width: auto !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    flex: 0 !important;
+  }
+
+  /* Hide volume section on mobile */
+  .player-bar .player-volume {
+    display: none !important;
+  }
+
+  /* Mobile progress bar - show full width below */
+  .player-progress {
+    order: 10;
     width: 100% !important;
-    justify-content: center !important;
+    max-width: 100% !important;
   }
 
   .library-grid {
@@ -266,5 +303,52 @@ button:hover {
   .playlist-cover {
     width: 160px !important;
     height: 160px !important;
+  }
+}
+
+/* Tablet Responsiveness (iPad, small laptops) */
+@media (min-width: 769px) and (max-width: 1100px) {
+  :root {
+    --sidebar-width: 180px;
+  }
+
+  .sidebar {
+    padding: 16px 12px;
+    gap: 16px;
+  }
+
+  .sidebar button {
+    font-size: 12px !important;
+    gap: 10px !important;
+  }
+
+  /* Compact player on tablet */
+  .player-bar > div:first-child {
+    width: 25% !important;
+  }
+  .player-controls {
+    width: 50% !important;
+  }
+  .player-volume {
+    width: 25% !important;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1400px) {
+  :root {
+    --sidebar-width: 320px;
+  }
+}
+
+/* Landscape phone */
+@media (max-width: 768px) and (orientation: landscape) {
+  .player-bar {
+    padding: 6px 14px;
+    bottom: 50px;
+  }
+
+  .bottom-nav {
+    height: 50px;
   }
 }
