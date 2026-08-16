@@ -89,6 +89,37 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     });
   }, []);
 
+  // Dynamic background color — extracts dominant color from album art like Spotify
+  useEffect(() => {
+    if (!currentSong?.coverArt) {
+      document.documentElement.style.setProperty('--dynamic-bg-color', '#1e3a29');
+      return;
+    }
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = currentSong.coverArt;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 10;
+      canvas.height = 10;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.drawImage(img, 0, 0, 10, 10);
+      const data = ctx.getImageData(0, 0, 10, 10).data;
+      let r = 0, g = 0, b = 0, count = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        r += data[i]; g += data[i+1]; b += data[i+2]; count++;
+      }
+      r = Math.round(r / count * 0.5); // Darken so it's background-safe
+      g = Math.round(g / count * 0.5);
+      b = Math.round(b / count * 0.5);
+      document.documentElement.style.setProperty('--dynamic-bg-color', `rgb(${r},${g},${b})`);
+    };
+    img.onerror = () => {
+      document.documentElement.style.setProperty('--dynamic-bg-color', '#1e3a29');
+    };
+  }, [currentSong]);
+
   // Initialize audio element
   useEffect(() => {
     audioRef.current = new Audio();

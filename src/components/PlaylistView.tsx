@@ -8,7 +8,7 @@ interface PlaylistViewProps {
 }
 
 const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
-  const { currentSong, playSong, togglePlayPause, playlists, likedSongs } = usePlayer();
+  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs } = usePlayer();
 
   if (!playlistId) return <div className="main-view"></div>;
 
@@ -93,9 +93,16 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
                 >
                   <td className="hide-mobile" style={{ padding: '12px 16px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
                     <div className="song-index-col">
-                    <span className="song-index" style={{ color: isCurrent ? 'var(--spotify-green)' : 'inherit' }}>
-                      {index + 1}
-                    </span>
+                    {isCurrent ? (
+                      <div className={`eq-bars${isPlaying ? '' : ' paused'}`}>
+                        <div className="eq-bar"></div>
+                        <div className="eq-bar"></div>
+                        <div className="eq-bar"></div>
+                        <div className="eq-bar"></div>
+                      </div>
+                    ) : (
+                      <span className="song-index">{index + 1}</span>
+                    )}
                       <button className="song-play-btn" style={{ color: isCurrent ? 'var(--spotify-green)' : 'white' }}>
                         <Play size={16} fill="currentColor" />
                       </button>
