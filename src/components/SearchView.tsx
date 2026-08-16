@@ -53,6 +53,64 @@ const SearchView: React.FC = () => {
         </div>
       </div>
 
+      {/* Browse All — shown when not searching */}
+      {!query.trim() && (
+        <>
+          <h2 style={{ marginBottom: '16px', fontSize: '22px', fontWeight: 700 }}>Browse All</h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+            gap: '16px',
+            marginBottom: '32px',
+          }} className="library-grid">
+            {[
+              { label: 'Hindi Hits', color: '#E13300', songs: songs.filter(s => s.artist.toLowerCase().includes('arijit') || s.title.toLowerCase().includes('pal')) },
+              { label: 'English Pop', color: '#1e3264', songs: songs.filter(s => s.title.toLowerCase().includes('love') || s.title.toLowerCase().includes('heart')) },
+              { label: 'Kannada', color: '#006450', songs: songs.filter(s => s.audioId.includes('Kannada') || s.audioId.includes('kannada')) },
+              { label: 'Trending', color: '#8D67AB', songs: songs.filter((_, i) => i % 5 === 0) },
+              { label: 'Romantic', color: '#c13584', songs: songs.filter(s => s.title.toLowerCase().includes('love') || s.title.toLowerCase().includes('ishq')) },
+              { label: 'Party', color: '#E8115B', songs: songs.filter(s => s.title.toLowerCase().includes('dance') || s.title.toLowerCase().includes('party') || s.title.toLowerCase().includes('blue')) },
+              { label: 'Chill', color: '#0d73ec', songs: songs.filter((_, i) => i % 3 === 0) },
+              { label: 'All Songs', color: '#1db954', songs },
+            ].map(cat => (
+              <div
+                key={cat.label}
+                style={{
+                  backgroundColor: cat.color,
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  height: '110px',
+                  position: 'relative',
+                  transition: 'filter 0.2s ease',
+                }}
+                onMouseOver={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1.15)'}
+                onMouseOut={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1)'}
+                onClick={() => cat.songs[0] && playSong(cat.songs[0])}
+              >
+                <span style={{
+                  position: 'absolute', top: '14px', left: '14px',
+                  fontWeight: 800, fontSize: '18px', color: 'white',
+                  textShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                }}>{cat.label}</span>
+                {cat.songs[0]?.coverArt && (
+                  <img
+                    src={cat.songs[0].coverArt}
+                    alt=""
+                    style={{
+                      position: 'absolute', bottom: '-4px', right: '-4px',
+                      width: '70px', height: '70px', objectFit: 'cover',
+                      borderRadius: '6px', transform: 'rotate(25deg)',
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+                    }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
       {query.trim() && (
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', marginTop: '16px' }}>
           <thead>

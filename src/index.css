@@ -181,6 +181,12 @@ button:hover {
   display: none;
 }
 
+/* Album card hover play button */
+div:hover > div > .card-play-overlay {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .app-container {
