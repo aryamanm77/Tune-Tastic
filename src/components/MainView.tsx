@@ -54,8 +54,51 @@ const MainView: React.FC = () => {
           WebkitTextFillColor: 'transparent',
         }}>TuneTastic</span>
       </div>
-      <h1 style={{ marginBottom: '24px' }}>{greeting}</h1>
-      
+      {/* Hero Section with Animated Logo */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px',
+        marginBottom: '36px',
+        padding: '20px 24px',
+        background: 'linear-gradient(135deg, rgba(29,185,84,0.12) 0%, rgba(0,0,0,0) 60%)',
+        borderRadius: '16px',
+        border: '1px solid rgba(29,185,84,0.12)',
+        flexWrap: 'wrap',
+      }}>
+        <TuneTasticLogo size={90} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', flexWrap: 'wrap' }}>
+            <h1 style={{
+              fontSize: 'clamp(28px, 5vw, 52px)',
+              fontWeight: 900,
+              background: 'linear-gradient(135deg, #ffffff 0%, #1db954 60%, #1ed760 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              lineHeight: 1.1,
+              letterSpacing: '-1px',
+              margin: 0,
+            }}>TuneTastic</h1>
+          </div>
+          <p style={{
+            color: 'var(--text-secondary)',
+            fontSize: 'clamp(13px, 2vw, 16px)',
+            margin: 0,
+          }}>
+            {greeting} 👋 &nbsp;·&nbsp; Your personal music universe
+          </p>
+          <p style={{
+            color: 'var(--spotify-green)',
+            fontSize: '13px',
+            fontWeight: 600,
+            margin: 0,
+            marginTop: '4px',
+          }}>
+            492 songs &nbsp;·&nbsp; Hindi · English · Kannada
+          </p>
+        </div>
+      </div>
+
       {/* Recent Grid */}
       <div style={{
         display: 'grid',
