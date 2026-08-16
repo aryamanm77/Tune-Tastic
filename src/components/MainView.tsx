@@ -4,7 +4,7 @@ import { getAudioUrl } from '../utils/cloudinary';
 import { Play, Heart } from 'lucide-react';
 
 const MainView: React.FC = () => {
-  const { songs, currentSong, isPlaying, playSong, togglePlayPause, toggleLike, isLiked } = usePlayer();
+  const { songs, currentSong, playSong, togglePlayPause, toggleLike, isLiked } = usePlayer();
 
   const [greeting, setGreeting] = React.useState('');
 
