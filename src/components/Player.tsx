@@ -58,7 +58,7 @@ const Player: React.FC = () => {
               alt={currentSong.title}
               style={{ width: '56px', height: '56px', borderRadius: '4px', objectFit: 'cover' }}
             />
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0, flex: 1 }}>
               <span style={{ fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)' }} className="ellipsis">
                 {currentSong.title}
               </span>
