@@ -67,34 +67,39 @@ const MainView: React.FC = () => {
         flexWrap: 'wrap',
       }}>
         <TuneTasticLogo size={90} />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', flexWrap: 'wrap' }}>
-            <h1 style={{
-              fontSize: 'clamp(28px, 5vw, 52px)',
-              fontWeight: 900,
-              background: 'linear-gradient(135deg, #ffffff 0%, #1db954 60%, #1ed760 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              lineHeight: 1.1,
-              letterSpacing: '-1px',
-              margin: 0,
-            }}>TuneTastic</h1>
-          </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minWidth: 0 }}>
+          <h1 style={{
+            fontSize: 'clamp(28px, 5vw, 52px)',
+            fontWeight: 900,
+            background: 'linear-gradient(135deg, #ffffff 0%, #1db954 60%, #1ed760 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            lineHeight: 1.1,
+            letterSpacing: '-1px',
+            margin: 0,
+          }}>TuneTastic</h1>
           <p style={{
             color: 'var(--text-secondary)',
-            fontSize: 'clamp(13px, 2vw, 16px)',
+            fontSize: 'clamp(14px, 2vw, 18px)',
             margin: 0,
+            fontWeight: 500,
+            letterSpacing: '0.2px',
           }}>
-            {greeting} 👋 &nbsp;·&nbsp; Your personal music universe
+            {greeting}
           </p>
           <p style={{
-            color: 'var(--spotify-green)',
-            fontSize: '13px',
-            fontWeight: 600,
+            fontSize: 'clamp(11px, 1.5vw, 13px)',
             margin: 0,
-            marginTop: '4px',
+            letterSpacing: '2.5px',
+            textTransform: 'uppercase',
+            fontWeight: 600,
+            background: 'linear-gradient(90deg, #1db954, #1ed760, #ffffff, #1db954)',
+            backgroundSize: '300% auto',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            animation: 'shimmer 4s linear infinite',
           }}>
-            492 songs &nbsp;·&nbsp; Hindi · English · Kannada
+            Your music · Your world
           </p>
         </div>
       </div>

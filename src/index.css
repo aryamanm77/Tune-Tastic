@@ -172,6 +172,11 @@ button:hover {
   100% { height: 3px;  }
 }
 
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
 .song-row:hover .eq-bars {
   display: none;
 }
