@@ -132,6 +132,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const pannerIntervalRef = useRef<number | null>(null);
 
   const setDjState = (newState: Partial<{ bass: number; spin8D: boolean; nightcore: boolean }>) => {
+    // Only init the Web Audio API the FIRST time a DJ effect is activated
+    initAudioContext();
     setDjStateInternal(prev => {
       const updated = { ...prev, ...newState };
       applyDjEffects(updated);
@@ -282,7 +284,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, [isPlaying]);
 
   const playSong = (song: Song) => {
-    initAudioContext();
     if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
       audioContextRef.current.resume();
     }
@@ -298,7 +299,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       audio.play().then(() => {
         setIsPlaying(true);
         setCurrentSong(song);
-        applyDjEffects(djState); // Re-apply effects on new song
+        applyDjEffects(djState);
       }).catch(err => {
         console.error("Playback failed", err);
       });
