@@ -287,18 +287,15 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
       audioContextRef.current.resume();
     }
-    
-    if (currentSong?.id === song.id) {
-      togglePlayPause();
-      return;
-    }
-    
+
+    setCurrentSong(song);
+
     const audio = audioRef.current;
     if (audio) {
       audio.src = getAudioUrl(song.audioId);
+      audio.load();
       audio.play().then(() => {
         setIsPlaying(true);
-        setCurrentSong(song);
         applyDjEffects(djState);
       }).catch(err => {
         console.error("Playback failed", err);
