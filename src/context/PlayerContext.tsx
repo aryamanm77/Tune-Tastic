@@ -214,7 +214,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   // Initialize audio element
   useEffect(() => {
     audioRef.current = new Audio();
-    audioRef.current.crossOrigin = 'anonymous';
     audioRef.current.volume = volume;
 
     const audio = audioRef.current;
