@@ -44,6 +44,9 @@ interface PlayerContextType {
   toggleLike: (song: Song) => void;
   isLiked: (songId: string) => boolean;
   clearSong: () => void;
+  // DJ State
+  djState: { bass: number; spin8D: boolean; nightcore: boolean };
+  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean }>) => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -120,9 +123,98 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     };
   }, [currentSong]);
 
+  // DJ State
+  const [djState, setDjStateInternal] = useState({ bass: 0, spin8D: false, nightcore: false });
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
+  const bassNodeRef = useRef<BiquadFilterNode | null>(null);
+  const pannerNodeRef = useRef<StereoPannerNode | null>(null);
+  const pannerIntervalRef = useRef<number | null>(null);
+
+  const setDjState = (newState: Partial<{ bass: number; spin8D: boolean; nightcore: boolean }>) => {
+    setDjStateInternal(prev => {
+      const updated = { ...prev, ...newState };
+      applyDjEffects(updated);
+      return updated;
+    });
+  };
+
+  const initAudioContext = () => {
+    if (audioContextRef.current) return;
+    const ctx = new window.AudioContext();
+    audioContextRef.current = ctx;
+    
+    if (audioRef.current) {
+      // Must set crossOrigin for Web Audio API to work with remote URLs
+      audioRef.current.crossOrigin = 'anonymous';
+      
+      const source = ctx.createMediaElementSource(audioRef.current);
+      sourceNodeRef.current = source;
+
+      // Bass Boost Node
+      const bassNode = ctx.createBiquadFilter();
+      bassNode.type = 'lowshelf';
+      bassNode.frequency.value = 150; // Boost frequencies below 150Hz
+      bassNode.gain.value = djState.bass;
+      bassNodeRef.current = bassNode;
+
+      // Stereo Panner Node
+      const pannerNode = ctx.createStereoPanner();
+      pannerNode.pan.value = 0;
+      pannerNodeRef.current = pannerNode;
+
+      // Connect: Source -> Bass -> Panner -> Destination
+      source.connect(bassNode);
+      bassNode.connect(pannerNode);
+      pannerNode.connect(ctx.destination);
+    }
+  };
+
+  const applyDjEffects = (state: { bass: number; spin8D: boolean; nightcore: boolean }) => {
+    // Apply Bass
+    if (bassNodeRef.current) {
+      bassNodeRef.current.gain.value = state.bass;
+    }
+
+    // Apply Nightcore
+    if (audioRef.current) {
+      if (state.nightcore) {
+        audioRef.current.playbackRate = 1.3;
+        (audioRef.current as any).preservesPitch = false;
+        // fallback for webkit
+        (audioRef.current as any).webkitPreservesPitch = false;
+      } else {
+        audioRef.current.playbackRate = 1.0;
+        (audioRef.current as any).preservesPitch = true;
+        (audioRef.current as any).webkitPreservesPitch = true;
+      }
+    }
+
+    // Apply 8D Spin
+    if (state.spin8D) {
+      if (!pannerIntervalRef.current && pannerNodeRef.current) {
+        let panValue = 0;
+        let direction = 1;
+        pannerIntervalRef.current = window.setInterval(() => {
+          panValue += 0.02 * direction;
+          if (panValue >= 1) { panValue = 1; direction = -1; }
+          if (panValue <= -1) { panValue = -1; direction = 1; }
+          if (pannerNodeRef.current) pannerNodeRef.current.pan.value = panValue;
+        }, 50);
+      }
+    } else {
+      if (pannerIntervalRef.current) {
+        window.clearInterval(pannerIntervalRef.current);
+        pannerIntervalRef.current = null;
+      }
+      if (pannerNodeRef.current) pannerNodeRef.current.pan.value = 0;
+    }
+  };
+
   // Initialize audio element
   useEffect(() => {
     audioRef.current = new Audio();
+    audioRef.current.crossOrigin = 'anonymous';
     audioRef.current.volume = volume;
 
     const audio = audioRef.current;
@@ -150,6 +242,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       audio.removeEventListener('ended', onEnded);
       audio.pause();
       audio.src = '';
+      if (pannerIntervalRef.current) clearInterval(pannerIntervalRef.current);
     };
   }, []);
 
@@ -190,13 +283,26 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, [isPlaying]);
 
   const playSong = (song: Song) => {
-    setCurrentSong(song);
-    if (audioRef.current) {
-      audioRef.current.src = getAudioUrl(song.audioId);
-      audioRef.current.load();
-      audioRef.current.play().then(() => {
+    initAudioContext();
+    if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+      audioContextRef.current.resume();
+    }
+    
+    if (currentSong?.id === song.id) {
+      togglePlayPause();
+      return;
+    }
+    
+    const audio = audioRef.current;
+    if (audio) {
+      audio.src = getAudioUrl(song.audioId);
+      audio.play().then(() => {
         setIsPlaying(true);
-      }).catch(e => console.error("Playback failed:", e));
+        setCurrentSong(song);
+        applyDjEffects(djState); // Re-apply effects on new song
+      }).catch(err => {
+        console.error("Playback failed", err);
+      });
     }
   };
 
@@ -288,7 +394,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
       playlists, likedSongs,
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
-      createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong
+      createPlaylist, addToPlaylist, toggleLike, isLiked,      clearSong,
+      djState,
+      setDjState
     }}>
       {children}
     </PlayerContext.Provider>

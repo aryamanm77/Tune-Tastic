@@ -48,17 +48,20 @@ async function extractCovers() {
     const allFiles = getFilesRecursive(dir);
     for (const filePath of allFiles) {
       if (filePath.toLowerCase().endsWith('.mp3')) {
+        const baseName = path.parse(filePath).name;
+        const imgPath = path.join(OUTPUT_DIR, `${baseName}.jpg`);
+        
+        // Skip if we already extracted this cover before
+        if (fs.existsSync(imgPath)) {
+          continue;
+        }
+
         try {
           const metadata = await mm.parseFile(filePath);
           if (metadata.common.picture && metadata.common.picture.length > 0) {
             const picture = metadata.common.picture[0];
-            
-            // Name the image exactly the same as the MP3 file
-            const baseName = path.parse(filePath).name;
-            const imgPath = path.join(OUTPUT_DIR, `${baseName}.jpg`);
-            
             fs.writeFileSync(imgPath, picture.data);
-            console.log(`✅ Extracted cover: ${baseName}.jpg`);
+            console.log(`✅ Extracted NEW cover: ${baseName}.jpg`);
             count++;
           }
         } catch (err) {
