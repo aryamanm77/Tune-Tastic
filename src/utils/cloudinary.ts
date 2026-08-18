@@ -22,6 +22,6 @@ export const getAudioUrl = (audioId: string) => {
 
 export const getCoverArtUrl = (audioId: string) => {
   const cloud = getCloudName(audioId);
-  const id = cleanAudioId(audioId);
+  const id = cleanAudioId(audioId).replace(/^Music\//i, '');
   return `https://res.cloudinary.com/${cloud}/image/upload/w_500,h_500,c_fill,q_auto/${id}.jpg`;
 };
