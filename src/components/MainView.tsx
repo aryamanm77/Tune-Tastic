@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
-import { getAudioUrl } from '../utils/cloudinary';
+import { getCoverArtUrl } from '../utils/cloudinary';
 import { Play } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
 import DJSoundstage from './DJSoundstage';
@@ -71,7 +71,7 @@ const MainView: React.FC = () => {
               {/* Album Icon */}
               <div style={{ width: '40px', height: '40px', borderRadius: '4px', overflow: 'hidden', flexShrink: 0 }}>
                 <img
-                  src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')}
+                  src={song.coverArt || getCoverArtUrl(song.audioId)}
                   onError={e => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
                   alt={song.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}

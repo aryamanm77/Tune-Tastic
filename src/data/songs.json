@@ -1037,7 +1037,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "10_New_Rules"
+    "audioId": "10_New_Rules",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/10_New_Rules.jpg"
   },
   {
     "id": "12ed3fde-eaad-4831-baa9-fbd69460a829",
@@ -1045,7 +1046,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "14_Meant_to_Be_feat._Florida_Georgia_Line"
+    "audioId": "14_Meant_to_Be_feat._Florida_Georgia_Line",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/14_Meant_to_Be_feat._Florida_Georgia_Line.jpg"
   },
   {
     "id": "18956320-34ca-4df9-9ebb-edf92c3969e4",
@@ -1053,7 +1055,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "14_Play_Date"
+    "audioId": "14_Play_Date",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/14_Play_Date.jpg"
   },
   {
     "id": "8a46e42d-92c0-49d7-8935-8eb15f1f9323",
@@ -1061,7 +1064,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "12_Levitating_feat._DaBaby"
+    "audioId": "12_Levitating_feat._DaBaby",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/12_Levitating_feat._DaBaby.jpg"
   },
   {
     "id": "c471d189-c745-4167-8962-807869cb6bce",
@@ -1069,7 +1073,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "13_Despacito_-_Remix"
+    "audioId": "13_Despacito_-_Remix",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/13_Despacito_-_Remix.jpg"
   },
   {
     "id": "294b09f8-384c-48a8-88b5-2beb4c0d14bb",
@@ -1077,7 +1082,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "14_Goodbyes_feat._Young_Thug"
+    "audioId": "14_Goodbyes_feat._Young_Thug",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/14_Goodbyes_feat._Young_Thug.jpg"
   },
   {
     "id": "95107bd7-e024-4cd4-945c-c5ca7e105d5d",
@@ -1085,7 +1091,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "10_Falling"
+    "audioId": "10_Falling",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/10_Falling.jpg"
   },
   {
     "id": "08f94ad3-6d3b-48c9-a9a0-4eca9c5bef02",
@@ -1093,7 +1100,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "10_Hey_Mama_feat._Nicki_Minaj_Bebe_Rexha_Afrojack"
+    "audioId": "10_Hey_Mama_feat._Nicki_Minaj_Bebe_Rexha_Afrojack",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/10_Hey_Mama_feat._Nicki_Minaj_Bebe_Rexha_Afrojack.jpg"
   },
   {
     "id": "4810c76e-1821-4378-8829-c7036b86312b",
@@ -1101,7 +1109,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "09_Break_My_Heart"
+    "audioId": "09_Break_My_Heart",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/09_Break_My_Heart.jpg"
   },
   {
     "id": "45d9e727-a52e-4f0b-8837-8559a0032154",
@@ -1109,7 +1118,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "09_No_Lie"
+    "audioId": "09_No_Lie",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/09_No_Lie.jpg"
   },
   {
     "id": "b131a50c-a7a6-46d3-841c-2461179d3ef0",
@@ -1117,7 +1127,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "10_2002"
+    "audioId": "10_2002",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/10_2002.jpg"
   },
   {
     "id": "b85463f8-d57d-425a-ad5e-0a4bfe25ed75",
@@ -1125,7 +1136,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "07_I_Like_It"
+    "audioId": "07_I_Like_It",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/07_I_Like_It.jpg"
   },
   {
     "id": "86a805df-5f54-4c23-bdac-904e3f4f16fe",
@@ -1133,7 +1145,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "06_Liar"
+    "audioId": "06_Liar",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/06_Liar.jpg"
   },
   {
     "id": "e5282e72-ddd9-419f-80f6-42201d1099a2",
@@ -1141,7 +1154,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "07_telepatía"
+    "audioId": "07_telepatía",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/07_telepatía.jpg"
   },
   {
     "id": "763f6f0d-719a-4777-8b25-8ebffb26a6cb",
@@ -1149,7 +1163,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "07_WITHOUT_YOU"
+    "audioId": "07_WITHOUT_YOU",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/07_WITHOUT_YOU.jpg"
   },
   {
     "id": "8fe7a057-9976-463e-b67b-b32398c65f81",
@@ -1157,7 +1172,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "06_I_Like_Him"
+    "audioId": "06_I_Like_Him",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/06_I_Like_Him.jpg"
   },
   {
     "id": "8724d782-9716-4758-a72c-42416c2549c2",
@@ -1165,7 +1181,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "06_Heartbreak_Anniversary"
+    "audioId": "06_Heartbreak_Anniversary",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/06_Heartbreak_Anniversary.jpg"
   },
   {
     "id": "a6f53eed-e15f-4972-a99d-de4c04d9e0d1",
@@ -1173,7 +1190,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04_Shape_of_You"
+    "audioId": "04_Shape_of_You",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04_Shape_of_You.jpg"
   },
   {
     "id": "376a0d37-df3e-4ff3-bf25-a1f1b32ec640",
@@ -1181,7 +1199,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "06_What_If_I_Told_You_That_I_Love_You"
+    "audioId": "06_What_If_I_Told_You_That_I_Love_You",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/06_What_If_I_Told_You_That_I_Love_You.jpg"
   },
   {
     "id": "75c4d4c1-0a83-4205-925a-3bd4c3358356",
@@ -1189,7 +1208,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "06_good_4_u"
+    "audioId": "06_good_4_u",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/06_good_4_u.jpg"
   },
   {
     "id": "357430d6-85c6-4d70-aa0d-80b79bd3cec5",
@@ -1197,7 +1217,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04_Believer"
+    "audioId": "04_Believer",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04_Believer.jpg"
   },
   {
     "id": "39a2c74e-0b0e-420b-8008-20377fbcfe71",
@@ -1205,7 +1226,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "05_Say_My_Name"
+    "audioId": "05_Say_My_Name",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/05_Say_My_Name.jpg"
   },
   {
     "id": "0aecfa75-4fa8-4529-a3fd-a3f423f928bb",
@@ -1213,7 +1235,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04_My_Oh_My_feat._DaBaby"
+    "audioId": "04_My_Oh_My_feat._DaBaby",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04_My_Oh_My_feat._DaBaby.jpg"
   },
   {
     "id": "625e1c7a-90b2-42ef-8db0-6a8c82ed2199",
@@ -1221,7 +1244,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04_Let_Me_Down_Slowly"
+    "audioId": "04_Let_Me_Down_Slowly",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04_Let_Me_Down_Slowly.jpg"
   },
   {
     "id": "92bc4b9b-c147-4455-a491-f4760b168a80",
@@ -1229,7 +1253,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "05_Astronaut_In_The_Ocean"
+    "audioId": "05_Astronaut_In_The_Ocean",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/05_Astronaut_In_The_Ocean.jpg"
   },
   {
     "id": "8d797893-4a65-4678-9c07-609f648b0294",
@@ -1237,7 +1262,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03_I_Need_Your_Love"
+    "audioId": "03_I_Need_Your_Love",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03_I_Need_Your_Love.jpg"
   },
   {
     "id": "031546df-7300-45da-a796-a8ed6015542d",
@@ -1245,7 +1271,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03_Somebody_To_You"
+    "audioId": "03_Somebody_To_You",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03_Somebody_To_You.jpg"
   },
   {
     "id": "fa849377-8fcf-4579-a5ea-33c90da9ae57",
@@ -1253,7 +1280,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_What_If_I_Told_You_I_Like_You"
+    "audioId": "01_What_If_I_Told_You_I_Like_You",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_What_If_I_Told_You_I_Like_You.jpg"
   },
   {
     "id": "9165849d-5c0c-4267-927d-25812e660b3a",
@@ -1261,7 +1289,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "02_Send_My_Love_To_Your_New_Lover"
+    "audioId": "02_Send_My_Love_To_Your_New_Lover",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/02_Send_My_Love_To_Your_New_Lover.jpg"
   },
   {
     "id": "56c5c731-ff28-4c30-9dff-352b3ab82954",
@@ -1269,7 +1298,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "02_bad_guy"
+    "audioId": "02_bad_guy",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/02_bad_guy.jpg"
   },
   {
     "id": "0bc99a34-7439-4280-ae43-816bb834b171",
@@ -1277,7 +1307,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03_Kings_Queens"
+    "audioId": "03_Kings_Queens",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03_Kings_Queens.jpg"
   },
   {
     "id": "03416b2d-5199-4707-b565-7cf1ba9ad021",
@@ -1285,7 +1316,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Sucker"
+    "audioId": "01_Sucker",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Sucker.jpg"
   },
   {
     "id": "9fe17822-15aa-4132-9eb6-dbe97e2b7f72",
@@ -1293,7 +1325,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_What_A_Shame"
+    "audioId": "01_What_A_Shame",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_What_A_Shame.jpg"
   },
   {
     "id": "a7922903-f702-488b-a381-26a232afdbf5",
@@ -1301,7 +1334,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_The_Middle"
+    "audioId": "01_The_Middle",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_The_Middle.jpg"
   },
   {
     "id": "0d264780-ed9d-431f-8201-e5b70b950565",
@@ -1309,7 +1343,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_MONTERO_Call_Me_By_Your_Name"
+    "audioId": "01_MONTERO_Call_Me_By_Your_Name",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_MONTERO_Call_Me_By_Your_Name.jpg"
   },
   {
     "id": "33e5dcb3-f5d8-4ed5-b8d2-ee852150b269",
@@ -1317,7 +1352,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Kiss_Me_More_feat._SZA"
+    "audioId": "01_Kiss_Me_More_feat._SZA",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Kiss_Me_More_feat._SZA.jpg"
   },
   {
     "id": "8dfce0ae-2d52-42e1-aaf6-136c46f567b3",
@@ -1325,7 +1361,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_lovely_with_Khalid"
+    "audioId": "01_lovely_with_Khalid",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_lovely_with_Khalid.jpg"
   },
   {
     "id": "3785e22a-daf9-4c24-9e0f-f51ad97e1e28",
@@ -1333,7 +1370,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Into_Your_Arms_feat._Ava_Max"
+    "audioId": "01_Into_Your_Arms_feat._Ava_Max",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Into_Your_Arms_feat._Ava_Max.jpg"
   },
   {
     "id": "306edf9f-dcf1-423c-98d8-09ba409973e5",
@@ -1341,7 +1379,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_It_s_You"
+    "audioId": "01_It_s_You",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_It_s_You.jpg"
   },
   {
     "id": "17fa8b32-1321-497e-85fd-ebe6ff358850",
@@ -1349,7 +1388,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Last_Hurrah"
+    "audioId": "01_Last_Hurrah",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Last_Hurrah.jpg"
   },
   {
     "id": "772a3b5b-38b8-4c31-ab1f-3a10df1bc7f3",
@@ -1357,7 +1397,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Hate_Me_with_Juice_WRLD"
+    "audioId": "01_Hate_Me_with_Juice_WRLD",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Hate_Me_with_Juice_WRLD.jpg"
   },
   {
     "id": "ff72d71b-807b-4f33-982e-4f4a90ff3f52",
@@ -1365,7 +1406,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Happier"
+    "audioId": "01_Happier",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Happier.jpg"
   },
   {
     "id": "31406a00-e122-4f42-b334-4851aa2a7e49",
@@ -1373,7 +1415,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Be_Kind_with_Halsey"
+    "audioId": "01_Be_Kind_with_Halsey",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Be_Kind_with_Halsey.jpg"
   },
   {
     "id": "bf13f043-fdac-4164-b446-3a02c1c3cbb4",
@@ -1381,7 +1424,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Arcade"
+    "audioId": "01_Arcade",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Arcade.jpg"
   },
   {
     "id": "5ddf2be3-4617-4501-98c1-7dbeeaac9aa5",
@@ -1389,7 +1433,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Dancing_in_My_Room"
+    "audioId": "01_Dancing_in_My_Room",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Dancing_in_My_Room.jpg"
   },
   {
     "id": "cb7c94a2-6c9e-41fd-a5a0-ef0c0f85a4dc",
@@ -1397,7 +1442,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Build_a_Bitch"
+    "audioId": "01_Build_a_Bitch",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Build_a_Bitch.jpg"
   },
   {
     "id": "c26307e4-e541-4f85-866d-57a86288938a",
@@ -1405,7 +1451,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_Can_We_Kiss_Forever_"
+    "audioId": "01_Can_We_Kiss_Forever_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_Can_We_Kiss_Forever_.jpg"
   },
   {
     "id": "652800d3-abbd-43c0-b6ff-eaaa424f2078",
@@ -1413,7 +1460,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ninthe_Ninthe"
+    "audioId": "Ninthe_Ninthe",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ninthe_Ninthe.jpg"
   },
   {
     "id": "7e505624-a477-43be-93cc-074da96309da",
@@ -1421,7 +1469,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ondhu_Sanje_SouthSongs4u.Com"
+    "audioId": "Ondhu_Sanje_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ondhu_Sanje_SouthSongs4u.Com.jpg"
   },
   {
     "id": "880ea573-af79-4ee7-a126-057efd260cf9",
@@ -1429,7 +1478,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Nille_Nille_Kaveri__Hemanth_SouthSongs4u.Com"
+    "audioId": "Nille_Nille_Kaveri__Hemanth_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Nille_Nille_Kaveri__Hemanth_SouthSongs4u.Com.jpg"
   },
   {
     "id": "5a886091-b44c-4e3f-a2c9-b9767304aca4",
@@ -1437,7 +1487,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "OlavaModala_SouthSongs4u.Com"
+    "audioId": "OlavaModala_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/OlavaModala_SouthSongs4u.Com.jpg"
   },
   {
     "id": "b3629a58-a215-42bd-9c8b-f4d723b4a858",
@@ -1445,7 +1496,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Mouna_Thaalithe"
+    "audioId": "Mouna_Thaalithe",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Mouna_Thaalithe.jpg"
   },
   {
     "id": "8552cf43-0197-40bb-8f34-e46c0c9c7f86",
@@ -1453,7 +1505,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Neenu_Iruvaaga"
+    "audioId": "Neenu_Iruvaaga",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Neenu_Iruvaaga.jpg"
   },
   {
     "id": "0445184c-d2e0-43f2-8e6c-876fe151a375",
@@ -1461,7 +1514,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Bolo_Bham_Bham"
+    "audioId": "Bolo_Bham_Bham",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Bolo_Bham_Bham.jpg"
   },
   {
     "id": "5fbed435-0c3a-415f-801a-8b340ce62651",
@@ -1469,7 +1523,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Jagadalliro_SouthSongs4u.Com"
+    "audioId": "Jagadalliro_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Jagadalliro_SouthSongs4u.Com.jpg"
   },
   {
     "id": "a6355e23-bc45-4eff-a980-8184b2c19877",
@@ -1477,7 +1532,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Neenirade_-_SouthSongs4u.blogspot.in"
+    "audioId": "Neenirade_-_SouthSongs4u.blogspot.in",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Neenirade_-_SouthSongs4u.blogspot.in.jpg"
   },
   {
     "id": "ebba04cf-ba63-41ef-bc9a-eb50b9a09131",
@@ -1485,7 +1541,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "KannaNeeru_SouthSongs4u.Com"
+    "audioId": "KannaNeeru_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/KannaNeeru_SouthSongs4u.Com.jpg"
   },
   {
     "id": "744b3ea1-abf3-40d0-9657-3ada56c5f1e3",
@@ -1493,7 +1550,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Mannisu_Nanna_Kanasanna__southsongs4u.blogspot.in"
+    "audioId": "Mannisu_Nanna_Kanasanna__southsongs4u.blogspot.in",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Mannisu_Nanna_Kanasanna__southsongs4u.blogspot.in.jpg"
   },
   {
     "id": "84c7ea52-f1c3-4a9e-a958-c8999591a9dd",
@@ -1501,7 +1559,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Koncha_Koncha__southsongs4u.blogspot.in"
+    "audioId": "Koncha_Koncha__southsongs4u.blogspot.in",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Koncha_Koncha__southsongs4u.blogspot.in.jpg"
   },
   {
     "id": "d3607d15-e54e-4087-8cbe-a8b5e6e48630",
@@ -1509,7 +1568,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Haaru_Haaru"
+    "audioId": "Haaru_Haaru",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Haaru_Haaru.jpg"
   },
   {
     "id": "a19a2325-d789-4976-8b29-b7911e096583",
@@ -1517,7 +1577,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Khali_Quarter__SouthSongs4u.blogspot.in"
+    "audioId": "Khali_Quarter__SouthSongs4u.blogspot.in",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Khali_Quarter__SouthSongs4u.blogspot.in.jpg"
   },
   {
     "id": "4581014b-90b1-4c75-b779-5f87f84192ca",
@@ -1525,7 +1586,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Hoo_Chendu_SouthSongs4u.Com"
+    "audioId": "Hoo_Chendu_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Hoo_Chendu_SouthSongs4u.Com.jpg"
   },
   {
     "id": "bcfa598a-6027-4df6-a1d9-ec307646d727",
@@ -1533,7 +1595,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Jaadhu_28NewKannada.com_29"
+    "audioId": "Jaadhu_28NewKannada.com_29",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Jaadhu_28NewKannada.com_29.jpg"
   },
   {
     "id": "93b5e022-85c5-40e7-9e0e-635d03fd152b",
@@ -1541,7 +1604,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Heegeke_Aaguthide-NewKannada.com"
+    "audioId": "Heegeke_Aaguthide-NewKannada.com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Heegeke_Aaguthide-NewKannada.com.jpg"
   },
   {
     "id": "191811e1-72de-4abd-a8f2-655b79cc3c47",
@@ -1549,7 +1613,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Free_Ideera_-Newkannada.com"
+    "audioId": "Free_Ideera_-Newkannada.com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Free_Ideera_-Newkannada.com.jpg"
   },
   {
     "id": "8e795ded-60bc-4453-a9bb-30672e851e50",
@@ -1557,7 +1622,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Googly_Gandasare_-SouthSongs4u.blogspot.in"
+    "audioId": "Googly_Gandasare_-SouthSongs4u.blogspot.in",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Googly_Gandasare_-SouthSongs4u.blogspot.in.jpg"
   },
   {
     "id": "41c9f8d2-69c2-4748-86f0-21bfe3fa0e48",
@@ -1565,7 +1631,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Don_t_Care"
+    "audioId": "Don_t_Care",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Don_t_Care.jpg"
   },
   {
     "id": "9c1d085b-67ab-4921-82d0-0b44ba40a0a5",
@@ -1573,7 +1640,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "First_30_Amele_60_IndiaMusiQ.In"
+    "audioId": "First_30_Amele_60_IndiaMusiQ.In",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/First_30_Amele_60_IndiaMusiQ.In.jpg"
   },
   {
     "id": "36cdac7f-f4e7-480c-b664-4fdb87086a20",
@@ -1581,7 +1649,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Dhat_Teri_Ki_IndiaMp3.Com"
+    "audioId": "Dhat_Teri_Ki_IndiaMp3.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Dhat_Teri_Ki_IndiaMp3.Com.jpg"
   },
   {
     "id": "5452768c-b910-415e-ab5b-2e916ade85eb",
@@ -1589,7 +1658,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Bannali_Badalago_SouthSongs4u.Com"
+    "audioId": "Bannali_Badalago_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Bannali_Badalago_SouthSongs4u.Com.jpg"
   },
   {
     "id": "24428f2c-7e3d-436f-965e-e635b8acd259",
@@ -1597,7 +1667,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "AaChigurina_SouthSongs4u.Com"
+    "audioId": "AaChigurina_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/AaChigurina_SouthSongs4u.Com.jpg"
   },
   {
     "id": "38d5eb31-cc7d-4e85-af15-464536c3f967",
@@ -1605,7 +1676,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "05.Yellu_Yellu_IndiaMusiQ.In"
+    "audioId": "05.Yellu_Yellu_IndiaMusiQ.In",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/05.Yellu_Yellu_IndiaMusiQ.In.jpg"
   },
   {
     "id": "d6d95a2e-5d5e-405d-a040-fd9e91ce26e3",
@@ -1613,7 +1685,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "05.Sri.Krishna._PkSongS4u.cOm_"
+    "audioId": "05.Sri.Krishna._PkSongS4u.cOm_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/05.Sri.Krishna._PkSongS4u.cOm_.jpg"
   },
   {
     "id": "5fd84458-99d1-494d-98f0-cae3728dd6bf",
@@ -1621,7 +1694,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Bisilu_Kudure_-SouthSongs4u.blogspot.in"
+    "audioId": "Bisilu_Kudure_-SouthSongs4u.blogspot.in",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Bisilu_Kudure_-SouthSongs4u.blogspot.in.jpg"
   },
   {
     "id": "281cea67-fab8-47b2-9bdc-ce736dfa49a5",
@@ -1629,7 +1703,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04_-_Ugramm_Veeram"
+    "audioId": "04_-_Ugramm_Veeram",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04_-_Ugramm_Veeram.jpg"
   },
   {
     "id": "54fc3ee1-7039-4e31-b62e-06a12fd8c59e",
@@ -1637,7 +1712,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04.Re.Re.Bajarangi._PkSongS4u.cOm_"
+    "audioId": "04.Re.Re.Bajarangi._PkSongS4u.cOm_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04.Re.Re.Bajarangi._PkSongS4u.cOm_.jpg"
   },
   {
     "id": "54b7f4db-4ff5-4894-a214-f1ad0e38180d",
@@ -1645,7 +1721,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04.Early_Morning_IndiaMusiQ.In"
+    "audioId": "04.Early_Morning_IndiaMusiQ.In",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04.Early_Morning_IndiaMusiQ.In.jpg"
   },
   {
     "id": "88a45666-3f39-4919-9a70-16e12d6bd01f",
@@ -1653,7 +1730,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03.I-Wanna-Sing-A-Songu-Newkannada.com"
+    "audioId": "03.I-Wanna-Sing-A-Songu-Newkannada.com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03.I-Wanna-Sing-A-Songu-Newkannada.com.jpg"
   },
   {
     "id": "2a98fe48-bdf4-4ba9-af15-11df3822c4b8",
@@ -1661,7 +1739,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03.Uppu_Huli_IndiaMusiQ.In"
+    "audioId": "03.Uppu_Huli_IndiaMusiQ.In",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03.Uppu_Huli_IndiaMusiQ.In.jpg"
   },
   {
     "id": "dac70afc-89b0-4b62-b00d-5e8359fe366e",
@@ -1669,7 +1748,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "04-Morningu_SouthSongs4u.Com"
+    "audioId": "04-Morningu_SouthSongs4u.Com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04-Morningu_SouthSongs4u.Com.jpg"
   },
   {
     "id": "1453f961-85f2-42b2-9045-e3a6617c58ad",
@@ -1677,7 +1757,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03.Tingu_Tingu-DesiMu6.com_1"
+    "audioId": "03.Tingu_Tingu-DesiMu6.com_1",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03.Tingu_Tingu-DesiMu6.com_1.jpg"
   },
   {
     "id": "127c0271-a293-4f19-a143-95f7340a8865",
@@ -1685,7 +1766,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "02.Nillu_Nillu_IndiaMusiQ.In"
+    "audioId": "02.Nillu_Nillu_IndiaMusiQ.In",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/02.Nillu_Nillu_IndiaMusiQ.In.jpg"
   },
   {
     "id": "d1978b42-262f-430b-a3e2-a40b53d02edb",
@@ -1693,7 +1775,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03.Jiya.Teri.Jiya.Meri._PkSongS4u.cOm_"
+    "audioId": "03.Jiya.Teri.Jiya.Meri._PkSongS4u.cOm_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03.Jiya.Teri.Jiya.Meri._PkSongS4u.cOm_.jpg"
   },
   {
     "id": "8714bec4-a33c-462b-9953-c9bb6a07b54d",
@@ -1701,7 +1784,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03_-_Ruma_Ruma"
+    "audioId": "03_-_Ruma_Ruma",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/03_-_Ruma_Ruma.jpg"
   },
   {
     "id": "c3758cc0-903c-4936-b8e2-dc1d2d4456e6",
@@ -1709,7 +1793,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "02_-_Chanana_Chanana"
+    "audioId": "02_-_Chanana_Chanana",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/02_-_Chanana_Chanana.jpg"
   },
   {
     "id": "9e7ea9cd-1eac-490c-af9c-7e8cb165e2f3",
@@ -1717,7 +1802,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "02.Jai.Bajarangi._PkSongS4u.cOm_"
+    "audioId": "02.Jai.Bajarangi._PkSongS4u.cOm_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/02.Jai.Bajarangi._PkSongS4u.cOm_.jpg"
   },
   {
     "id": "c712d662-7e41-4a6f-9efc-94ef327d0ea7",
@@ -1725,7 +1811,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01.Bossu.Nam.Bossu._PkSongS4u.cOm_"
+    "audioId": "01.Bossu.Nam.Bossu._PkSongS4u.cOm_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01.Bossu.Nam.Bossu._PkSongS4u.cOm_.jpg"
   },
   {
     "id": "421f0306-61df-4a04-af56-7752bd3ffad5",
@@ -1741,7 +1828,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_-_Chithaara"
+    "audioId": "01_-_Chithaara",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_-_Chithaara.jpg"
   },
   {
     "id": "16989b89-4b22-4499-9ce1-cbf703fa6fbf",
@@ -1797,7 +1885,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "tumblr_m57wfqkLJe1qk3i3oo1"
+    "audioId": "tumblr_m57wfqkLJe1qk3i3oo1",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/tumblr_m57wfqkLJe1qk3i3oo1.jpg"
   },
   {
     "id": "f6c9d3b2-3fad-4e45-ae89-d3b1e4b36fb1",
@@ -1933,7 +2022,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Shabba_Ranks-Mr_Loverman_VA_-_Sunshine_Reggae_Hits_2010_mp3.com.ua"
+    "audioId": "Shabba_Ranks-Mr_Loverman_VA_-_Sunshine_Reggae_Hits_2010_mp3.com.ua",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Shabba_Ranks-Mr_Loverman_VA_-_Sunshine_Reggae_Hits_2010_mp3.com.ua.jpg"
   },
   {
     "id": "2ae56342-b4e1-44ff-803d-d0a56c321546",
@@ -1941,7 +2031,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "sound-4244"
+    "audioId": "sound-4244",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/sound-4244.jpg"
   },
   {
     "id": "66fb472f-f97f-4a5e-a413-6b7a77dd7622",
@@ -2021,7 +2112,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "p16o7q3gek1uq61mjde0c1eetbmq3_320"
+    "audioId": "p16o7q3gek1uq61mjde0c1eetbmq3_320",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/p16o7q3gek1uq61mjde0c1eetbmq3_320.jpg"
   },
   {
     "id": "dc24cc9e-55ba-468f-ba80-35f4c6855557",
@@ -2141,7 +2233,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "n2akp6NsinqZonabm36onKB5qJukp31vlqOCnpyPgn6cooKjpICceZakdWGcZ5uRf4NXWDU"
+    "audioId": "n2akp6NsinqZonabm36onKB5qJukp31vlqOCnpyPgn6cooKjpICceZakdWGcZ5uRf4NXWDU",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/n2akp6NsinqZonabm36onKB5qJukp31vlqOCnpyPgn6cooKjpICceZakdWGcZ5uRf4NXWDU.jpg"
   },
   {
     "id": "481d9953-ad0c-408f-9f39-3909f363f473",
@@ -2213,7 +2306,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "I_Wanna_Dance_With_Somebody_Who_Loves_Me_Whitney_Houston"
+    "audioId": "I_Wanna_Dance_With_Somebody_Who_Loves_Me_Whitney_Houston",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/I_Wanna_Dance_With_Somebody_Who_Loves_Me_Whitney_Houston.jpg"
   },
   {
     "id": "8666c0df-aea9-4bd5-9be7-dcaeacef31f5",
@@ -2317,7 +2411,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "cyndi_lauper_-_time_after_time"
+    "audioId": "cyndi_lauper_-_time_after_time",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/cyndi_lauper_-_time_after_time.jpg"
   },
   {
     "id": "76a820a6-9541-4faf-a3d4-a8624704e77f",
@@ -2413,7 +2508,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Boney_M_-_Hooray_Hooray_audiopoisk.com"
+    "audioId": "Boney_M_-_Hooray_Hooray_audiopoisk.com",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Boney_M_-_Hooray_Hooray_audiopoisk.com.jpg"
   },
   {
     "id": "15beb1cf-decd-40e6-9ce0-88b7dffb2a3b",
@@ -2461,7 +2557,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "A042o632720969258750000"
+    "audioId": "A042o632720969258750000",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/A042o632720969258750000.jpg"
   },
   {
     "id": "2c647723-cfef-4807-8ca6-41c4406479dd",
@@ -2525,7 +2622,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "08_as_i_lay_me_down_the_best_of_sophie_b._hawkins_sophie_b._hawkins"
+    "audioId": "08_as_i_lay_me_down_the_best_of_sophie_b._hawkins_sophie_b._hawkins",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/08_as_i_lay_me_down_the_best_of_sophie_b._hawkins_sophie_b._hawkins.jpg"
   },
   {
     "id": "83fcb940-154c-409d-ae59-eb83b1bffe2e",
@@ -2533,7 +2631,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "02_Superstylin"
+    "audioId": "02_Superstylin",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/02_Superstylin.jpg"
   },
   {
     "id": "40afe377-27ef-40f9-a7f1-b5254f67cbc0",
@@ -2597,7 +2696,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "01_-_Jon_B_-_Someone_To_Love_Feat._Babyface"
+    "audioId": "01_-_Jon_B_-_Someone_To_Love_Feat._Babyface",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/01_-_Jon_B_-_Someone_To_Love_Feat._Babyface.jpg"
   },
   {
     "id": "3e37d88b-65cd-42b2-9017-02251bafd09c",
@@ -2605,7 +2705,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishal_Mishra_Anantha_Sreeram_-_Evarevaro_SPOTISAVER"
+    "audioId": "Vishal_Mishra_Anantha_Sreeram_-_Evarevaro_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishal_Mishra_Anantha_Sreeram_-_Evarevaro_SPOTISAVER.jpg"
   },
   {
     "id": "2e5bf34f-6bba-4921-b3e7-c6773892adeb",
@@ -2621,7 +2722,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishnu_Vijay_Suhail_Koya_Kapil_Kapilan_-_Welcome_To_Hyderabad_From_Premalu_SPOTISAVER"
+    "audioId": "Vishnu_Vijay_Suhail_Koya_Kapil_Kapilan_-_Welcome_To_Hyderabad_From_Premalu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishnu_Vijay_Suhail_Koya_Kapil_Kapilan_-_Welcome_To_Hyderabad_From_Premalu_SPOTISAVER.jpg"
   },
   {
     "id": "7e2bbfa9-eb1d-47e9-87f2-2f7c1a6ae4a1",
@@ -2629,7 +2731,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Sri_Krishna_Sahithi_Chaganti_-_Kurchi_Madathapetti_From_Guntur_Kaaram_Telugu_SPOTISAVER"
+    "audioId": "Thaman_S_Sri_Krishna_Sahithi_Chaganti_-_Kurchi_Madathapetti_From_Guntur_Kaaram_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Sri_Krishna_Sahithi_Chaganti_-_Kurchi_Madathapetti_From_Guntur_Kaaram_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "64022eda-1094-4db9-81a8-c4d3b0c571ab",
@@ -2637,7 +2740,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishal_Chandrashekhar_Kapil_Kapilan_Chinmayi_-_Oh_Prema_SPOTISAVER"
+    "audioId": "Vishal_Chandrashekhar_Kapil_Kapilan_Chinmayi_-_Oh_Prema_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishal_Chandrashekhar_Kapil_Kapilan_Chinmayi_-_Oh_Prema_SPOTISAVER.jpg"
   },
   {
     "id": "096738dc-2e0a-40f1-a948-25edbc9187af",
@@ -2645,7 +2749,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishnu_Vijay_Suhail_Koya_Sanjith_Hegde_-_Kutty_Kudiye_From_Premalu_SPOTISAVER"
+    "audioId": "Vishnu_Vijay_Suhail_Koya_Sanjith_Hegde_-_Kutty_Kudiye_From_Premalu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishnu_Vijay_Suhail_Koya_Sanjith_Hegde_-_Kutty_Kudiye_From_Premalu_SPOTISAVER.jpg"
   },
   {
     "id": "d1cff790-fbeb-49b8-a316-38c3bf57dfd9",
@@ -2661,7 +2766,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Armaan_Malik_Shreya_Ghoshal_-_Neenaade_Naa_From_Yuvarathnaa_Kannada_SPOTISAVER"
+    "audioId": "Thaman_S_Armaan_Malik_Shreya_Ghoshal_-_Neenaade_Naa_From_Yuvarathnaa_Kannada_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Armaan_Malik_Shreya_Ghoshal_-_Neenaade_Naa_From_Yuvarathnaa_Kannada_SPOTISAVER.jpg"
   },
   {
     "id": "a8a4b5d8-c416-4e19-b169-5df92a336f50",
@@ -2669,7 +2775,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Armaan_Malik_Deepu_-_Kanti_Papa_SPOTISAVER"
+    "audioId": "Thaman_S_Armaan_Malik_Deepu_-_Kanti_Papa_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Armaan_Malik_Deepu_-_Kanti_Papa_SPOTISAVER.jpg"
   },
   {
     "id": "fa3944cc-f4de-4bd4-89bc-312fbc4baa93",
@@ -2677,7 +2784,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Srivardhani_Kuchi_Aditi_Bhavaraju_-_Tum_Tum_From_Enemy_-_Tamil_SPOTISAVER"
+    "audioId": "Thaman_S_Srivardhani_Kuchi_Aditi_Bhavaraju_-_Tum_Tum_From_Enemy_-_Tamil_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Srivardhani_Kuchi_Aditi_Bhavaraju_-_Tum_Tum_From_Enemy_-_Tamil_SPOTISAVER.jpg"
   },
   {
     "id": "55f0a9f3-08a4-4a0f-a5d9-bf452db799a9",
@@ -2685,7 +2793,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Roll_Rida_Rahul_Nambiar_-_OMG_Daddy_-_Telugu_SPOTISAVER"
+    "audioId": "Thaman_S_Roll_Rida_Rahul_Nambiar_-_OMG_Daddy_-_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Roll_Rida_Rahul_Nambiar_-_OMG_Daddy_-_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "bfe2152d-b9c2-46e1-91e9-76595e840967",
@@ -2693,7 +2802,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sushin_Shyam_Pranavam_Sasi_Vinayak_Sasikumar_-_Armadham_SPOTISAVER"
+    "audioId": "Sushin_Shyam_Pranavam_Sasi_Vinayak_Sasikumar_-_Armadham_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sushin_Shyam_Pranavam_Sasi_Vinayak_Sasikumar_-_Armadham_SPOTISAVER.jpg"
   },
   {
     "id": "460beb43-cbbf-48a9-9cc6-5fb9008a90d0",
@@ -2701,7 +2811,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Sri_Krishna_Jonita_Gandhi_-_Ma_Ma_Mahesha_SPOTISAVER"
+    "audioId": "Thaman_S_Sri_Krishna_Jonita_Gandhi_-_Ma_Ma_Mahesha_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Sri_Krishna_Jonita_Gandhi_-_Ma_Ma_Mahesha_SPOTISAVER.jpg"
   },
   {
     "id": "4f3325bb-af8d-428c-96c7-26e6520a1bc0",
@@ -2709,7 +2820,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Armaan_Malik_-_Yemainado_-_From_Mr._Majnu_SPOTISAVER"
+    "audioId": "Thaman_S_Armaan_Malik_-_Yemainado_-_From_Mr._Majnu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Armaan_Malik_-_Yemainado_-_From_Mr._Majnu_SPOTISAVER.jpg"
   },
   {
     "id": "f4e97246-cf3f-4dbd-8e65-42b49cbc1e8d",
@@ -2717,7 +2829,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Sid_Sriram_-_Kalaavathi_SPOTISAVER"
+    "audioId": "Thaman_S_Sid_Sriram_-_Kalaavathi_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Sid_Sriram_-_Kalaavathi_SPOTISAVER.jpg"
   },
   {
     "id": "e7f46864-1c2a-49c4-8dd0-302141e5b924",
@@ -2725,7 +2838,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Thaman_S_Anirudh_Ravichander_Jonita_Gandhi_-_Jimikki_Ponnu_SPOTISAVER"
+    "audioId": "Thaman_S_Anirudh_Ravichander_Jonita_Gandhi_-_Jimikki_Ponnu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Thaman_S_Anirudh_Ravichander_Jonita_Gandhi_-_Jimikki_Ponnu_SPOTISAVER.jpg"
   },
   {
     "id": "9744cefd-eb6c-4b5f-8354-1677c3a3598b",
@@ -2733,7 +2847,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_-_Emo_Emo_SPOTISAVER"
+    "audioId": "Sid_Sriram_-_Emo_Emo_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_-_Emo_Emo_SPOTISAVER.jpg"
   },
   {
     "id": "312bee26-21d2-4f16-8642-5a8b804b3f0d",
@@ -2741,7 +2856,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sushin_Shyam_Dabzee_Vinayak_Sasikumar_-_Illuminati_SPOTISAVER"
+    "audioId": "Sushin_Shyam_Dabzee_Vinayak_Sasikumar_-_Illuminati_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sushin_Shyam_Dabzee_Vinayak_Sasikumar_-_Illuminati_SPOTISAVER.jpg"
   },
   {
     "id": "31ff1d67-cb35-40c3-bdf1-aeb7d3c2920a",
@@ -2749,7 +2865,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_-_Yedurangula_Vaana_SPOTISAVER"
+    "audioId": "Sid_Sriram_-_Yedurangula_Vaana_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_-_Yedurangula_Vaana_SPOTISAVER.jpg"
   },
   {
     "id": "e4818ecd-4d33-460e-b2da-56a0b7393ec0",
@@ -2757,7 +2874,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sunny_M.R._Arijit_Singh_Krishna_Kanth_-_Anuvanuvuu_SPOTISAVER"
+    "audioId": "Sunny_M.R._Arijit_Singh_Krishna_Kanth_-_Anuvanuvuu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sunny_M.R._Arijit_Singh_Krishna_Kanth_-_Anuvanuvuu_SPOTISAVER.jpg"
   },
   {
     "id": "a3190ace-fa02-40f5-817c-14b009a15599",
@@ -2765,7 +2883,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sunidhi_Chauhan_Devi_Sri_Prasad_-_Saami_Saami_From_Pushpa_The_Rise_Part_-_01_SPOTISAVER"
+    "audioId": "Sunidhi_Chauhan_Devi_Sri_Prasad_-_Saami_Saami_From_Pushpa_The_Rise_Part_-_01_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sunidhi_Chauhan_Devi_Sri_Prasad_-_Saami_Saami_From_Pushpa_The_Rise_Part_-_01_SPOTISAVER.jpg"
   },
   {
     "id": "d37da18e-3cf8-49ec-9071-b50d2f049b3d",
@@ -2773,7 +2892,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_-_Maate_Vinadhuga_SPOTISAVER"
+    "audioId": "Sid_Sriram_-_Maate_Vinadhuga_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_-_Maate_Vinadhuga_SPOTISAVER.jpg"
   },
   {
     "id": "db887896-e519-4cbe-84ca-57580b3e9c53",
@@ -2781,7 +2901,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_-_Samajavaragamana_SPOTISAVER"
+    "audioId": "Sid_Sriram_-_Samajavaragamana_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_-_Samajavaragamana_SPOTISAVER.jpg"
   },
   {
     "id": "6432e238-8aa7-4d11-a05c-efc35a50a530",
@@ -2789,7 +2910,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_Ankit_Menon_Vinayak_Sasikumar_-_Uyire_SPOTISAVER"
+    "audioId": "Sid_Sriram_Ankit_Menon_Vinayak_Sasikumar_-_Uyire_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_Ankit_Menon_Vinayak_Sasikumar_-_Uyire_SPOTISAVER.jpg"
   },
   {
     "id": "4173ae36-18c4-406a-8200-8b373f38e2ba",
@@ -2797,7 +2919,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_-_Yaen_Ennai_Pirindhaai_SPOTISAVER"
+    "audioId": "Sid_Sriram_-_Yaen_Ennai_Pirindhaai_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_-_Yaen_Ennai_Pirindhaai_SPOTISAVER.jpg"
   },
   {
     "id": "128cc8ba-ea20-40a4-a0c5-5d45791d7696",
@@ -2805,7 +2928,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_-_Leharaayi_SPOTISAVER"
+    "audioId": "Sid_Sriram_-_Leharaayi_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_-_Leharaayi_SPOTISAVER.jpg"
   },
   {
     "id": "3ada11f5-b11c-4db1-9c79-3d11ad21dc97",
@@ -2813,7 +2937,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sam_C.S._Kapil_Kapilan_-_Neela_Nilave_From_RDX_SPOTISAVER"
+    "audioId": "Sam_C.S._Kapil_Kapilan_-_Neela_Nilave_From_RDX_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sam_C.S._Kapil_Kapilan_-_Neela_Nilave_From_RDX_SPOTISAVER.jpg"
   },
   {
     "id": "e55b3396-1e37-4b90-8941-d7a294318c81",
@@ -2821,7 +2946,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sid_Sriram_-_Inkem_Inkem_Inkem_Kaavaale_SPOTISAVER"
+    "audioId": "Sid_Sriram_-_Inkem_Inkem_Inkem_Kaavaale_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sid_Sriram_-_Inkem_Inkem_Inkem_Kaavaale_SPOTISAVER.jpg"
   },
   {
     "id": "38490ab8-dbfd-4724-993c-ddfde713f979",
@@ -2829,7 +2955,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sai_Abhyankkar_-_Katchi_Sera_-_From_Think_Indie_SPOTISAVER"
+    "audioId": "Sai_Abhyankkar_-_Katchi_Sera_-_From_Think_Indie_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sai_Abhyankkar_-_Katchi_Sera_-_From_Think_Indie_SPOTISAVER.jpg"
   },
   {
     "id": "a9683852-fc6b-43e3-961e-317240c2dff2",
@@ -2837,7 +2964,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Santhosh_Narayanan_Dhvani_Kailas_-_Unakku_Thaan_SPOTISAVER"
+    "audioId": "Santhosh_Narayanan_Dhvani_Kailas_-_Unakku_Thaan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Santhosh_Narayanan_Dhvani_Kailas_-_Unakku_Thaan_SPOTISAVER.jpg"
   },
   {
     "id": "f9d24a70-33c1-4407-9d09-f0a96595772c",
@@ -2845,7 +2973,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Shreya_Ghoshal_Devi_Sri_Prasad_Chandra_Bose_-_Sooseki_From_Pushpa_2_The_Rule_TELUGU_SPOTISAVER"
+    "audioId": "Shreya_Ghoshal_Devi_Sri_Prasad_Chandra_Bose_-_Sooseki_From_Pushpa_2_The_Rule_TELUGU_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Shreya_Ghoshal_Devi_Sri_Prasad_Chandra_Bose_-_Sooseki_From_Pushpa_2_The_Rule_TELUGU_SPOTISAVER.jpg"
   },
   {
     "id": "be770727-ab7d-4596-a254-ce80dc948290",
@@ -2853,7 +2982,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sagar_Sumangaly_-_Nuvvunte_SPOTISAVER"
+    "audioId": "Sagar_Sumangaly_-_Nuvvunte_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sagar_Sumangaly_-_Nuvvunte_SPOTISAVER.jpg"
   },
   {
     "id": "94ba2640-ce47-49fa-9dc5-df384b63ad7b",
@@ -2861,7 +2991,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Hesham_Abdul_Wahab_-_Na_Roja_Nuvve_SPOTISAVER"
+    "audioId": "Hesham_Abdul_Wahab_-_Na_Roja_Nuvve_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Hesham_Abdul_Wahab_-_Na_Roja_Nuvve_SPOTISAVER.jpg"
   },
   {
     "id": "4f785350-d985-4c1e-9d02-ecfb956b3f77",
@@ -2869,7 +3000,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Rajesh_Murugesan_-_Malare_Instrumental_SPOTISAVER"
+    "audioId": "Rajesh_Murugesan_-_Malare_Instrumental_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Rajesh_Murugesan_-_Malare_Instrumental_SPOTISAVER.jpg"
   },
   {
     "id": "59107efe-384f-443e-a8ac-bdb396e0ad91",
@@ -2877,7 +3009,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ram_Miriyala_Kasarla_Shyam_-_Ticket_Eh_Konakunda_SPOTISAVER"
+    "audioId": "Ram_Miriyala_Kasarla_Shyam_-_Ticket_Eh_Konakunda_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ram_Miriyala_Kasarla_Shyam_-_Ticket_Eh_Konakunda_SPOTISAVER.jpg"
   },
   {
     "id": "46a362ed-bc8e-4395-9f36-83d1984efe7a",
@@ -2885,7 +3018,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ram_Miriyala_Kasarla_Shyam_-_Radhika_SPOTISAVER"
+    "audioId": "Ram_Miriyala_Kasarla_Shyam_-_Radhika_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ram_Miriyala_Kasarla_Shyam_-_Radhika_SPOTISAVER.jpg"
   },
   {
     "id": "afc8cd2d-bc52-4028-971b-76d4b4e23c49",
@@ -2893,7 +3027,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ram_Miriyala_-_Tillu_Anna_DJ_Pedithe_SPOTISAVER"
+    "audioId": "Ram_Miriyala_-_Tillu_Anna_DJ_Pedithe_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ram_Miriyala_-_Tillu_Anna_DJ_Pedithe_SPOTISAVER.jpg"
   },
   {
     "id": "a7853264-f387-4b81-b78b-39f07354443c",
@@ -2901,7 +3036,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Nobin_Paul_Pancham_Jeeva_-_Bonding_Song_SPOTISAVER"
+    "audioId": "Nobin_Paul_Pancham_Jeeva_-_Bonding_Song_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Nobin_Paul_Pancham_Jeeva_-_Bonding_Song_SPOTISAVER.jpg"
   },
   {
     "id": "ed9f7aeb-5c3d-4669-b049-18977cc7f172",
@@ -2909,7 +3045,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Sid_Sriram_Chandra_Bose_-_Kumkumala_From_Brahmastra_Telugu_SPOTISAVER"
+    "audioId": "Pritam_Sid_Sriram_Chandra_Bose_-_Kumkumala_From_Brahmastra_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Sid_Sriram_Chandra_Bose_-_Kumkumala_From_Brahmastra_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "c28eec1c-48a5-4c70-95e5-f6a054a2c232",
@@ -2917,7 +3054,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "KK_-_Feel_My_Love_SPOTISAVER"
+    "audioId": "KK_-_Feel_My_Love_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/KK_-_Feel_My_Love_SPOTISAVER.jpg"
   },
   {
     "id": "d5f8d966-bd27-4aaa-87b1-8edc9925bdb9",
@@ -2925,7 +3063,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Lipsika_Bhashyam_Aditya_Iyengar_-_Ra_Ra_Reddy_I_Am_Ready_SPOTISAVER"
+    "audioId": "Lipsika_Bhashyam_Aditya_Iyengar_-_Ra_Ra_Reddy_I_Am_Ready_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Lipsika_Bhashyam_Aditya_Iyengar_-_Ra_Ra_Reddy_I_Am_Ready_SPOTISAVER.jpg"
   },
   {
     "id": "1bf61fd2-7fbf-473e-9053-bc3bb4e857b1",
@@ -2933,7 +3072,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "GowraHari_Kasarla_Shyam_-_Poolamme_Pilla_From_HanuMan_Telugu_SPOTISAVER"
+    "audioId": "GowraHari_Kasarla_Shyam_-_Poolamme_Pilla_From_HanuMan_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/GowraHari_Kasarla_Shyam_-_Poolamme_Pilla_From_HanuMan_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "47b48108-139b-48b3-9313-53270f6f38e7",
@@ -2941,7 +3081,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Nakash_Aziz_Deepak_Blue_Devi_Sri_Prasad_-_Pushpa_Pushpa_From_Pushpa_2_The_Rule_TELUGU_SPOTISAVER"
+    "audioId": "Nakash_Aziz_Deepak_Blue_Devi_Sri_Prasad_-_Pushpa_Pushpa_From_Pushpa_2_The_Rule_TELUGU_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Nakash_Aziz_Deepak_Blue_Devi_Sri_Prasad_-_Pushpa_Pushpa_From_Pushpa_2_The_Rule_TELUGU_SPOTISAVER.jpg"
   },
   {
     "id": "bc44258c-aad1-4575-b1e0-6a4732ca21d0",
@@ -2949,7 +3090,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Hesham_Abdul_Wahab_Vimal_Roy_Bhadra_Rajin_-_Puthiyoru_Lokam_SPOTISAVER"
+    "audioId": "Hesham_Abdul_Wahab_Vimal_Roy_Bhadra_Rajin_-_Puthiyoru_Lokam_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Hesham_Abdul_Wahab_Vimal_Roy_Bhadra_Rajin_-_Puthiyoru_Lokam_SPOTISAVER.jpg"
   },
   {
     "id": "540e8ec7-fe38-4bc0-acaf-ba49d342dd6b",
@@ -2957,7 +3099,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "K._S._Harisankar_Arun_Muraleedharan_-_Kamini_SPOTISAVER"
+    "audioId": "K._S._Harisankar_Arun_Muraleedharan_-_Kamini_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/K._S._Harisankar_Arun_Muraleedharan_-_Kamini_SPOTISAVER.jpg"
   },
   {
     "id": "c8a0eb79-6361-45b9-b4a5-fb7265d7c13f",
@@ -2965,7 +3108,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Hesham_Abdul_Wahab_Darshana_Rajendran_Arun_Alat_-_Darshana_-_From_Hridayam_SPOTISAVER"
+    "audioId": "Hesham_Abdul_Wahab_Darshana_Rajendran_Arun_Alat_-_Darshana_-_From_Hridayam_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Hesham_Abdul_Wahab_Darshana_Rajendran_Arun_Alat_-_Darshana_-_From_Hridayam_SPOTISAVER.jpg"
   },
   {
     "id": "93018536-468d-4669-8b24-fb268a87b8e5",
@@ -2973,7 +3117,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Govind_Vasantha_Chinmayi_Pradeep_Kumar_-_Thaabangale_SPOTISAVER"
+    "audioId": "Govind_Vasantha_Chinmayi_Pradeep_Kumar_-_Thaabangale_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Govind_Vasantha_Chinmayi_Pradeep_Kumar_-_Thaabangale_SPOTISAVER.jpg"
   },
   {
     "id": "b41feb69-1dbb-4f15-a526-2423206b1f44",
@@ -2981,7 +3126,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Dhanush_Anirudh_Ravichander_-_Megham_Karukatha_SPOTISAVER"
+    "audioId": "Dhanush_Anirudh_Ravichander_-_Megham_Karukatha_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Dhanush_Anirudh_Ravichander_-_Megham_Karukatha_SPOTISAVER.jpg"
   },
   {
     "id": "1f502682-bd4d-4b5a-bda8-1da7a08e8126",
@@ -2989,7 +3135,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Govind_Vasantha_Chinmayi_Pradeep_Kumar_-_Iravingu_Theevai_SPOTISAVER"
+    "audioId": "Govind_Vasantha_Chinmayi_Pradeep_Kumar_-_Iravingu_Theevai_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Govind_Vasantha_Chinmayi_Pradeep_Kumar_-_Iravingu_Theevai_SPOTISAVER.jpg"
   },
   {
     "id": "84664cdd-b47d-4d66-b128-696f24165ed0",
@@ -2997,7 +3144,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Dhanush_Anirudh_Ravichander_-_Thaai_Kelavi_From_Thiruchitrambalam_SPOTISAVER"
+    "audioId": "Dhanush_Anirudh_Ravichander_-_Thaai_Kelavi_From_Thiruchitrambalam_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Dhanush_Anirudh_Ravichander_-_Thaai_Kelavi_From_Thiruchitrambalam_SPOTISAVER.jpg"
   },
   {
     "id": "61f6313a-d8be-484d-b9f7-f35cd0ec16b8",
@@ -3005,7 +3153,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "B._Ajaneesh_Loknath_Vijay_Prakash_Ananya_Bhat_-_Singara_Siriye_From_Kantara_SPOTISAVER"
+    "audioId": "B._Ajaneesh_Loknath_Vijay_Prakash_Ananya_Bhat_-_Singara_Siriye_From_Kantara_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/B._Ajaneesh_Loknath_Vijay_Prakash_Ananya_Bhat_-_Singara_Siriye_From_Kantara_SPOTISAVER.jpg"
   },
   {
     "id": "4be7ee36-38cc-4756-b1ad-9bd6f60f9cde",
@@ -3013,7 +3162,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Dhanush_Anirudh_Ravichander_-_Mayakkama_Kalakkama_From_Thiruchitrambalam_SPOTISAVER"
+    "audioId": "Dhanush_Anirudh_Ravichander_-_Mayakkama_Kalakkama_From_Thiruchitrambalam_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Dhanush_Anirudh_Ravichander_-_Mayakkama_Kalakkama_From_Thiruchitrambalam_SPOTISAVER.jpg"
   },
   {
     "id": "df4faa07-35bc-4498-831e-171397637217",
@@ -3021,7 +3171,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ghibran_Anirudh_Ravichander_vaisagh_-_Chilla_Chilla_-_From_Thunivu_SPOTISAVER"
+    "audioId": "Ghibran_Anirudh_Ravichander_vaisagh_-_Chilla_Chilla_-_From_Thunivu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ghibran_Anirudh_Ravichander_vaisagh_-_Chilla_Chilla_-_From_Thunivu_SPOTISAVER.jpg"
   },
   {
     "id": "d433218b-8665-43c0-a419-e132c52eac79",
@@ -3029,7 +3180,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Devi_Sri_Prasad_KK_Balaji_-_Uppenantha_SPOTISAVER"
+    "audioId": "Devi_Sri_Prasad_KK_Balaji_-_Uppenantha_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Devi_Sri_Prasad_KK_Balaji_-_Uppenantha_SPOTISAVER.jpg"
   },
   {
     "id": "82653d59-50df-4a78-ae27-2f483bca134d",
@@ -3037,7 +3189,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Devi_Sri_Prasad_Ranjith_Govind_Chandra_Bose_-_My_Love_Is_Gone_SPOTISAVER"
+    "audioId": "Devi_Sri_Prasad_Ranjith_Govind_Chandra_Bose_-_My_Love_Is_Gone_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Devi_Sri_Prasad_Ranjith_Govind_Chandra_Bose_-_My_Love_Is_Gone_SPOTISAVER.jpg"
   },
   {
     "id": "5d42d90e-37d0-4b94-9be0-86d590c7b558",
@@ -3045,7 +3198,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Devi_Sri_Prasad_Sid_Sriram_Chandra_Bose_-_Srivalli_From_Pushpa_-_The_Rise_Telugu_SPOTISAVER"
+    "audioId": "Devi_Sri_Prasad_Sid_Sriram_Chandra_Bose_-_Srivalli_From_Pushpa_-_The_Rise_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Devi_Sri_Prasad_Sid_Sriram_Chandra_Bose_-_Srivalli_From_Pushpa_-_The_Rise_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "5cdabc08-004c-4e47-ad1c-d461a7bab0e1",
@@ -3053,7 +3207,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Devi_Sri_Prasad_Priya_Hemesh_Chandra_Bose_-_Ringa_Ringa_SPOTISAVER"
+    "audioId": "Devi_Sri_Prasad_Priya_Hemesh_Chandra_Bose_-_Ringa_Ringa_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Devi_Sri_Prasad_Priya_Hemesh_Chandra_Bose_-_Ringa_Ringa_SPOTISAVER.jpg"
   },
   {
     "id": "2718fdb3-8da5-4981-8bbc-eadc544bb567",
@@ -3061,7 +3216,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_Thaman_S_-_Ninnila_SPOTISAVER"
+    "audioId": "Armaan_Malik_Thaman_S_-_Ninnila_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_Thaman_S_-_Ninnila_SPOTISAVER.jpg"
   },
   {
     "id": "91ff69ca-e194-4599-8436-689811e4a6e1",
@@ -3069,7 +3225,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Chinmayi_-_Yenti_Yenti_SPOTISAVER"
+    "audioId": "Chinmayi_-_Yenti_Yenti_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Chinmayi_-_Yenti_Yenti_SPOTISAVER.jpg"
   },
   {
     "id": "c0061a99-b8ea-4cbd-99ac-536dcc2050cb",
@@ -3077,7 +3234,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_-_Hello_SPOTISAVER"
+    "audioId": "Armaan_Malik_-_Hello_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_-_Hello_SPOTISAVER.jpg"
   },
   {
     "id": "c20ab3d5-d25b-4378-962d-c776175d6972",
@@ -3085,7 +3243,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_Thaman_S_-_Buttabomma_-_Telugu_SPOTISAVER"
+    "audioId": "Armaan_Malik_Thaman_S_-_Buttabomma_-_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_Thaman_S_-_Buttabomma_-_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "083b81ec-c225-4ddb-9456-486eca76a36a",
@@ -3093,7 +3252,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anurag_Kulkarni_Mangli_Thaman_S_-_Ramuloo_Ramulaa_-_Duet_SPOTISAVER"
+    "audioId": "Anurag_Kulkarni_Mangli_Thaman_S_-_Ramuloo_Ramulaa_-_Duet_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anurag_Kulkarni_Mangli_Thaman_S_-_Ramuloo_Ramulaa_-_Duet_SPOTISAVER.jpg"
   },
   {
     "id": "5069f5b9-c356-42b2-aa8d-1bdaf7bc5073",
@@ -3101,7 +3261,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_-_Guche_Gulabi_SPOTISAVER"
+    "audioId": "Armaan_Malik_-_Guche_Gulabi_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_-_Guche_Gulabi_SPOTISAVER.jpg"
   },
   {
     "id": "9cb2c33f-8719-436e-9dc0-88f531602e77",
@@ -3109,7 +3270,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Ravi_G_Shashaa_Tirupati_-_Naan_Pizhai_From_Kaathuvaakula_Rendu_Kaadhal_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Ravi_G_Shashaa_Tirupati_-_Naan_Pizhai_From_Kaathuvaakula_Rendu_Kaadhal_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Ravi_G_Shashaa_Tirupati_-_Naan_Pizhai_From_Kaathuvaakula_Rendu_Kaadhal_SPOTISAVER.jpg"
   },
   {
     "id": "4c97e742-e494-4136-8aa4-d5290a5e4bdf",
@@ -3117,7 +3279,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Vishnu_Edavan_-_Badass_From_Leo_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Vishnu_Edavan_-_Badass_From_Leo_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Vishnu_Edavan_-_Badass_From_Leo_SPOTISAVER.jpg"
   },
   {
     "id": "8b788a99-a4cc-45e9-81ed-d96bcdf06527",
@@ -3125,7 +3288,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Super_Subu_-_Hukum_-_Thalaivar_Alappara_-_Tamil_From_Jailer_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Super_Subu_-_Hukum_-_Thalaivar_Alappara_-_Tamil_From_Jailer_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Super_Subu_-_Hukum_-_Thalaivar_Alappara_-_Tamil_From_Jailer_SPOTISAVER.jpg"
   },
   {
     "id": "954bb991-b391-4f03-8e55-e93b0f47a0e3",
@@ -3133,7 +3297,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Vishal_Mishra_Vivek_-_Oru_Pere_Varalaaru_From_Jana_Nayagan_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Vishal_Mishra_Vivek_-_Oru_Pere_Varalaaru_From_Jana_Nayagan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Vishal_Mishra_Vivek_-_Oru_Pere_Varalaaru_From_Jana_Nayagan_SPOTISAVER.jpg"
   },
   {
     "id": "6b98eb15-ba2b-446b-a9ef-8b04e50be38c",
@@ -3141,7 +3306,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_S._P._Balasubrahmanyam_Vivek_-_Marana_Mass_-_From_Petta_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_S._P._Balasubrahmanyam_Vivek_-_Marana_Mass_-_From_Petta_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_S._P._Balasubrahmanyam_Vivek_-_Marana_Mass_-_From_Petta_SPOTISAVER.jpg"
   },
   {
     "id": "92f5198e-ecd4-4bcb-ad45-c377544e7527",
@@ -3149,7 +3315,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Vijay_Asal_Kolaar_-_Naa_Ready_From_Leo_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Vijay_Asal_Kolaar_-_Naa_Ready_From_Leo_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Vijay_Asal_Kolaar_-_Naa_Ready_From_Leo_SPOTISAVER.jpg"
   },
   {
     "id": "fad0f3eb-1d01-436c-b422-a17e00af7c06",
@@ -3157,7 +3324,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Rokesh_-_Jalabulajangu_From_Don_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Rokesh_-_Jalabulajangu_From_Don_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Rokesh_-_Jalabulajangu_From_Don_SPOTISAVER.jpg"
   },
   {
     "id": "4ae96e1b-54e2-4fff-aee8-0de50bd20048",
@@ -3165,7 +3333,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Priya_Mali_-_Hayyoda_From_Jawan_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Priya_Mali_-_Hayyoda_From_Jawan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Priya_Mali_-_Hayyoda_From_Jawan_SPOTISAVER.jpg"
   },
   {
     "id": "22d11fb9-a01f-47d5-b2a6-5c5951870841",
@@ -3173,7 +3342,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Ramajogayya_Sastry_-_Fear_Song_From_Devara_Part_1_Telugu_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Ramajogayya_Sastry_-_Fear_Song_From_Devara_Part_1_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Ramajogayya_Sastry_-_Fear_Song_From_Devara_Part_1_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "101838de-d5c3-4a1f-b71a-587e25f07b67",
@@ -3181,7 +3351,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Kamal_Haasan_-_Pathala_Pathala_From_Vikram_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Kamal_Haasan_-_Pathala_Pathala_From_Vikram_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Kamal_Haasan_-_Pathala_Pathala_From_Vikram_SPOTISAVER.jpg"
   },
   {
     "id": "424133c3-d2ad-481d-b8d5-e1065a132d1f",
@@ -3189,7 +3360,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Lothika_-_Anbenum_From_Leo_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Lothika_-_Anbenum_From_Leo_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Lothika_-_Anbenum_From_Leo_SPOTISAVER.jpg"
   },
   {
     "id": "684e51c2-16db-4106-a64e-32314b7caa52",
@@ -3197,7 +3369,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Jonita_Gandhi_-_Arabic_Kuthu_-_Halamithi_Habibo_From_Beast_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Jonita_Gandhi_-_Arabic_Kuthu_-_Halamithi_Habibo_From_Beast_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Jonita_Gandhi_-_Arabic_Kuthu_-_Halamithi_Habibo_From_Beast_SPOTISAVER.jpg"
   },
   {
     "id": "8311fa30-80a8-4b12-802a-cfaaad2d8b00",
@@ -3205,7 +3378,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Jonita_Gandhi_Sivakarthikeyan_-_Private_Party_From_Don_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Jonita_Gandhi_Sivakarthikeyan_-_Private_Party_From_Don_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Jonita_Gandhi_Sivakarthikeyan_-_Private_Party_From_Don_SPOTISAVER.jpg"
   },
   {
     "id": "ae62c010-c434-4411-bf71-5fac313b4720",
@@ -3213,7 +3387,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Ram_Kumar_Heisenberg_-_Ain_t_Nobody_From_DC_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Ram_Kumar_Heisenberg_-_Ain_t_Nobody_From_DC_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Ram_Kumar_Heisenberg_-_Ain_t_Nobody_From_DC_SPOTISAVER.jpg"
   },
   {
     "id": "50cd0392-bcb7-4ea4-9e44-065553dfcd2c",
@@ -3221,7 +3396,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Jangi_Reddy_Arjun_Chandy_-_Aaya_Sher_From_The_Paradise_Telugu_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Jangi_Reddy_Arjun_Chandy_-_Aaya_Sher_From_The_Paradise_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Jangi_Reddy_Arjun_Chandy_-_Aaya_Sher_From_The_Paradise_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "47b032bf-6e42-458a-b7e9-6245ecf80076",
@@ -3229,7 +3405,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Ananthakrrishnan_Vignesh_Shivan_-_Pattuma_From_Love_Insurance_Kompany_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Ananthakrrishnan_Vignesh_Shivan_-_Pattuma_From_Love_Insurance_Kompany_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Ananthakrrishnan_Vignesh_Shivan_-_Pattuma_From_Love_Insurance_Kompany_SPOTISAVER.jpg"
   },
   {
     "id": "21b716ee-3250-49ae-898a-becf0fe5d270",
@@ -3237,7 +3414,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Heisenberg_-_Once_Upon_a_Time_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Heisenberg_-_Once_Upon_a_Time_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Heisenberg_-_Once_Upon_a_Time_SPOTISAVER.jpg"
   },
   {
     "id": "2f87dc83-6e50-45d5-8232-c1a015552f71",
@@ -3245,7 +3423,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Gana_Balachandar_-_Vaathi_Coming_From_Master_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Gana_Balachandar_-_Vaathi_Coming_From_Master_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Gana_Balachandar_-_Vaathi_Coming_From_Master_SPOTISAVER.jpg"
   },
   {
     "id": "e4b9f597-d59b-41a9-8e71-8c3dfe8570be",
@@ -3253,7 +3432,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Hector_Salamanca_Heisenberg_-_23_Theme_From_AA23_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Hector_Salamanca_Heisenberg_-_23_Theme_From_AA23_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Hector_Salamanca_Heisenberg_-_23_Theme_From_AA23_SPOTISAVER.jpg"
   },
   {
     "id": "57326eeb-2b66-4f3f-b137-2da4e5949758",
@@ -3261,7 +3441,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Badshah_G._Rokesh_-_Aaluma_Doluma_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Badshah_G._Rokesh_-_Aaluma_Doluma_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Badshah_G._Rokesh_-_Aaluma_Doluma_SPOTISAVER.jpg"
   },
   {
     "id": "1a8c86ce-5030-498c-b8a4-6434db2dcd04",
@@ -3269,7 +3450,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Dhanush_-_Why_This_Kolaveri_Di_-_The_Soup_of_Love_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Dhanush_-_Why_This_Kolaveri_Di_-_The_Soup_of_Love_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Dhanush_-_Why_This_Kolaveri_Di_-_The_Soup_of_Love_SPOTISAVER.jpg"
   },
   {
     "id": "7e83b627-f7a3-450c-a71e-705de842297c",
@@ -3277,7 +3459,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Dhanush_-_Maari_Thara_Local_-_Here_Comes_Maari_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Dhanush_-_Maari_Thara_Local_-_Here_Comes_Maari_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Dhanush_-_Maari_Thara_Local_-_Here_Comes_Maari_SPOTISAVER.jpg"
   },
   {
     "id": "a671858b-8486-415c-b41a-379cb189601b",
@@ -3285,7 +3468,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Chintu_-_Aaja_Raja_From_KH_x_RK_Reunion_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Chintu_-_Aaja_Raja_From_KH_x_RK_Reunion_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Chintu_-_Aaja_Raja_From_KH_x_RK_Reunion_SPOTISAVER.jpg"
   },
   {
     "id": "67380990-66c1-4e43-8759-19718f0815cb",
@@ -3293,7 +3477,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Alisha_Thomas_Dhanush_-_Don_u_Don_u_Don_u_-_The_Don_s_Romance_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Alisha_Thomas_Dhanush_-_Don_u_Don_u_Don_u_-_The_Don_s_Romance_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Alisha_Thomas_Dhanush_-_Don_u_Don_u_Don_u_-_The_Don_s_Romance_SPOTISAVER.jpg"
   },
   {
     "id": "2165f220-2a51-4484-acf2-b5ce2dc50bfe",
@@ -3301,7 +3486,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "A.R._Rahman_Mohit_Chauhan_Balaji_-_Chikiri_Chikiri_From_Peddi_TELUGU_SPOTISAVER"
+    "audioId": "A.R._Rahman_Mohit_Chauhan_Balaji_-_Chikiri_Chikiri_From_Peddi_TELUGU_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/A.R._Rahman_Mohit_Chauhan_Balaji_-_Chikiri_Chikiri_From_Peddi_TELUGU_SPOTISAVER.jpg"
   },
   {
     "id": "121c8beb-f5bc-42c4-b812-707d41abe8d3",
@@ -3309,7 +3495,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Ananthakrrishnan_Sivakarthikeyan_-_So_Baby_From_Doctor_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Ananthakrrishnan_Sivakarthikeyan_-_So_Baby_From_Doctor_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Ananthakrrishnan_Sivakarthikeyan_-_So_Baby_From_Doctor_SPOTISAVER.jpg"
   },
   {
     "id": "b0c20fb5-b81a-4cf1-99ee-c36211bade06",
@@ -3317,7 +3504,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_Adithya_RK_Vignesh_Shivan_-_Bae_From_Don_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_Adithya_RK_Vignesh_Shivan_-_Bae_From_Don_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_Adithya_RK_Vignesh_Shivan_-_Bae_From_Don_SPOTISAVER.jpg"
   },
   {
     "id": "f4b0badd-649f-417b-8fd2-f7a5b5a082a9",
@@ -3325,7 +3513,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Akhil_Akkineni_Jonita_Gandhi_-_Yevevo_SPOTISAVER"
+    "audioId": "Akhil_Akkineni_Jonita_Gandhi_-_Yevevo_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Akhil_Akkineni_Jonita_Gandhi_-_Yevevo_SPOTISAVER.jpg"
   },
   {
     "id": "32a3c2d1-c7e5-4c76-aab6-cb70e27fe1af",
@@ -3333,7 +3522,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anirudh_Ravichander_-_Raga_of_Revenge_From_DC_SPOTISAVER"
+    "audioId": "Anirudh_Ravichander_-_Raga_of_Revenge_From_DC_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anirudh_Ravichander_-_Raga_of_Revenge_From_DC_SPOTISAVER.jpg"
   },
   {
     "id": "d4f27254-f99a-46e6-8140-f86f238d2f6f",
@@ -3341,7 +3531,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "A.R._Rahman_Shakthisree_Gopalan_Anantha_Sriram_-_Aaganandhe_From_PS-2_Telugu_SPOTISAVER"
+    "audioId": "A.R._Rahman_Shakthisree_Gopalan_Anantha_Sriram_-_Aaganandhe_From_PS-2_Telugu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/A.R._Rahman_Shakthisree_Gopalan_Anantha_Sriram_-_Aaganandhe_From_PS-2_Telugu_SPOTISAVER.jpg"
   },
   {
     "id": "acf4d906-8325-42ee-87ff-8ece551aa926",
@@ -3349,7 +3540,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "A.R._Rahman_Rakshita_Suresh_Anantha_Sreeram_-_Hellallallo_From_Peddi_TELUGU_SPOTISAVER"
+    "audioId": "A.R._Rahman_Rakshita_Suresh_Anantha_Sreeram_-_Hellallallo_From_Peddi_TELUGU_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/A.R._Rahman_Rakshita_Suresh_Anantha_Sreeram_-_Hellallallo_From_Peddi_TELUGU_SPOTISAVER.jpg"
   },
   {
     "id": "16c91677-4edf-469f-8c93-d88cbcad308c",
@@ -3357,7 +3549,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "98._Rishte_Naate"
+    "audioId": "98._Rishte_Naate",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/98._Rishte_Naate.jpg"
   },
   {
     "id": "ae50b771-486f-4f78-8696-1565a8f4ac2e",
@@ -3365,7 +3558,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "99._Jaise_Mera_Tu_From__Happy_Ending_"
+    "audioId": "99._Jaise_Mera_Tu_From__Happy_Ending_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/99._Jaise_Mera_Tu_From__Happy_Ending_.jpg"
   },
   {
     "id": "0d102a77-76c3-42c2-b552-83df0932e13a",
@@ -3373,7 +3567,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "96._Tere_Bin"
+    "audioId": "96._Tere_Bin",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/96._Tere_Bin.jpg"
   },
   {
     "id": "6d19dfef-80f4-4bb2-8176-cdf8776ff376",
@@ -3381,7 +3576,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "100._Yeh_Dooriyan"
+    "audioId": "100._Yeh_Dooriyan",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/100._Yeh_Dooriyan.jpg"
   },
   {
     "id": "dc93fc3a-ceb9-4ee8-b0a0-93bd53af96da",
@@ -3389,7 +3585,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "6091_Rakhooo_-_Kanaavile_SPOTISAVER"
+    "audioId": "6091_Rakhooo_-_Kanaavile_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/6091_Rakhooo_-_Kanaavile_SPOTISAVER.jpg"
   },
   {
     "id": "85ccc6a2-ed6f-48ef-8e01-4863494dcdd6",
@@ -3397,7 +3594,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "97._Aadha_Ishq"
+    "audioId": "97._Aadha_Ishq",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/97._Aadha_Ishq.jpg"
   },
   {
     "id": "c52034ae-c21e-41e7-b8a3-bc07ff66502b",
@@ -3405,7 +3603,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "94._Katra_Katra"
+    "audioId": "94._Katra_Katra",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/94._Katra_Katra.jpg"
   },
   {
     "id": "651ecce1-1ffb-42a7-91d1-05bcbf9fdb75",
@@ -3413,7 +3612,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "95._Boond_Boond"
+    "audioId": "95._Boond_Boond",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/95._Boond_Boond.jpg"
   },
   {
     "id": "e9c595ee-2c95-42e0-889f-28df0385c0dd",
@@ -3421,7 +3621,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "91._Mitti_Di_Khushboo"
+    "audioId": "91._Mitti_Di_Khushboo",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/91._Mitti_Di_Khushboo.jpg"
   },
   {
     "id": "cacb692c-7c7d-4cac-809b-68e897823427",
@@ -3429,7 +3630,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "83._Judaai_From__Badlapur"
+    "audioId": "83._Judaai_From__Badlapur",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/83._Judaai_From__Badlapur.jpg"
   },
   {
     "id": "19516a5d-ce01-4db1-8cf4-a06b76508767",
@@ -3437,7 +3639,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "93._Kyon"
+    "audioId": "93._Kyon",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/93._Kyon.jpg"
   },
   {
     "id": "46e5edc2-8349-49f9-b98f-461ab40a9ecb",
@@ -3445,7 +3648,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "86._Allah_Waariyan"
+    "audioId": "86._Allah_Waariyan",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/86._Allah_Waariyan.jpg"
   },
   {
     "id": "7ca4c6ab-4044-4c8b-9a43-0b9cad519951",
@@ -3453,7 +3657,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "92._Ajab_Si"
+    "audioId": "92._Ajab_Si",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/92._Ajab_Si.jpg"
   },
   {
     "id": "9fada674-98d7-46d8-bfc4-f51dc6cdd5a4",
@@ -3461,7 +3666,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "90._Voh_Dekhnay_Mein"
+    "audioId": "90._Voh_Dekhnay_Mein",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/90._Voh_Dekhnay_Mein.jpg"
   },
   {
     "id": "3b9192a9-504b-4fa4-900b-bce25fe517e3",
@@ -3469,7 +3675,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "79._Abhi_Abhi"
+    "audioId": "79._Abhi_Abhi",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/79._Abhi_Abhi.jpg"
   },
   {
     "id": "83d75d86-eb9a-4170-bdcd-8ddbe33c3e01",
@@ -3477,7 +3684,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "88._Anjaana_Anjaani"
+    "audioId": "88._Anjaana_Anjaani",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/88._Anjaana_Anjaani.jpg"
   },
   {
     "id": "1e9c1213-e89d-486f-83b0-4e36b46901b8",
@@ -3485,7 +3693,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "85._Itni_Si_Baat_Hain_From__Azhar_"
+    "audioId": "85._Itni_Si_Baat_Hain_From__Azhar_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/85._Itni_Si_Baat_Hain_From__Azhar_.jpg"
   },
   {
     "id": "890c16a3-656d-49ca-9513-b849aa54754c",
@@ -3493,7 +3702,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "82._Duaa_From__Shanghai_"
+    "audioId": "82._Duaa_From__Shanghai_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/82._Duaa_From__Shanghai_.jpg"
   },
   {
     "id": "e6f96acd-26f7-43ff-86bc-9151d46113d5",
@@ -3501,7 +3711,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "84._Baatein_Kuch_Ankahee"
+    "audioId": "84._Baatein_Kuch_Ankahee",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/84._Baatein_Kuch_Ankahee.jpg"
   },
   {
     "id": "e8abbbf5-96c3-42f3-954d-b8c94aa83dd4",
@@ -3509,7 +3720,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "77._Humraah_From__Malang_-_Unleash_The_Madness_"
+    "audioId": "77._Humraah_From__Malang_-_Unleash_The_Madness_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/77._Humraah_From__Malang_-_Unleash_The_Madness_.jpg"
   },
   {
     "id": "e0fc5e09-67fe-4efb-975d-fa119c80b0d9",
@@ -3517,7 +3729,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "80._Zara_Zara"
+    "audioId": "80._Zara_Zara",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/80._Zara_Zara.jpg"
   },
   {
     "id": "419773a9-b087-4bbc-86d1-1d7f2b60cb58",
@@ -3525,7 +3738,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "81._Manchala"
+    "audioId": "81._Manchala",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/81._Manchala.jpg"
   },
   {
     "id": "89b33338-0b06-4192-9d91-eec13a29ed32",
@@ -3533,7 +3747,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "75._Darmiyaan"
+    "audioId": "75._Darmiyaan",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/75._Darmiyaan.jpg"
   },
   {
     "id": "a04d4506-0d0e-4bfb-add3-33539fb97e44",
@@ -3541,7 +3756,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "76._Tere_Mere_From__Chef_"
+    "audioId": "76._Tere_Mere_From__Chef_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/76._Tere_Mere_From__Chef_.jpg"
   },
   {
     "id": "eccbecec-18ea-47a0-9d5a-817358727031",
@@ -3549,7 +3765,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "72._Yahin_Hoon_Main"
+    "audioId": "72._Yahin_Hoon_Main",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/72._Yahin_Hoon_Main.jpg"
   },
   {
     "id": "148a338b-2781-4ece-8dba-c45416ad51e9",
@@ -3557,7 +3774,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "78._Halka_Halka_From__Fanney_Khan_"
+    "audioId": "78._Halka_Halka_From__Fanney_Khan_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/78._Halka_Halka_From__Fanney_Khan_.jpg"
   },
   {
     "id": "4fbdc4d8-3eaf-4d9e-a580-8214e6fca902",
@@ -3565,7 +3783,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "70._Saibo"
+    "audioId": "70._Saibo",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/70._Saibo.jpg"
   },
   {
     "id": "435eb8b1-dedc-4b67-bffb-7f99837ea686",
@@ -3573,7 +3792,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "71._Bol_Na_Halke_Halke"
+    "audioId": "71._Bol_Na_Halke_Halke",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/71._Bol_Na_Halke_Halke.jpg"
   },
   {
     "id": "607d6f2f-f3a6-4598-a987-c976971b15d9",
@@ -3581,7 +3801,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "73._Mileya_Mileya_From__Happy_Ending"
+    "audioId": "73._Mileya_Mileya_From__Happy_Ending",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/73._Mileya_Mileya_From__Happy_Ending.jpg"
   },
   {
     "id": "d46c0fc9-c951-4f44-a763-84a87377baef",
@@ -3589,7 +3810,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "69._Tose_Naina_From__Mickey_Virus"
+    "audioId": "69._Tose_Naina_From__Mickey_Virus",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/69._Tose_Naina_From__Mickey_Virus.jpg"
   },
   {
     "id": "4dcef0d6-10c6-44b4-b7ab-172dc81d922a",
@@ -3597,7 +3819,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "54._Dil_Kyun_Yeh_Mera"
+    "audioId": "54._Dil_Kyun_Yeh_Mera",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/54._Dil_Kyun_Yeh_Mera.jpg"
   },
   {
     "id": "bb8aaabb-3b12-4403-a966-b1a198bd15ea",
@@ -3605,7 +3828,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "62._Tum_Mile"
+    "audioId": "62._Tum_Mile",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/62._Tum_Mile.jpg"
   },
   {
     "id": "d4ab9d3e-1395-4b96-b1d1-a0207d6a5bb1",
@@ -3613,7 +3837,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "68._Kahin_Toh_Hogi_Woh-Teri_Aahatein"
+    "audioId": "68._Kahin_Toh_Hogi_Woh-Teri_Aahatein",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/68._Kahin_Toh_Hogi_Woh-Teri_Aahatein.jpg"
   },
   {
     "id": "66e46d93-3279-4a0b-aff8-ab728eb0caa5",
@@ -3621,7 +3846,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "67._Ilahi_Reprise"
+    "audioId": "67._Ilahi_Reprise",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/67._Ilahi_Reprise.jpg"
   },
   {
     "id": "763a8c9d-c7b9-4b7d-b997-9f0c5b706801",
@@ -3629,7 +3855,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "64._Tune_Jo_Na_Kaha"
+    "audioId": "64._Tune_Jo_Na_Kaha",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/64._Tune_Jo_Na_Kaha.jpg"
   },
   {
     "id": "ecba8ab9-cc16-4b9b-b10a-f94823168e97",
@@ -3637,7 +3864,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "66._Saware_From__Phantom_"
+    "audioId": "66._Saware_From__Phantom_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/66._Saware_From__Phantom_.jpg"
   },
   {
     "id": "704890bd-aa09-4af9-81af-82855fae5bd0",
@@ -3645,7 +3873,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "60._Tu_Chahiye"
+    "audioId": "60._Tu_Chahiye",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/60._Tu_Chahiye.jpg"
   },
   {
     "id": "9e0e905d-1ba9-4214-9ba2-a93f06c6fe54",
@@ -3653,7 +3882,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "61._Mar_Jawaan"
+    "audioId": "61._Mar_Jawaan",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/61._Mar_Jawaan.jpg"
   },
   {
     "id": "c116ebd2-6749-481e-abff-0cf563daa322",
@@ -3661,7 +3891,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "65._Zindagi_Kuch_Toh_Bata_Reprise"
+    "audioId": "65._Zindagi_Kuch_Toh_Bata_Reprise",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/65._Zindagi_Kuch_Toh_Bata_Reprise.jpg"
   },
   {
     "id": "7c0801cf-5ba1-4073-8f7b-e4b3b4193c1f",
@@ -3669,7 +3900,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "58._Ishq_Sufiyana_Male"
+    "audioId": "58._Ishq_Sufiyana_Male",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/58._Ishq_Sufiyana_Male.jpg"
   },
   {
     "id": "69f732e5-0f69-4755-b3ca-7e439e7dd841",
@@ -3677,7 +3909,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "52._Kuchh_Khaas"
+    "audioId": "52._Kuchh_Khaas",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/52._Kuchh_Khaas.jpg"
   },
   {
     "id": "67aa9c80-ff5b-41f3-bcaa-6724642783e4",
@@ -3685,7 +3918,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "56._Mera_Mann_Kehne_Laga"
+    "audioId": "56._Mera_Mann_Kehne_Laga",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/56._Mera_Mann_Kehne_Laga.jpg"
   },
   {
     "id": "57fb944a-43e7-4025-aff5-e6b887b356e1",
@@ -3693,7 +3927,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "59._Raabta_Night_In_A_Motel"
+    "audioId": "59._Raabta_Night_In_A_Motel",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/59._Raabta_Night_In_A_Motel.jpg"
   },
   {
     "id": "9512fd73-2d20-4a06-89ab-b0ae7329beac",
@@ -3701,7 +3936,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "57._Tera_Rastaa_Chhodoon_Na"
+    "audioId": "57._Tera_Rastaa_Chhodoon_Na",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/57._Tera_Rastaa_Chhodoon_Na.jpg"
   },
   {
     "id": "d1db7069-1c01-4226-877b-9e1bb68fbe41",
@@ -3709,7 +3945,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "53._Abhi_Kuch_Dino_Se"
+    "audioId": "53._Abhi_Kuch_Dino_Se",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/53._Abhi_Kuch_Dino_Se.jpg"
   },
   {
     "id": "c75ea49b-5f91-4ef0-af4e-ec82ed16a190",
@@ -3717,7 +3954,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "55._Saajna"
+    "audioId": "55._Saajna",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/55._Saajna.jpg"
   },
   {
     "id": "6ee808f1-04dc-4df8-bfe2-fdd9477a9260",
@@ -3725,7 +3963,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "49._Kaise_Mujhe"
+    "audioId": "49._Kaise_Mujhe",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/49._Kaise_Mujhe.jpg"
   },
   {
     "id": "bd86f922-c556-41ef-a362-26e6383517b5",
@@ -3733,7 +3972,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "50._Aye_Khuda"
+    "audioId": "50._Aye_Khuda",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/50._Aye_Khuda.jpg"
   },
   {
     "id": "d1044e5a-1353-48ff-b96f-87a3b63d4328",
@@ -3741,7 +3981,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "51._Zindagi_Do_Pal_Ki"
+    "audioId": "51._Zindagi_Do_Pal_Ki",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/51._Zindagi_Do_Pal_Ki.jpg"
   },
   {
     "id": "9c52b4c8-ca3c-43e4-9308-0230bf24f2d3",
@@ -3749,7 +3990,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "36._Mann_Bharrya"
+    "audioId": "36._Mann_Bharrya",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/36._Mann_Bharrya.jpg"
   },
   {
     "id": "5811a6e0-4fe3-46f5-8294-ae8c3ef6751d",
@@ -3757,7 +3999,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "44._Tu_Meri_Dost_Hain"
+    "audioId": "44._Tu_Meri_Dost_Hain",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/44._Tu_Meri_Dost_Hain.jpg"
   },
   {
     "id": "54487a15-0120-47b2-963c-681829da76ad",
@@ -3765,7 +4008,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "40._Maula_Mere_Maula"
+    "audioId": "40._Maula_Mere_Maula",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/40._Maula_Mere_Maula.jpg"
   },
   {
     "id": "f1124761-1348-4d37-811d-f1c3f7f3b3ac",
@@ -3773,7 +4017,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "48._Tere_Naina"
+    "audioId": "48._Tere_Naina",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/48._Tere_Naina.jpg"
   },
   {
     "id": "c4389792-ba8f-4a14-a0d3-f5e661ea12cc",
@@ -3781,7 +4026,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "47._Kabhi_Kabhi_Aditi"
+    "audioId": "47._Kabhi_Kabhi_Aditi",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/47._Kabhi_Kabhi_Aditi.jpg"
   },
   {
     "id": "9467b39d-06de-44b1-b3c8-f47d32d867ba",
@@ -3789,7 +4035,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "45._Mera_Pehla_Pehla_Pyaar"
+    "audioId": "45._Mera_Pehla_Pehla_Pyaar",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/45._Mera_Pehla_Pehla_Pyaar.jpg"
   },
   {
     "id": "9d2ccc62-3bc6-4f09-94b5-646b5f9b9985",
@@ -3797,7 +4044,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "43._Khuda_Jaane"
+    "audioId": "43._Khuda_Jaane",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/43._Khuda_Jaane.jpg"
   },
   {
     "id": "a9d6acfa-5f07-459d-a096-1c56e5560310",
@@ -3805,7 +4053,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "46._Phir_Se_Ud_Chala"
+    "audioId": "46._Phir_Se_Ud_Chala",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/46._Phir_Se_Ud_Chala.jpg"
   },
   {
     "id": "1fcf5077-ac2d-436c-be83-ec30aa0e522c",
@@ -3813,7 +4062,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "42._Tu_Hai_Ki_Nahi"
+    "audioId": "42._Tu_Hai_Ki_Nahi",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/42._Tu_Hai_Ki_Nahi.jpg"
   },
   {
     "id": "cf76f068-2fa5-469b-bb3c-632d67b68fb5",
@@ -3821,7 +4071,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "34._Dil_Diyan_Gallan"
+    "audioId": "34._Dil_Diyan_Gallan",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/34._Dil_Diyan_Gallan.jpg"
   },
   {
     "id": "0ff8190e-40f5-469e-831f-158579d80493",
@@ -3829,7 +4080,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "37._Rula_Diya_From__Batla_House_"
+    "audioId": "37._Rula_Diya_From__Batla_House_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/37._Rula_Diya_From__Batla_House_.jpg"
   },
   {
     "id": "cff4cd2a-f6ef-44cf-bef4-dff215800aba",
@@ -3837,7 +4089,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "38._Jab_Koi_Baat_-_Recreated"
+    "audioId": "38._Jab_Koi_Baat_-_Recreated",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/38._Jab_Koi_Baat_-_Recreated.jpg"
   },
   {
     "id": "5f9ba8bc-6a0a-4223-ab2d-48a4a062b186",
@@ -3845,7 +4098,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "41._Kya_Mujhe_Pyar_Hai"
+    "audioId": "41._Kya_Mujhe_Pyar_Hai",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/41._Kya_Mujhe_Pyar_Hai.jpg"
   },
   {
     "id": "6c65fea1-7ce8-4de8-9f8a-dcd421a59e84",
@@ -3853,7 +4107,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "39._tere_bina_-_Acoustic"
+    "audioId": "39._tere_bina_-_Acoustic",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/39._tere_bina_-_Acoustic.jpg"
   },
   {
     "id": "c5b4ca22-6e8e-4206-b3a3-599930881f08",
@@ -3861,7 +4116,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "29._Raabta_Kehte_Hain_Khuda_Ne_From__Agent_Vinod_"
+    "audioId": "29._Raabta_Kehte_Hain_Khuda_Ne_From__Agent_Vinod_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/29._Raabta_Kehte_Hain_Khuda_Ne_From__Agent_Vinod_.jpg"
   },
   {
     "id": "1d4ce44a-799e-4e06-a85a-63dc7f546054",
@@ -3869,7 +4125,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "35._Tera_Hua_From__Loveyatri_"
+    "audioId": "35._Tera_Hua_From__Loveyatri_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/35._Tera_Hua_From__Loveyatri_.jpg"
   },
   {
     "id": "91e7aa27-7203-42c5-b958-e1db945fc7a7",
@@ -3877,7 +4134,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "24._Hai_Junoon"
+    "audioId": "24._Hai_Junoon",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/24._Hai_Junoon.jpg"
   },
   {
     "id": "1cf2a795-21f2-4067-bc73-e4a5ddeabc9c",
@@ -3885,7 +4143,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "33._Kaise_Hua_From__Kabir_Singh_"
+    "audioId": "33._Kaise_Hua_From__Kabir_Singh_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/33._Kaise_Hua_From__Kabir_Singh_.jpg"
   },
   {
     "id": "e250ed88-4171-44a8-9a07-a94389482e01",
@@ -3893,7 +4152,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "21._Labon_Ko"
+    "audioId": "21._Labon_Ko",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/21._Labon_Ko.jpg"
   },
   {
     "id": "07799ebd-f80f-4c22-8b24-b193d7768a0e",
@@ -3901,7 +4161,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "32._Ya_Rabba_From__Salaam-E-Ishq_"
+    "audioId": "32._Ya_Rabba_From__Salaam-E-Ishq_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/32._Ya_Rabba_From__Salaam-E-Ishq_.jpg"
   },
   {
     "id": "0741b387-3c57-4103-900e-864b6f36f6b5",
@@ -3909,7 +4170,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "26._O_Sanam"
+    "audioId": "26._O_Sanam",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/26._O_Sanam.jpg"
   },
   {
     "id": "c8dc5227-04c1-40e6-bc52-b1c45e28d020",
@@ -3917,7 +4179,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "28._Tera_Ban_Jaunga_From__Kabir_Singh_"
+    "audioId": "28._Tera_Ban_Jaunga_From__Kabir_Singh_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/28._Tera_Ban_Jaunga_From__Kabir_Singh_.jpg"
   },
   {
     "id": "8eca4dd4-18b8-4f88-922c-9f54343cdccd",
@@ -3925,7 +4188,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "31._Duniyaa_From__Luka_Chuppi_"
+    "audioId": "31._Duniyaa_From__Luka_Chuppi_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/31._Duniyaa_From__Luka_Chuppi_.jpg"
   },
   {
     "id": "925fee79-3756-4855-968d-e4c814f45f50",
@@ -3933,7 +4197,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "25._Ik_Junoon_Paint_It_Red"
+    "audioId": "25._Ik_Junoon_Paint_It_Red",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/25._Ik_Junoon_Paint_It_Red.jpg"
   },
   {
     "id": "d9aae294-c88b-4861-b5d1-f6df13c33661",
@@ -3941,7 +4206,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "22._Tera_Chehra_From__Sanam_Teri_Kasam_"
+    "audioId": "22._Tera_Chehra_From__Sanam_Teri_Kasam_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/22._Tera_Chehra_From__Sanam_Teri_Kasam_.jpg"
   },
   {
     "id": "bcf70015-9134-4bde-abf5-afb973fb4931",
@@ -3949,7 +4215,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "23._Ajj_Din_Chadheya"
+    "audioId": "23._Ajj_Din_Chadheya",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/23._Ajj_Din_Chadheya.jpg"
   },
   {
     "id": "d652dc7a-b902-4d80-b09b-e7a2605a1eea",
@@ -3957,7 +4224,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "20._Pehla_Pyaar_From__Kabir_Singh_"
+    "audioId": "20._Pehla_Pyaar_From__Kabir_Singh_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/20._Pehla_Pyaar_From__Kabir_Singh_.jpg"
   },
   {
     "id": "5c86430a-bf2f-4c1d-b958-e50ed5f6e972",
@@ -3965,7 +4233,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "19._Tumse_Hi_Tumse"
+    "audioId": "19._Tumse_Hi_Tumse",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/19._Tumse_Hi_Tumse.jpg"
   },
   {
     "id": "075fbadb-c079-42e8-9c5a-5390c482381b",
@@ -3973,7 +4242,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "16._Be_Intehaan"
+    "audioId": "16._Be_Intehaan",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/16._Be_Intehaan.jpg"
   },
   {
     "id": "2484916d-548b-400c-8cd8-7a13351e56c8",
@@ -3981,7 +4251,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "18._Ek_Main_Aur_Ekk_Tu"
+    "audioId": "18._Ek_Main_Aur_Ekk_Tu",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/18._Ek_Main_Aur_Ekk_Tu.jpg"
   },
   {
     "id": "1fed2973-835c-46fe-a6d8-5713e23f84bb",
@@ -3989,7 +4260,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "17._Aao_Milo_Chalo"
+    "audioId": "17._Aao_Milo_Chalo",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/17._Aao_Milo_Chalo.jpg"
   },
   {
     "id": "6eaa15c6-7254-4dac-8cf1-cceed922115b",
@@ -3997,7 +4269,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "14._Arziyan"
+    "audioId": "14._Arziyan",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/14._Arziyan.jpg"
   },
   {
     "id": "3679d1fb-6547-469a-924b-9046f33ed10d",
@@ -4005,7 +4278,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "15._Tose_Naina-Tum_Jo_Aaye_From__T-Series_Mixtape_"
+    "audioId": "15._Tose_Naina-Tum_Jo_Aaye_From__T-Series_Mixtape_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/15._Tose_Naina-Tum_Jo_Aaye_From__T-Series_Mixtape_.jpg"
   },
   {
     "id": "bb7f6341-9636-49fd-bcf7-35ecc72a0cc0",
@@ -4013,7 +4287,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "12._Kaise_Mein_Kahun_Tujhse"
+    "audioId": "12._Kaise_Mein_Kahun_Tujhse",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/12._Kaise_Mein_Kahun_Tujhse.jpg"
   },
   {
     "id": "50e735db-8bf2-4f63-b58f-71ab6b0a2cd8",
@@ -4021,7 +4296,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "13._Jaane_Kyon_Log_Pyar"
+    "audioId": "13._Jaane_Kyon_Log_Pyar",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/13._Jaane_Kyon_Log_Pyar.jpg"
   },
   {
     "id": "4b823f49-d8ac-49ab-bc6d-5221697843fb",
@@ -4029,7 +4305,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "11._Dooriyan_Hain_Zaroori"
+    "audioId": "11._Dooriyan_Hain_Zaroori",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/11._Dooriyan_Hain_Zaroori.jpg"
   },
   {
     "id": "6d997ef7-fdf8-4943-8c83-80de88ad65d2",
@@ -4037,7 +4314,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "9._Tera_Deedar_Hua"
+    "audioId": "9._Tera_Deedar_Hua",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/9._Tera_Deedar_Hua.jpg"
   },
   {
     "id": "8cc81e40-e659-4283-9248-87580f58c98e",
@@ -4045,7 +4323,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "5._Bakhuda_Tumhi_Ho"
+    "audioId": "5._Bakhuda_Tumhi_Ho",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/5._Bakhuda_Tumhi_Ho.jpg"
   },
   {
     "id": "82ad077e-1cfd-41ff-b943-288d68f308bb",
@@ -4053,7 +4332,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "6._Kya_Mujhe_Pyar_Hai_Style_Mix"
+    "audioId": "6._Kya_Mujhe_Pyar_Hai_Style_Mix",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/6._Kya_Mujhe_Pyar_Hai_Style_Mix.jpg"
   },
   {
     "id": "8fc693b4-6dc3-427b-acbb-6d28b265269c",
@@ -4061,7 +4341,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "8._Is_This_Love"
+    "audioId": "8._Is_This_Love",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/8._Is_This_Love.jpg"
   },
   {
     "id": "b8f96458-a3e7-45fe-a24d-61c000661d17",
@@ -4069,7 +4350,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "10._Jab_Mila_Tu"
+    "audioId": "10._Jab_Mila_Tu",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/10._Jab_Mila_Tu.jpg"
   },
   {
     "id": "7a306b28-4937-4e4f-97c2-8e37f0a5db99",
@@ -4077,7 +4359,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "7._Jaane_Kyun_From__Dostana_"
+    "audioId": "7._Jaane_Kyun_From__Dostana_",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/7._Jaane_Kyun_From__Dostana_.jpg"
   },
   {
     "id": "df36b7c2-ef3e-4852-8ced-521d557014a9",
@@ -4085,7 +4368,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "2._Aahista_Aahista"
+    "audioId": "2._Aahista_Aahista",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/2._Aahista_Aahista.jpg"
   },
   {
     "id": "df6a2c77-d923-4197-914f-1fe11638b189",
@@ -4093,7 +4377,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "1._Hairat"
+    "audioId": "1._Hairat",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/1._Hairat.jpg"
   },
   {
     "id": "473cb452-e346-4af0-989c-9a176e8bfec8",
@@ -4101,7 +4386,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "4._O_Humdum_Suniyo_Re"
+    "audioId": "4._O_Humdum_Suniyo_Re",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/4._O_Humdum_Suniyo_Re.jpg"
   },
   {
     "id": "7cbc1f46-b969-4ba7-bd9d-b0dc1d1e8de4",
@@ -4109,7 +4395,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "3._Tu_Hi_Hai"
+    "audioId": "3._Tu_Hi_Hai",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/3._Tu_Hi_Hai.jpg"
   },
   {
     "id": "99c03757-6f11-434a-9577-f5b2f0f50f63",
@@ -4117,7 +4404,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishal-Shekhar_Nandini_Srikar_Arijit_Singh_-_Duaa_SPOTISAVER"
+    "audioId": "Vishal-Shekhar_Nandini_Srikar_Arijit_Singh_-_Duaa_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishal-Shekhar_Nandini_Srikar_Arijit_Singh_-_Duaa_SPOTISAVER.jpg"
   },
   {
     "id": "5b29646c-15e4-40cc-b22d-2961ac27af9a",
@@ -4125,7 +4413,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Yo_Yo_Honey_Singh_-_Love_Dose_SPOTISAVER"
+    "audioId": "Yo_Yo_Honey_Singh_-_Love_Dose_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Yo_Yo_Honey_Singh_-_Love_Dose_SPOTISAVER.jpg"
   },
   {
     "id": "1444abdf-4130-4878-8321-af598b1d1126",
@@ -4133,7 +4422,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Yo_Yo_Honey_Singh_Neha_Kakkar_-_Manali_Trance_SPOTISAVER"
+    "audioId": "Yo_Yo_Honey_Singh_Neha_Kakkar_-_Manali_Trance_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Yo_Yo_Honey_Singh_Neha_Kakkar_-_Manali_Trance_SPOTISAVER.jpg"
   },
   {
     "id": "f979229c-97e9-4ddd-b6ba-cbb0d2ccc726",
@@ -4141,7 +4431,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishal-Shekhar_Shreya_Ghoshal_Arijit_Singh_-_Manwa_Laage_SPOTISAVER"
+    "audioId": "Vishal-Shekhar_Shreya_Ghoshal_Arijit_Singh_-_Manwa_Laage_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishal-Shekhar_Shreya_Ghoshal_Arijit_Singh_-_Manwa_Laage_SPOTISAVER.jpg"
   },
   {
     "id": "bea3fcaa-bb88-4140-a4d7-22f321101e11",
@@ -4149,7 +4440,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Madhur_Sharma_Nusrat_Fateh_Ali_Khan_-_Medley_Kehna_Galat_Galat_Halka_Halka_Suroor_SPOTISAVER"
+    "audioId": "Madhur_Sharma_Nusrat_Fateh_Ali_Khan_-_Medley_Kehna_Galat_Galat_Halka_Halka_Suroor_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Madhur_Sharma_Nusrat_Fateh_Ali_Khan_-_Medley_Kehna_Galat_Galat_Halka_Halka_Suroor_SPOTISAVER.jpg"
   },
   {
     "id": "cf7d6a8d-3797-4f23-8cb0-2bb21dd11bd0",
@@ -4157,7 +4449,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishal-Shekhar_Shafqat_Amanat_Ali_Sunidhi_Chauhan_-_Bin_Tere_SPOTISAVER"
+    "audioId": "Vishal-Shekhar_Shafqat_Amanat_Ali_Sunidhi_Chauhan_-_Bin_Tere_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishal-Shekhar_Shafqat_Amanat_Ali_Sunidhi_Chauhan_-_Bin_Tere_SPOTISAVER.jpg"
   },
   {
     "id": "bcea7da7-75b3-4701-9afb-8de2aac8f28f",
@@ -4165,7 +4458,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishal-Shekhar_Mohit_Chauhan_Shekhar_Ravjiani_-_Tujhe_Bhula_Diya_SPOTISAVER"
+    "audioId": "Vishal-Shekhar_Mohit_Chauhan_Shekhar_Ravjiani_-_Tujhe_Bhula_Diya_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishal-Shekhar_Mohit_Chauhan_Shekhar_Ravjiani_-_Tujhe_Bhula_Diya_SPOTISAVER.jpg"
   },
   {
     "id": "fd0bb953-3e4a-461e-aa37-f9cc6aa59b1c",
@@ -4173,7 +4467,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Yo_Yo_Honey_Singh_-_Blue_Eyes_SPOTISAVER"
+    "audioId": "Yo_Yo_Honey_Singh_-_Blue_Eyes_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Yo_Yo_Honey_Singh_-_Blue_Eyes_SPOTISAVER.jpg"
   },
   {
     "id": "bd533139-02b1-4267-ac90-d514229423f3",
@@ -4181,7 +4476,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Vishal-Shekhar_Amitabh_Bhattacharya_Anusha_Mani_-_Tera_Rastaa_Chhodoon_Na_SPOTISAVER"
+    "audioId": "Vishal-Shekhar_Amitabh_Bhattacharya_Anusha_Mani_-_Tera_Rastaa_Chhodoon_Na_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Vishal-Shekhar_Amitabh_Bhattacharya_Anusha_Mani_-_Tera_Rastaa_Chhodoon_Na_SPOTISAVER.jpg"
   },
   {
     "id": "c599117c-6203-4165-a315-5b5c4f4f460e",
@@ -4189,7 +4485,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ved_Sharma_Kunaal_Vermaa_-_Malang_Title_Track_From_Malang_-_Unleash_The_Madness_SPOTISAVER"
+    "audioId": "Ved_Sharma_Kunaal_Vermaa_-_Malang_Title_Track_From_Malang_-_Unleash_The_Madness_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ved_Sharma_Kunaal_Vermaa_-_Malang_Title_Track_From_Malang_-_Unleash_The_Madness_SPOTISAVER.jpg"
   },
   {
     "id": "29818c02-f147-444b-96e4-f3c46dbca866",
@@ -4197,7 +4494,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Tulsi_Kumar_Atif_Aslam_Rochak_Kohli_-_Paniyon_Sa_SPOTISAVER"
+    "audioId": "Tulsi_Kumar_Atif_Aslam_Rochak_Kohli_-_Paniyon_Sa_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Tulsi_Kumar_Atif_Aslam_Rochak_Kohli_-_Paniyon_Sa_SPOTISAVER.jpg"
   },
   {
     "id": "3db8615a-611e-46a3-b20a-a6712fa9695e",
@@ -4205,7 +4503,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Shafqat_Amanat_Ali_-_Kyun_Main_Jaagoon_SPOTISAVER"
+    "audioId": "Shafqat_Amanat_Ali_-_Kyun_Main_Jaagoon_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Shafqat_Amanat_Ali_-_Kyun_Main_Jaagoon_SPOTISAVER.jpg"
   },
   {
     "id": "7034c57f-f309-44b0-aa37-f1ddd4a0ceb7",
@@ -4213,7 +4512,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Tony_Kakkar_Arijit_Singh_-_Sawan_Aaya_Hai_SPOTISAVER"
+    "audioId": "Tony_Kakkar_Arijit_Singh_-_Sawan_Aaya_Hai_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Tony_Kakkar_Arijit_Singh_-_Sawan_Aaya_Hai_SPOTISAVER.jpg"
   },
   {
     "id": "8fdb2b4d-f2c0-44fc-b971-abcd4922fefd",
@@ -4221,7 +4521,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sohail_Sen_Rahat_Fateh_Ali_Khan_Irshad_Kamil_-_Isq_Risk_SPOTISAVER"
+    "audioId": "Sohail_Sen_Rahat_Fateh_Ali_Khan_Irshad_Kamil_-_Isq_Risk_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sohail_Sen_Rahat_Fateh_Ali_Khan_Irshad_Kamil_-_Isq_Risk_SPOTISAVER.jpg"
   },
   {
     "id": "691630d7-c264-45e9-8146-d17d3c022e5c",
@@ -4229,7 +4530,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sonu_Nigam_-_Jaane_Nahin_Denge_Tujhe_SPOTISAVER"
+    "audioId": "Sonu_Nigam_-_Jaane_Nahin_Denge_Tujhe_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sonu_Nigam_-_Jaane_Nahin_Denge_Tujhe_SPOTISAVER.jpg"
   },
   {
     "id": "d4ccab26-cf2d-41c5-ba5b-b5b8fc61b500",
@@ -4237,7 +4539,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Varun_Jain_Sachin-Jigar_Shadab_Faridi_-_Tere_Vaaste_From_Zara_Hatke_Zara_Bachke_SPOTISAVER"
+    "audioId": "Varun_Jain_Sachin-Jigar_Shadab_Faridi_-_Tere_Vaaste_From_Zara_Hatke_Zara_Bachke_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Varun_Jain_Sachin-Jigar_Shadab_Faridi_-_Tere_Vaaste_From_Zara_Hatke_Zara_Bachke_SPOTISAVER.jpg"
   },
   {
     "id": "bc110327-b1bc-4281-9a28-58316b826720",
@@ -4245,7 +4548,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Tanishk_Bagchi_Arijit_Singh_Asees_Kaur_-_Bolna_From_Kapoor_Sons_Since_1921_SPOTISAVER"
+    "audioId": "Tanishk_Bagchi_Arijit_Singh_Asees_Kaur_-_Bolna_From_Kapoor_Sons_Since_1921_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Tanishk_Bagchi_Arijit_Singh_Asees_Kaur_-_Bolna_From_Kapoor_Sons_Since_1921_SPOTISAVER.jpg"
   },
   {
     "id": "232a6409-2a81-4625-af4c-46aaf2dd715a",
@@ -4253,7 +4557,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Shruti_Pathak_Salim_Merchant_-_Mar_Jawaan_SPOTISAVER"
+    "audioId": "Shruti_Pathak_Salim_Merchant_-_Mar_Jawaan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Shruti_Pathak_Salim_Merchant_-_Mar_Jawaan_SPOTISAVER.jpg"
   },
   {
     "id": "9ece0652-210e-4a96-b058-9c717880170b",
@@ -4261,7 +4566,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Shashwat_Sachdev_Arijit_Singh_Irshad_Kamil_-_Phir_Se_From_Dhurandhar_The_Revenge_SPOTISAVER"
+    "audioId": "Shashwat_Sachdev_Arijit_Singh_Irshad_Kamil_-_Phir_Se_From_Dhurandhar_The_Revenge_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Shashwat_Sachdev_Arijit_Singh_Irshad_Kamil_-_Phir_Se_From_Dhurandhar_The_Revenge_SPOTISAVER.jpg"
   },
   {
     "id": "2d011725-d77a-4dab-a45f-bfda4c4ea943",
@@ -4269,7 +4575,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Salim_Sulaiman_Sonu_Nigam_Shreya_Ghoshal_-_Shukran_Allah_SPOTISAVER"
+    "audioId": "Salim_Sulaiman_Sonu_Nigam_Shreya_Ghoshal_-_Shukran_Allah_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Salim_Sulaiman_Sonu_Nigam_Shreya_Ghoshal_-_Shukran_Allah_SPOTISAVER.jpg"
   },
   {
     "id": "5e64a635-4d07-43a3-997c-e27f0539dd9a",
@@ -4277,7 +4584,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Shraddha_Kapoor_Ankit_Tiwari_-_Galliyan_Unplugged_From_Ek_Villain_SPOTISAVER"
+    "audioId": "Shraddha_Kapoor_Ankit_Tiwari_-_Galliyan_Unplugged_From_Ek_Villain_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Shraddha_Kapoor_Ankit_Tiwari_-_Galliyan_Unplugged_From_Ek_Villain_SPOTISAVER.jpg"
   },
   {
     "id": "389a6f94-511a-4429-8edd-f9f4a87f0ad7",
@@ -4285,7 +4593,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Salim_Merchant_-_Aye_Khuda_SPOTISAVER"
+    "audioId": "Salim_Merchant_-_Aye_Khuda_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Salim_Merchant_-_Aye_Khuda_SPOTISAVER.jpg"
   },
   {
     "id": "10e558f2-eb00-4f4c-a9aa-e1ef647e21a6",
@@ -4293,7 +4602,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Salim_Sulaiman_Roop_Kumar_Rathod_Jaideep_Sahni_-_Tujh_Mein_Rab_Dikhta_Hai_SPOTISAVER"
+    "audioId": "Salim_Sulaiman_Roop_Kumar_Rathod_Jaideep_Sahni_-_Tujh_Mein_Rab_Dikhta_Hai_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Salim_Sulaiman_Roop_Kumar_Rathod_Jaideep_Sahni_-_Tujh_Mein_Rab_Dikhta_Hai_SPOTISAVER.jpg"
   },
   {
     "id": "ce548ea5-7734-42b6-b8ff-c6974c8b04ec",
@@ -4301,7 +4611,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Salim_Sulaiman_Shreya_Ghoshal_-_Khwahishein_SPOTISAVER"
+    "audioId": "Salim_Sulaiman_Shreya_Ghoshal_-_Khwahishein_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Salim_Sulaiman_Shreya_Ghoshal_-_Khwahishein_SPOTISAVER.jpg"
   },
   {
     "id": "e2b8f98a-9457-425f-a8a9-f5869d3a574c",
@@ -4309,7 +4620,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Sachin-Jigar_Rekha_Bhardwaj_Arijit_Singh_-_Judaai_SPOTISAVER"
+    "audioId": "Sachin-Jigar_Rekha_Bhardwaj_Arijit_Singh_-_Judaai_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Sachin-Jigar_Rekha_Bhardwaj_Arijit_Singh_-_Judaai_SPOTISAVER.jpg"
   },
   {
     "id": "b7282ea1-163d-4375-af34-5b0ddce7cc77",
@@ -4317,7 +4629,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ritviz_-_Udd_Gaye_-_Bacardi_House_Party_Sessions_SPOTISAVER"
+    "audioId": "Ritviz_-_Udd_Gaye_-_Bacardi_House_Party_Sessions_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ritviz_-_Udd_Gaye_-_Bacardi_House_Party_Sessions_SPOTISAVER.jpg"
   },
   {
     "id": "b1c4770a-8ce6-44c9-a2c7-13d59261c0ab",
@@ -4325,7 +4638,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Nikhil_D_Souza_-_Mere_Bina_SPOTISAVER"
+    "audioId": "Pritam_Nikhil_D_Souza_-_Mere_Bina_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Nikhil_D_Souza_-_Mere_Bina_SPOTISAVER.jpg"
   },
   {
     "id": "b6189f6e-a23d-409d-a644-decfa0d159c0",
@@ -4333,7 +4647,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Rashid_Ali_-_Kabhi_Kabhi_Aditi_SPOTISAVER"
+    "audioId": "Rashid_Ali_-_Kabhi_Kabhi_Aditi_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Rashid_Ali_-_Kabhi_Kabhi_Aditi_SPOTISAVER.jpg"
   },
   {
     "id": "47a736dd-ec6c-44f7-85a1-5459bf5f258d",
@@ -4341,7 +4656,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Atif_Aslam_-_Tu_Jaane_Na_SPOTISAVER"
+    "audioId": "Pritam_Atif_Aslam_-_Tu_Jaane_Na_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Atif_Aslam_-_Tu_Jaane_Na_SPOTISAVER.jpg"
   },
   {
     "id": "20c7ac5c-67f0-4be5-aa7c-d09d4c75ef78",
@@ -4349,7 +4665,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Tochi_Raina_Rekha_Bhardwaj_-_Kabira_SPOTISAVER"
+    "audioId": "Pritam_Tochi_Raina_Rekha_Bhardwaj_-_Kabira_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Tochi_Raina_Rekha_Bhardwaj_-_Kabira_SPOTISAVER.jpg"
   },
   {
     "id": "486c4207-413a-41da-b638-e964cfdfa801",
@@ -4357,7 +4674,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Sreerama_Chandra_Shilpa_Rao_-_Subhanallah_SPOTISAVER"
+    "audioId": "Pritam_Sreerama_Chandra_Shilpa_Rao_-_Subhanallah_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Sreerama_Chandra_Shilpa_Rao_-_Subhanallah_SPOTISAVER.jpg"
   },
   {
     "id": "c9f170c8-166d-4124-82b2-e8bbec3005ea",
@@ -4365,7 +4683,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Mohit_Chauhan_Irshad_Kamil_-_Tum_Se_Hi_SPOTISAVER"
+    "audioId": "Pritam_Mohit_Chauhan_Irshad_Kamil_-_Tum_Se_Hi_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Mohit_Chauhan_Irshad_Kamil_-_Tum_Se_Hi_SPOTISAVER.jpg"
   },
   {
     "id": "8188df25-bd50-4fb4-ba08-34461102f2ba",
@@ -4373,7 +4692,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_KK_-_Kya_Mujhe_Pyar_Hai_From_Woh_Lamhe_SPOTISAVER"
+    "audioId": "Pritam_KK_-_Kya_Mujhe_Pyar_Hai_From_Woh_Lamhe_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_KK_-_Kya_Mujhe_Pyar_Hai_From_Woh_Lamhe_SPOTISAVER.jpg"
   },
   {
     "id": "e5772f4d-39cd-442b-ba68-33fae53897be",
@@ -4381,7 +4701,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Arijit_Singh_Antara_Mitra_-_Janam_Janam_SPOTISAVER"
+    "audioId": "Pritam_Arijit_Singh_Antara_Mitra_-_Janam_Janam_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Arijit_Singh_Antara_Mitra_-_Janam_Janam_SPOTISAVER.jpg"
   },
   {
     "id": "b8e25218-7a39-45d0-99ce-12757c77bbd2",
@@ -4389,7 +4710,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Arijit_Singh_-_Shayad_SPOTISAVER"
+    "audioId": "Pritam_Arijit_Singh_-_Shayad_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Arijit_Singh_-_Shayad_SPOTISAVER.jpg"
   },
   {
     "id": "a420fa91-f07c-436e-a39b-c7da47601630",
@@ -4397,7 +4719,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Arijit_Singh_Amitabh_Bhattacharya_-_Ilahi_SPOTISAVER"
+    "audioId": "Pritam_Arijit_Singh_Amitabh_Bhattacharya_-_Ilahi_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Arijit_Singh_Amitabh_Bhattacharya_-_Ilahi_SPOTISAVER.jpg"
   },
   {
     "id": "85ce1288-552e-4ec3-ab67-062d29eb73b1",
@@ -4405,7 +4728,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Arijit_Singh_-_Ae_Dil_Hai_Mushkil_Title_Track_SPOTISAVER"
+    "audioId": "Pritam_Arijit_Singh_-_Ae_Dil_Hai_Mushkil_Title_Track_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Arijit_Singh_-_Ae_Dil_Hai_Mushkil_Title_Track_SPOTISAVER.jpg"
   },
   {
     "id": "9acdaf97-c259-4a99-9c44-ae99a4533bc1",
@@ -4413,7 +4737,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Arijit_Singh_-_Raabta_SPOTISAVER"
+    "audioId": "Pritam_Arijit_Singh_-_Raabta_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Arijit_Singh_-_Raabta_SPOTISAVER.jpg"
   },
   {
     "id": "fd9ba072-238a-4f4e-8ee7-cd7e42e87d5d",
@@ -4421,7 +4746,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Arijit_Singh_-_Khairiyat_SPOTISAVER"
+    "audioId": "Pritam_Arijit_Singh_-_Khairiyat_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Arijit_Singh_-_Khairiyat_SPOTISAVER.jpg"
   },
   {
     "id": "b1dea252-ee90-48dd-b817-72d4e18b13c3",
@@ -4429,7 +4755,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Amit_Mishra_Shilpa_Rao_-_Bulleya_From_Ae_Dil_Hai_Mushkil_SPOTISAVER"
+    "audioId": "Pritam_Amit_Mishra_Shilpa_Rao_-_Bulleya_From_Ae_Dil_Hai_Mushkil_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Amit_Mishra_Shilpa_Rao_-_Bulleya_From_Ae_Dil_Hai_Mushkil_SPOTISAVER.jpg"
   },
   {
     "id": "0616a384-b5c7-442a-ba8e-479d62d47275",
@@ -4437,7 +4764,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Palak_Muchhal_Amaal_Mallik_Manoj_Muntashir_-_Kaun_Tujhe_SPOTISAVER"
+    "audioId": "Palak_Muchhal_Amaal_Mallik_Manoj_Muntashir_-_Kaun_Tujhe_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Palak_Muchhal_Amaal_Mallik_Manoj_Muntashir_-_Kaun_Tujhe_SPOTISAVER.jpg"
   },
   {
     "id": "d2c24c09-85f7-41b4-b7bd-84559f535684",
@@ -4445,7 +4773,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Arijit_Singh_-_Hawayein_From_Jab_Harry_Met_Sejal_SPOTISAVER"
+    "audioId": "Pritam_Arijit_Singh_-_Hawayein_From_Jab_Harry_Met_Sejal_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Arijit_Singh_-_Hawayein_From_Jab_Harry_Met_Sejal_SPOTISAVER.jpg"
   },
   {
     "id": "5a781879-8966-4078-aecc-6434c9a1d371",
@@ -4453,7 +4782,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Mohammed_Irfan_Arijit_Singh_Saim_Bhat_-_Phir_Mohabbat_SPOTISAVER"
+    "audioId": "Mohammed_Irfan_Arijit_Singh_Saim_Bhat_-_Phir_Mohabbat_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Mohammed_Irfan_Arijit_Singh_Saim_Bhat_-_Phir_Mohabbat_SPOTISAVER.jpg"
   },
   {
     "id": "51f331af-260f-440b-99b3-7d67b180f9c4",
@@ -4461,7 +4791,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Pritam_Anupam_Amod_Rahat_Fateh_Ali_Khan_-_Tera_Deedar_Hua_From_Jannat_2_SPOTISAVER"
+    "audioId": "Pritam_Anupam_Amod_Rahat_Fateh_Ali_Khan_-_Tera_Deedar_Hua_From_Jannat_2_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Pritam_Anupam_Amod_Rahat_Fateh_Ali_Khan_-_Tera_Deedar_Hua_From_Jannat_2_SPOTISAVER.jpg"
   },
   {
     "id": "d8859622-712f-4dcc-a5e6-221a32a3bf49",
@@ -4469,7 +4800,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Mohammed_Irfan_Gajendra_Verma_Mithoon_-_Baarish_SPOTISAVER"
+    "audioId": "Mohammed_Irfan_Gajendra_Verma_Mithoon_-_Baarish_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Mohammed_Irfan_Gajendra_Verma_Mithoon_-_Baarish_SPOTISAVER.jpg"
   },
   {
     "id": "c2844820-3900-4372-8ab9-4f05242ace70",
@@ -4477,7 +4809,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Mithoon_Arijit_Singh_-_Sanam_Re_From_Sanam_Re_SPOTISAVER"
+    "audioId": "Mithoon_Arijit_Singh_-_Sanam_Re_From_Sanam_Re_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Mithoon_Arijit_Singh_-_Sanam_Re_From_Sanam_Re_SPOTISAVER.jpg"
   },
   {
     "id": "537f3b27-9102-4b3d-bc9f-c60c2f084a24",
@@ -4485,7 +4818,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Monty_Sharma_Shaan_-_Jab_Se_Tere_Naina_SPOTISAVER"
+    "audioId": "Monty_Sharma_Shaan_-_Jab_Se_Tere_Naina_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Monty_Sharma_Shaan_-_Jab_Se_Tere_Naina_SPOTISAVER.jpg"
   },
   {
     "id": "39d86876-0ab6-4c0d-9ee5-af20f599eda5",
@@ -4493,7 +4827,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Mithoon_-_Ke_Bin_Tere_SPOTISAVER"
+    "audioId": "Mithoon_-_Ke_Bin_Tere_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Mithoon_-_Ke_Bin_Tere_SPOTISAVER.jpg"
   },
   {
     "id": "80778867-ce9c-4156-a0b9-6efa3e2f6e09",
@@ -4501,7 +4836,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Meet_Bros._Arijit_Singh_-_Ijazat_From_One_Night_Stand_SPOTISAVER"
+    "audioId": "Meet_Bros._Arijit_Singh_-_Ijazat_From_One_Night_Stand_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Meet_Bros._Arijit_Singh_-_Ijazat_From_One_Night_Stand_SPOTISAVER.jpg"
   },
   {
     "id": "7aea2a19-c6ef-42ce-9bef-bb74d71c0b36",
@@ -4509,7 +4845,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "KK_-_Dil_Kyun_Yeh_Mera_SPOTISAVER"
+    "audioId": "KK_-_Dil_Kyun_Yeh_Mera_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/KK_-_Dil_Kyun_Yeh_Mera_SPOTISAVER.jpg"
   },
   {
     "id": "40a2dd0d-3e3d-4839-aa00-396a75cd80e1",
@@ -4517,7 +4854,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Kailash_Kher_Meet_Bros_Anjjan_-_Mere_Nishaan_From_Oh_My_God_SPOTISAVER"
+    "audioId": "Kailash_Kher_Meet_Bros_Anjjan_-_Mere_Nishaan_From_Oh_My_God_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Kailash_Kher_Meet_Bros_Anjjan_-_Mere_Nishaan_From_Oh_My_God_SPOTISAVER.jpg"
   },
   {
     "id": "5ddfa465-2fd5-46a5-a2d2-296a78bc6f77",
@@ -4525,7 +4863,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Jeet_Gannguli_Arijit_Singh_Rashmi_Virag_-_Khamoshiyan_SPOTISAVER"
+    "audioId": "Jeet_Gannguli_Arijit_Singh_Rashmi_Virag_-_Khamoshiyan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Jeet_Gannguli_Arijit_Singh_Rashmi_Virag_-_Khamoshiyan_SPOTISAVER.jpg"
   },
   {
     "id": "73a9eca1-ec22-4e1e-bd66-6fe0a973a858",
@@ -4533,7 +4872,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Kailash_Kher_Paresh_Kamath_Naresh_Kamath_-_Teri_Deewani_SPOTISAVER"
+    "audioId": "Kailash_Kher_Paresh_Kamath_Naresh_Kamath_-_Teri_Deewani_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Kailash_Kher_Paresh_Kamath_Naresh_Kamath_-_Teri_Deewani_SPOTISAVER.jpg"
   },
   {
     "id": "9f7e7b9f-5b6e-40a5-8392-e3e6fc94e249",
@@ -4541,7 +4881,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Kailash_Kher_-_Ya_Rabba_From_Salaam-E-Ishq_SPOTISAVER"
+    "audioId": "Kailash_Kher_-_Ya_Rabba_From_Salaam-E-Ishq_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Kailash_Kher_-_Ya_Rabba_From_Salaam-E-Ishq_SPOTISAVER.jpg"
   },
   {
     "id": "9e3b11e0-4a4b-4ae4-b32a-9e815e62361c",
@@ -4549,7 +4890,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Jawad_Ahmad_Shaarib_Toshi_Arijit_Singh_-_Samjhawan_SPOTISAVER"
+    "audioId": "Jawad_Ahmad_Shaarib_Toshi_Arijit_Singh_-_Samjhawan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Jawad_Ahmad_Shaarib_Toshi_Arijit_Singh_-_Samjhawan_SPOTISAVER.jpg"
   },
   {
     "id": "99b2f658-f982-4af2-8a83-0214ce2dc694",
@@ -4557,7 +4899,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Jeet_Gannguli_Arijit_Singh_Rashmi_Virag_-_Muskurane_-_Romantic_SPOTISAVER"
+    "audioId": "Jeet_Gannguli_Arijit_Singh_Rashmi_Virag_-_Muskurane_-_Romantic_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Jeet_Gannguli_Arijit_Singh_Rashmi_Virag_-_Muskurane_-_Romantic_SPOTISAVER.jpg"
   },
   {
     "id": "2b340869-d4dc-43f0-9fe5-1db115ee00d2",
@@ -4565,7 +4908,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Javed-Mohsin_Arijit_Singh_Shreya_Ghoshal_-_Pal_SPOTISAVER"
+    "audioId": "Javed-Mohsin_Arijit_Singh_Shreya_Ghoshal_-_Pal_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Javed-Mohsin_Arijit_Singh_Shreya_Ghoshal_-_Pal_SPOTISAVER.jpg"
   },
   {
     "id": "9a34b30b-3688-44ab-9847-27b0440acde1",
@@ -4573,7 +4917,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Atif_Aslam_Chinmayi_Pritam_-_Main_Rang_Sharbaton_Ka_From_Phata_Poster_Nikhla_Hero_SPOTISAVER"
+    "audioId": "Atif_Aslam_Chinmayi_Pritam_-_Main_Rang_Sharbaton_Ka_From_Phata_Poster_Nikhla_Hero_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Atif_Aslam_Chinmayi_Pritam_-_Main_Rang_Sharbaton_Ka_From_Phata_Poster_Nikhla_Hero_SPOTISAVER.jpg"
   },
   {
     "id": "cfd01bee-51cc-4006-b458-3fcc70c43a82",
@@ -4581,7 +4926,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Imran_Khan_-_Amplifier_SPOTISAVER"
+    "audioId": "Imran_Khan_-_Amplifier_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Imran_Khan_-_Amplifier_SPOTISAVER.jpg"
   },
   {
     "id": "8d186f88-ea53-4486-b6a7-8df5ace0e6fc",
@@ -4589,7 +4935,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ayushmann_Khurrana_-_Pani_Da_Rang_Male_From_Vicky_Donor_SPOTISAVER"
+    "audioId": "Ayushmann_Khurrana_-_Pani_Da_Rang_Male_From_Vicky_Donor_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ayushmann_Khurrana_-_Pani_Da_Rang_Male_From_Vicky_Donor_SPOTISAVER.jpg"
   },
   {
     "id": "dd189be1-eda3-4a69-8bd1-07bab1bb13a9",
@@ -4597,7 +4944,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Jasleen_Royal_Arijit_Singh_Dulquer_Salmaan_-_Heeriye_feat._Arijit_Singh_SPOTISAVER"
+    "audioId": "Jasleen_Royal_Arijit_Singh_Dulquer_Salmaan_-_Heeriye_feat._Arijit_Singh_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Jasleen_Royal_Arijit_Singh_Dulquer_Salmaan_-_Heeriye_feat._Arijit_Singh_SPOTISAVER.jpg"
   },
   {
     "id": "df35a30b-a109-4b52-b9c9-3a0487324b98",
@@ -4605,7 +4953,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_Mithoon_-_Humdard_SPOTISAVER"
+    "audioId": "Arijit_Singh_Mithoon_-_Humdard_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_Mithoon_-_Humdard_SPOTISAVER.jpg"
   },
   {
     "id": "17f2f939-ce18-461d-bddc-769e37755ae8",
@@ -4621,7 +4970,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Darshan_Raval_Rochak_Kohli_-_Ek_Ladki_Ko_Dekha_Toh_Aisa_Laga_From_Ek_Ladki_Ko_Dekha_Toh_Aisa_Laga_SPOTISAVER"
+    "audioId": "Darshan_Raval_Rochak_Kohli_-_Ek_Ladki_Ko_Dekha_Toh_Aisa_Laga_From_Ek_Ladki_Ko_Dekha_Toh_Aisa_Laga_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Darshan_Raval_Rochak_Kohli_-_Ek_Ladki_Ko_Dekha_Toh_Aisa_Laga_From_Ek_Ladki_Ko_Dekha_Toh_Aisa_Laga_SPOTISAVER.jpg"
   },
   {
     "id": "ac5103f1-4d42-4b0b-92f8-a49052886a1e",
@@ -4629,7 +4979,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Diljit_Dosanjh_Badshah_-_Proper_Patola_From_Proper_Patola_feat._Badshah_SPOTISAVER"
+    "audioId": "Diljit_Dosanjh_Badshah_-_Proper_Patola_From_Proper_Patola_feat._Badshah_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Diljit_Dosanjh_Badshah_-_Proper_Patola_From_Proper_Patola_feat._Badshah_SPOTISAVER.jpg"
   },
   {
     "id": "6b9c5447-8588-4eb5-ae6b-efe3184fecc2",
@@ -4637,7 +4988,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Atif_Aslam_-_Jeena_Jeena_From_Badlapur_SPOTISAVER"
+    "audioId": "Atif_Aslam_-_Jeena_Jeena_From_Badlapur_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Atif_Aslam_-_Jeena_Jeena_From_Badlapur_SPOTISAVER.jpg"
   },
   {
     "id": "c317b431-4cf2-4ffb-8bd8-8f234ba4c852",
@@ -4645,7 +4997,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_Amaal_Mallik_Rashmi_Virag_-_Bol_Do_Na_Zara_SPOTISAVER"
+    "audioId": "Armaan_Malik_Amaal_Mallik_Rashmi_Virag_-_Bol_Do_Na_Zara_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_Amaal_Mallik_Rashmi_Virag_-_Bol_Do_Na_Zara_SPOTISAVER.jpg"
   },
   {
     "id": "97b74a79-f191-43ab-a7df-9f807ba741dd",
@@ -4653,7 +5006,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_Amaal_Mallik_-_Kaun_Tujhe_Armaan_Malik_Version_SPOTISAVER"
+    "audioId": "Armaan_Malik_Amaal_Mallik_-_Kaun_Tujhe_Armaan_Malik_Version_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_Amaal_Mallik_-_Kaun_Tujhe_Armaan_Malik_Version_SPOTISAVER.jpg"
   },
   {
     "id": "617abc2e-1385-42c3-8d75-30d674b9e7f8",
@@ -4661,7 +5015,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_Sachet-Parampara_-_Bekhayali_Arijit_Singh_Version_From_Kabir_Singh_SPOTISAVER"
+    "audioId": "Arijit_Singh_Sachet-Parampara_-_Bekhayali_Arijit_Singh_Version_From_Kabir_Singh_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_Sachet-Parampara_-_Bekhayali_Arijit_Singh_Version_From_Kabir_Singh_SPOTISAVER.jpg"
   },
   {
     "id": "70ee8c33-227e-41a8-a189-e4349dc6cd74",
@@ -4669,7 +5024,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_Amaal_Mallik_-_Main_Hoon_Hero_Tera_Sad_Version_SPOTISAVER"
+    "audioId": "Armaan_Malik_Amaal_Mallik_-_Main_Hoon_Hero_Tera_Sad_Version_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_Amaal_Mallik_-_Main_Hoon_Hero_Tera_Sad_Version_SPOTISAVER.jpg"
   },
   {
     "id": "bf8bdc5b-f707-4462-8cc9-33c0d1b63141",
@@ -4677,7 +5033,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_-_Tere_Ho_Ke_Rahenge_SPOTISAVER"
+    "audioId": "Arijit_Singh_-_Tere_Ho_Ke_Rahenge_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_-_Tere_Ho_Ke_Rahenge_SPOTISAVER.jpg"
   },
   {
     "id": "40dbccf6-4ecd-4923-9f29-1a755067728f",
@@ -4685,7 +5042,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Armaan_Malik_-_Dil_Mein_Ho_Tum_SPOTISAVER"
+    "audioId": "Armaan_Malik_-_Dil_Mein_Ho_Tum_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Armaan_Malik_-_Dil_Mein_Ho_Tum_SPOTISAVER.jpg"
   },
   {
     "id": "09d619fb-9954-469c-8d18-67e942ae97d8",
@@ -4693,7 +5051,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_Chinmayi_Shankar-Ehsaan-Loy_-_Mast_Magan_SPOTISAVER"
+    "audioId": "Arijit_Singh_Chinmayi_Shankar-Ehsaan-Loy_-_Mast_Magan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_Chinmayi_Shankar-Ehsaan-Loy_-_Mast_Magan_SPOTISAVER.jpg"
   },
   {
     "id": "5a31feb0-3eaa-4926-ad9c-6efed26c95ea",
@@ -4701,7 +5060,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_-_Soch_Na_Sake_SPOTISAVER"
+    "audioId": "Arijit_Singh_-_Soch_Na_Sake_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_-_Soch_Na_Sake_SPOTISAVER.jpg"
   },
   {
     "id": "a9a6d507-123e-4369-8d00-ddc69396fbfc",
@@ -4709,7 +5069,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_-_Kalank_Title_Track_SPOTISAVER"
+    "audioId": "Arijit_Singh_-_Kalank_Title_Track_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_-_Kalank_Title_Track_SPOTISAVER.jpg"
   },
   {
     "id": "0b13b44f-bd31-4693-863c-17f09719b441",
@@ -4717,7 +5078,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_-_Naina_SPOTISAVER"
+    "audioId": "Arijit_Singh_-_Naina_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_-_Naina_SPOTISAVER.jpg"
   },
   {
     "id": "884bd4b4-a0d1-4a08-877f-9f671e718fd6",
@@ -4725,7 +5087,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anu_Malik_Papon_Varun_Grover_-_Moh_Moh_Ke_Dhaage_Male_SPOTISAVER"
+    "audioId": "Anu_Malik_Papon_Varun_Grover_-_Moh_Moh_Ke_Dhaage_Male_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anu_Malik_Papon_Varun_Grover_-_Moh_Moh_Ke_Dhaage_Male_SPOTISAVER.jpg"
   },
   {
     "id": "c27b8f49-6e68-420d-986d-20b3119b69c5",
@@ -4733,7 +5096,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Arijit_Singh_-_Suno-_Na_Sangemarmar_SPOTISAVER"
+    "audioId": "Arijit_Singh_-_Suno-_Na_Sangemarmar_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Arijit_Singh_-_Suno-_Na_Sangemarmar_SPOTISAVER.jpg"
   },
   {
     "id": "2595169a-e09f-4486-8aba-0965bbb56b1f",
@@ -4741,7 +5105,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ankit_Tiwari_Sandeep_Nath_-_Sunn_Raha_Hai_SPOTISAVER"
+    "audioId": "Ankit_Tiwari_Sandeep_Nath_-_Sunn_Raha_Hai_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ankit_Tiwari_Sandeep_Nath_-_Sunn_Raha_Hai_SPOTISAVER.jpg"
   },
   {
     "id": "4d73e4fd-eed4-4702-92b3-321d6aaef0e2",
@@ -4749,7 +5114,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Anu_Malik_Monali_Thakur_Varun_Grover_-_Moh_Moh_Ke_Dhaage_Female_SPOTISAVER"
+    "audioId": "Anu_Malik_Monali_Thakur_Varun_Grover_-_Moh_Moh_Ke_Dhaage_Female_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Anu_Malik_Monali_Thakur_Varun_Grover_-_Moh_Moh_Ke_Dhaage_Female_SPOTISAVER.jpg"
   },
   {
     "id": "1598e29d-927a-4247-bb18-a6dbd2ff5499",
@@ -4765,7 +5131,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Amit_Trivedi_Kavita_Seth_Amitabh_Bhattacharya_-_Iktara_From_Wake_Up_Sid_SPOTISAVER"
+    "audioId": "Amit_Trivedi_Kavita_Seth_Amitabh_Bhattacharya_-_Iktara_From_Wake_Up_Sid_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Amit_Trivedi_Kavita_Seth_Amitabh_Bhattacharya_-_Iktara_From_Wake_Up_Sid_SPOTISAVER.jpg"
   },
   {
     "id": "c3c2d934-f4b7-427f-a3e4-0d29035c523c",
@@ -4773,7 +5140,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ankit_Tiwari_Abhendra_Kumar_Upadhyay_-_Tu_Hai_Ki_Nahi_SPOTISAVER"
+    "audioId": "Ankit_Tiwari_Abhendra_Kumar_Upadhyay_-_Tu_Hai_Ki_Nahi_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ankit_Tiwari_Abhendra_Kumar_Upadhyay_-_Tu_Hai_Ki_Nahi_SPOTISAVER.jpg"
   },
   {
     "id": "fa98262f-8d34-4781-af82-9a5da308f16a",
@@ -4781,7 +5149,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Amit_Trivedi_-_Zinda_SPOTISAVER"
+    "audioId": "Amit_Trivedi_-_Zinda_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Amit_Trivedi_-_Zinda_SPOTISAVER.jpg"
   },
   {
     "id": "4b3852d7-d1eb-47d2-98d6-9aba0ddbcc62",
@@ -4789,7 +5158,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Amaal_Mallik_Armaan_Malik_Rashmi_Virag_-_Main_Rahoon_Ya_Na_Rahoon_SPOTISAVER"
+    "audioId": "Amaal_Mallik_Armaan_Malik_Rashmi_Virag_-_Main_Rahoon_Ya_Na_Rahoon_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Amaal_Mallik_Armaan_Malik_Rashmi_Virag_-_Main_Rahoon_Ya_Na_Rahoon_SPOTISAVER.jpg"
   },
   {
     "id": "c1abf45b-292a-4a58-b36e-10a4d46d7d10",
@@ -4797,7 +5167,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ami_Mishra_Kunaal_Vermaa_-_Hasi_-_Male_Version_SPOTISAVER"
+    "audioId": "Ami_Mishra_Kunaal_Vermaa_-_Hasi_-_Male_Version_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ami_Mishra_Kunaal_Vermaa_-_Hasi_-_Male_Version_SPOTISAVER.jpg"
   },
   {
     "id": "b3a08a7d-86be-49e1-84e7-bc846814dfe0",
@@ -4805,7 +5176,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "A.R._Rahman_Javed_Ali_KIRTI_SAGATHIA_-_Tum_Tak_From_Raanjhanaa_SPOTISAVER"
+    "audioId": "A.R._Rahman_Javed_Ali_KIRTI_SAGATHIA_-_Tum_Tak_From_Raanjhanaa_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/A.R._Rahman_Javed_Ali_KIRTI_SAGATHIA_-_Tum_Tak_From_Raanjhanaa_SPOTISAVER.jpg"
   },
   {
     "id": "6f237218-0085-4931-8708-549b063de551",
@@ -4813,7 +5185,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Alka_Yagnik_Arijit_Singh_-_Agar_Tum_Saath_Ho_SPOTISAVER"
+    "audioId": "Alka_Yagnik_Arijit_Singh_-_Agar_Tum_Saath_Ho_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Alka_Yagnik_Arijit_Singh_-_Agar_Tum_Saath_Ho_SPOTISAVER.jpg"
   },
   {
     "id": "c948fb7b-cd00-47ef-86de-03bf1f81feef",
@@ -4821,7 +5194,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ajay-Atul_Sonu_Nigam_-_Abhi_Mujh_Mein_Kahin_SPOTISAVER"
+    "audioId": "Ajay-Atul_Sonu_Nigam_-_Abhi_Mujh_Mein_Kahin_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ajay-Atul_Sonu_Nigam_-_Abhi_Mujh_Mein_Kahin_SPOTISAVER.jpg"
   },
   {
     "id": "91029c00-f489-4169-8575-059d2889a843",
@@ -4829,7 +5203,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "A.R._Rahman_Rabbi_Gulzar_-_Challa_SPOTISAVER"
+    "audioId": "A.R._Rahman_Rabbi_Gulzar_-_Challa_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/A.R._Rahman_Rabbi_Gulzar_-_Challa_SPOTISAVER.jpg"
   },
   {
     "id": "8f8faa27-b508-43d3-b197-cb4f8e20ca44",
@@ -4837,7 +5212,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Akhil_Sachdeva_Tulsi_Kumar_Kumaar_-_Tera_Ban_Jaunga_SPOTISAVER"
+    "audioId": "Akhil_Sachdeva_Tulsi_Kumar_Kumaar_-_Tera_Ban_Jaunga_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Akhil_Sachdeva_Tulsi_Kumar_Kumaar_-_Tera_Ban_Jaunga_SPOTISAVER.jpg"
   },
   {
     "id": "7542739b-9950-4016-b590-5d99cf879d95",
@@ -4845,7 +5221,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Afsana_Khan_Avvy_Sra_Harrdy_Sandhu_-_Titliaan_SPOTISAVER"
+    "audioId": "Afsana_Khan_Avvy_Sra_Harrdy_Sandhu_-_Titliaan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Afsana_Khan_Avvy_Sra_Harrdy_Sandhu_-_Titliaan_SPOTISAVER.jpg"
   },
   {
     "id": "7600defa-4e1e-4498-9a4b-50e1006e27b9",
@@ -4853,7 +5230,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Akhil_Sachdeva_Mansheel_Gujral_-_Humsafar_SPOTISAVER"
+    "audioId": "Akhil_Sachdeva_Mansheel_Gujral_-_Humsafar_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Akhil_Sachdeva_Mansheel_Gujral_-_Humsafar_SPOTISAVER.jpg"
   },
   {
     "id": "b73e80ed-75d4-411e-a8c5-abe02854e382",
@@ -4861,7 +5239,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "A.R._Rahman_Arijit_Singh_-_Enna_Sona_From_OK_Jaanu_SPOTISAVER"
+    "audioId": "A.R._Rahman_Arijit_Singh_-_Enna_Sona_From_OK_Jaanu_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/A.R._Rahman_Arijit_Singh_-_Enna_Sona_From_OK_Jaanu_SPOTISAVER.jpg"
   },
   {
     "id": "bd9445f6-5dd1-4b66-b88b-a566f5eec293",
@@ -4869,7 +5248,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Ajay-Atul_Roop_Kumar_Rathod_-_O_Saiyyan_SPOTISAVER"
+    "audioId": "Ajay-Atul_Roop_Kumar_Rathod_-_O_Saiyyan_SPOTISAVER",
+    "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/Ajay-Atul_Roop_Kumar_Rathod_-_O_Saiyyan_SPOTISAVER.jpg"
   },
   {
     "id": "e5e0a17f-3820-40dd-85a2-87694410af4c",
