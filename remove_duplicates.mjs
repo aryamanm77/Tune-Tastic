@@ -14,8 +14,12 @@ function removeDuplicates() {
   const uniqueSongsMap = new Map();
 
   for (const song of songs) {
-    // Some titles might have small differences, we'll normalize them for comparison
-    const normalizedTitle = song.title.toLowerCase().trim();
+    // Strip trailing numbers/copies from title (e.g. "Believer 1" -> "believer")
+    const normalizedTitle = song.title
+      .toLowerCase()
+      .replace(/\s*\(\d+\)\s*$/, '') // Remove (1), (2), etc at the end
+      .replace(/\s+\d+\s*$/, '')      // Remove " 1", " 2", etc at the end
+      .trim();
     
     // If we haven't seen this title yet, add it
     if (!uniqueSongsMap.has(normalizedTitle)) {
