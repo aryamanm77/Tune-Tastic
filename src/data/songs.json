@@ -1967,7 +1967,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "wswx"
+    "audioId": "wswx",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=wswx&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "cc4253c4-109c-48df-a692-382299480929",
@@ -1993,7 +1994,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "SURFACE_-_Shower_Me_With_Your_Love_4_54_-_Super_Rare_Funk_par_EMRAH_l_Empereur_de_la_FUNK."
+    "audioId": "SURFACE_-_Shower_Me_With_Your_Love_4_54_-_Super_Rare_Funk_par_EMRAH_l_Empereur_de_la_FUNK.",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=SURFACE%20-%20Shower%20Me%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b0faf055-d78a-4c65-9fff-4a9364484ea9",
@@ -2010,7 +2012,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "tumblr_ln862oibSo1qa4w7eo1"
+    "audioId": "tumblr_ln862oibSo1qa4w7eo1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=tumblr%20ln862oibSo1qa&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "42dd8b89-aa79-41ef-a7dc-884b1a71573c",
@@ -2018,7 +2021,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "tumblr_ltqfcsABmi1qdhtgeo1"
+    "audioId": "tumblr_ltqfcsABmi1qdhtgeo1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=tumblr%20ltqfcsABmi1qd&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "7b7e2c2b-5630-4f9d-9300-3b1047cd9b08",
@@ -2026,15 +2030,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "tumblr_ltkn87wC951qcdeuyo1"
+    "audioId": "tumblr_ltkn87wC951qcdeuyo1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=tumblr%20ltkn87wC951qc&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "9730ff34-9468-42a4-94af-744ae9f175db",
     "title": "TheFrayHowToSaveALife",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "The Fray",
+    "album": "The Collection",
     "durationMs": null,
-    "audioId": "TheFrayHowToSaveALife"
+    "audioId": "TheFrayHowToSaveALife",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/cf/89/16/cf891622-f572-1b42-6bb9-0e973e063e35/TheFray_HowToSaveALife_G010000754032B_F_001_RGB.jpeg/500x500bb.jpg"
   },
   {
     "id": "043e674b-fba8-459c-8887-137c723b9f9f",
@@ -2051,7 +2057,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "tumblr_lmj8mwIk4W1qbfgcuo1"
+    "audioId": "tumblr_lmj8mwIk4W1qbfgcuo1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=tumblr%20lmj8mwIk4W1qb&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "cf67bf5f-d6c4-4f40-a022-551313d11295",
@@ -2059,7 +2066,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "tumblr_lfpqy0NpuH1qa6hauo1"
+    "audioId": "tumblr_lfpqy0NpuH1qa6hauo1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=tumblr%20lfpqy0NpuH1qa&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "136b1812-bfd8-45e6-b094-8c4e543a0815",
@@ -2184,7 +2192,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "rfkj7N3XeuB7.128"
+    "audioId": "rfkj7N3XeuB7.128",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=rfkj7N3XeuB7.128&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "e2186921-9d72-4b6a-8b39-0267ce674db0",
@@ -2216,10 +2225,11 @@
   {
     "id": "dce62038-497f-40e9-9e7e-f4cea5039be4",
     "title": "Once In A While I Dream - Tama Shutts",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Tamia",
+    "album": "More",
     "durationMs": null,
-    "audioId": "Once_In_A_While_I_Dream_-_Tama_Shutts"
+    "audioId": "Once_In_A_While_I_Dream_-_Tama_Shutts",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/0d/6f/76/0d6f7653-85f7-34b6-1ddd-1f50a2938701/s05.rxfsyfgk.jpg/500x500bb.jpg"
   },
   {
     "id": "34257757-dbeb-4bd3-af38-9744d1a5722b",
@@ -2236,7 +2246,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "R6DKNWkpc9pp.128"
+    "audioId": "R6DKNWkpc9pp.128",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=R6DKNWkpc9pp.128&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "cb2c3171-5ef8-42c1-8c57-2939d996899f",
@@ -2262,7 +2273,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "p5892"
+    "audioId": "p5892",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=p5892&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "a76f0417-b4d3-4990-b5e1-97297a970e48",
@@ -2270,7 +2282,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "QD477LtevUjv.128"
+    "audioId": "QD477LtevUjv.128",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=QD477LtevUjv.128&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "8dee4d27-a8ee-4b4f-a846-581e5623b290",
@@ -2320,10 +2333,11 @@
   {
     "id": "b19fea85-c385-4b89-b3a2-5485db49891c",
     "title": "No Mercy - When I Die pleer.com",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "No Mercy",
+    "album": "Greatest Hits",
     "durationMs": null,
-    "audioId": "No_Mercy_-_When_I_Die_pleer.com"
+    "audioId": "No_Mercy_-_When_I_Die_pleer.com",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a9/b7/7a/a9b77acd-ee6d-52ed-164e-a113e65821b2/886970428224.jpg/500x500bb.jpg"
   },
   {
     "id": "d247483a-9bbe-4859-b7e0-5b8c13fcf959",
@@ -2358,7 +2372,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Mukbang_-_The_Soundlings"
+    "audioId": "Mukbang_-_The_Soundlings",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Mukbang%20-%20The%20Soundl&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "22fe2cdc-e2bd-4152-bf65-6a42230cdba0",
@@ -2393,15 +2408,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "MHWGO12"
+    "audioId": "MHWGO12",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=MHWGO12&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "5f0723b9-4fc3-4a81-9140-420f2f9fb6f5",
     "title": "Lost Myself - Lalanne",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "SYML",
+    "album": "Lost Myself - Single",
     "durationMs": null,
-    "audioId": "Lost_Myself_-_Lalanne"
+    "audioId": "Lost_Myself_-_Lalanne",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/35/19/68/351968d5-8d1c-715a-f50f-f910fedf3c28/067003366663.png/500x500bb.jpg"
   },
   {
     "id": "db780332-a60a-4e39-baa4-80144083c4e4",
@@ -2409,7 +2426,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Kuntry_Boy_-_Anno_Domini_Beats"
+    "audioId": "Kuntry_Boy_-_Anno_Domini_Beats",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Kuntry%20Boy%20-%20Anno%20Do&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "22b2b4eb-1990-47de-87b0-0dc4b98bf330",
@@ -2516,7 +2534,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Fearless_-_The_Soundlings_feat._Ruby_Jay"
+    "audioId": "Fearless_-_The_Soundlings_feat._Ruby_Jay",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Fearless%20-%20The%20Sound&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "8a0345f7-a7b9-42b5-bbab-edbad6c73f4f",
@@ -2524,7 +2543,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "FF539841-E4F7-860C-98723CD8AF175D02"
+    "audioId": "FF539841-E4F7-860C-98723CD8AF175D02",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=FF539841-E4F7-860C-9&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "7bf0d0ec-99a4-46a5-8dc2-7a7fff6ca15f",
@@ -2532,7 +2552,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Halfway_In_-_Anno_Domini_Beats"
+    "audioId": "Halfway_In_-_Anno_Domini_Beats",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Halfway%20In%20-%20Anno%20Do&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "5e455a67-a0b8-4ab7-9763-5330914080f9",
@@ -2549,7 +2570,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "FILEiTj9ko"
+    "audioId": "FILEiTj9ko",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=FILEiTj9ko&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "3090f3b5-4bd6-4bcd-b475-9f311b61a7ac",
@@ -2557,7 +2579,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Europroject_-_Carrie"
+    "audioId": "Europroject_-_Carrie",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Europroject%20-%20Carrie&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "7b9e7288-3434-461e-9629-d3ffc75c3a6f",
@@ -2574,7 +2597,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "esn_2004924229282819"
+    "audioId": "esn_2004924229282819",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=esn%202004924229282819&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "336cb93f-6434-44ef-9f1b-4276b9a125bb",
@@ -2591,7 +2615,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "ertyreterwe"
+    "audioId": "ertyreterwe",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=ertyreterwe&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "aa056213-104c-43e9-960e-c31f1c6cd3cb",
@@ -2608,7 +2633,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Chris_Brown_feat._Jordin_Sparks_-_No_air_music.nur.kz"
+    "audioId": "Chris_Brown_feat._Jordin_Sparks_-_No_air_music.nur.kz",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Chris%20Brown%20feat.%20Jo&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "5e6eadca-629d-43e5-8fcb-996e3fbebb45",
@@ -2616,7 +2642,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "Cm2gqqFYaC2g.128"
+    "audioId": "Cm2gqqFYaC2g.128",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Cm2gqqFYaC2g.128&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "79f2a77d-5355-4bbe-bced-c17640bf34da",
@@ -2642,7 +2669,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "byi53qTtT9xB.128"
+    "audioId": "byi53qTtT9xB.128",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=byi53qTtT9xB.128&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "610de4f4-83c8-4342-8560-b32be66f1be9",
@@ -2704,7 +2732,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "BgMusic-44661-633549441219911250"
+    "audioId": "BgMusic-44661-633549441219911250",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=BgMusic-44661-633549&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "7d7bb130-cc16-4369-83d6-c914f2858781",
@@ -2712,7 +2741,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "20090312151822"
+    "audioId": "20090312151822",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "ea1ea809-5a4a-4dd5-b117-a0fc2a48306b",
@@ -2729,7 +2759,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "13032305766-tpfil02aw-4504"
+    "audioId": "13032305766-tpfil02aw-4504",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=-tpfil02aw-4504&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "f93a457a-166e-4218-9cde-244058d0f54e",
@@ -2737,7 +2768,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "425408d44ab0af4d"
+    "audioId": "425408d44ab0af4d",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=d44ab0af4d&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "97f40c8d-cbaf-4cc0-a90a-cfef5db74d98",
@@ -2754,7 +2786,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "20_Perfect_Gentleman_Remix_Ft_Xzibit_and_King_Yellowman"
+    "audioId": "20_Perfect_Gentleman_Remix_Ft_Xzibit_and_King_Yellowman",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Perfect%20Gentleman%20Re&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "6abe1920-5c6a-4d22-b1e5-edb6b4437ea9",
@@ -2852,7 +2885,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "03HomebyShadowandShadow"
+    "audioId": "03HomebyShadowandShadow",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=HomebyShadowandShado&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "49f7c6f7-915c-42da-8c91-7fdd7e90f462",
@@ -2932,7 +2966,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "zy_0r_zy_0r_zo_y2O-OK"
+    "audioId": "zy_0r_zy_0r_zo_y2O-OK",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=zy%200r%20zy%200r%20zo%20y2O-O&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "8a738d9d-580c-4047-a5ac-e159786cf836",
@@ -5430,42 +5465,47 @@
   {
     "id": "dad0459a-f051-4e54-88d6-75fbba81286b",
     "title": "Lot to Learn wxmhd4",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Winyah",
+    "album": "Lot To Learn",
     "durationMs": null,
-    "audioId": "dcjd0labu:15_Lot_to_Learn_wxmhd4"
+    "audioId": "dcjd0labu:15_Lot_to_Learn_wxmhd4",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/96/df/d6/96dfd6b1-bddc-5838-b461-298e1417cc53/193436414074_LotToLearn.jpg/500x500bb.jpg"
   },
   {
     "id": "f706a093-f83c-4bf0-9ec3-a8e1e7f9783a",
     "title": "Aaj Phir axii0s",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Arijit Singh & Samira Koppikar",
+    "album": "Hate Story 2 (Original Motion Picture Soundtrack)",
     "durationMs": null,
-    "audioId": "dcjd0labu:Aaj_Phir_axii0s"
+    "audioId": "dcjd0labu:Aaj_Phir_axii0s",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/bf/27/aa/bf27aa87-10b2-464f-8de8-475aa6c6eee0/8902894355919_cover.jpg/500x500bb.jpg"
   },
   {
     "id": "bf7371d7-e588-4ada-985c-141344b9cff7",
     "title": "Burn hpz5lh",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Phillipa Soo",
+    "album": "Hamilton: An American Musical (Original Broadway Cast Recording)",
     "durationMs": null,
-    "audioId": "dcjd0labu:15_Burn_hpz5lh"
+    "audioId": "dcjd0labu:15_Burn_hpz5lh",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/f3/99/31/f399318c-3f0d-bfd5-7a69-0b78b22a90df/075679921338.jpg/500x500bb.jpg"
   },
   {
     "id": "bf454ad0-deb2-49b4-b3d7-49c3424578c8",
     "title": "Rockabye feat. Sean Paul Anne-Marie iblecf",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Clean Bandit",
+    "album": "Speak Your Mind (Deluxe)",
     "durationMs": null,
-    "audioId": "dcjd0labu:17_Rockabye_feat._Sean_Paul_Anne-Marie_iblecf"
+    "audioId": "dcjd0labu:17_Rockabye_feat._Sean_Paul_Anne-Marie_iblecf",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c1/5d/9b/c15d9bc5-4181-9874-d65b-7741203ccad6/190295567279.jpg/500x500bb.jpg"
   },
   {
     "id": "3d23329b-f820-4fbb-82ec-4126e8901f6a",
     "title": "Power nde1e3",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Little Mix",
+    "album": "Glory Days: The Platinum Edition",
     "durationMs": null,
-    "audioId": "dcjd0labu:18_Power_nde1e3"
+    "audioId": "dcjd0labu:18_Power_nde1e3",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/62/a1/1e/62a11e38-a0e9-1c3d-ede1-ce7dd815158f/886446834702.jpg/500x500bb.jpg"
   },
   {
     "id": "3f0fcdd1-5abf-4bff-bc70-9ddc16efab78",
@@ -5479,50 +5519,56 @@
   {
     "id": "78d9bb8e-0fbd-45ba-a563-c2aec06d0610",
     "title": "The Greatest feat. Kendrick Lamar hydkrj",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Sia",
+    "album": "This Is Acting (Deluxe Version)",
     "durationMs": null,
-    "audioId": "dcjd0labu:14_The_Greatest_feat._Kendrick_Lamar_hydkrj"
+    "audioId": "dcjd0labu:14_The_Greatest_feat._Kendrick_Lamar_hydkrj",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8b/81/ba/8b81ba55-0a7f-a0e5-6593-d44f1565cdd1/886446097428.jpg/500x500bb.jpg"
   },
   {
     "id": "d81435b8-c053-40db-ba8f-eceff8c88fb7",
     "title": "Faded sqgmtb",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Alan Walker",
+    "album": "Faded - EP",
     "durationMs": null,
-    "audioId": "dcjd0labu:15_Faded_sqgmtb"
+    "audioId": "dcjd0labu:15_Faded_sqgmtb",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/0d/a3/1a/0da31af7-d0ff-9bee-c427-1b6d0336f6fc/886446321981.jpg/500x500bb.jpg"
   },
   {
     "id": "fe020df6-5198-44a8-851c-e504fade4fac",
     "title": "So Am I trbbiz",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Ava Max",
+    "album": "Heaven & Hell",
     "durationMs": null,
-    "audioId": "dcjd0labu:14_So_Am_I_trbbiz"
+    "audioId": "dcjd0labu:14_So_Am_I_trbbiz",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/94/74/1e/94741ee9-bb3c-4c9f-da27-e04d9878faae/075679797032.jpg/500x500bb.jpg"
   },
   {
     "id": "25823a04-21fe-412e-ac0f-b57f6b5c0bb2",
     "title": "Warrior qtxuqx",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Gentleman",
+    "album": "Gratitude",
     "durationMs": null,
-    "audioId": "dcjd0labu:13_Warrior_qtxuqx"
+    "audioId": "dcjd0labu:13_Warrior_qtxuqx",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4a/6f/d5/4a6fd5f5-1281-adf2-5ae3-76275a5df8d1/5026854858173.jpg/500x500bb.jpg"
   },
   {
     "id": "19c4024a-9376-4276-a842-020e2cc9f9a3",
     "title": "Peaches feat. Daniel Caesar Giveon cmdp1b",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Justin Bieber",
+    "album": "Justice",
     "durationMs": null,
-    "audioId": "dcjd0labu:12_Peaches_feat._Daniel_Caesar_Giveon_cmdp1b"
+    "audioId": "dcjd0labu:12_Peaches_feat._Daniel_Caesar_Giveon_cmdp1b",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/e0/92/da/e092da2d-9f6d-11dc-7843-2021e95a2b61/21UMGIM17518.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "9f8cf29f-cbe9-4dfd-8ee0-5fc07a067c96",
     "title": "thank u next cgsx1s",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Ariana Grande",
+    "album": "thank u, next",
     "durationMs": null,
-    "audioId": "dcjd0labu:11_thank_u_next_cgsx1s"
+    "audioId": "dcjd0labu:11_thank_u_next_cgsx1s",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/bb/69/07/bb6907de-8ad4-970b-3311-121320e1bf9c/19UMGIM03691.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "12a5abea-a2cf-4511-93b8-52c233d48bc9",
@@ -5536,18 +5582,20 @@
   {
     "id": "adfb9562-b9ab-42c2-a434-d6b090f6d7a2",
     "title": "Infinity cjrt4c",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Sleepy Nuts",
+    "album": "Deep Relaxation Deep Sleep UnderWater Sounds for Deep Focus",
     "durationMs": null,
-    "audioId": "dcjd0labu:12_Infinity_cjrt4c"
+    "audioId": "dcjd0labu:12_Infinity_cjrt4c",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bd/0e/87/bd0e87c1-2e13-096e-3d56-1f66f0b649c1/4550759695881_cover.jpg/500x500bb.jpg"
   },
   {
     "id": "82a815a8-c108-4fc2-adde-d6f9a818301f",
     "title": "A Thousand Years feat. Steve Kazee - Pt. 2 The Twilight Saga  Breaking Dawn Soundtrack oukmhf",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Christina Perri",
+    "album": "The Twilight Saga: Breaking Dawn - Pt. 1 (Original Motion Picture Soundtrack)",
     "durationMs": null,
-    "audioId": "dcjd0labu:13_A_Thousand_Years_feat._Steve_Kazee_-_Pt._2_The_Twilight_Saga__Breaking_Dawn_Soundtrack_oukmhf"
+    "audioId": "dcjd0labu:13_A_Thousand_Years_feat._Steve_Kazee_-_Pt._2_The_Twilight_Saga__Breaking_Dawn_Soundtrack_oukmhf",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c9/6e/21/c96e2143-8f84-2ea5-0528-37205f7d5c6d/mzi.jdvbfvnj.jpg/500x500bb.jpg"
   },
   {
     "id": "ac609b7a-4b19-415a-8ac6-293b52cb8882",
@@ -5561,10 +5609,11 @@
   {
     "id": "542fabb8-7e07-4f20-be69-7d92d2605289",
     "title": "positions ticbl2",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Trisha Wolf",
+    "album": "Ballet Class with Ariana",
     "durationMs": null,
-    "audioId": "dcjd0labu:12_positions_ticbl2"
+    "audioId": "dcjd0labu:12_positions_ticbl2",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f5/31/98/f53198af-fa51-6cd0-6430-170c3f754b5a/859732165439_cover.jpg/500x500bb.jpg"
   },
   {
     "id": "bf9a3214-aeba-4bf8-ad3e-f8f9d98cc40b",
@@ -5578,26 +5627,29 @@
   {
     "id": "ee1af0a1-801f-4b01-bf32-75901eb15006",
     "title": "Title a6p3py",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Meghan Trainor",
+    "album": "Title (Special Edition)",
     "durationMs": null,
-    "audioId": "dcjd0labu:09_Title_a6p3py"
+    "audioId": "dcjd0labu:09_Title_a6p3py",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/0b/ca/19/0bca19d8-6e34-d811-d169-dbf8855f71f7/mzm.nkngwyss.jpg/500x500bb.jpg"
   },
   {
     "id": "962c041f-9f05-4fa7-b6a5-966931a08fca",
     "title": "Enchanted clnoxn",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Taylor Swift",
+    "album": "Speak Now",
     "durationMs": null,
-    "audioId": "dcjd0labu:09_Enchanted_clnoxn"
+    "audioId": "dcjd0labu:09_Enchanted_clnoxn",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/d4/23/57/d423579f-24f7-5c82-ed10-fbfd21ceef25/10UMDIM00487.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "e0baad22-d87a-471f-a415-63495a8d1fb2",
     "title": "Broken Angel ykzm5w",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Arash",
+    "album": "SUPERMAN",
     "durationMs": null,
-    "audioId": "dcjd0labu:11_Broken_Angel_ykzm5w"
+    "audioId": "dcjd0labu:11_Broken_Angel_ykzm5w",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a7/8b/eb/a78beb7d-072e-37ea-a876-a01850b77424/190295801557.jpg/500x500bb.jpg"
   },
   {
     "id": "3ad66359-ec73-475d-9eaf-5df85fa547cd",
@@ -5611,10 +5663,11 @@
   {
     "id": "d1fcc590-bbf2-450d-9288-36f97cb6b208",
     "title": "Darkside zsm72d",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Neoni",
+    "album": "WARS IN WONDERLAND",
     "durationMs": null,
-    "audioId": "dcjd0labu:11_Darkside_zsm72d"
+    "audioId": "dcjd0labu:11_Darkside_zsm72d",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5c/34/6f/5c346f5b-4e4a-d3f7-67ef-411f98aa75e9/4260571122075.png/500x500bb.jpg"
   },
   {
     "id": "c6d634a1-4e36-4947-8b98-e40b4f925d75",
@@ -5637,10 +5690,11 @@
   {
     "id": "835e09a3-31ac-492e-84ce-60b9cb06ecb0",
     "title": "Roses Are Red - Original Version eowtdm",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Aqua",
+    "album": "Aquarium (Special Edition)",
     "durationMs": null,
-    "audioId": "dcjd0labu:09_Roses_Are_Red_-_Original_Version_eowtdm"
+    "audioId": "dcjd0labu:09_Roses_Are_Red_-_Original_Version_eowtdm",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/5f/11/c7/5f11c724-18cc-504b-cda9-0480c64db162/16UMGIM67342.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "02e0f372-73bb-4960-9d33-b0f6ea3e61dc",
@@ -5654,26 +5708,29 @@
   {
     "id": "e0db67dd-ee0f-4731-8ccb-d191ee7ed3be",
     "title": "At My Worst mxlvxv",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Pink Sweat$",
+    "album": "At My Worst (feat. Kehlani) - Single",
     "durationMs": null,
-    "audioId": "dcjd0labu:10_At_My_Worst_mxlvxv"
+    "audioId": "dcjd0labu:10_At_My_Worst_mxlvxv",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/14/43/11/14431117-a504-f6f5-2f8d-0805e77ba809/075679792013.jpg/500x500bb.jpg"
   },
   {
     "id": "de36a7a8-18d2-47df-befd-f84bb53869d7",
     "title": "7 rings vg8xci",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Ariana Grande",
+    "album": "thank u, next",
     "durationMs": null,
-    "audioId": "dcjd0labu:10_7_rings_vg8xci"
+    "audioId": "dcjd0labu:10_7_rings_vg8xci",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/bb/69/07/bb6907de-8ad4-970b-3311-121320e1bf9c/19UMGIM03691.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "43c954c2-6c5f-4835-8eb0-6a3684e5e142",
     "title": "In My Feelings c8crmv",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Drake",
+    "album": "Scorpion",
     "durationMs": null,
-    "audioId": "dcjd0labu:09_In_My_Feelings_c8crmv"
+    "audioId": "dcjd0labu:09_In_My_Feelings_c8crmv",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/bb/6d/8f/bb6d8f67-6d04-10b5-dd62-eb5809ac54fc/00602567879152.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "1c98af01-6531-464b-9454-25d65565f099",
@@ -5687,10 +5744,11 @@
   {
     "id": "f7bc003d-ad9d-4dbd-9eab-102229964fac",
     "title": "Rebel kunsi6",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Anne Wilson",
+    "album": "REBEL",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_Rebel_kunsi6"
+    "audioId": "dcjd0labu:08_Rebel_kunsi6",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/bb/6d/c5/bb6dc5e3-8903-54ff-9576-32a054c96538/24UMGIM01523.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "f6349da8-386c-40b2-ae01-eb2d696c3535",
@@ -5704,58 +5762,65 @@
   {
     "id": "5feba920-1152-4ae9-b1be-b5beacaa5ad8",
     "title": "Bad Girlfriend pbfitp",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Theory of a Deadman",
+    "album": "Scars & Souvenirs",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_Bad_Girlfriend_pbfitp"
+    "audioId": "dcjd0labu:08_Bad_Girlfriend_pbfitp",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/b3/33/33/b33333dc-5fdd-0416-8528-fd62cc9e9004/mzi.sscppuqz.jpg/500x500bb.jpg"
   },
   {
     "id": "209503d2-230e-4722-b547-bf018b1aeeb7",
     "title": "Better Now g4boo6",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Post Malone",
+    "album": "beerbongs & bentleys",
     "durationMs": null,
-    "audioId": "dcjd0labu:09_Better_Now_g4boo6"
+    "audioId": "dcjd0labu:09_Better_Now_g4boo6",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/55/9f/fb/559ffb75-3c00-abd6-7b1f-8b6b1518b173/18UMGIM22101.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "655385e4-8769-4181-84b2-db232e3ca8b1",
     "title": "E.T  mgmwwj",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Katy Perry",
+    "album": "Teenage Dream",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_E.T__mgmwwj"
+    "audioId": "dcjd0labu:08_E.T__mgmwwj",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c8/d3/42/c8d342af-26d9-3ec2-c511-e1eaf860e299/13UABIM57787.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "2f8b3701-5af8-4524-bb42-a62a53c7a53e",
     "title": "Sit Still Look Pretty coy97k",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Daya",
+    "album": "Sit Still, Look Pretty",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_Sit_Still_Look_Pretty_coy97k"
+    "audioId": "dcjd0labu:08_Sit_Still_Look_Pretty_coy97k",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1a/00/ff/1a00ffeb-9ad0-1f9c-d0c2-dcb04e7fe0b0/889853626625_Cover.jpg/500x500bb.jpg"
   },
   {
     "id": "3410149f-de3c-4415-b4ae-f26a87fcf79b",
     "title": "Lollipop Candyman mu4tht",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Rage Of Light",
+    "album": "Chasing a Reflection - EP",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_Lollipop_Candyman_mu4tht"
+    "audioId": "dcjd0labu:08_Lollipop_Candyman_mu4tht",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f5/8d/31/f58d3165-3244-c5c1-80d3-722c917a887c/cover_4050215356122.jpg/500x500bb.jpg"
   },
   {
     "id": "c8f27c27-b702-4962-bf0a-f7c1cca02e33",
     "title": "My Dilemma qjyiwt",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Selena Gomez & The Scene",
+    "album": "When the Sun Goes Down (Deluxe Edition)",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_My_Dilemma_qjyiwt"
+    "audioId": "dcjd0labu:08_My_Dilemma_qjyiwt",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/77/5f/85/775f8517-cac1-bd7f-cd06-c9c8ffc574cb/11DMGIM02920.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "5f79a77d-4162-4c97-8c20-126103aa58c3",
     "title": "Bad Blood bnm38h",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Taylor Swift",
+    "album": "1989",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_Bad_Blood_bnm38h"
+    "audioId": "dcjd0labu:08_Bad_Blood_bnm38h",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/89/4a/4a/894a4ab9-b0b0-9ea5-ca41-8da0b9b79453/14UMDIM03405.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "709e3e98-b59c-42b7-a0e4-34ae6b543791",
@@ -5787,18 +5852,20 @@
   {
     "id": "e6fa024a-34a5-4a87-af26-2f600f9f4039",
     "title": "happier smztir",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Marshmello & Bastille",
+    "album": "Happier (Slowed + Reverb) - Single",
     "durationMs": null,
-    "audioId": "dcjd0labu:08_happier_smztir"
+    "audioId": "dcjd0labu:08_happier_smztir",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a3/40/42/a3404244-60e9-222b-9da1-4dbcb8e5b8d9/cover.jpg/500x500bb.jpg"
   },
   {
     "id": "d710b7f7-b56d-4acf-8ce1-c19990253c1b",
     "title": "ocean eyes leeasx",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Billie Eilish",
+    "album": "dont smile at me",
     "durationMs": null,
-    "audioId": "dcjd0labu:07_ocean_eyes_leeasx"
+    "audioId": "dcjd0labu:07_ocean_eyes_leeasx",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/02/1d/30/021d3036-5503-3ed3-df00-882f2833a6ae/17UM1IM17026.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "820f0106-3030-4e60-813b-d5a0c36d051d",
@@ -5821,10 +5888,11 @@
   {
     "id": "04f01459-31b9-4e27-8aef-8c325988c50e",
     "title": "Unstoppable asmpz4",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Sia",
+    "album": "This Is Acting",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Unstoppable_asmpz4"
+    "audioId": "dcjd0labu:05_Unstoppable_asmpz4",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/bc/13/27/bc13275c-8b26-802d-771b-d15ae00fb530/mzm.hvpwjsvi.jpg/500x500bb.jpg"
   },
   {
     "id": "ba92f9fa-f35c-4a42-ba9d-d80f44511dd2",
@@ -5838,66 +5906,74 @@
   {
     "id": "68d57b37-ae5e-48dd-9bf6-59c5e393853d",
     "title": "FRIENDS fqnhzw",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Alabama Shakes",
+    "album": "I Must Be Dreaming",
     "durationMs": null,
-    "audioId": "dcjd0labu:07_FRIENDS_fqnhzw"
+    "audioId": "dcjd0labu:07_FRIENDS_fqnhzw",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/8c/13/b6/8c13b6a7-cc9b-2bd7-8d8a-f3255c3967e5/26UMGIM82889.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "d10ac5c5-0fbc-4096-8cd0-20d170f19e8c",
     "title": "Bezos I jhhhsk",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "McRoMusic",
+    "album": "Bezos I - Single",
     "durationMs": null,
-    "audioId": "dcjd0labu:07_Bezos_I_jhhhsk"
+    "audioId": "dcjd0labu:07_Bezos_I_jhhhsk",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8d/c4/7b/8dc47b6c-8f07-e4e2-2944-1b66519ad659/artwork.jpg/500x500bb.jpg"
   },
   {
     "id": "f15cb4a3-1791-4647-8f47-f95c21036477",
     "title": "i hate u i love u feat. olivia o brien tgnlq7",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "gnash",
+    "album": "us",
     "durationMs": null,
-    "audioId": "dcjd0labu:06_i_hate_u_i_love_u_feat._olivia_o_brien_tgnlq7"
+    "audioId": "dcjd0labu:06_i_hate_u_i_love_u_feat._olivia_o_brien_tgnlq7",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/64/db/56/64db56b7-8188-9dcc-6cda-d86d59ecbe9f/075679911889.jpg/500x500bb.jpg"
   },
   {
     "id": "2c2d222c-6ec8-4a8a-8598-69b796920078",
     "title": "I Love You Like a Love Song Cover oqzbcl",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Selena Gomez & The Scene",
+    "album": "When The Sun Goes Down",
     "durationMs": null,
-    "audioId": "dcjd0labu:06_I_Love_You_Like_a_Love_Song_Cover_oqzbcl"
+    "audioId": "dcjd0labu:06_I_Love_You_Like_a_Love_Song_Cover_oqzbcl",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/70/31/00/7031001b-f918-6009-76c2-9db98d3ef811/11DMGIM02401.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "406b4e2e-8b0f-493f-a6f6-4f6db4c101a6",
     "title": "Take a Hint fyldbp",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Victorious Cast",
+    "album": "Take a Hint (feat. Victoria Justice & Elizabeth Gillies) - Single",
     "durationMs": null,
-    "audioId": "dcjd0labu:06_Take_a_Hint_fyldbp"
+    "audioId": "dcjd0labu:06_Take_a_Hint_fyldbp",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Features114/v4/5e/c7/ac/5ec7ac28-d151-96c8-b827-8f088014ee39/dj.nqxntsow.jpg/500x500bb.jpg"
   },
   {
     "id": "736938f9-a3a6-4f57-a1ec-634757e7e8b0",
     "title": "We Don t Talk Anymore feat. Selena Gomez jwfexe",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Charlie Puth",
+    "album": "2016 Summer Vibes",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_We_Don_t_Talk_Anymore_feat._Selena_Gomez_jwfexe"
+    "audioId": "dcjd0labu:05_We_Don_t_Talk_Anymore_feat._Selena_Gomez_jwfexe",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/02/ba/2e/02ba2ef5-cb3a-2ec6-ce8e-1d0095f40fef/5059460398115.jpg/500x500bb.jpg"
   },
   {
     "id": "cd4af1c0-d808-4514-994d-4536f38574d4",
     "title": "Perfect flinca",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Ed Sheeran",
+    "album": "÷ (Deluxe)",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Perfect_flinca"
+    "audioId": "dcjd0labu:05_Perfect_flinca",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/15/e6/e8/15e6e8a4-4190-6a8b-86c3-ab4a51b88288/190295851286.jpg/500x500bb.jpg"
   },
   {
     "id": "36ae2431-b345-47da-8b39-196fd559c47f",
     "title": "Face Off qxjr0l",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Christophe Rousset, Monteverdi Choir & English Baroque Soloists",
+    "album": "Handel: Messiah",
     "durationMs": null,
-    "audioId": "dcjd0labu:06_Face_Off_qxjr0l"
+    "audioId": "dcjd0labu:06_Face_Off_qxjr0l",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/a0/b3/64/a0b36402-525c-fd5f-6879-2a88da26fcea/3149020977477_cover.jpg/500x500bb.jpg"
   },
   {
     "id": "2f4abaca-55e2-40a9-989f-242761e2d88e",
@@ -5911,82 +5987,92 @@
   {
     "id": "347bb25d-e102-4c3c-b1e0-ec7a0080cb61",
     "title": "Mercy c9wzps",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Shawn Mendes",
+    "album": "Illuminate (Deluxe)",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Mercy_c9wzps"
+    "audioId": "dcjd0labu:05_Mercy_c9wzps",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5c/57/e4/5c57e46a-0950-7ebd-8010-28453c1c0055/16UMGIM51723.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "2bcc165c-5ae2-4b9c-9b3a-2d5f6efb5221",
     "title": "Love Yourself hrzlio",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Justin Bieber",
+    "album": "Purpose (Deluxe)",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Love_Yourself_hrzlio"
+    "audioId": "dcjd0labu:05_Love_Yourself_hrzlio",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/75/11/84/751184b0-77df-1eff-bb20-dac03247425d/15UMGIM59808.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "4f77216a-203a-4a88-a9f3-c8f8108c50f7",
     "title": "Me And My Broken Heart 1 zoxxkm",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Rixton",
+    "album": "Let the Road",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Me_And_My_Broken_Heart_1_zoxxkm"
+    "audioId": "dcjd0labu:05_Me_And_My_Broken_Heart_1_zoxxkm",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3d/5e/f5/3d5ef5fc-442f-8023-1861-15a0b9906718/00602537979899.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "f3ced4c4-e053-44da-8fe0-d13c90dce769",
     "title": "Work ym6nhm",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Charlotte Day Wilson",
+    "album": "CDW - EP",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Work_ym6nhm"
+    "audioId": "dcjd0labu:04_Work_ym6nhm",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d1/87/ee/d187ee4b-629b-43b9-b48b-16113722dda2/625712598326.jpg/500x500bb.jpg"
   },
   {
     "id": "1ce95ad0-f130-4ded-a675-15057bf096c1",
     "title": "Doctor Jones kkg8vu",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Aqua",
+    "album": "Aquarium",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Doctor_Jones_kkg8vu"
+    "audioId": "dcjd0labu:05_Doctor_Jones_kkg8vu",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/42/e0/d0/42e0d00a-b4da-3590-b3b2-6decf900184d/06UMGIM39320.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "79eadb3a-06d0-45dc-824e-c986bfb7c1e4",
     "title": "Clarity viqwtq",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Zedd",
+    "album": "Clarity",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Clarity_viqwtq"
+    "audioId": "dcjd0labu:05_Clarity_viqwtq",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/d9/f2/2b/d9f22b74-8ef3-73d8-5da1-e5268c42f114/12UMGIM52120.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "13b69afe-2c8a-4875-af50-e9ad384853b1",
     "title": "Fight Song uw7vii",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Rachel Platten",
+    "album": "Wildfire",
     "durationMs": null,
-    "audioId": "dcjd0labu:05_Fight_Song_uw7vii"
+    "audioId": "dcjd0labu:05_Fight_Song_uw7vii",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/06/3d/34/063d3412-0487-f0c5-39c2-8013f6669f9a/886445624960.jpg/500x500bb.jpg"
   },
   {
     "id": "a4f5dac9-c9a5-4340-bb00-e86a7ac51caa",
     "title": "Who Says zembgs",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Selena Gomez & The Scene",
+    "album": "When The Sun Goes Down",
     "durationMs": null,
-    "audioId": "dcjd0labu:03_Who_Says_zembgs"
+    "audioId": "dcjd0labu:03_Who_Says_zembgs",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/70/31/00/7031001b-f918-6009-76c2-9db98d3ef811/11DMGIM02401.rgb.jpg/500x500bb.jpg"
   },
   {
     "id": "79b15937-2ea4-4780-aec5-0d8b2e5aab7f",
     "title": "Worth It feat. Kid Ink ongnm8",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Fifth Harmony",
+    "album": "Reflection (Deluxe)",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Worth_It_feat._Kid_Ink_ongnm8"
+    "audioId": "dcjd0labu:04_Worth_It_feat._Kid_Ink_ongnm8",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/98/e0/57/98e0573f-52c5-b8bf-f2cf-6246d055c60d/dj.kmbgqmzy.jpg/500x500bb.jpg"
   },
   {
     "id": "c03add70-eebd-4161-beef-3f0ccc266c8b",
     "title": "Lily bqs7ay",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Alan Walker, K-391 & Emelie Hollow",
+    "album": "Different World",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Lily_bqs7ay"
+    "audioId": "dcjd0labu:04_Lily_bqs7ay",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/7b/37/53/7b375382-ce23-cfa4-03d4-1db4b0f89d72/886447442562.jpg/500x500bb.jpg"
   },
   {
     "id": "263b4dcf-19d4-47da-8d4b-830acfb9904d",
@@ -6000,10 +6086,11 @@
   {
     "id": "6ece307a-c627-4e1b-afbf-accc350d3286",
     "title": "Just Give Me a Reason feat. Nate Ruess uv2l6t",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "P!nk",
+    "album": "The Truth About Love",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Just_Give_Me_a_Reason_feat._Nate_Ruess_uv2l6t"
+    "audioId": "dcjd0labu:04_Just_Give_Me_a_Reason_feat._Nate_Ruess_uv2l6t",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/2c/b0/de/2cb0de7b-4559-d885-36f8-271c950cba34/886443562097.jpg/500x500bb.jpg"
   },
   {
     "id": "f49e2995-0fb2-4db7-b0e1-506ff8c34dc6",
@@ -6011,7 +6098,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Havana_feat._Young_Thug_nqnoa6"
+    "audioId": "dcjd0labu:04_Havana_feat._Young_Thug_nqnoa6",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Havana%20feat.%20Young%20T&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "52c4ca2f-11ee-4128-bd3d-7075d5d1ed99",
@@ -6019,7 +6107,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Who_I_Am_cxbgtw"
+    "audioId": "dcjd0labu:04_Who_I_Am_cxbgtw",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Who%20I%20Am%20cxbgtw&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "cafdf263-4f92-493f-b2c2-1167be521256",
@@ -6027,7 +6116,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Treat_You_Better_gcdbnp"
+    "audioId": "dcjd0labu:04_Treat_You_Better_gcdbnp",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Treat%20You%20Better%20gcd&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "52dcb4c2-3116-45b3-a6c0-1abe2c53423c",
@@ -6044,7 +6134,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Sorry_wumsh0"
+    "audioId": "dcjd0labu:04_Sorry_wumsh0",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Sorry%20wumsh0&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b69901d8-d809-437e-a861-da733834543e",
@@ -6052,7 +6143,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_In_Da_Getto_yjq34m"
+    "audioId": "dcjd0labu:04_In_Da_Getto_yjq34m",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=In%20Da%20Getto%20yjq34m&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "804e2f24-372d-4e7c-920c-84042f81ca0d",
@@ -6060,7 +6152,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Believer_1_p0obks"
+    "audioId": "dcjd0labu:04_Believer_1_p0obks",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Believer%201%20p0obks&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "0e37cf03-0e83-49af-8fac-f6cfe7da2220",
@@ -6068,7 +6161,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:04_Halo_mflkv7"
+    "audioId": "dcjd0labu:04_Halo_mflkv7",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Halo%20mflkv7&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "c56ea36e-f4e2-4fe0-a5d1-afe33d9c677c",
@@ -6076,7 +6170,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:03_STAY_with_Justin_Bieber_ce253m"
+    "audioId": "dcjd0labu:03_STAY_with_Justin_Bieber_ce253m",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=STAY%20with%20Justin%20Bie&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "d826e6d9-af47-4549-9051-84d004a39072",
@@ -6084,7 +6179,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:03_Him_I_hqjplz"
+    "audioId": "dcjd0labu:03_Him_I_hqjplz",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Him%20I%20hqjplz&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "15e80c08-36da-4ae3-85bd-7bb0a09b8cad",
@@ -6101,7 +6197,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:03_24_7_uhexrq"
+    "audioId": "dcjd0labu:03_24_7_uhexrq",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=24%207%20uhexrq&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "33af7666-7a29-4576-a0ce-0eada7f38e58",
@@ -6109,15 +6206,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_Toxic_jpbgp0"
+    "audioId": "dcjd0labu:02_Toxic_jpbgp0",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Toxic%20jpbgp0&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "13280f86-15d0-44eb-a190-918492d65258",
     "title": "Hall of Fame feat. will.i.am oqopp9",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "The Script",
+    "album": "#3 (Deluxe Version)",
     "durationMs": null,
-    "audioId": "dcjd0labu:03_Hall_of_Fame_feat._will.i.am_oqopp9"
+    "audioId": "dcjd0labu:03_Hall_of_Fame_feat._will.i.am_oqopp9",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bb/89/cd/bb89cdb5-4456-2b75-d1f9-e61009a4c8cc/886443609532.jpg/500x500bb.jpg"
   },
   {
     "id": "057b6358-be34-470b-8a8f-70c5a580a52b",
@@ -6125,7 +6224,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:03_Barbie_Girl_odilvq"
+    "audioId": "dcjd0labu:03_Barbie_Girl_odilvq",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Barbie%20Girl%20odilvq&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "4ee224d1-4a8f-4b13-b9bd-2f9a1de3e80f",
@@ -6133,7 +6233,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_Stitches_wvaumz"
+    "audioId": "dcjd0labu:02_Stitches_wvaumz",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Stitches%20wvaumz&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "5bf01511-4b2f-4503-9252-be5a6a588b86",
@@ -6150,7 +6251,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_MEMORIES_dyokn4"
+    "audioId": "dcjd0labu:02_MEMORIES_dyokn4",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=MEMORIES%20dyokn4&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "7dd735a0-8cdd-499f-8d62-c8fca5b72269",
@@ -6158,15 +6260,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_The_Nights_lcxugn"
+    "audioId": "dcjd0labu:02_The_Nights_lcxugn",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=The%20Nights%20lcxugn&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "48d79208-1f2a-4bda-99e6-61190680bf54",
     "title": "Princesses Don t Cry - Nightcore Remix mbwp0m",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "CARYS & Nikhita Gandhi",
+    "album": "Princesses Don't Cry - EP",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_Princesses_Don_t_Cry_-_Nightcore_Remix_mbwp0m"
+    "audioId": "dcjd0labu:02_Princesses_Don_t_Cry_-_Nightcore_Remix_mbwp0m",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/86/fc/61/86fc6173-ce54-de4f-e4a2-70b4fa9eb2e6/190296851919.jpg/500x500bb.jpg"
   },
   {
     "id": "f953dd39-8d71-4b9d-b503-6bc2fd620d9e",
@@ -6183,7 +6287,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_Me_Too_zu5sui"
+    "audioId": "dcjd0labu:02_Me_Too_zu5sui",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Me%20Too%20zu5sui&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "d09aadfd-e4f2-49d6-824f-bd154097126e",
@@ -6200,7 +6305,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_Don_t_Start_Now_s1ajkx"
+    "audioId": "dcjd0labu:02_Don_t_Start_Now_s1ajkx",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Don%20t%20Start%20Now%20s1aj&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "fa05424f-e9d4-4b9b-857c-8914231a0edf",
@@ -6208,7 +6314,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:02_In_The_End_-_Mellen_Gi_Remix_o8xnqh"
+    "audioId": "dcjd0labu:02_In_The_End_-_Mellen_Gi_Remix_o8xnqh",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=In%20The%20End%20-%20Mellen%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "2cecb580-6158-4853-a9b8-c4bdad6d516b",
@@ -6216,7 +6323,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Woman_gqdfoh"
+    "audioId": "dcjd0labu:01_Woman_gqdfoh",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Woman%20gqdfoh&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "dfd1d0af-733f-4e55-b136-071f3cf3195b",
@@ -6260,7 +6368,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_You_re_Perfect_-_Remix_ohv4o7"
+    "audioId": "dcjd0labu:01_You_re_Perfect_-_Remix_ohv4o7",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=You%20re%20Perfect%20-%20Rem&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "bd8b7999-6b4f-4dc0-bde7-e0accc996f36",
@@ -6268,7 +6377,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Woman_Like_Me_feat._Nicki_Minaj_f8tdgn"
+    "audioId": "dcjd0labu:01_Woman_Like_Me_feat._Nicki_Minaj_f8tdgn",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Woman%20Like%20Me%20feat.%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "34bf3768-56f8-4143-bd71-bb737cec6398",
@@ -6285,7 +6395,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Wolves_vtllon"
+    "audioId": "dcjd0labu:01_Wolves_vtllon",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Wolves%20vtllon&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "e0b6aa91-74f4-473a-ae81-2d8b00a71221",
@@ -6320,7 +6431,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Tomboy_cyeepf"
+    "audioId": "dcjd0labu:01_Tomboy_cyeepf",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Tomboy%20cyeepf&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "91c38190-58d4-4300-af4e-4d5888bc2cdf",
@@ -6328,7 +6440,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_The_Spectre_hcqc3k"
+    "audioId": "dcjd0labu:01_The_Spectre_hcqc3k",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=The%20Spectre%20hcqc3k&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "1c27ab3e-7422-435f-a9c4-cad82e103f1a",
@@ -6336,7 +6449,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Thunder_sa2s5y"
+    "audioId": "dcjd0labu:01_Thunder_sa2s5y",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Thunder%20sa2s5y&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "7339ec31-64e6-45e2-884d-18b3e47fada8",
@@ -6362,7 +6476,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Stuck_with_U_with_Justin_Bieber_jqbzsa"
+    "audioId": "dcjd0labu:01_Stuck_with_U_with_Justin_Bieber_jqbzsa",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Stuck%20with%20U%20with%20Ju&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "c653580e-d77c-463c-89b3-36914e6e3afa",
@@ -6370,15 +6485,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Taki_Taki_with_Selena_Gomez_Ozuna_Cardi_B_ezsget"
+    "audioId": "dcjd0labu:01_Taki_Taki_with_Selena_Gomez_Ozuna_Cardi_B_ezsget",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Taki%20Taki%20with%20Selen&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "bb91772f-d7d8-4633-9af1-cd28ecef2162",
     "title": "Snowman - Slowed Down e6orjq",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Sia",
+    "album": "Everyday Is Christmas (Deluxe)",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Snowman_-_Slowed_Down_e6orjq"
+    "audioId": "dcjd0labu:01_Snowman_-_Slowed_Down_e6orjq",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/85/c3/21/85c32113-1c4c-571c-7602-88f568d8081c/075679861016.jpg/500x500bb.jpg"
   },
   {
     "id": "587a2d01-bc72-4d8b-b15e-3d30db683ff3",
@@ -6386,7 +6503,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Symphony_feat._Zara_Larsson_iotn0o"
+    "audioId": "dcjd0labu:01_Symphony_feat._Zara_Larsson_iotn0o",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Symphony%20feat.%20Zara%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "d5119425-f1b2-455c-8424-98f8518f738b",
@@ -6394,7 +6512,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_SugarCrash_ffcrvh"
+    "audioId": "dcjd0labu:01_SugarCrash_ffcrvh",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=SugarCrash%20ffcrvh&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "3dbbf5b3-2ff1-4ed3-b677-b87c782eb42c",
@@ -6411,7 +6530,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Survivor_whfb3d"
+    "audioId": "dcjd0labu:01_Survivor_whfb3d",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Survivor%20whfb3d&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "1abf5b59-084d-4ec8-9a54-8e36158705a2",
@@ -6419,7 +6539,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Shy_p6vn4t"
+    "audioId": "dcjd0labu:01_Shy_p6vn4t",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Shy%20p6vn4t&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "71c6fbf9-58dc-4e23-9479-5d0f4f5ac023",
@@ -6427,7 +6548,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Runaway_uilvmh"
+    "audioId": "dcjd0labu:01_Runaway_uilvmh",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Runaway%20uilvmh&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "4ae01d70-35eb-4378-bb73-64e424b579ec",
@@ -6444,7 +6566,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Señorita_lmd1tc"
+    "audioId": "dcjd0labu:01_Señorita_lmd1tc",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Se%C3%B1orita%20lmd1tc&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "9cdf3c1b-70eb-4ef5-ba88-52dea83f293b",
@@ -6452,7 +6575,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Rumors_v0aydf"
+    "audioId": "dcjd0labu:01_Rumors_v0aydf",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Rumors%20v0aydf&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "10a8709d-65e8-4120-b324-fed168ba2277",
@@ -6460,7 +6584,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_ROXANNE_ywc9au"
+    "audioId": "dcjd0labu:01_ROXANNE_ywc9au",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=ROXANNE%20ywc9au&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "a3a2b0af-0070-4775-a1ac-d7f8798ef171",
@@ -6468,7 +6593,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Miss_Wanna_Die_-_English_Cover_kos1wy"
+    "audioId": "dcjd0labu:01_Miss_Wanna_Die_-_English_Cover_kos1wy",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Miss%20Wanna%20Die%20-%20Eng&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "666604d8-aa36-45de-a470-9a0632ed2a23",
@@ -6476,7 +6602,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Please_Don_t_Go_o0cqy9"
+    "audioId": "dcjd0labu:01_Please_Don_t_Go_o0cqy9",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Please%20Don%20t%20Go%20o0cq&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "1ccdc9b4-617f-48c4-91bb-1a23b53d6ac7",
@@ -6502,7 +6629,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Rise_Up_ehivja"
+    "audioId": "dcjd0labu:01_Rise_Up_ehivja",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Rise%20Up%20ehivja&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "e2d230f2-52d5-4479-bbdb-7eccafa4fbaa",
@@ -6519,7 +6647,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_overwhelmed_dny3pe"
+    "audioId": "dcjd0labu:01_overwhelmed_dny3pe",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=overwhelmed%20dny3pe&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "d689cbdb-1e1b-4a9d-8fe5-e2df3dd02260",
@@ -6527,7 +6656,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Queen_ftrzs1"
+    "audioId": "dcjd0labu:01_Queen_ftrzs1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Queen%20ftrzs1&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "f549b7fb-f985-45f0-b8cf-7a918d534825",
@@ -6535,7 +6665,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Play_qxmxzz"
+    "audioId": "dcjd0labu:01_Play_qxmxzz",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Play%20qxmxzz&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "6013b60d-bddf-4fab-90a7-8b5d8de01faf",
@@ -6543,7 +6674,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_One_Day_-_Feat._Helena_lnh7t1"
+    "audioId": "dcjd0labu:01_One_Day_-_Feat._Helena_lnh7t1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=One%20Day%20-%20Feat.%20Hele&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "60e556fe-58df-4bc2-8745-7186514bb34d",
@@ -6551,7 +6683,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Older_vkdesl"
+    "audioId": "dcjd0labu:01_Older_vkdesl",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Older%20vkdesl&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "e1b52f24-1b4a-4bcd-93d7-26dd2f7e2a21",
@@ -6559,7 +6692,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_On_On_shmd1c"
+    "audioId": "dcjd0labu:01_On_On_shmd1c",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=On%20On%20shmd1c&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "a83425da-ad61-4f87-987b-e6288f2d6a6b",
@@ -6603,7 +6737,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Mad_at_Disney_1_qrgxai"
+    "audioId": "dcjd0labu:01_Mad_at_Disney_1_qrgxai",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Mad%20at%20Disney%201%20qrgx&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "90708b00-115d-46cd-9710-7ed4e865b612",
@@ -6620,7 +6755,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Love_How_It_Hurts_feat._Tina_Stachowiak_wx3pjp"
+    "audioId": "dcjd0labu:01_Love_How_It_Hurts_feat._Tina_Stachowiak_wx3pjp",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Love%20How%20It%20Hurts%20fe&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "32884313-bd43-4ed5-9a49-8d67ea617755",
@@ -6628,7 +6764,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Mad_at_Disney_k65lju"
+    "audioId": "dcjd0labu:01_Mad_at_Disney_k65lju",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Mad%20at%20Disney%20k65lju&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "10e69a28-c9fd-4df0-8711-6e15ae954340",
@@ -6636,7 +6773,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_love_nwantiti_feat._Dj_Yo_AX_EL_-_Remix_u9qzza"
+    "audioId": "dcjd0labu:01_love_nwantiti_feat._Dj_Yo_AX_EL_-_Remix_u9qzza",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=love%20nwantiti%20feat.%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "c2299e46-28a8-42b0-9498-e307ed2dcaae",
@@ -6644,7 +6782,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_It_Ain_t_Me_with_Selena_Gomez_gofr81"
+    "audioId": "dcjd0labu:01_It_Ain_t_Me_with_Selena_Gomez_gofr81",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=It%20Ain%20t%20Me%20with%20Sel&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "f1f563b2-1f09-48f0-b23f-a4eae4b4d2cd",
@@ -6670,7 +6809,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Little_Do_You_Know_Beat_Cry_tlrj0i"
+    "audioId": "dcjd0labu:01_Little_Do_You_Know_Beat_Cry_tlrj0i",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Little%20Do%20You%20Know%20B&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "76adfd8d-0533-4ac5-9190-c097f1693550",
@@ -6687,7 +6827,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Legends_Never_Die_-_Remix_zzohms"
+    "audioId": "dcjd0labu:01_Legends_Never_Die_-_Remix_zzohms",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Legends%20Never%20Die%20-%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "4d9c1a86-cea9-4319-8618-35eed91fc874",
@@ -6695,7 +6836,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_I_m_Not_Her_q2ip36"
+    "audioId": "dcjd0labu:01_I_m_Not_Her_q2ip36",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=I%20m%20Not%20Her%20q2ip36&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "f3fcf86e-a17c-4657-a292-7872ecc06a4a",
@@ -6703,7 +6845,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_idfc_-_Tarro_Remix_lvbsw3"
+    "audioId": "dcjd0labu:01_idfc_-_Tarro_Remix_lvbsw3",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=idfc%20-%20Tarro%20Remix%20l&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "60bd02d2-d7f1-49d3-82e9-41615a76a734",
@@ -6711,15 +6854,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Jiggle_Jiggle_with_Duke_Jones_jv05hl"
+    "audioId": "dcjd0labu:01_Jiggle_Jiggle_with_Duke_Jones_jv05hl",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Jiggle%20Jiggle%20with%20D&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "c7739bb0-93be-4def-8743-9dbea220c473",
     "title": "INDUSTRY BABY feat. Jack Harlow ywoqeu",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Lil Nas X & Jack Harlow",
+    "album": "INDUSTRY BABY 2.0 - Single",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_INDUSTRY_BABY_feat._Jack_Harlow_ywoqeu"
+    "audioId": "dcjd0labu:01_INDUSTRY_BABY_feat._Jack_Harlow_ywoqeu",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/4d/f2/df/4df2dfcc-a2a5-de63-9885-cd77efa6d26c/886449661831.jpg/500x500bb.jpg"
   },
   {
     "id": "395597b9-afac-4637-ac3c-97693c2fb1c6",
@@ -6727,7 +6872,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_I_Shot_Cupid_toivdy"
+    "audioId": "dcjd0labu:01_I_Shot_Cupid_toivdy",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=I%20Shot%20Cupid%20toivdy&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b6973d40-0164-4c37-8679-1190e52d4482",
@@ -6753,7 +6899,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Enemy_with_JID_-_from_the_series_Arcane_League_of_Legends_rmf7qi"
+    "audioId": "dcjd0labu:01_Enemy_with_JID_-_from_the_series_Arcane_League_of_Legends_rmf7qi",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Enemy%20with%20JID%20-%20fro&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "d084ea75-4181-4e20-aa9b-477027ecbf6c",
@@ -6761,7 +6908,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_I_Don_t_Wanna_Live_Forever_Fifty_Shades_Darker_vsd8k9"
+    "audioId": "dcjd0labu:01_I_Don_t_Wanna_Live_Forever_Fifty_Shades_Darker_vsd8k9",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=I%20Don%20t%20Wanna%20Live%20F&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "f1bed864-52f9-4b0a-87b0-ec0584de64f3",
@@ -6769,7 +6917,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Hold_On_bgzaw9"
+    "audioId": "dcjd0labu:01_Hold_On_bgzaw9",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Hold%20On%20bgzaw9&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b9fa27b2-1e5a-4dc2-a450-7ce63a8d0b40",
@@ -6786,7 +6935,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Heat_Waves_with_iann_dior_nwpl1x"
+    "audioId": "dcjd0labu:01_Heat_Waves_with_iann_dior_nwpl1x",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Heat%20Waves%20with%20iann&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "de34a416-55aa-4fad-bfc9-34a3b0d23765",
@@ -6794,7 +6944,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_everything_sucks_s70fws"
+    "audioId": "dcjd0labu:01_everything_sucks_s70fws",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=everything%20sucks%20s70&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "61eb08c4-c8bc-457f-9941-8b7147268b82",
@@ -6802,7 +6953,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Freaks_kllic4"
+    "audioId": "dcjd0labu:01_Freaks_kllic4",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Freaks%20kllic4&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "c6a7f6d1-e123-428c-a9d0-3f5d1fb92e08",
@@ -6819,7 +6971,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Fake_ln3s4a"
+    "audioId": "dcjd0labu:01_Fake_ln3s4a",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Fake%20ln3s4a&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "303c310b-ca2c-426e-9fa8-ba1b315ebd05",
@@ -6836,7 +6989,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Don_t_Go_Yet_uk5lo1"
+    "audioId": "dcjd0labu:01_Don_t_Go_Yet_uk5lo1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Don%20t%20Go%20Yet%20uk5lo1&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "32caedf0-2ff1-4b25-86d4-a0cb6cf3c202",
@@ -6844,7 +6998,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Don_t_Wanna_Know_wgt6sw"
+    "audioId": "dcjd0labu:01_Don_t_Wanna_Know_wgt6sw",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Don%20t%20Wanna%20Know%20wgt&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "accba899-4e72-4d86-a963-0ce341c9e75b",
@@ -6867,10 +7022,11 @@
   {
     "id": "f3c64344-c174-4d28-87b3-d2e180f4ef18",
     "title": "Dandelions - slowed reverb zlnnri",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Ruth B.",
+    "album": "Safe Haven",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Dandelions_-_slowed_reverb_zlnnri"
+    "audioId": "dcjd0labu:01_Dandelions_-_slowed_reverb_zlnnri",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/24/f7/82/24f782af-5aea-55e7-bf67-2f4e62664fe8/886446439341.jpg/500x500bb.jpg"
   },
   {
     "id": "ebc4b41c-8523-46e3-8da1-5a422cc4a559",
@@ -6878,7 +7034,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Dinero_nficqb"
+    "audioId": "dcjd0labu:01_Dinero_nficqb",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Dinero%20nficqb&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "8d24f906-d2b2-4b97-8816-8dddde3972f8",
@@ -6886,7 +7043,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Closer_vjrr56"
+    "audioId": "dcjd0labu:01_Closer_vjrr56",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Closer%20vjrr56&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b8fe7473-c268-4c60-8e06-b84efa4621fe",
@@ -6894,7 +7052,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Black_Magic_gazq4t"
+    "audioId": "dcjd0labu:01_Black_Magic_gazq4t",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Black%20Magic%20gazq4t&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "be42e575-1980-473c-81ea-da7af083abc4",
@@ -6902,7 +7061,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Cradles_fcyd4g"
+    "audioId": "dcjd0labu:01_Cradles_fcyd4g",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Cradles%20fcyd4g&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "813856c9-03b2-4ae2-ae9a-1de9414d1a83",
@@ -6910,15 +7070,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Close_To_Me_with_Diplo_feat._Swae_Lee_l90wrb"
+    "audioId": "dcjd0labu:01_Close_To_Me_with_Diplo_feat._Swae_Lee_l90wrb",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Close%20To%20Me%20with%20Dip&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "8eacaae1-cb2b-47a5-859c-949be45b3330",
     "title": "Best Friend feat. Doja Cat zrglh8",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "Saweetie",
+    "album": "Best Friend (feat. Doja Cat) - Single",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Best_Friend_feat._Doja_Cat_zrglh8"
+    "audioId": "dcjd0labu:01_Best_Friend_feat._Doja_Cat_zrglh8",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/38/51/78/385178ff-2d99-0ec5-850d-e4865d504e41/054391927187.jpg/500x500bb.jpg"
   },
   {
     "id": "0630451c-8477-4408-a3d4-eeee0fd9ea40",
@@ -6926,7 +7088,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Beggin_feat.Alex_Albino_-_Remix_awvlvn"
+    "audioId": "dcjd0labu:01_Beggin_feat.Alex_Albino_-_Remix_awvlvn",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Beggin%20feat.Alex%20Alb&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b01a8b0b-7f47-49a0-86f8-a51665e8ba05",
@@ -6934,7 +7097,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Boyfriend_e1f94w"
+    "audioId": "dcjd0labu:01_Boyfriend_e1f94w",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Boyfriend%20e1f94w&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "1dd214b8-e078-4633-9a99-04f058dfd403",
@@ -6942,7 +7106,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Burn_Break_Crash_sgofjf"
+    "audioId": "dcjd0labu:01_Burn_Break_Crash_sgofjf",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Burn%20Break%20Crash%20sgo&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "6349c411-e32a-43dd-a996-de82096bd11b",
@@ -6950,7 +7115,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Bumpy_Ride_q2hd0d"
+    "audioId": "dcjd0labu:01_Bumpy_Ride_q2hd0d",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Bumpy%20Ride%20q2hd0d&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "0d225d50-29b2-4bbe-ad39-23e17c4a9043",
@@ -6958,7 +7124,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Boss_Bitch_lnmnzl"
+    "audioId": "dcjd0labu:01_Boss_Bitch_lnmnzl",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Boss%20Bitch%20lnmnzl&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "bcfed9d5-0f1e-456e-98d6-a5527b9ca0ea",
@@ -6966,7 +7133,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Bones_qoh7bl"
+    "audioId": "dcjd0labu:01_Bones_qoh7bl",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Bones%20qoh7bl&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "49bfbb3a-c380-4680-88ee-aff125dc92e6",
@@ -6974,7 +7142,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Better_When_I_m_Dancin_kxrpx1"
+    "audioId": "dcjd0labu:01_Better_When_I_m_Dancin_kxrpx1",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Better%20When%20I%20m%20Danc&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "80c79f55-f0f9-47c1-978a-cc1f8b457cd6",
@@ -6982,7 +7151,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_10_000_Hours_with_Justin_Bieber_qcynvf"
+    "audioId": "dcjd0labu:01_10_000_Hours_with_Justin_Bieber_qcynvf",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=10%20000%20Hours%20with%20Ju&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "7f0ba33e-386a-4356-b2e9-bd26c4ceb073",
@@ -6990,7 +7160,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Bad_Boy_feat._Luana_Kiara_tukzqs"
+    "audioId": "dcjd0labu:01_Bad_Boy_feat._Luana_Kiara_tukzqs",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Bad%20Boy%20feat.%20Luana%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b0ee5a90-19c5-4f62-9ae7-01b9db52157d",
@@ -7007,7 +7178,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Alone_Pt._II_l5bm5l"
+    "audioId": "dcjd0labu:01_Alone_Pt._II_l5bm5l",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Alone%20Pt.%20II%20l5bm5l&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "16f747d2-7650-43c9-b663-832f666953a8",
@@ -7015,15 +7187,17 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Baby_jbsumi"
+    "audioId": "dcjd0labu:01_Baby_jbsumi",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Baby%20jbsumi&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "794a3932-8243-4160-9175-1d5ce0f924e7",
     "title": "All We Know feat. Phoebe Ryan nghgiy",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "artist": "The Chainsmokers",
+    "album": "Collage - EP",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_All_We_Know_feat._Phoebe_Ryan_nghgiy"
+    "audioId": "dcjd0labu:01_All_We_Know_feat._Phoebe_Ryan_nghgiy",
+    "coverArt": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/41/f8/38/41f8380b-9b56-d5d4-31f7-a6411c0c9aaa/886446102054.jpg/500x500bb.jpg"
   },
   {
     "id": "ae5ae684-d2af-4288-8ca5-244cb43c11b2",
@@ -7031,7 +7205,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Ain_t_Your_Mama_pqwam8"
+    "audioId": "dcjd0labu:01_Ain_t_Your_Mama_pqwam8",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Ain%20t%20Your%20Mama%20pqwa&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "44a5c4b7-9c56-462f-bc83-bfb6cb310431",
@@ -7039,7 +7214,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Back_To_You_-_From_13_Reasons_Why_Season_2_Soundtrack_i5ajac"
+    "audioId": "dcjd0labu:01_Back_To_You_-_From_13_Reasons_Why_Season_2_Soundtrack_i5ajac",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Back%20To%20You%20-%20From%201&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "3d143e42-0018-4f33-91fa-259b39c53c7a",
@@ -7047,7 +7223,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Armor_mjlu1y"
+    "audioId": "dcjd0labu:01_Armor_mjlu1y",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Armor%20mjlu1y&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "0ea731d4-2753-4bc8-8228-1f668041ac19",
@@ -7055,7 +7232,8 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_Angel_of_Darkness_-_Video_Mix_wkgdyq"
+    "audioId": "dcjd0labu:01_Angel_of_Darkness_-_Video_Mix_wkgdyq",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=Angel%20of%20Darkness%20-%20&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   },
   {
     "id": "b29c5fc4-511b-4497-84a0-ed5aafbd59a1",
@@ -7063,6 +7241,7 @@
     "artist": "Unknown Artist",
     "album": "Unknown Album",
     "durationMs": null,
-    "audioId": "dcjd0labu:01_my_worst_hbpchn"
+    "audioId": "dcjd0labu:01_my_worst_hbpchn",
+    "coverArt": "https://api.dicebear.com/7.x/shapes/svg?seed=my%20worst%20hbpchn&size=500&backgroundColor=1a1a2e,16213e,0f3460,533483,e94560&backgroundType=gradientLinear"
   }
 ]
