@@ -501,6 +501,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, [isPlaying]);
 
   const playSong = (song: Song) => {
+    initAudioContext();
     if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
       audioContextRef.current.resume();
     }
@@ -521,6 +522,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   };
 
   const togglePlayPause = () => {
+    initAudioContext();
+    if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+      audioContextRef.current.resume();
+    }
     if (currentSong) {
       setIsPlaying(!isPlaying);
     }
