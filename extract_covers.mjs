@@ -12,6 +12,7 @@ import * as mm from 'music-metadata';
 // =======================================================================
 
 const MUSIC_DIRS = [
+  String.raw`D:\Missing_Songs_To_Upload`,
   String.raw`D:\Documents\Sidify Music Converter\TOP ENGLISH SONGS OF ALL TIME🔥♥️😍‼`,
   String.raw`E:\Backup Files C Drive 29-04-2026\Desktop\New folder (2)\New folder\Songs`
 ]; 
