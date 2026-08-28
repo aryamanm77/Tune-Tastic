@@ -124,69 +124,114 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, [currentSong]);
 
   // DJ State
-  const [djState, setDjStateInternal] = useState({ bass: 0, spin8D: false, nightcore: false });
+  const [djState, setDjStateInternal] = useState({ 
+    bass: 0, spin8D: false, nightcore: false, 
+    reverb: 0, speed: 10, lofi: false, karaoke: false 
+  });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
+  
+  // Audio Nodes
   const bassNodeRef = useRef<BiquadFilterNode | null>(null);
+  const vocalNodeRef = useRef<BiquadFilterNode | null>(null);
+  const lofiNodeRef = useRef<BiquadFilterNode | null>(null);
+  const echoDelayNodeRef = useRef<DelayNode | null>(null);
+  const echoGainNodeRef = useRef<GainNode | null>(null);
   const pannerNodeRef = useRef<StereoPannerNode | null>(null);
   const pannerIntervalRef = useRef<number | null>(null);
 
-  const setDjState = (newState: Partial<{ bass: number; spin8D: boolean; nightcore: boolean }>) => {
-    // Only init the Web Audio API the FIRST time a DJ effect is activated
-    initAudioContext();
-    setDjStateInternal(prev => {
-      const updated = { ...prev, ...newState };
-      applyDjEffects(updated);
-      return updated;
-    });
-  };
-
   const initAudioContext = () => {
     if (audioContextRef.current) return;
-    const ctx = new window.AudioContext();
+    
+    // Create AudioContext (must be on user interaction)
+    const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
     audioContextRef.current = ctx;
     
     if (audioRef.current) {
       // Must set crossOrigin for Web Audio API to work with remote URLs
       audioRef.current.crossOrigin = 'anonymous';
       
-      const source = ctx.createMediaElementSource(audioRef.current);
-      sourceNodeRef.current = source;
+      try {
+        const source = ctx.createMediaElementSource(audioRef.current);
+        sourceNodeRef.current = source;
 
-      // Bass Boost Node
-      const bassNode = ctx.createBiquadFilter();
-      bassNode.type = 'lowshelf';
-      bassNode.frequency.value = 150; // Boost frequencies below 150Hz
-      bassNode.gain.value = djState.bass;
-      bassNodeRef.current = bassNode;
+        // 1. Bass Boost Node (LowShelf)
+        const bassNode = ctx.createBiquadFilter();
+        bassNode.type = 'lowshelf';
+        bassNode.frequency.value = 150; 
+        bassNode.gain.value = djState.bass;
+        bassNodeRef.current = bassNode;
 
-      // Stereo Panner Node
-      const pannerNode = ctx.createStereoPanner();
-      pannerNode.pan.value = 0;
-      pannerNodeRef.current = pannerNode;
+        // 2. Vocal Boost / Karaoke Node (Peaking)
+        const vocalNode = ctx.createBiquadFilter();
+        vocalNode.type = 'peaking';
+        vocalNode.frequency.value = 3000; // Boost mid-high frequencies for vocals
+        vocalNode.Q.value = 1.5;
+        vocalNode.gain.value = djState.karaoke ? 8 : 0;
+        vocalNodeRef.current = vocalNode;
 
-      // Connect: Source -> Bass -> Panner -> Destination
-      source.connect(bassNode);
-      bassNode.connect(pannerNode);
-      pannerNode.connect(ctx.destination);
+        // 3. Lo-Fi Node (Lowpass + Highpass for radio effect)
+        const lofiNode = ctx.createBiquadFilter();
+        lofiNode.type = 'lowpass';
+        lofiNode.frequency.value = djState.lofi ? 3000 : 20000;
+        lofiNodeRef.current = lofiNode;
+
+        // 4. Reverb/Echo (Delay + Feedback)
+        const delayNode = ctx.createDelay(1.0);
+        delayNode.delayTime.value = 0.3; // 300ms delay
+        echoDelayNodeRef.current = delayNode;
+        
+        const feedbackGain = ctx.createGain();
+        feedbackGain.gain.value = (djState.reverb ?? 0) > 0 ? (djState.reverb! / 20) : 0;
+        echoGainNodeRef.current = feedbackGain;
+
+        // 5. Stereo Panner Node (8D Spin)
+        const pannerNode = ctx.createStereoPanner();
+        pannerNode.pan.value = 0;
+        pannerNodeRef.current = pannerNode;
+
+        // Connect the graph
+        // Dry signal path: Source -> Bass -> Vocal -> LoFi -> Panner -> Destination
+        source.connect(bassNode);
+        bassNode.connect(vocalNode);
+        vocalNode.connect(lofiNode);
+        lofiNode.connect(pannerNode);
+        pannerNode.connect(ctx.destination);
+
+        // Wet signal path (Echo): LoFi -> Delay -> Feedback -> Panner
+        lofiNode.connect(delayNode);
+        delayNode.connect(feedbackGain);
+        feedbackGain.connect(delayNode); // feedback loop
+        delayNode.connect(pannerNode);
+
+      } catch (err) {
+        console.error("Failed to initialize AudioContext:", err);
+      }
     }
   };
 
-  const applyDjEffects = (state: { bass: number; spin8D: boolean; nightcore: boolean }) => {
+  const applyDjEffects = (state: typeof djState) => {
     // Apply Bass
-    if (bassNodeRef.current) {
-      bassNodeRef.current.gain.value = state.bass;
-    }
+    if (bassNodeRef.current) bassNodeRef.current.gain.value = state.bass;
+    
+    // Apply Vocal Boost
+    if (vocalNodeRef.current) vocalNodeRef.current.gain.value = state.karaoke ? 8 : 0;
+    
+    // Apply Lo-Fi
+    if (lofiNodeRef.current) lofiNodeRef.current.frequency.value = state.lofi ? 2500 : 20000;
+    
+    // Apply Reverb (Delay amount)
+    if (echoGainNodeRef.current) echoGainNodeRef.current.gain.value = (state.reverb ?? 0) > 0 ? (state.reverb! / 15) : 0;
 
-    // Apply Nightcore
+    // Apply Nightcore and Speed
     if (audioRef.current) {
       if (state.nightcore) {
         audioRef.current.playbackRate = 1.3;
         (audioRef.current as any).preservesPitch = false;
-        // fallback for webkit
         (audioRef.current as any).webkitPreservesPitch = false;
       } else {
-        audioRef.current.playbackRate = 1.0;
+        const speedMultiplier = (state.speed ?? 10) / 10;
+        audioRef.current.playbackRate = speedMultiplier;
         (audioRef.current as any).preservesPitch = true;
         (audioRef.current as any).webkitPreservesPitch = true;
       }
@@ -213,9 +258,24 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   };
 
+  const setDjState = (newState: Partial<typeof djState>) => {
+    setDjStateInternal(prev => {
+      const updated = { ...prev, ...newState };
+      if (isPlaying) {
+        initAudioContext();
+        if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+          audioContextRef.current.resume();
+        }
+        applyDjEffects(updated);
+      }
+      return updated;
+    });
+  };
+
   // Initialize audio element
   useEffect(() => {
     audioRef.current = new Audio();
+    audioRef.current.crossOrigin = 'anonymous'; // CRITICAL: Set this BEFORE any src is loaded!
     audioRef.current.volume = volume;
 
     const audio = audioRef.current;
