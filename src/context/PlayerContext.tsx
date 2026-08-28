@@ -127,7 +127,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [djState, setDjStateInternal] = useState({ 
     bass: 0, spin8D: false, nightcore: false, 
     reverb: 0, speed: 10, lofi: false, karaoke: false,
-    tremolo: false, phaser: false, vinyl: false
+    tremolo: false, phaser: false, vinyl: false,
+    chorus: false, telephone: false, alien: false
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
@@ -142,10 +143,16 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const tremoloGainNodeRef = useRef<GainNode | null>(null);
   const phaserNodeRef = useRef<BiquadFilterNode | null>(null);
   const vinylNodeRef = useRef<WaveShaperNode | null>(null);
+  const telephoneNodeRef = useRef<BiquadFilterNode | null>(null);
+  const chorusDelayNodeRef = useRef<DelayNode | null>(null);
+  const chorusGainNodeRef = useRef<GainNode | null>(null);
+  const alienGainNodeRef = useRef<GainNode | null>(null);
+  const alienOscNodeRef = useRef<OscillatorNode | null>(null);
   
   const pannerIntervalRef = useRef<number | null>(null);
   const tremoloIntervalRef = useRef<number | null>(null);
   const phaserIntervalRef = useRef<number | null>(null);
+  const chorusIntervalRef = useRef<number | null>(null);
 
   const makeDistortionCurve = (amount: number) => {
     let k = amount, n_samples = 44100, curve = new Float32Array(n_samples), deg = Math.PI / 180, i = 0, x;
@@ -210,7 +217,26 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         vinylNode.oversample = '4x';
         vinylNodeRef.current = vinylNode;
 
-        // 7. Reverb/Echo (Delay + Feedback)
+        // 7. Telephone Node (Bandpass)
+        const telephoneNode = ctx.createBiquadFilter();
+        telephoneNode.type = 'bandpass';
+        telephoneNode.frequency.value = 1500;
+        telephoneNode.Q.value = 0; // 0 = flat (off), 2.5 = phone (on)
+        telephoneNodeRef.current = telephoneNode;
+
+        // 8. Alien Ring Modulator (Gain + Osc)
+        const alienGain = ctx.createGain();
+        alienGain.gain.value = 1; // normally passes audio
+        alienGainNodeRef.current = alienGain;
+        
+        const alienOsc = ctx.createOscillator();
+        alienOsc.type = 'sine';
+        alienOsc.frequency.value = 50; // 50Hz for Dalek voice
+        alienOsc.start();
+        alienOscNodeRef.current = alienOsc;
+        // Do not connect osc to gain yet, we'll do it dynamically
+
+        // 9. Reverb/Echo (Delay + Feedback)
         const delayNode = ctx.createDelay(1.0);
         delayNode.delayTime.value = 0.3; // 300ms delay
         echoDelayNodeRef.current = delayNode;
@@ -219,24 +245,31 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         feedbackGain.gain.value = (djState.reverb ?? 0) > 0 ? (djState.reverb! / 20) : 0;
         echoGainNodeRef.current = feedbackGain;
 
-        // 8. Stereo Panner Node (8D Spin)
+        // 10. Chorus (Short Delay 30ms)
+        const chorusDelay = ctx.createDelay(0.1);
+        chorusDelay.delayTime.value = 0.03;
+        chorusDelayNodeRef.current = chorusDelay;
+        const chorusGain = ctx.createGain();
+        chorusGain.gain.value = 0; // off initially
+        chorusGainNodeRef.current = chorusGain;
+
+        // 11. Stereo Panner Node (8D Spin)
         const pannerNode = ctx.createStereoPanner();
         pannerNode.pan.value = 0;
         pannerNodeRef.current = pannerNode;
 
         // Connect the graph (Dry Path)
-        // Source -> Vinyl -> Bass -> Vocal -> Phaser -> LoFi -> Tremolo -> Panner -> Destination
+        // Source -> Vinyl -> Bass -> Telephone -> Vocal -> Phaser -> LoFi -> Alien -> Tremolo -> Panner -> Destination
         source.connect(vinylNode);
-        
-        // Dynamic bypass for WaveShaper: if vinyl=false, it still passes through but with flat curve.
-        // But WaveShaper flat curve is complex. We'll set curve to null when off.
         vinylNode.curve = djState.vinyl ? makeDistortionCurve(400) : null;
         
         vinylNode.connect(bassNode);
-        bassNode.connect(vocalNode);
+        bassNode.connect(telephoneNode);
+        telephoneNode.connect(vocalNode);
         vocalNode.connect(phaserNode);
         phaserNode.connect(lofiNode);
-        lofiNode.connect(tremoloNode);
+        lofiNode.connect(alienGain);
+        alienGain.connect(tremoloNode);
         tremoloNode.connect(pannerNode);
         pannerNode.connect(ctx.destination);
 
@@ -245,6 +278,11 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         delayNode.connect(feedbackGain);
         feedbackGain.connect(delayNode); // feedback loop
         delayNode.connect(pannerNode);
+
+        // Wet signal path (Chorus)
+        lofiNode.connect(chorusDelay);
+        chorusDelay.connect(chorusGain);
+        chorusGain.connect(pannerNode);
 
       } catch (err) {
         console.error("Failed to initialize AudioContext:", err);
@@ -267,6 +305,43 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
     // Apply Vinyl
     if (vinylNodeRef.current) vinylNodeRef.current.curve = state.vinyl ? makeDistortionCurve(400) : null;
+
+    // Apply Telephone (Bandpass Q factor)
+    if (telephoneNodeRef.current) {
+      telephoneNodeRef.current.Q.value = state.telephone ? 2.5 : 0;
+    }
+
+    // Apply Chorus
+    if (chorusGainNodeRef.current) {
+      chorusGainNodeRef.current.gain.value = state.chorus ? 0.8 : 0;
+      if (state.chorus) {
+        if (!chorusIntervalRef.current && chorusDelayNodeRef.current) {
+          let time = 0;
+          chorusIntervalRef.current = window.setInterval(() => {
+            time += 0.1;
+            // Modulate delay between 20ms and 40ms
+            const delay = 0.03 + 0.01 * Math.sin(time);
+            if (chorusDelayNodeRef.current) chorusDelayNodeRef.current.delayTime.value = delay;
+          }, 50);
+        }
+      } else {
+        if (chorusIntervalRef.current) {
+          window.clearInterval(chorusIntervalRef.current);
+          chorusIntervalRef.current = null;
+        }
+      }
+    }
+
+    // Apply Alien Ring Modulator
+    if (alienOscNodeRef.current && alienGainNodeRef.current) {
+      if (state.alien) {
+        // Disconnect from standard audio pass-through if we were connected
+        try { alienOscNodeRef.current.connect(alienGainNodeRef.current.gain); } catch(e) {}
+      } else {
+        try { alienOscNodeRef.current.disconnect(); } catch(e) {}
+        alienGainNodeRef.current.gain.value = 1; // reset gain
+      }
+    }
 
     // Apply Nightcore and Speed
     if (audioRef.current) {
@@ -304,11 +379,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
     // Apply Tremolo (Stutter / Heartbeat)
     if (state.tremolo) {
-      if (!tremoloIntervalRef.current && tremoloGainNodeRef.current) {
+      if (!tremoloIntervalRef.current && tremoloGainNodeRef.current && !state.alien) {
         let time = 0;
         tremoloIntervalRef.current = window.setInterval(() => {
           time += 0.1;
-          // Sine wave between 0.3 and 1.0
           const vol = 0.65 + 0.35 * Math.sin(time * 5);
           if (tremoloGainNodeRef.current) tremoloGainNodeRef.current.gain.value = vol;
         }, 20);
@@ -318,7 +392,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         window.clearInterval(tremoloIntervalRef.current);
         tremoloIntervalRef.current = null;
       }
-      if (tremoloGainNodeRef.current) tremoloGainNodeRef.current.gain.value = 1;
+      if (tremoloGainNodeRef.current && !state.alien) tremoloGainNodeRef.current.gain.value = 1;
     }
 
     // Apply Phaser (Psychedelic Sweep)
@@ -328,7 +402,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         let time = 0;
         phaserIntervalRef.current = window.setInterval(() => {
           time += 0.05;
-          // Sweep frequency between 500Hz and 4000Hz
           const freq = 2250 + 1750 * Math.sin(time);
           if (phaserNodeRef.current) phaserNodeRef.current.frequency.value = freq;
         }, 50);

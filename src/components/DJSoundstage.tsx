@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { usePlayer } from '../context/PlayerContext';
-import { Settings2, Zap, AudioLines, Sparkles, Music2, Wind, Gauge, Radio, HeartPulse, Orbit, Disc } from 'lucide-react';
+import { Settings2, Zap, AudioLines, Sparkles, Music2, Wind, Gauge, Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot } from 'lucide-react';
 
 const DJSoundstage: React.FC = () => {
   const { djState, setDjState, isPlaying } = usePlayer();
@@ -126,9 +126,6 @@ const DJSoundstage: React.FC = () => {
           <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0, textTransform: 'uppercase', letterSpacing: '2px' }}>
             Live DJ Soundstage
           </h2>
-          <p style={{ margin: 0, fontSize: '11px', color: 'var(--text-secondary)', letterSpacing: '1px', marginTop: '2px' }}>
-            {isPlaying ? '🔴 LIVE' : '⏸ PAUSED'} · REAL-TIME AUDIO ENGINE
-          </p>
         </div>
 
         {/* Live Visualizer */}
@@ -244,10 +241,40 @@ const DJSoundstage: React.FC = () => {
           desc="Intense harmonic distortion for gritty vintage warmth."
         />
 
+        {/* Chorus */}
+        <ToggleCard
+          active={djState.chorus ?? false}
+          onClick={() => setDjState({ chorus: !djState.chorus })}
+          color="#64ffda"
+          icon={<Users size={16} />}
+          title="Chorus"
+          desc="Multiplies the vocal line to sound like a choir."
+        />
+
+        {/* Telephone */}
+        <ToggleCard
+          active={djState.telephone ?? false}
+          onClick={() => setDjState({ telephone: !djState.telephone })}
+          color="#ffd54f"
+          icon={<PhoneCall size={16} />}
+          title="Telephone EQ"
+          desc="Cuts out highs and lows for a vintage phone call effect."
+        />
+
+        {/* Alien Voice */}
+        <ToggleCard
+          active={djState.alien ?? false}
+          onClick={() => setDjState({ alien: !djState.alien })}
+          color="#69f0ae"
+          icon={<Bot size={16} />}
+          title="Alien Ring Mod"
+          desc="Extraterrestrial robotic voice distortion (warning: loud)."
+        />
+
       </div>
 
       {/* Active effects strip */}
-      {(djState.bass > 0 || djState.spin8D || djState.nightcore || djState.lofi || djState.karaoke || djState.tremolo || djState.phaser || djState.vinyl || (djState.reverb ?? 0) > 0) && (
+      {(djState.bass > 0 || djState.spin8D || djState.nightcore || djState.lofi || djState.karaoke || djState.tremolo || djState.phaser || djState.vinyl || djState.chorus || djState.telephone || djState.alien || (djState.reverb ?? 0) > 0) && (
         <div style={{
           marginTop: '20px', padding: '10px 16px', borderRadius: '10px',
           background: 'rgba(29,185,84,0.08)', border: '1px solid rgba(29,185,84,0.2)',
@@ -263,6 +290,9 @@ const DJSoundstage: React.FC = () => {
           {djState.tremolo && <Chip label="Tremolo Pulse" color="#ff5252" />}
           {djState.phaser && <Chip label="Phaser Sweep" color="#e040fb" />}
           {djState.vinyl && <Chip label="Vinyl Overdrive" color="#ff9100" />}
+          {djState.chorus && <Chip label="Chorus" color="#64ffda" />}
+          {djState.telephone && <Chip label="Telephone EQ" color="#ffd54f" />}
+          {djState.alien && <Chip label="Alien Ring Mod" color="#69f0ae" />}
         </div>
       )}
     </div>
