@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { usePlayer } from '../context/PlayerContext';
-import { Settings2, Zap, AudioLines, Sparkles, Music2, Wind, Gauge, Radio } from 'lucide-react';
+import { Settings2, Zap, AudioLines, Sparkles, Music2, Wind, Gauge, Radio, HeartPulse, Orbit, Disc } from 'lucide-react';
 
 const DJSoundstage: React.FC = () => {
   const { djState, setDjState, isPlaying } = usePlayer();
@@ -214,10 +214,40 @@ const DJSoundstage: React.FC = () => {
           desc="Amplifies mid-range frequencies to bring out the vocals."
         />
 
+        {/* Tremolo / Heartbeat */}
+        <ToggleCard
+          active={djState.tremolo ?? false}
+          onClick={() => setDjState({ tremolo: !djState.tremolo })}
+          color="#ff5252"
+          icon={<HeartPulse size={16} />}
+          title="Tremolo Pulse"
+          desc="Rhythmic, stuttering heartbeat volume modulation."
+        />
+
+        {/* Phaser / Psychedelic */}
+        <ToggleCard
+          active={djState.phaser ?? false}
+          onClick={() => setDjState({ phaser: !djState.phaser })}
+          color="#e040fb"
+          icon={<Orbit size={16} />}
+          title="Phaser Sweep"
+          desc="Psychedelic swirling frequency sweeps for a trippy vibe."
+        />
+
+        {/* Vinyl / Saturation */}
+        <ToggleCard
+          active={djState.vinyl ?? false}
+          onClick={() => setDjState({ vinyl: !djState.vinyl })}
+          color="#ff9100"
+          icon={<Disc size={16} />}
+          title="Vinyl Overdrive"
+          desc="Intense harmonic distortion for gritty vintage warmth."
+        />
+
       </div>
 
       {/* Active effects strip */}
-      {(djState.bass > 0 || djState.spin8D || djState.nightcore || djState.lofi || djState.karaoke || (djState.reverb ?? 0) > 0) && (
+      {(djState.bass > 0 || djState.spin8D || djState.nightcore || djState.lofi || djState.karaoke || djState.tremolo || djState.phaser || djState.vinyl || (djState.reverb ?? 0) > 0) && (
         <div style={{
           marginTop: '20px', padding: '10px 16px', borderRadius: '10px',
           background: 'rgba(29,185,84,0.08)', border: '1px solid rgba(29,185,84,0.2)',
@@ -230,6 +260,9 @@ const DJSoundstage: React.FC = () => {
           {djState.nightcore && <Chip label="Nightcore" color="#d1a3ff" />}
           {djState.lofi && <Chip label="Lo-Fi" color="#80cbc4" />}
           {djState.karaoke && <Chip label="Vocal Boost" color="#f48fb1" />}
+          {djState.tremolo && <Chip label="Tremolo Pulse" color="#ff5252" />}
+          {djState.phaser && <Chip label="Phaser Sweep" color="#e040fb" />}
+          {djState.vinyl && <Chip label="Vinyl Overdrive" color="#ff9100" />}
         </div>
       )}
     </div>

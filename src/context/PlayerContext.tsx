@@ -45,8 +45,8 @@ interface PlayerContextType {
   isLiked: (songId: string) => boolean;
   clearSong: () => void;
   // DJ State
-  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean };
-  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean }>) => void;
+  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean };
+  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean }>) => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -126,7 +126,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   // DJ State
   const [djState, setDjStateInternal] = useState({ 
     bass: 0, spin8D: false, nightcore: false, 
-    reverb: 0, speed: 10, lofi: false, karaoke: false 
+    reverb: 0, speed: 10, lofi: false, karaoke: false,
+    tremolo: false, phaser: false, vinyl: false
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
@@ -138,7 +139,22 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const echoDelayNodeRef = useRef<DelayNode | null>(null);
   const echoGainNodeRef = useRef<GainNode | null>(null);
   const pannerNodeRef = useRef<StereoPannerNode | null>(null);
+  const tremoloGainNodeRef = useRef<GainNode | null>(null);
+  const phaserNodeRef = useRef<BiquadFilterNode | null>(null);
+  const vinylNodeRef = useRef<WaveShaperNode | null>(null);
+  
   const pannerIntervalRef = useRef<number | null>(null);
+  const tremoloIntervalRef = useRef<number | null>(null);
+  const phaserIntervalRef = useRef<number | null>(null);
+
+  const makeDistortionCurve = (amount: number) => {
+    let k = amount, n_samples = 44100, curve = new Float32Array(n_samples), deg = Math.PI / 180, i = 0, x;
+    for ( ; i < n_samples; ++i ) {
+      x = i * 2 / n_samples - 1;
+      curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+    }
+    return curve;
+  };
 
   const initAudioContext = () => {
     if (audioContextRef.current) return;
@@ -165,18 +181,36 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         // 2. Vocal Boost / Karaoke Node (Peaking)
         const vocalNode = ctx.createBiquadFilter();
         vocalNode.type = 'peaking';
-        vocalNode.frequency.value = 3000; // Boost mid-high frequencies for vocals
+        vocalNode.frequency.value = 3000; 
         vocalNode.Q.value = 1.5;
         vocalNode.gain.value = djState.karaoke ? 8 : 0;
         vocalNodeRef.current = vocalNode;
 
-        // 3. Lo-Fi Node (Lowpass + Highpass for radio effect)
+        // 3. Lo-Fi Node (Lowpass)
         const lofiNode = ctx.createBiquadFilter();
         lofiNode.type = 'lowpass';
-        lofiNode.frequency.value = djState.lofi ? 3000 : 20000;
+        lofiNode.frequency.value = djState.lofi ? 2500 : 20000;
         lofiNodeRef.current = lofiNode;
 
-        // 4. Reverb/Echo (Delay + Feedback)
+        // 4. Tremolo Gain Node
+        const tremoloNode = ctx.createGain();
+        tremoloNode.gain.value = 1;
+        tremoloGainNodeRef.current = tremoloNode;
+
+        // 5. Phaser Node (Peaking with modulated freq)
+        const phaserNode = ctx.createBiquadFilter();
+        phaserNode.type = 'peaking';
+        phaserNode.Q.value = 5;
+        phaserNode.gain.value = 0; // 0 = off, 15 = on
+        phaserNodeRef.current = phaserNode;
+
+        // 6. Vinyl Distortion Node (WaveShaper)
+        const vinylNode = ctx.createWaveShaper();
+        vinylNode.curve = makeDistortionCurve(400); // Heavy saturation
+        vinylNode.oversample = '4x';
+        vinylNodeRef.current = vinylNode;
+
+        // 7. Reverb/Echo (Delay + Feedback)
         const delayNode = ctx.createDelay(1.0);
         delayNode.delayTime.value = 0.3; // 300ms delay
         echoDelayNodeRef.current = delayNode;
@@ -185,20 +219,28 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         feedbackGain.gain.value = (djState.reverb ?? 0) > 0 ? (djState.reverb! / 20) : 0;
         echoGainNodeRef.current = feedbackGain;
 
-        // 5. Stereo Panner Node (8D Spin)
+        // 8. Stereo Panner Node (8D Spin)
         const pannerNode = ctx.createStereoPanner();
         pannerNode.pan.value = 0;
         pannerNodeRef.current = pannerNode;
 
-        // Connect the graph
-        // Dry signal path: Source -> Bass -> Vocal -> LoFi -> Panner -> Destination
-        source.connect(bassNode);
+        // Connect the graph (Dry Path)
+        // Source -> Vinyl -> Bass -> Vocal -> Phaser -> LoFi -> Tremolo -> Panner -> Destination
+        source.connect(vinylNode);
+        
+        // Dynamic bypass for WaveShaper: if vinyl=false, it still passes through but with flat curve.
+        // But WaveShaper flat curve is complex. We'll set curve to null when off.
+        vinylNode.curve = djState.vinyl ? makeDistortionCurve(400) : null;
+        
+        vinylNode.connect(bassNode);
         bassNode.connect(vocalNode);
-        vocalNode.connect(lofiNode);
-        lofiNode.connect(pannerNode);
+        vocalNode.connect(phaserNode);
+        phaserNode.connect(lofiNode);
+        lofiNode.connect(tremoloNode);
+        tremoloNode.connect(pannerNode);
         pannerNode.connect(ctx.destination);
 
-        // Wet signal path (Echo): LoFi -> Delay -> Feedback -> Panner
+        // Wet signal path (Echo)
         lofiNode.connect(delayNode);
         delayNode.connect(feedbackGain);
         feedbackGain.connect(delayNode); // feedback loop
@@ -222,6 +264,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     
     // Apply Reverb (Delay amount)
     if (echoGainNodeRef.current) echoGainNodeRef.current.gain.value = (state.reverb ?? 0) > 0 ? (state.reverb! / 15) : 0;
+
+    // Apply Vinyl
+    if (vinylNodeRef.current) vinylNodeRef.current.curve = state.vinyl ? makeDistortionCurve(400) : null;
 
     // Apply Nightcore and Speed
     if (audioRef.current) {
@@ -255,6 +300,45 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         pannerIntervalRef.current = null;
       }
       if (pannerNodeRef.current) pannerNodeRef.current.pan.value = 0;
+    }
+
+    // Apply Tremolo (Stutter / Heartbeat)
+    if (state.tremolo) {
+      if (!tremoloIntervalRef.current && tremoloGainNodeRef.current) {
+        let time = 0;
+        tremoloIntervalRef.current = window.setInterval(() => {
+          time += 0.1;
+          // Sine wave between 0.3 and 1.0
+          const vol = 0.65 + 0.35 * Math.sin(time * 5);
+          if (tremoloGainNodeRef.current) tremoloGainNodeRef.current.gain.value = vol;
+        }, 20);
+      }
+    } else {
+      if (tremoloIntervalRef.current) {
+        window.clearInterval(tremoloIntervalRef.current);
+        tremoloIntervalRef.current = null;
+      }
+      if (tremoloGainNodeRef.current) tremoloGainNodeRef.current.gain.value = 1;
+    }
+
+    // Apply Phaser (Psychedelic Sweep)
+    if (state.phaser) {
+      if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 15; // turn filter on
+      if (!phaserIntervalRef.current && phaserNodeRef.current) {
+        let time = 0;
+        phaserIntervalRef.current = window.setInterval(() => {
+          time += 0.05;
+          // Sweep frequency between 500Hz and 4000Hz
+          const freq = 2250 + 1750 * Math.sin(time);
+          if (phaserNodeRef.current) phaserNodeRef.current.frequency.value = freq;
+        }, 50);
+      }
+    } else {
+      if (phaserIntervalRef.current) {
+        window.clearInterval(phaserIntervalRef.current);
+        phaserIntervalRef.current = null;
+      }
+      if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 0; // flat
     }
   };
 
