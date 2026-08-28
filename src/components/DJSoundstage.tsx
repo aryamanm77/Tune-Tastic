@@ -1,28 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { usePlayer } from '../context/PlayerContext';
 import { Settings2, Zap, AudioLines, Sparkles, Music2, Wind, Gauge, Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot } from 'lucide-react';
 
 const DJSoundstage: React.FC = () => {
   const { djState, setDjState, isPlaying } = usePlayer();
-  const [visualizerBars, setVisualizerBars] = useState<number[]>(Array(20).fill(4));
-  const animFrameRef = useRef<number | null>(null);
-
-  // Animate visualizer bars when playing
-  useEffect(() => {
-    if (!isPlaying) {
-      setVisualizerBars(Array(20).fill(4));
-      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-      return;
-    }
-    const animate = () => {
-      setVisualizerBars(prev => prev.map(() =>
-        Math.floor(Math.random() * (djState.bass > 0 ? 48 : 32)) + 4
-      ));
-      animFrameRef.current = requestAnimationFrame(animate);
-    };
-    animFrameRef.current = requestAnimationFrame(animate);
-    return () => { if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current); };
-  }, [isPlaying, djState.bass]);
 
   const ToggleCard = ({ 
     active, onClick, color, icon, title, desc 
@@ -98,6 +79,19 @@ const DJSoundstage: React.FC = () => {
       boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
       position: 'relative', overflow: 'hidden'
     }}>
+      <style>
+        {`
+          @keyframes visualizer-bounce-normal {
+            0% { height: 4px; }
+            100% { height: 32px; }
+          }
+          @keyframes visualizer-bounce-high {
+            0% { height: 4px; }
+            100% { height: 48px; }
+          }
+        `}
+      </style>
+      
       {/* Background glow */}
       <div style={{
         position: 'absolute', top: '-30%', left: '-10%',
@@ -129,15 +123,19 @@ const DJSoundstage: React.FC = () => {
         </div>
 
         {/* Live Visualizer */}
-        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'flex-end', gap: '3px', height: '36px' }}>
-          {visualizerBars.map((h, i) => (
+        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'flex-end', gap: '3px', height: '48px', paddingBottom: '6px' }}>
+          {Array(20).fill(0).map((_, i) => (
             <div key={i} style={{
-              width: '4px', height: `${h}px`,
+              width: '4px',
+              height: '4px', // Default base height
               background: isPlaying
                 ? `hsl(${140 + i * 5}, 70%, ${50 + i * 1}%)`
                 : 'rgba(255,255,255,0.15)',
               borderRadius: '2px',
-              transition: isPlaying ? 'height 0.08s ease' : 'height 0.5s ease',
+              animation: isPlaying 
+                ? `visualizer-bounce-${djState.bass > 0 ? 'high' : 'normal'} ${0.25 + (i % 4) * 0.05}s infinite alternate ease-in-out` 
+                : 'none',
+              animationDelay: `${i * 0.03}s`
             }} />
           ))}
         </div>
