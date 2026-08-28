@@ -5,6 +5,8 @@
     | || |_| || | | ||  __/ |  | (_| |\__ \| |_| | (__ 
     |_| \__,_||_| |_| \___|_|   \__,_||___/ \__|_|\___|
 
+![TuneTastic Banner](./assets/banner.png)
+
 # TuneTastic Web
 
 Welcome to **TuneTastic**, a premium, high-performance music streaming web application built with React, TypeScript, and the Web Audio API. 
