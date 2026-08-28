@@ -3,7 +3,6 @@ import { usePlayer, Song } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import { Play } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
-import DJSoundstage from './DJSoundstage';
 
 const MainView: React.FC = () => {
   const { songs, currentSong, playSong, togglePlayPause } = usePlayer();
@@ -29,8 +28,6 @@ const MainView: React.FC = () => {
           WebkitTextFillColor: 'transparent',
         }}>TuneTastic</span>
       </div>
-
-      <DJSoundstage />
 
       <h2 style={{ marginBottom: '24px', fontSize: '24px', fontWeight: 700 }}>All Music</h2>
 

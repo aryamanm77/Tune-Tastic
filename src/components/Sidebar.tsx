@@ -1,11 +1,11 @@
 import React from 'react';
-import { Home, Search, Library, PlusSquare, Heart } from 'lucide-react';
+import { Home, Search, Library, PlusSquare, Heart, Sliders } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import TuneTasticLogo from './TuneTasticLogo';
 
 interface SidebarProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj') => void;
   onOpenPlaylist: (id: string) => void;
 }
 
@@ -53,6 +53,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
           style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'library' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
         >
           <Library size={24} /> Your Library
+        </button>
+        <button 
+          onClick={() => setActiveTab('dj')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'dj' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
+        >
+          <Sliders size={24} /> DJ Studio
         </button>
       </div>
       
