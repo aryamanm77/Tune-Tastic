@@ -11,11 +11,11 @@ const DJSoundstage: React.FC = () => {
     active: boolean; onClick: () => void; color: string; 
     icon: React.ReactNode; title: string; desc: string;
   }) => (
-    <div onClick={onClick} style={{
+    <div onClick={onClick} className="dj-toggle-card" style={{
       background: active ? `${color}18` : 'rgba(255,255,255,0.03)',
       borderRadius: '12px', padding: '18px',
       border: `1px solid ${active ? color + '66' : 'rgba(255,255,255,0.05)'}`,
-      cursor: 'pointer', transition: 'all 0.2s ease',
+      cursor: 'pointer',
       display: 'flex', flexDirection: 'column', gap: '10px',
       boxShadow: active ? `0 0 20px ${color}22` : 'none',
     }}>
@@ -88,6 +88,14 @@ const DJSoundstage: React.FC = () => {
           @keyframes visualizer-bounce-high {
             0% { height: 4px; }
             100% { height: 48px; }
+          }
+          .dj-toggle-card {
+            user-select: none;
+            -webkit-user-select: none;
+            transition: all 0.2s ease, transform 0.1s ease !important;
+          }
+          .dj-toggle-card:active {
+            transform: scale(0.96);
           }
         `}
       </style>
