@@ -225,13 +225,19 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         alienOsc.start();
         alienOscNodeRef.current = alienOsc;
 
-        // 9. Reverb/Echo (Delay + Feedback)
+        // 9. Reverb/Echo (Delay + Mix)
         const delayNode = ctx.createDelay(1.0);
         delayNode.delayTime.value = 0.3;
         echoDelayNodeRef.current = delayNode;
         
+        // This gain node controls how much of the delayed signal goes to output
+        const echoMixGain = ctx.createGain();
+        echoMixGain.gain.value = 0; // Off by default
+        echoGainNodeRef.current = echoMixGain;
+        
+        // This gain controls the feedback loop (constant)
         const feedbackGain = ctx.createGain();
-        echoGainNodeRef.current = feedbackGain;
+        feedbackGain.gain.value = 0.4;
 
         // 10. Chorus (Short Delay 30ms)
         const chorusDelay = ctx.createDelay(0.1);
@@ -258,9 +264,11 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
         // Wet signal path (Echo)
         lofiNode.connect(delayNode);
-        delayNode.connect(feedbackGain);
-        feedbackGain.connect(delayNode);
-        delayNode.connect(pannerNode);
+        delayNode.connect(echoMixGain); // Route delayed signal through Mix gain
+        echoMixGain.connect(pannerNode); // Mix into output
+        
+        delayNode.connect(feedbackGain); // Feedback loop
+        feedbackGain.connect(delayNode); 
 
         // Wet signal path (Chorus)
         lofiNode.connect(chorusDelay);
@@ -277,9 +285,12 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     if (bassNodeRef.current) bassNodeRef.current.gain.value = state.bass;
     if (vocalNodeRef.current) vocalNodeRef.current.gain.value = state.karaoke ? 8 : 0;
     if (lofiNodeRef.current) lofiNodeRef.current.frequency.value = state.lofi ? 2500 : 20000;
+    
+    // Mix gain controls how loud the echo is
     if (echoGainNodeRef.current) echoGainNodeRef.current.gain.value = (state.reverb ?? 0) > 0 ? (state.reverb! / 15) : 0;
+    
     if (vinylNodeRef.current) vinylNodeRef.current.curve = state.vinyl ? makeDistortionCurve(400) : null;
-    if (telephoneNodeRef.current) telephoneNodeRef.current.Q.value = state.telephone ? 2.5 : 0.0001; // Q=0.0001 acts mostly flat, Q=0 is undefined behavior
+    if (telephoneNodeRef.current) telephoneNodeRef.current.Q.value = state.telephone ? 2.5 : 0.0001; 
 
     if (chorusGainNodeRef.current) {
       chorusGainNodeRef.current.gain.value = state.chorus ? 0.8 : 0;
@@ -376,16 +387,18 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   };
 
-  const setDjState = (newState: Partial<typeof djState>) => {
-    setDjStateInternal(prev => {
-      const updated = { ...prev, ...newState };
+  useEffect(() => {
+    if (isPlaying) {
       initAudioContext();
       if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
         audioContextRef.current.resume();
       }
-      applyDjEffects(updated);
-      return updated;
-    });
+    }
+    applyDjEffects(djState);
+  }, [djState, isPlaying]);
+
+  const setDjState = (newState: Partial<typeof djState>) => {
+    setDjStateInternal(prev => ({ ...prev, ...newState }));
   };
 
   // Initialize audio element
