@@ -207,7 +207,6 @@ const GlobalSearchView: React.FC = () => {
         <h1 style={{ fontSize: '28px', fontWeight: 800, margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Globe size={32} color="#1db954" /> TuneTastic Global
         </h1>
-        <TuneTasticLogo size={40} />
       </div>
 
       <div style={{ position: 'sticky', top: '0', backgroundColor: 'var(--bg-base)', paddingBottom: '24px', zIndex: 10 }}>
@@ -228,10 +227,6 @@ const GlobalSearchView: React.FC = () => {
               boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
             }}
           />
-          <div style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#666', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <ShieldCheck size={18} color="#1db954" />
-            <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Safe Search On</span>
-          </div>
         </div>
       </div>
 
