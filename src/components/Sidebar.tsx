@@ -36,9 +36,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
           }}>
             TuneTastic
           </span>
-          <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
-            Premium
-          </span>
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '16px' }}>

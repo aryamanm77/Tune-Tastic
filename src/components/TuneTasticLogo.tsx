@@ -13,20 +13,41 @@ const TuneTasticLogo: React.FC<{ size?: number }> = ({ size = 36 }) => {
         justifyContent: 'center',
       }}
     >
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="50" cy="50" r="50" fill="#1db954" />
-        <g transform="rotate(-8 50 50)">
-          <path d="M 22 32 Q 50 12 78 32" stroke="white" strokeWidth="8.5" strokeLinecap="round" fill="none" />
-          <path d="M 28 50 Q 50 32 72 50" stroke="white" strokeWidth="7.5" strokeLinecap="round" fill="none" />
-          <path d="M 35 68 Q 50 55 65 68" stroke="white" strokeWidth="6.5" strokeLinecap="round" fill="none" />
-        </g>
-      </svg>
+      <style>{`
+        @keyframes tt-logo-pulse {
+          0%   { transform: scale(1); box-shadow: 0 0 10px rgba(29,185,84,0.3); }
+          50%  { transform: scale(1.05); box-shadow: 0 0 20px rgba(29,185,84,0.6); }
+          100% { transform: scale(1); box-shadow: 0 0 10px rgba(29,185,84,0.3); }
+        }
+      `}</style>
+      
+      {/* Background glow behind the image */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 2,
+          borderRadius: '50%',
+          background: 'var(--spotify-green)',
+          filter: 'blur(8px)',
+          opacity: 0.5,
+          zIndex: 0,
+        }}
+      />
+
+      <img 
+        src="/logo.png" 
+        alt="TuneTastic Premium Logo"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          borderRadius: '50%',
+          position: 'relative',
+          zIndex: 1,
+          animation: 'tt-logo-pulse 3s infinite ease-in-out',
+          border: '1px solid rgba(255,255,255,0.1)'
+        }}
+      />
     </div>
   );
 };

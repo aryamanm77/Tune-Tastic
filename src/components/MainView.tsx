@@ -34,9 +34,6 @@ const MainView: React.FC = () => {
             letterSpacing: '-0.5px',
             lineHeight: 1.1,
           }}>TuneTastic</span>
-          <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
-            Premium
-          </span>
         </div>
       </div>
 
