@@ -59,6 +59,7 @@ const ItunesSearchView: React.FC = () => {
   const isCurrent = (song: Song) => currentSong?.id === song.id;
 
   return (
+    <>
     <div className="main-view" style={{ padding: '0', overflowX: 'hidden' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -431,6 +432,7 @@ const ItunesSearchView: React.FC = () => {
     </div>
 
       {modalSong && <AddToPlaylistModal song={modalSong} onClose={() => setModalSong(null)} />}
+    </>
   );
 };
 
