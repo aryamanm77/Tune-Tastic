@@ -45,6 +45,7 @@ interface PlayerContextType {
   toggleLike: (song: Song) => void;
   isLiked: (songId: string) => boolean;
   clearSong: () => void;
+  setPlaylists: React.Dispatch<React.SetStateAction<Playlist[]>>;
   // DJ State
   djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean };
   setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean }>) => void;
@@ -591,7 +592,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
       playlists, likedSongs,
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
-      createPlaylist, addToPlaylist, toggleLike, isLiked,      clearSong,
+      createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists,
       djState,
       setDjState
     }}>

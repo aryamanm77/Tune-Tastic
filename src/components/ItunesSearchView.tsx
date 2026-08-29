@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
-import { Play, Search, Loader2, Pause, Music } from 'lucide-react';
+import { Play, Search, Loader2, Pause, Music, MoreHorizontal } from 'lucide-react';
 import { searchItunes } from '../utils/itunes-song-search';
+import AddToPlaylistModal from './AddToPlaylistModal';
 
 const ItunesSearchView: React.FC = () => {
   const { currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
   const [query, setQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<Song[]>([]);
+  const [modalSong, setModalSong] = useState<Song | null>(null);
   const searchTimeoutRef = useRef<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -427,6 +429,8 @@ const ItunesSearchView: React.FC = () => {
         )}
       </div>
     </div>
+
+      {modalSong && <AddToPlaylistModal song={modalSong} onClose={() => setModalSong(null)} />}
   );
 };
 

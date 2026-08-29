@@ -1,29 +1,39 @@
-import React from 'react';
-import { usePlayer, Song } from '../context/PlayerContext';
+import React, { useState } from 'react';
+import { usePlayer, Song, Playlist } from '../context/PlayerContext';
 import { getAudioUrl } from '../utils/cloudinary';
-import { Play, Heart, Music } from 'lucide-react';
+import { Play, Heart, Music, MoreHorizontal, Trash2 } from 'lucide-react';
+import AddToPlaylistModal from './AddToPlaylistModal';
 
 interface PlaylistViewProps {
   playlistId: string | null;
 }
 
 const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
-  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs } = usePlayer();
+  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs, toggleLike, setPlaylists } = usePlayer() as any;
+  const [modalSong, setModalSong] = useState<Song | null>(null);
 
   if (!playlistId) return <div className="main-view"></div>;
 
   const isLikedPlaylist = playlistId === 'liked';
-  const playlist = isLikedPlaylist ? null : playlists.find(p => p.id === playlistId);
+  const playlist: Playlist | null = isLikedPlaylist ? null : playlists.find((p: Playlist) => p.id === playlistId);
   
   const title = isLikedPlaylist ? "Liked Songs" : playlist?.name || "Unknown Playlist";
-  const songs = isLikedPlaylist ? likedSongs : (playlist?.songs || []);
+  const songs: Song[] = isLikedPlaylist ? likedSongs : (playlist?.songs || []);
   const cover = isLikedPlaylist ? null : playlist?.coverArt;
 
   const handlePlay = (song: Song) => {
-    if (currentSong?.id === song.id) {
-      togglePlayPause();
+    if (currentSong?.id === song.id) togglePlayPause();
+    else playSong(song);
+  };
+
+  const removeSong = (songId: string) => {
+    if (isLikedPlaylist) {
+      const s = songs.find((x: Song) => x.id === songId);
+      if (s) toggleLike(s);
     } else {
-      playSong(song);
+      setPlaylists((prev: Playlist[]) =>
+        prev.map(p => p.id === playlistId ? { ...p, songs: p.songs.filter(s => s.id !== songId) } : p)
+      );
     }
   };
 
@@ -80,10 +90,11 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
               <th style={{ padding: '8px 16px', fontWeight: 'normal' }}>Title</th>
               <th className="hide-mobile" style={{ padding: '8px 16px', fontWeight: 'normal' }}>Album</th>
               <th className="hide-mobile" style={{ padding: '8px 16px', textAlign: 'right', fontWeight: 'normal' }}>Duration</th>
+              <th style={{ padding: '8px 16px', width: '40px' }}></th>
             </tr>
           </thead>
           <tbody>
-            {songs.map((song, index) => {
+            {songs.map((song: Song, index: number) => {
               const isCurrent = currentSong?.id === song.id;
               return (
                 <tr 
@@ -112,7 +123,7 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <img 
                         src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')} 
-                        onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                        onError={(e) => { e.currentTarget.src = '/logo.png'; }}
                         style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                         alt="" 
                       />
@@ -132,6 +143,25 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
                   <td className="hide-mobile" style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '14px', textAlign: 'right' }}>
                     {formatTime(song.durationMs || 0)}
                   </td>
+                  {/* Actions: three-dot + remove */}
+                  <td style={{ padding: '8px 8px', whiteSpace: 'nowrap', textAlign: 'right' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', justifyContent: 'flex-end' }}>
+                      <button
+                        onClick={e => { e.stopPropagation(); setModalSong(song); }}
+                        style={{ color: 'rgba(255,255,255,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                        title="More options"
+                      >
+                        <MoreHorizontal size={16} />
+                      </button>
+                      <button
+                        onClick={e => { e.stopPropagation(); removeSong(song.id); }}
+                        style={{ color: 'rgba(255,255,255,0.3)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                        title="Remove from playlist"
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               );
             })}
@@ -141,10 +171,12 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
         {songs.length === 0 && (
           <div style={{ textAlign: 'center', marginTop: '64px', color: 'var(--text-secondary)' }}>
             <h2 style={{ color: 'var(--text-primary)', marginBottom: '8px' }}>It's a bit empty here...</h2>
-            <p>Search for songs to add them to this playlist!</p>
+            <p>Search for songs and tap ··· to add them to this playlist!</p>
           </div>
         )}
       </div>
+
+      {modalSong && <AddToPlaylistModal song={modalSong} onClose={() => setModalSong(null)} />}
     </div>
   );
 };

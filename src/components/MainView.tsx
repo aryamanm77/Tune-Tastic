@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
-import { Play } from 'lucide-react';
+import { Play, MoreHorizontal, Plus } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
+import AddToPlaylistModal from './AddToPlaylistModal';
 
 const MainView: React.FC = () => {
-  const { songs, currentSong, playSong, togglePlayPause } = usePlayer();
+  const { songs, currentSong, playSong, togglePlayPause, createPlaylist } = usePlayer();
+  const [modalSong, setModalSong] = useState<Song | null>(null);
+  const [creatingPlaylist, setCreatingPlaylist] = useState(false);
+  const [newPlaylistName, setNewPlaylistName] = useState('');
 
   const handlePlay = (song: Song) => {
     if (currentSong?.id === song.id) {
@@ -89,10 +93,69 @@ const MainView: React.FC = () => {
                   whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
                 }}>{song.artist !== 'Unknown Artist' ? song.artist : 'TuneTastic'}</p>
               </div>
+              {/* Three-dot menu */}
+              <button
+                onClick={e => { e.stopPropagation(); setModalSong(song); }}
+                style={{ marginLeft: 'auto', color: 'rgba(255,255,255,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px', flexShrink: 0, display: 'flex', alignItems: 'center' }}
+                aria-label="More options"
+              >
+                <MoreHorizontal size={18} />
+              </button>
             </div>
           );
         })}
       </div>
+
+      {/* Mobile FAB – Create Playlist */}
+      <button
+        className="show-mobile"
+        onClick={() => setCreatingPlaylist(true)}
+        style={{
+          display: 'none',
+          position: 'fixed', bottom: '84px', right: '20px',
+          width: '52px', height: '52px', borderRadius: '50%',
+          background: 'var(--spotify-green)', color: 'black',
+          boxShadow: '0 4px 16px rgba(29,185,84,0.5)',
+          border: 'none', cursor: 'pointer', zIndex: 200,
+          alignItems: 'center', justifyContent: 'center',
+        }}
+        aria-label="Create Playlist"
+      >
+        <Plus size={24} />
+      </button>
+
+      {/* Mobile create-playlist dialog */}
+      {creatingPlaylist && (
+        <>
+          <div onClick={() => setCreatingPlaylist(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 9998 }} />
+          <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#282828', borderRadius: '16px 16px 0 0', padding: '24px 20px 40px', zIndex: 9999 }}>
+            <p style={{ margin: '0 0 16px', fontWeight: 700, fontSize: '18px', color: 'white' }}>New Playlist</p>
+            <input
+              autoFocus
+              placeholder="Playlist name..."
+              value={newPlaylistName}
+              onChange={e => setNewPlaylistName(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' && newPlaylistName.trim()) {
+                  createPlaylist(newPlaylistName.trim());
+                  setCreatingPlaylist(false);
+                  setNewPlaylistName('');
+                }
+              }}
+              style={{ width: '100%', padding: '12px 14px', borderRadius: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', fontSize: '16px', outline: 'none', boxSizing: 'border-box' }}
+            />
+            <div style={{ display: 'flex', gap: '10px', marginTop: '16px' }}>
+              <button onClick={() => setCreatingPlaylist(false)} style={{ flex: 1, padding: '12px', borderRadius: '8px', background: 'rgba(255,255,255,0.08)', border: 'none', color: 'white', fontSize: '15px', cursor: 'pointer' }}>Cancel</button>
+              <button
+                onClick={() => { if (newPlaylistName.trim()) { createPlaylist(newPlaylistName.trim()); setCreatingPlaylist(false); setNewPlaylistName(''); } }}
+                style={{ flex: 1, padding: '12px', borderRadius: '8px', background: 'var(--spotify-green)', border: 'none', color: 'black', fontWeight: 700, fontSize: '15px', cursor: 'pointer' }}
+              >Create</button>
+            </div>
+          </div>
+        </>
+      )}
+
+      {modalSong && <AddToPlaylistModal song={modalSong} onClose={() => setModalSong(null)} />}
     </div>
   );
 };
