@@ -88,7 +88,7 @@ const GlobalSearchView: React.FC = () => {
         // 2. Fetch Audio URL
         if (!song.audioUrl) {
           try {
-            const metaRes = await fetch(`https://archive.org/metadata/${song.id}`);
+            const metaRes = await fetch(`/api/ia-search?mode=metadata&identifier=${encodeURIComponent(song.id)}`);
             const m = await metaRes.json();
             if (m && m.files) {
               let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3') 
@@ -121,7 +121,7 @@ const GlobalSearchView: React.FC = () => {
     if (!song.audioUrl) {
       setLoadingSongId(song.id);
       try {
-        const metaRes = await fetch(`https://archive.org/metadata/${song.id}`);
+        const metaRes = await fetch(`/api/ia-search?mode=metadata&identifier=${encodeURIComponent(song.id)}`);
         const m = await metaRes.json();
         
         if (!m || !m.files) throw new Error("No files found");

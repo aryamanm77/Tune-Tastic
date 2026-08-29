@@ -1,4 +1,5 @@
-export const IA_ADVANCED_SEARCH_URL = 'https://archive.org/advancedsearch.php';
+const PROXY_SEARCH_URL = '/api/ia-search';
+const PROXY_METADATA_URL = '/api/ia-search';
 
 const FIELDS = [
   'identifier',
@@ -89,7 +90,7 @@ function buildQueryString(query: string, options: { mediatype?: string, rows?: n
   FIELDS.forEach((f) => params.append('fl[]', f));
   params.append('sort[]', '');
 
-  return `${IA_ADVANCED_SEARCH_URL}?${params.toString()}`;
+  return `${PROXY_SEARCH_URL}?${params.toString()}`;
 }
 
 const WEIGHTS = {
@@ -155,12 +156,30 @@ export async function searchSongs(query: string, options: SearchOptions = {}) {
 
   const url = buildQueryString(query, { mediatype, rows: candidatePoolSize });
 
-  const res = await fetch(url);
+  let res;
+  try {
+    res = await fetch(url);
+  } catch (networkErr) {
+    console.error('IA search network error (check CORS / connectivity):', networkErr);
+    throw networkErr;
+  }
+
   if (!res.ok) {
+    const bodyText = await res.text().catch(() => '');
+    console.error(`IA search HTTP error ${res.status}:`, bodyText);
     throw new Error(`Internet Archive search failed: ${res.status} ${res.statusText}`);
   }
+
   const data = await res.json();
+  if (data?.error) {
+    console.error('IA search API error:', data.error);
+    throw new Error(`Internet Archive API error: ${JSON.stringify(data.error)}`);
+  }
+
   const docs = data?.response?.docs || [];
+  if (docs.length === 0) {
+    console.warn(`IA search returned 0 results for query: "${query}" — url: ${url}`);
+  }
 
   const ranked = docs
     .map((doc: any) => ({ ...doc, _score: scoreCandidate(doc, query) }))
@@ -175,7 +194,7 @@ export function getThumbnailUrl(identifier: string) {
 
 export async function getCoverImageFromFiles(identifier: string) {
   try {
-    const res = await fetch(`https://archive.org/metadata/${identifier}`);
+    const res = await fetch(`${PROXY_METADATA_URL}?mode=metadata&identifier=${encodeURIComponent(identifier)}`);
     if (!res.ok) return null;
     const data = await res.json();
     const files = data?.files || [];
@@ -193,7 +212,7 @@ export async function getCoverImageFromFiles(identifier: string) {
 }
 
 export async function getPlayableFiles(identifier: string) {
-  const res = await fetch(`https://archive.org/metadata/${identifier}`);
+  const res = await fetch(`${PROXY_METADATA_URL}?mode=metadata&identifier=${encodeURIComponent(identifier)}`);
   if (!res.ok) throw new Error(`Failed to fetch metadata for ${identifier}`);
   const data = await res.json();
   const files = data?.files || [];
