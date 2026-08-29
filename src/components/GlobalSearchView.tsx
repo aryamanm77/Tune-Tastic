@@ -261,7 +261,7 @@ const GlobalSearchView: React.FC = () => {
               >
                 <img 
                   src={archiveResults[0].coverArt} 
-                  onError={(e) => handleImageError(e, song)}
+                  onError={(e) => handleImageError(e, archiveResults[0])}
                   style={{ width: '92px', height: '92px', borderRadius: '4px', objectFit: 'cover', marginBottom: '20px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }} 
                   alt="" 
                 />
