@@ -10,7 +10,6 @@ const GlobalSearchView: React.FC = () => {
   const [archiveResults, setArchiveResults] = useState<Song[]>([]);
   const [loadingSongId, setLoadingSongId] = useState<string | null>(null);
   const searchTimeoutRef = useRef<number | null>(null);
-  const prefetchQueryRef = useRef<string>('');
 
   // Global Search Logic
   useEffect(() => {
