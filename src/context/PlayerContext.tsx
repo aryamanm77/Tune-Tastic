@@ -499,7 +499,12 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
       audioContextRef.current.resume();
     }
-    if (currentSong) {
+    if (currentSong && audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(e => console.error("Playback failed:", e));
+      }
       setIsPlaying(!isPlaying);
     }
   };

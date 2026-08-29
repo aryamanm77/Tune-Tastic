@@ -78,6 +78,36 @@ const GlobalSearchView: React.FC = () => {
     };
   }, [query]);
 
+  // Background Prefetcher: Resolve audioUrls for top 5 results silently to ensure zero-latency playback
+  useEffect(() => {
+    if (archiveResults.length === 0) return;
+    
+    const prefetchAudioUrls = async () => {
+      // Only prefetch the first 5 songs to avoid rate limiting
+      const topSongs = archiveResults.slice(0, 5).filter(s => !s.audioUrl);
+      
+      // Fetch in parallel for speed
+      await Promise.allSettled(topSongs.map(async (song) => {
+        try {
+          const metaRes = await fetch(`https://archive.org/metadata/${song.id}`);
+          const m = await metaRes.json();
+          if (m && m.files) {
+            let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3') 
+                       || m.files.find((f: any) => f.name.endsWith('.mp3'));
+            if (mp3File) {
+              song.audioUrl = `https://archive.org/download/${song.id}/${encodeURIComponent(mp3File.name)}`;
+              song.durationMs = mp3File.length ? parseFloat(mp3File.length) * 1000 : 0;
+            }
+          }
+        } catch (error) {
+          // Silent fail for prefetch
+        }
+      }));
+    };
+
+    prefetchAudioUrls();
+  }, [archiveResults]);
+
   const handlePlay = async (song: Song) => {
     if (currentSong?.id === song.id) {
       togglePlayPause();
