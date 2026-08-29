@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { Play, Search, Loader2 } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
+import { searchSongs } from '../utils/ia-song-search';
 
 const GlobalSearchView: React.FC = () => {
   const { currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
@@ -28,40 +29,23 @@ const GlobalSearchView: React.FC = () => {
 
     searchTimeoutRef.current = window.setTimeout(async () => {
       try {
-        // Safe Search Filter & Stricter Language/Title Matching
-        // By restricting to title and subject, we prevent random language matches from massive text bodies.
-        // We also strictly filter out non-music collections like audio_religion, audio_islamic, and audio_bookspoetry
-        const q = `mediatype:audio AND (title:(${query}) OR subject:(${query})) AND NOT (subject:explicit OR subject:nsfw OR title:explicit OR mediatype:data OR collection:audio_religion OR collection:audio_islamic OR collection:audio_bookspoetry OR subject:quran OR subject:islam OR subject:sermon)`;
+        const docs = await searchSongs(query, { candidatePoolSize: 75, limit: 20 });
         
-        const url = new URL('https://archive.org/advancedsearch.php');
-        url.searchParams.append('q', q);
-        url.searchParams.append('fl[]', 'identifier');
-        url.searchParams.append('fl[]', 'title');
-        url.searchParams.append('fl[]', 'creator');
-        url.searchParams.append('fl[]', 'date');
-        url.searchParams.append('output', 'json');
-        url.searchParams.append('rows', '20');
-        
-        const searchUrl = url.toString();
-        const searchRes = await fetch(searchUrl);
-        const searchData = await searchRes.json();
-        
-        const docs = searchData.response?.docs || [];
         if (docs.length === 0) {
           setArchiveResults([]);
           setIsSearching(false);
           return;
         }
 
-        // Map directly to Song interface instantly using the reliable image service
+        // Map directly to Song interface
         const newSongs: Song[] = docs.map((doc: any) => ({
           id: doc.identifier,
           title: doc.title || 'Unknown Title',
-          artist: doc.creator || 'Unknown Artist',
+          artist: Array.isArray(doc.creator) ? doc.creator.join(', ') : (doc.creator || 'Unknown Artist'),
           album: doc.date ? doc.date.substring(0, 4) : 'TuneTastic Global',
-          durationMs: 0, // Will be fetched on play
+          durationMs: 0,
           audioId: '',
-          audioUrl: '', // Will be fetched on play
+          audioUrl: '', 
           coverArt: `https://archive.org/services/img/${doc.identifier}`
         }));
 
