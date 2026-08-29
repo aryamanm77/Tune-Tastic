@@ -29,7 +29,8 @@ const GlobalSearchView: React.FC = () => {
       try {
         // Safe Search Filter & Stricter Language/Title Matching
         // By restricting to title and subject, we prevent random language matches from massive text bodies.
-        const q = `mediatype:audio AND (title:(${query}) OR subject:(${query})) AND NOT (subject:explicit OR subject:nsfw OR title:explicit OR mediatype:data)`;
+        // We also strictly filter out non-music collections like audio_religion, audio_islamic, and audio_bookspoetry
+        const q = `mediatype:audio AND (title:(${query}) OR subject:(${query})) AND NOT (subject:explicit OR subject:nsfw OR title:explicit OR mediatype:data OR collection:audio_religion OR collection:audio_islamic OR collection:audio_bookspoetry OR subject:quran OR subject:islam OR subject:sermon)`;
         
         const url = new URL('https://archive.org/advancedsearch.php');
         url.searchParams.append('q', q);
@@ -176,7 +177,20 @@ const GlobalSearchView: React.FC = () => {
       {/* Loading State */}
       {query.trim() && isSearching && archiveResults.length === 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '64px', color: 'var(--spotify-green)' }}>
-          <Loader2 size={48} className="spin" style={{ marginBottom: '16px' }} />
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="var(--spotify-green)" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+            <rect x="2" y="8" width="4" height="8" rx="2">
+              <animate attributeName="height" values="8;16;8" begin="0s" dur="0.8s" repeatCount="indefinite" />
+              <animate attributeName="y" values="8;4;8" begin="0s" dur="0.8s" repeatCount="indefinite" />
+            </rect>
+            <rect x="10" y="4" width="4" height="16" rx="2">
+              <animate attributeName="height" values="16;4;16" begin="0.2s" dur="0.8s" repeatCount="indefinite" />
+              <animate attributeName="y" values="4;10;4" begin="0.2s" dur="0.8s" repeatCount="indefinite" />
+            </rect>
+            <rect x="18" y="8" width="4" height="8" rx="2">
+              <animate attributeName="height" values="8;16;8" begin="0.4s" dur="0.8s" repeatCount="indefinite" />
+              <animate attributeName="y" values="8;4;8" begin="0.4s" dur="0.8s" repeatCount="indefinite" />
+            </rect>
+          </svg>
           <h2 style={{ color: 'var(--text-primary)' }}>Searching TuneTastic Global...</h2>
           <p style={{ color: 'var(--text-secondary)' }}>Scanning millions of safe, full-length tracks</p>
         </div>
