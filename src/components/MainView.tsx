@@ -22,15 +22,22 @@ const MainView: React.FC = () => {
   return (
     <div className="main-view" style={{ padding: '24px' }}>
       {/* Mobile-only logo header */}
-      <div className="show-mobile" style={{ display: 'none', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-        <TuneTasticLogo size={34} />
-        <span style={{
-          fontSize: '22px',
-          fontWeight: 800,
-          background: 'linear-gradient(135deg, #1db954, #1ed760)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-        }}>TuneTastic</span>
+      <div className="show-mobile" style={{ display: 'none', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+        <TuneTasticLogo size={44} animated={true} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span style={{
+            fontSize: '22px',
+            fontWeight: 900,
+            background: 'linear-gradient(135deg, #1db954 0%, #1ed760 50%, #4ade80 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            letterSpacing: '-0.5px',
+            lineHeight: 1.1,
+          }}>TuneTastic</span>
+          <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+            Premium
+          </span>
+        </div>
       </div>
 
       <h2 style={{ marginBottom: '24px', fontSize: '24px', fontWeight: 700 }}>All Music</h2>

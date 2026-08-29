@@ -21,19 +21,25 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
 
   return (
     <div className="sidebar hide-mobile">
-      {/* Animated Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-        <TuneTasticLogo size={40} />
-        <span style={{
-          fontSize: '20px',
-          fontWeight: 800,
-          background: 'linear-gradient(135deg, #1db954, #1ed760)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          letterSpacing: '-0.5px'
-        }}>
-          TuneTastic
-        </span>
+      {/* Premium Brand Header */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', padding: '4px 0' }}>
+        <TuneTasticLogo size={46} animated={true} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span style={{
+            fontSize: '22px',
+            fontWeight: 900,
+            background: 'linear-gradient(135deg, #1db954 0%, #1ed760 50%, #4ade80 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            letterSpacing: '-0.5px',
+            lineHeight: 1.1,
+          }}>
+            TuneTastic
+          </span>
+          <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+            Premium
+          </span>
+        </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '16px' }}>
         <button 
