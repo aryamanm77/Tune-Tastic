@@ -52,7 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
           onClick={() => setActiveTab('global')}
           style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'global' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
         >
-          <Globe size={24} /> Global Search
+          <Globe size={24} /> Global Search (All Music)
         </button>
         <button 
           onClick={() => setActiveTab('library')}

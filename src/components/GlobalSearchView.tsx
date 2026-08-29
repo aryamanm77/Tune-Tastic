@@ -82,7 +82,7 @@ const GlobalSearchView: React.FC = () => {
     <div className="main-view" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 800, margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
-          TuneTastic Global
+          TuneTastic Global (All Music)
         </h1>
       </div>
 
@@ -114,7 +114,7 @@ const GlobalSearchView: React.FC = () => {
             <TuneTasticLogo size={96} />
           </div>
           <h2 style={{ color: 'var(--text-primary)', marginBottom: '12px', fontSize: '28px', fontWeight: 800 }}>
-            Welcome to TuneTastic Global
+            Welcome to TuneTastic Global (All Music)
           </h2>
           <p style={{ maxWidth: '450px', margin: '0 auto', lineHeight: 1.6, fontSize: '16px' }}>
             Search the world for any language, artist, or song. Discover millions of full-length, high-quality audio tracks instantly.
