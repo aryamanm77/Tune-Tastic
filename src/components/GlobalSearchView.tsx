@@ -49,8 +49,7 @@ const GlobalSearchView: React.FC = () => {
     };
   }, [query]);
 
-  // (Background prefetcher removed: Jamendo provides all metadata and audio URLs upfront)
-
+  const handlePlay = (song: Song) => {
     if (currentSong?.id === song.id) {
       togglePlayPause();
       return;
