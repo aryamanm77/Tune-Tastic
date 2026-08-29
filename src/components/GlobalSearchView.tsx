@@ -125,6 +125,31 @@ const GlobalSearchView: React.FC = () => {
     return `${m}:${s.toString().padStart(2, '0')}`;
   };
 
+  const handleImageError = async (e: React.SyntheticEvent<HTMLImageElement, Event>, song: Song) => {
+    const imgElement = e.currentTarget;
+    if (imgElement.dataset.fallbackAttempted) {
+      imgElement.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2';
+      return;
+    }
+    imgElement.dataset.fallbackAttempted = 'true';
+    
+    try {
+      // Try to fetch artwork from iTunes based on title and artist
+      const query = encodeURIComponent(`${song.title} ${song.artist}`.trim());
+      const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+      const data = await res.json();
+      
+      if (data.results && data.results.length > 0 && data.results[0].artworkUrl100) {
+        // Enhance resolution from 100x100 to 300x300
+        imgElement.src = data.results[0].artworkUrl100.replace('100x100bb', '300x300bb');
+      } else {
+        imgElement.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2';
+      }
+    } catch (err) {
+      imgElement.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2';
+    }
+  };
+
   return (
     <div className="main-view" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
@@ -236,7 +261,7 @@ const GlobalSearchView: React.FC = () => {
               >
                 <img 
                   src={archiveResults[0].coverArt} 
-                  onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                  onError={(e) => handleImageError(e, song)}
                   style={{ width: '92px', height: '92px', borderRadius: '4px', objectFit: 'cover', marginBottom: '20px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }} 
                   alt="" 
                 />
@@ -291,7 +316,7 @@ const GlobalSearchView: React.FC = () => {
                         <div style={{ position: 'relative', width: '40px', height: '40px', marginRight: '16px', flexShrink: 0 }}>
                           <img 
                             src={song.coverArt} 
-                            onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                            onError={(e) => handleImageError(e, song)}
                             style={{ width: '100%', height: '100%', borderRadius: '4px', objectFit: 'cover' }} 
                             alt="" 
                           />
@@ -383,7 +408,7 @@ const GlobalSearchView: React.FC = () => {
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                             <img 
                               src={song.coverArt} 
-                              onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                              onError={(e) => handleImageError(e, song)}
                               style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                               alt="" 
                             />
