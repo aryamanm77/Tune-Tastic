@@ -294,8 +294,7 @@ const ItunesSearchView: React.FC = () => {
                 <div
                   className="premium-top-card"
                   onClick={() => handlePlay(results[0])}
-                  onMouseEnter={() => setHoveredId(results[0].id)}
-                  onMouseLeave={() => setHoveredId(null)}
+
                 >
                   <img
                     src={results[0].coverArt}
@@ -335,8 +334,7 @@ const ItunesSearchView: React.FC = () => {
                           key={song.id}
                           className="premium-song-row"
                           onClick={() => handlePlay(song)}
-                          onMouseEnter={() => setHoveredId(song.id)}
-                          onMouseLeave={() => setHoveredId(null)}
+
                         >
                           <div className="prem-thumb-wrap">
                             <img src={song.coverArt} onError={handleImageError} alt="" />
@@ -380,8 +378,7 @@ const ItunesSearchView: React.FC = () => {
                         key={song.id}
                         className="prem-table-row"
                         onClick={() => handlePlay(song)}
-                        onMouseEnter={() => setHoveredId(song.id)}
-                        onMouseLeave={() => setHoveredId(null)}
+
                       >
                         <div className="prem-idx">
                           {active
