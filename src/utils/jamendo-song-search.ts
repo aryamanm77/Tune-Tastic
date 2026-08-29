@@ -4,7 +4,7 @@ export async function searchJamendo(query: string, options: any = {}) {
   const { limit = 20, order = 'relevance' } = options;
   if (!query || !query.trim()) return [];
 
-  const clientId = (import.meta as any).env.VITE_JAMENDO_CLIENT_ID || 'b6747d04'; // provided a known free client ID just in case, or use user's env
+  const clientId = (import.meta as any).env.VITE_JAMENDO_CLIENT_ID || '54efd69a';
 
   const params = new URLSearchParams({
     client_id: clientId,
