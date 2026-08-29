@@ -205,7 +205,7 @@ const GlobalSearchView: React.FC = () => {
     <div className="main-view" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 800, margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <Globe size={32} color="#1db954" /> TuneTastic Global
+          TuneTastic Global
         </h1>
       </div>
 
