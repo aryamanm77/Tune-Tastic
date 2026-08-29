@@ -10,6 +10,7 @@ const GlobalSearchView: React.FC = () => {
   const [archiveResults, setArchiveResults] = useState<Song[]>([]);
   const [loadingSongId, setLoadingSongId] = useState<string | null>(null);
   const searchTimeoutRef = useRef<number | null>(null);
+  const prefetchQueryRef = useRef<string>('');
 
   // Global Search Logic
   useEffect(() => {
@@ -78,35 +79,55 @@ const GlobalSearchView: React.FC = () => {
     };
   }, [query]);
 
-  // Background Prefetcher: Resolve audioUrls for top 5 results silently to ensure zero-latency playback
+  // Background Prefetcher: Resolve audioUrls and iTunes artwork for top 5 results
   useEffect(() => {
-    if (archiveResults.length === 0) return;
+    if (archiveResults.length === 0 || prefetchQueryRef.current === query) return;
+    prefetchQueryRef.current = query; // Prevent infinite loops
     
-    const prefetchAudioUrls = async () => {
-      // Only prefetch the first 5 songs to avoid rate limiting
-      const topSongs = archiveResults.slice(0, 5).filter(s => !s.audioUrl);
+    const prefetchData = async () => {
+      let stateChanged = false;
+      const topSongs = archiveResults.slice(0, 5);
       
-      // Fetch in parallel for speed
       await Promise.allSettled(topSongs.map(async (song) => {
+        // 1. Proactively fetch iTunes Artwork to override ugly IA placeholders
         try {
-          const metaRes = await fetch(`https://archive.org/metadata/${song.id}`);
-          const m = await metaRes.json();
-          if (m && m.files) {
-            let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3') 
-                       || m.files.find((f: any) => f.name.endsWith('.mp3'));
-            if (mp3File) {
-              song.audioUrl = `https://archive.org/download/${song.id}/${encodeURIComponent(mp3File.name)}`;
-              song.durationMs = mp3File.length ? parseFloat(mp3File.length) * 1000 : 0;
+          if (!song.coverArt?.includes('itunes')) {
+            const searchQuery = encodeURIComponent(`${song.title} ${song.artist}`.trim());
+            const itunesRes = await fetch(`https://itunes.apple.com/search?term=${searchQuery}&entity=song&limit=1`);
+            const itunesData = await itunesRes.json();
+            if (itunesData.results && itunesData.results.length > 0 && itunesData.results[0].artworkUrl100) {
+              song.coverArt = itunesData.results[0].artworkUrl100.replace('100x100bb', '300x300bb');
+              stateChanged = true;
             }
           }
-        } catch (error) {
-          // Silent fail for prefetch
+        } catch (error) {}
+
+        // 2. Fetch Audio URL
+        if (!song.audioUrl) {
+          try {
+            const metaRes = await fetch(`https://archive.org/metadata/${song.id}`);
+            const m = await metaRes.json();
+            if (m && m.files) {
+              let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3') 
+                         || m.files.find((f: any) => f.name.endsWith('.mp3'));
+              if (mp3File) {
+                song.audioUrl = `https://archive.org/download/${song.id}/${encodeURIComponent(mp3File.name)}`;
+                song.durationMs = mp3File.length ? parseFloat(mp3File.length) * 1000 : 0;
+                stateChanged = true;
+              }
+            }
+          } catch (error) {}
         }
       }));
+
+      // Trigger a re-render so the UI updates with the new iTunes images and durations
+      if (stateChanged) {
+        setArchiveResults([...archiveResults]);
+      }
     };
 
-    prefetchAudioUrls();
-  }, [archiveResults]);
+    prefetchData();
+  }, [archiveResults, query]);
 
   const handlePlay = async (song: Song) => {
     if (currentSong?.id === song.id) {
