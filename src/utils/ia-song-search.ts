@@ -168,3 +168,41 @@ export async function searchSongs(query: string, options: SearchOptions = {}) {
 
   return ranked.slice(0, limit);
 }
+
+export function getThumbnailUrl(identifier: string) {
+  return `https://archive.org/services/img/${identifier}`;
+}
+
+export async function getCoverImageFromFiles(identifier: string) {
+  try {
+    const res = await fetch(`https://archive.org/metadata/${identifier}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    const files = data?.files || [];
+
+    const priorityNames = /cover|folder|front|album/i;
+    const imageFiles = files.filter((f: any) => /\.(jpe?g|png|gif|webp)$/i.test(f.name));
+
+    const best = imageFiles.find((f: any) => priorityNames.test(f.name)) || imageFiles[0];
+
+    if (!best) return null;
+    return `https://archive.org/download/${identifier}/${encodeURIComponent(best.name)}`;
+  } catch (err) {
+    return null;
+  }
+}
+
+export async function getPlayableFiles(identifier: string) {
+  const res = await fetch(`https://archive.org/metadata/${identifier}`);
+  if (!res.ok) throw new Error(`Failed to fetch metadata for ${identifier}`);
+  const data = await res.json();
+  const files = data?.files || [];
+  return files
+    .filter((f: any) => /mp3|flac|ogg|wav|m4a/i.test(f.name))
+    .map((f: any) => ({
+      name: f.name,
+      format: f.format,
+      size: f.size,
+      url: `https://archive.org/download/${identifier}/${encodeURIComponent(f.name)}`,
+    }));
+}

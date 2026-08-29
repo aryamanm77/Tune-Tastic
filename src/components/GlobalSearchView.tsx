@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { Play, Search, Loader2 } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
-import { searchSongs } from '../utils/ia-song-search';
+import { searchSongs, getCoverImageFromFiles } from '../utils/ia-song-search';
 
 const GlobalSearchView: React.FC = () => {
   const { currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
@@ -168,7 +168,14 @@ const GlobalSearchView: React.FC = () => {
     imgElement.dataset.fallbackAttempted = 'true';
     
     try {
-      // Try to fetch artwork from iTunes based on title and artist
+      // First fallback: check if the IA item has a high quality cover in its files
+      const archiveCover = await getCoverImageFromFiles(song.id);
+      if (archiveCover) {
+        imgElement.src = archiveCover;
+        return;
+      }
+
+      // Second fallback: Try to fetch artwork from iTunes based on title and artist
       const query = encodeURIComponent(`${song.title} ${song.artist}`.trim());
       const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
       const data = await res.json();
@@ -467,7 +474,7 @@ const GlobalSearchView: React.FC = () => {
       {/* No Results */}
       {query.trim() && !isSearching && archiveResults.length === 0 && (
         <div style={{ textAlign: 'center', marginTop: '64px', color: 'var(--text-secondary)' }}>
-          <h2 style={{ color: 'var(--text-primary)', marginBottom: '8px' }}>No safe audio found for "{query}"</h2>
+          <h2 style={{ color: 'var(--text-primary)', marginBottom: '8px' }}>No results found for "{query}"</h2>
           <p>Try searching for a different track or artist name.</p>
         </div>
       )}
