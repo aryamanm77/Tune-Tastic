@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
-import { Play, Search, Loader2, Globe, ShieldCheck } from 'lucide-react';
+import { Play, Search, Loader2 } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
 
 const GlobalSearchView: React.FC = () => {
