@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { Play, Search, Loader2 } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
-import { searchSongs, getCoverImageFromFiles } from '../utils/ia-song-search';
-
+import { searchJamendo } from '../utils/jamendo-song-search';
 const GlobalSearchView: React.FC = () => {
   const { currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
   const [query, setQuery] = useState('');
@@ -29,25 +28,13 @@ const GlobalSearchView: React.FC = () => {
 
     searchTimeoutRef.current = window.setTimeout(async () => {
       try {
-        const docs = await searchSongs(query, { candidatePoolSize: 75, limit: 20 });
+        const newSongs = await searchJamendo(query, { limit: 20 });
         
-        if (docs.length === 0) {
+        if (newSongs.length === 0) {
           setArchiveResults([]);
           setIsSearching(false);
           return;
         }
-
-        // Map directly to Song interface
-        const newSongs: Song[] = docs.map((doc: any) => ({
-          id: doc.identifier,
-          title: doc.title || 'Unknown Title',
-          artist: Array.isArray(doc.creator) ? doc.creator.join(', ') : (doc.creator || 'Unknown Artist'),
-          album: doc.date ? doc.date.substring(0, 4) : 'TuneTastic Global',
-          durationMs: 0,
-          audioId: '',
-          audioUrl: '', 
-          coverArt: `https://archive.org/services/img/${doc.identifier}`
-        }));
 
         setArchiveResults(newSongs);
       } catch (error) {
@@ -62,89 +49,16 @@ const GlobalSearchView: React.FC = () => {
     };
   }, [query]);
 
-  // Background Prefetcher: Resolve audioUrls and iTunes artwork for top 5 results
-  useEffect(() => {
-    if (archiveResults.length === 0 || prefetchQueryRef.current === query) return;
-    prefetchQueryRef.current = query; // Prevent infinite loops
-    
-    const prefetchData = async () => {
-      let stateChanged = false;
-      const topSongs = archiveResults.slice(0, 5);
-      
-      await Promise.allSettled(topSongs.map(async (song) => {
-        // 1. Proactively fetch iTunes Artwork to override ugly IA placeholders
-        try {
-          if (!song.coverArt?.includes('itunes')) {
-            const searchQuery = encodeURIComponent(`${song.title} ${song.artist}`.trim());
-            const itunesRes = await fetch(`https://itunes.apple.com/search?term=${searchQuery}&entity=song&limit=1`);
-            const itunesData = await itunesRes.json();
-            if (itunesData.results && itunesData.results.length > 0 && itunesData.results[0].artworkUrl100) {
-              song.coverArt = itunesData.results[0].artworkUrl100.replace('100x100bb', '300x300bb');
-              stateChanged = true;
-            }
-          }
-        } catch (error) {}
+  // (Background prefetcher removed: Jamendo provides all metadata and audio URLs upfront)
 
-        // 2. Fetch Audio URL
-        if (!song.audioUrl) {
-          try {
-            const metaRes = await fetch(`/api/ia-search?mode=metadata&identifier=${encodeURIComponent(song.id)}`);
-            const m = await metaRes.json();
-            if (m && m.files) {
-              let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3') 
-                         || m.files.find((f: any) => f.name.endsWith('.mp3'));
-              if (mp3File) {
-                song.audioUrl = `https://archive.org/download/${song.id}/${encodeURIComponent(mp3File.name)}`;
-                song.durationMs = mp3File.length ? parseFloat(mp3File.length) * 1000 : 0;
-                stateChanged = true;
-              }
-            }
-          } catch (error) {}
-        }
-      }));
-
-      // Trigger a re-render so the UI updates with the new iTunes images and durations
-      if (stateChanged) {
-        setArchiveResults([...archiveResults]);
-      }
-    };
-
-    prefetchData();
-  }, [archiveResults, query]);
-
-  const handlePlay = async (song: Song) => {
     if (currentSong?.id === song.id) {
       togglePlayPause();
       return;
     }
 
     if (!song.audioUrl) {
-      setLoadingSongId(song.id);
-      try {
-        const metaRes = await fetch(`/api/ia-search?mode=metadata&identifier=${encodeURIComponent(song.id)}`);
-        const m = await metaRes.json();
-        
-        if (!m || !m.files) throw new Error("No files found");
-
-        let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3');
-        if (!mp3File) {
-          mp3File = m.files.find((f: any) => f.name.endsWith('.mp3'));
-        }
-
-        if (mp3File) {
-          // IMPORTANT: URL encode the filename to fix playback errors with spaces!
-          song.audioUrl = `https://archive.org/download/${song.id}/${encodeURIComponent(mp3File.name)}`;
-          song.durationMs = mp3File.length ? parseFloat(mp3File.length) * 1000 : 0;
-        } else {
-          console.error("No MP3 file found for this track");
-          setLoadingSongId(null);
-          return;
-        }
-      } catch (error) {
-        console.error("Failed to fetch audio stream:", error);
-        setLoadingSongId(null);
-        return;
-      }
+      console.error("No MP3 file found for this track");
+      return;
     }
     
     setLoadingSongId(null);
@@ -159,36 +73,11 @@ const GlobalSearchView: React.FC = () => {
     return `${m}:${s.toString().padStart(2, '0')}`;
   };
 
-  const handleImageError = async (e: React.SyntheticEvent<HTMLImageElement, Event>, song: Song) => {
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const imgElement = e.currentTarget;
-    if (imgElement.dataset.fallbackAttempted) {
-      imgElement.src = '/logo.png';
-      return;
-    }
+    if (imgElement.dataset.fallbackAttempted) return;
     imgElement.dataset.fallbackAttempted = 'true';
-    
-    try {
-      // First fallback: check if the IA item has a high quality cover in its files
-      const archiveCover = await getCoverImageFromFiles(song.id);
-      if (archiveCover) {
-        imgElement.src = archiveCover;
-        return;
-      }
-
-      // Second fallback: Try to fetch artwork from iTunes based on title and artist
-      const query = encodeURIComponent(`${song.title} ${song.artist}`.trim());
-      const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
-      const data = await res.json();
-      
-      if (data.results && data.results.length > 0 && data.results[0].artworkUrl100) {
-        // Enhance resolution from 100x100 to 300x300
-        imgElement.src = data.results[0].artworkUrl100.replace('100x100bb', '300x300bb');
-      } else {
-        imgElement.src = '/logo.png';
-      }
-    } catch (err) {
-      imgElement.src = '/logo.png';
-    }
+    imgElement.src = '/logo.png';
   };
 
   return (
@@ -297,7 +186,7 @@ const GlobalSearchView: React.FC = () => {
               >
                 <img 
                   src={archiveResults[0].coverArt} 
-                  onError={(e) => handleImageError(e, archiveResults[0])}
+                  onError={handleImageError}
                   style={{ width: '92px', height: '92px', borderRadius: '4px', objectFit: 'cover', marginBottom: '20px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }} 
                   alt="" 
                 />
@@ -352,7 +241,7 @@ const GlobalSearchView: React.FC = () => {
                         <div style={{ position: 'relative', width: '40px', height: '40px', marginRight: '16px', flexShrink: 0 }}>
                           <img 
                             src={song.coverArt} 
-                            onError={(e) => handleImageError(e, song)}
+                            onError={handleImageError}
                             style={{ width: '100%', height: '100%', borderRadius: '4px', objectFit: 'cover' }} 
                             alt="" 
                           />
@@ -444,7 +333,7 @@ const GlobalSearchView: React.FC = () => {
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                             <img 
                               src={song.coverArt} 
-                              onError={(e) => handleImageError(e, song)}
+                              onError={handleImageError}
                               style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                               alt="" 
                             />
