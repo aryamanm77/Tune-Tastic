@@ -88,7 +88,6 @@ function buildQueryString(query: string, options: { mediatype?: string, rows?: n
   params.set('page', '1');
   params.set('output', 'json');
   FIELDS.forEach((f) => params.append('fl[]', f));
-  params.append('sort[]', '');
 
   return `${PROXY_SEARCH_URL}?${params.toString()}`;
 }

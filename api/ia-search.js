@@ -24,13 +24,18 @@ export default async function handler(req, res) {
       }
       targetUrl = `${IA_METADATA_URL}/${encodeURIComponent(identifier)}`;
     } else {
-      // Default: forward all query params straight to advancedsearch.php
+      // Default: forward query params to advancedsearch.php, but
+      // sanitize known-problematic ones first. IA's API will hard-
+      // reject an empty `sort` value with UNSUPPORTED_VALUE instead
+      // of just ignoring it, so we strip it out entirely if blank.
       const params = new URLSearchParams();
       for (const [key, value] of Object.entries(searchParams)) {
-        if (Array.isArray(value)) {
-          value.forEach((v) => params.append(key, v));
-        } else if (value !== undefined) {
-          params.append(key, value);
+        const values = Array.isArray(value) ? value : [value];
+        for (const v of values) {
+          if (v === undefined || v === null) continue;
+          const trimmed = String(v).trim();
+          if (trimmed === '') continue; // drop empty values, e.g. sort[]=""
+          params.append(key, trimmed);
         }
       }
       targetUrl = `${IA_ADVANCED_SEARCH_URL}?${params.toString()}`;
