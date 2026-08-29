@@ -1,11 +1,11 @@
 import React from 'react';
-import { Home, Search, Library, PlusSquare, Heart, Sliders } from 'lucide-react';
+import { Home, Search, Globe, Library, PlusSquare, Heart, Sliders } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import TuneTasticLogo from './TuneTasticLogo';
 
 interface SidebarProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'global' | 'library' | 'playlist' | 'dj') => void;
   onOpenPlaylist: (id: string) => void;
 }
 
@@ -46,7 +46,13 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
           onClick={() => setActiveTab('search')}
           style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'search' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
         >
-          <Search size={24} /> Search
+          <Search size={24} /> Local Search
+        </button>
+        <button 
+          onClick={() => setActiveTab('global')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'global' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
+        >
+          <Globe size={24} /> Global Search
         </button>
         <button 
           onClick={() => setActiveTab('library')}
@@ -56,7 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
         </button>
         <button 
           onClick={() => setActiveTab('dj')}
-          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'dj' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'dj' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
         >
           <Sliders size={24} /> DJ Studio
         </button>
