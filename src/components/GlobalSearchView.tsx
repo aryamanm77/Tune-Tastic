@@ -158,7 +158,20 @@ const GlobalSearchView: React.FC = () => {
         </div>
       </div>
 
-
+      {/* Empty State with Logo */}
+      {!query.trim() && (
+        <div style={{ textAlign: 'center', marginTop: '64px', color: 'var(--text-secondary)' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+            <TuneTasticLogo size={96} />
+          </div>
+          <h2 style={{ color: 'var(--text-primary)', marginBottom: '12px', fontSize: '28px', fontWeight: 800 }}>
+            Welcome to TuneTastic Global
+          </h2>
+          <p style={{ maxWidth: '450px', margin: '0 auto', lineHeight: 1.6, fontSize: '16px' }}>
+            Search the world for any language, artist, or song. Discover millions of full-length, high-quality audio tracks instantly.
+          </p>
+        </div>
+      )}
 
       {/* Loading State */}
       {query.trim() && isSearching && archiveResults.length === 0 && (
