@@ -39,7 +39,6 @@ const GlobalSearchView: React.FC = () => {
         url.searchParams.append('fl[]', 'title');
         url.searchParams.append('fl[]', 'creator');
         url.searchParams.append('fl[]', 'date');
-        url.searchParams.append('sort[]', 'downloads desc');
         url.searchParams.append('output', 'json');
         url.searchParams.append('rows', '20');
         
@@ -179,7 +178,7 @@ const GlobalSearchView: React.FC = () => {
   const handleImageError = async (e: React.SyntheticEvent<HTMLImageElement, Event>, song: Song) => {
     const imgElement = e.currentTarget;
     if (imgElement.dataset.fallbackAttempted) {
-      imgElement.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2';
+      imgElement.src = '/logo.png';
       return;
     }
     imgElement.dataset.fallbackAttempted = 'true';
@@ -194,10 +193,10 @@ const GlobalSearchView: React.FC = () => {
         // Enhance resolution from 100x100 to 300x300
         imgElement.src = data.results[0].artworkUrl100.replace('100x100bb', '300x300bb');
       } else {
-        imgElement.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2';
+        imgElement.src = '/logo.png';
       }
     } catch (err) {
-      imgElement.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2';
+      imgElement.src = '/logo.png';
     }
   };
 

@@ -153,7 +153,7 @@ const SearchView: React.FC = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <img 
                         src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')} 
-                        onError={(e) => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                        onError={(e) => { e.currentTarget.src = '/logo.png'; }}
                         style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                         alt="" 
                       />

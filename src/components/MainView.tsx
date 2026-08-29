@@ -69,7 +69,7 @@ const MainView: React.FC = () => {
               <div style={{ width: '40px', height: '40px', borderRadius: '4px', overflow: 'hidden', flexShrink: 0 }}>
                 <img
                   src={song.coverArt || getCoverArtUrl(song.audioId)}
-                  onError={e => { e.currentTarget.src = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2'; }}
+                  onError={e => { e.currentTarget.src = '/logo.png'; }}
                   alt={song.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
