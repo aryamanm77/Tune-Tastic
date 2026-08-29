@@ -8,6 +8,7 @@ export interface Song {
   album: string;
   durationMs: number | null;
   audioId: string;
+  audioUrl?: string;
   coverArt?: string;
 }
 
@@ -482,7 +483,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
     const audio = audioRef.current;
     if (audio) {
-      audio.src = getAudioUrl(song.audioId);
+      audio.src = song.audioUrl || getAudioUrl(song.audioId);
       audio.load();
       audio.play().then(() => {
         setIsPlaying(true);
