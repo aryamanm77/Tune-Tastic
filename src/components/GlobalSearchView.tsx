@@ -8,9 +8,10 @@ const GlobalSearchView: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [archiveResults, setArchiveResults] = useState<Song[]>([]);
+  const [loadingSongId, setLoadingSongId] = useState<string | null>(null);
   const searchTimeoutRef = useRef<number | null>(null);
 
-  // Archive Search Logic
+  // Global Search Logic
   useEffect(() => {
     if (!query.trim()) {
       setArchiveResults([]);
@@ -26,10 +27,10 @@ const GlobalSearchView: React.FC = () => {
 
     searchTimeoutRef.current = window.setTimeout(async () => {
       try {
-        // Safe Search Filter: Exclude explicit, NSFW, and non-audio content
-        const q = `mediatype:audio AND (${query}) AND NOT (subject:explicit OR subject:nsfw OR title:explicit OR mediatype:data)`;
+        // Safe Search Filter & Stricter Language/Title Matching
+        // By restricting to title and subject, we prevent random language matches from massive text bodies.
+        const q = `mediatype:audio AND (title:(${query}) OR subject:(${query})) AND NOT (subject:explicit OR subject:nsfw OR title:explicit OR mediatype:data)`;
         
-        // Search for audio items on Internet Archive
         const url = new URL('https://archive.org/advancedsearch.php');
         url.searchParams.append('q', q);
         url.searchParams.append('fl[]', 'identifier');
@@ -38,7 +39,7 @@ const GlobalSearchView: React.FC = () => {
         url.searchParams.append('fl[]', 'date');
         url.searchParams.append('sort[]', 'downloads desc');
         url.searchParams.append('output', 'json');
-        url.searchParams.append('rows', '15');
+        url.searchParams.append('rows', '20');
         
         const searchUrl = url.toString();
         const searchRes = await fetch(searchUrl);
@@ -51,64 +52,68 @@ const GlobalSearchView: React.FC = () => {
           return;
         }
 
-        // Fetch metadata for top results concurrently to find the exact MP3 files
-        const metadataPromises = docs.map((doc: any) => 
-          fetch(`https://archive.org/metadata/${doc.identifier}`).then(res => res.json()).catch(() => null)
-        );
-        
-        const metadatas = await Promise.all(metadataPromises);
-        
-        // Map to our Song interface
-        const newSongs: Song[] = [];
-        
-        metadatas.forEach((m: any) => {
-          if (!m || !m.files) return;
-          
-          // Find the best MP3 file (prefer VBR, then standard)
-          let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3');
-          if (!mp3File) {
-            mp3File = m.files.find((f: any) => f.name.endsWith('.mp3'));
-          }
-
-          if (mp3File) {
-            const audioUrl = `https://archive.org/download/${m.metadata.identifier}/${mp3File.name}`;
-            
-            // Try to find cover art in the files
-            const imgFile = m.files.find((f: any) => f.format === 'JPEG' || f.format === 'PNG' || f.name.endsWith('.jpg') || f.name.endsWith('.png'));
-            const coverArt = imgFile ? `https://archive.org/download/${m.metadata.identifier}/${imgFile.name}` : 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2';
-
-            newSongs.push({
-              id: m.metadata.identifier,
-              title: m.metadata.title || 'Unknown Title',
-              artist: m.metadata.creator || 'Unknown Artist',
-              album: m.metadata.date || 'Internet Archive',
-              durationMs: mp3File.length ? parseFloat(mp3File.length) * 1000 : 0,
-              audioId: '', // We don't use Cloudinary ID for archive songs
-              audioUrl: audioUrl,
-              coverArt: coverArt
-            });
-          }
-        });
+        // Map directly to Song interface instantly using the reliable image service
+        const newSongs: Song[] = docs.map((doc: any) => ({
+          id: doc.identifier,
+          title: doc.title || 'Unknown Title',
+          artist: doc.creator || 'Unknown Artist',
+          album: doc.date ? doc.date.substring(0, 4) : 'TuneTastic Global',
+          durationMs: 0, // Will be fetched on play
+          audioId: '',
+          audioUrl: '', // Will be fetched on play
+          coverArt: `https://archive.org/services/img/${doc.identifier}`
+        }));
 
         setArchiveResults(newSongs);
       } catch (error) {
-        console.error("Archive search failed:", error);
+        console.error("Global search failed:", error);
       } finally {
         setIsSearching(false);
       }
-    }, 600); // 600ms debounce
+    }, 400); // reduced debounce for faster feel
 
     return () => {
       if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
     };
   }, [query]);
 
-  const handlePlay = (song: Song) => {
+  const handlePlay = async (song: Song) => {
     if (currentSong?.id === song.id) {
       togglePlayPause();
-    } else {
-      playSong(song);
+      return;
     }
+
+    if (!song.audioUrl) {
+      setLoadingSongId(song.id);
+      try {
+        const metaRes = await fetch(`https://archive.org/metadata/${song.id}`);
+        const m = await metaRes.json();
+        
+        if (!m || !m.files) throw new Error("No files found");
+
+        let mp3File = m.files.find((f: any) => f.name.endsWith('.mp3') && f.format === 'VBR MP3');
+        if (!mp3File) {
+          mp3File = m.files.find((f: any) => f.name.endsWith('.mp3'));
+        }
+
+        if (mp3File) {
+          // IMPORTANT: URL encode the filename to fix playback errors with spaces!
+          song.audioUrl = `https://archive.org/download/${song.id}/${encodeURIComponent(mp3File.name)}`;
+          song.durationMs = mp3File.length ? parseFloat(mp3File.length) * 1000 : 0;
+        } else {
+          console.error("No MP3 file found for this track");
+          setLoadingSongId(null);
+          return;
+        }
+      } catch (error) {
+        console.error("Failed to fetch audio stream:", error);
+        setLoadingSongId(null);
+        return;
+      }
+    }
+    
+    setLoadingSongId(null);
+    playSong(song);
   };
 
   const formatTime = (ms: number) => {
@@ -123,7 +128,7 @@ const GlobalSearchView: React.FC = () => {
     <div className="main-view" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 800, margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <Globe size={32} color="#1db954" /> Global Archive Room
+          <Globe size={32} color="#1db954" /> TuneTastic Global
         </h1>
         <TuneTasticLogo size={40} />
       </div>
@@ -153,23 +158,13 @@ const GlobalSearchView: React.FC = () => {
         </div>
       </div>
 
-      {/* Empty State */}
-      {!query.trim() && (
-        <div style={{ textAlign: 'center', marginTop: '64px', color: 'var(--text-secondary)' }}>
-          <Globe size={64} style={{ opacity: 0.2, marginBottom: '16px' }} />
-          <h2 style={{ color: 'var(--text-primary)', marginBottom: '8px' }}>Explore the Internet Archive</h2>
-          <p style={{ maxWidth: '400px', margin: '0 auto', lineHeight: 1.5 }}>
-            Search through millions of full-length, copyright-free, and user-uploaded audio tracks from around the world.
-            Powered by Archive.org.
-          </p>
-        </div>
-      )}
+
 
       {/* Loading State */}
       {query.trim() && isSearching && archiveResults.length === 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '64px', color: 'var(--spotify-green)' }}>
           <Loader2 size={48} className="spin" style={{ marginBottom: '16px' }} />
-          <h2 style={{ color: 'var(--text-primary)' }}>Searching Global Archive...</h2>
+          <h2 style={{ color: 'var(--text-primary)' }}>Searching TuneTastic Global...</h2>
           <p style={{ color: 'var(--text-secondary)' }}>Scanning millions of safe, full-length tracks</p>
         </div>
       )}
@@ -188,6 +183,7 @@ const GlobalSearchView: React.FC = () => {
           <tbody>
             {archiveResults.map((song, index) => {
               const isCurrent = currentSong?.id === song.id;
+              const isLoadingThis = loadingSongId === song.id;
               return (
                 <tr 
                   key={song.id}
@@ -196,7 +192,9 @@ const GlobalSearchView: React.FC = () => {
                 >
                   <td className="hide-mobile" style={{ padding: '12px 16px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
                     <div className="song-index-col">
-                      {isCurrent ? (
+                      {isLoadingThis ? (
+                         <Loader2 size={16} className="spin" color="var(--spotify-green)" />
+                      ) : isCurrent ? (
                         <div className={'eq-bars' + (isPlaying ? '' : ' paused')}>
                           <div className="eq-bar"></div>
                           <div className="eq-bar"></div>
@@ -206,9 +204,11 @@ const GlobalSearchView: React.FC = () => {
                       ) : (
                         <span className="song-index">{index + 1}</span>
                       )}
-                      <button className="song-play-btn" style={{ color: isCurrent ? 'var(--spotify-green)' : 'white' }}>
-                        <Play size={16} fill="currentColor" />
-                      </button>
+                      {!isLoadingThis && (
+                        <button className="song-play-btn" style={{ color: isCurrent ? 'var(--spotify-green)' : 'white' }}>
+                          <Play size={16} fill="currentColor" />
+                        </button>
+                      )}
                     </div>
                   </td>
                   <td style={{ padding: '12px 16px' }}>
@@ -230,7 +230,7 @@ const GlobalSearchView: React.FC = () => {
                     </div>
                   </td>
                   <td className="hide-mobile" style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '14px' }}>
-                    <span className="ellipsis" style={{ display: 'block', maxWidth: '200px' }}>Archive.org</span>
+                    <span className="ellipsis" style={{ display: 'block', maxWidth: '200px' }}>Global</span>
                   </td>
                   <td className="hide-mobile" style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '14px', textAlign: 'right' }}>
                     {formatTime(song.durationMs || 0)}
