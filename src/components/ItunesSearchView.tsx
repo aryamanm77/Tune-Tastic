@@ -8,7 +8,6 @@ const ItunesSearchView: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<Song[]>([]);
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const searchTimeoutRef = useRef<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -352,7 +351,7 @@ const ItunesSearchView: React.FC = () => {
                             <p className="ellipsis" style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: active ? '#FF2D55' : 'white' }}>{song.title}</p>
                             <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
                           </div>
-                          <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', flexShrink: 0 }}>{formatTime(song.durationMs)}</span>
+                          <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', flexShrink: 0 }}>{formatTime(song.durationMs || 0)}</span>
                         </div>
                       );
                     })}
@@ -407,7 +406,7 @@ const ItunesSearchView: React.FC = () => {
                             <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
                           </div>
                         </div>
-                        <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)' }}>{formatTime(song.durationMs)}</span>
+                        <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)' }}>{formatTime(song.durationMs || 0)}</span>
                       </div>
                     );
                   })}
