@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
-import { Play, Search, Loader2, Pause, Music, MoreHorizontal } from 'lucide-react';
+import { Play, Search, Loader2, Pause, Music } from 'lucide-react';
 import { searchItunes } from '../utils/itunes-song-search';
 import AddToPlaylistModal from './AddToPlaylistModal';
 
