@@ -23,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
     <div className="sidebar hide-mobile">
       {/* Premium Brand Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', padding: '4px 0' }}>
-        <TuneTasticLogo size={46} animated={true} />
+        <TuneTasticLogo size={46} />
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span style={{
             fontSize: '22px',

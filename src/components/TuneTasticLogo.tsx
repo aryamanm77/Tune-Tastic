@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TuneTasticLogo: React.FC<{ size?: number; animated?: boolean }> = ({ size = 36, animated = true }) => {
+const TuneTasticLogo: React.FC<{ size?: number }> = ({ size = 36 }) => {
   return (
     <div
       style={{

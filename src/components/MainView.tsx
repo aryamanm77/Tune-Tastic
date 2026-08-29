@@ -23,7 +23,7 @@ const MainView: React.FC = () => {
     <div className="main-view" style={{ padding: '24px' }}>
       {/* Mobile-only logo header */}
       <div className="show-mobile" style={{ display: 'none', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-        <TuneTasticLogo size={44} animated={true} />
+        <TuneTasticLogo size={44} />
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span style={{
             fontSize: '22px',
