@@ -1,9 +1,9 @@
 import React from 'react';
-import { Home, Search, Globe, Library, Sliders, Sparkles } from 'lucide-react';
+import { Home, Search, Library, Sliders, Sparkles } from 'lucide-react';
 
 interface BottomNavProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'global' | 'library' | 'playlist' | 'dj' | 'premium') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium') => void;
 }
 
 const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
@@ -23,14 +23,6 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
       >
         <Search size={24} />
         <span>Local</span>
-      </button>
-
-      <button 
-        className={`bottom-nav-item ${activeTab === 'global' ? 'active' : ''}`}
-        onClick={() => setActiveTab('global')}
-      >
-        <Globe size={24} />
-        <span>Global</span>
       </button>
 
       <button 

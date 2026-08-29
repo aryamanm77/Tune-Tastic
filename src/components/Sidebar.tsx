@@ -1,11 +1,11 @@
 import React from 'react';
-import { Home, Search, Globe, Library, PlusSquare, Heart, Sliders, Sparkles } from 'lucide-react';
+import { Home, Search, Library, PlusSquare, Heart, Sliders, Sparkles } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import TuneTasticLogo from './TuneTasticLogo';
 
 interface SidebarProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'global' | 'library' | 'playlist' | 'dj' | 'premium') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium') => void;
   onOpenPlaylist: (id: string) => void;
 }
 
@@ -47,12 +47,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
           style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'search' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
         >
           <Search size={24} /> Local Search
-        </button>
-        <button 
-          onClick={() => setActiveTab('global')}
-          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'global' ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
-        >
-          <Globe size={24} /> Global Search (All Music)
         </button>
         <button 
           onClick={() => setActiveTab('premium')}
