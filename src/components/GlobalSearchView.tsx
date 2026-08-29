@@ -27,10 +27,20 @@ const GlobalSearchView: React.FC = () => {
     searchTimeoutRef.current = window.setTimeout(async () => {
       try {
         // Safe Search Filter: Exclude explicit, NSFW, and non-audio content
-        const safeSearchFilter = `AND NOT (subject:explicit OR subject:nsfw OR title:explicit OR mediatype:data)`;
+        const q = `mediatype:audio AND (${query}) AND NOT (subject:explicit OR subject:nsfw OR title:explicit OR mediatype:data)`;
         
         // Search for audio items on Internet Archive
-        const searchUrl = `https://archive.org/advancedsearch.php?q=mediatype:audio+AND+(${encodeURIComponent(query)})+${encodeURIComponent(safeSearchFilter)}&fl[]=identifier,title,creator,date&sort[]=downloads+desc&output=json&rows=15`;
+        const url = new URL('https://archive.org/advancedsearch.php');
+        url.searchParams.append('q', q);
+        url.searchParams.append('fl[]', 'identifier');
+        url.searchParams.append('fl[]', 'title');
+        url.searchParams.append('fl[]', 'creator');
+        url.searchParams.append('fl[]', 'date');
+        url.searchParams.append('sort[]', 'downloads desc');
+        url.searchParams.append('output', 'json');
+        url.searchParams.append('rows', '15');
+        
+        const searchUrl = url.toString();
         const searchRes = await fetch(searchUrl);
         const searchData = await searchRes.json();
         
