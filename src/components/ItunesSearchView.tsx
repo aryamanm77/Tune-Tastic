@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { Play, Search, Loader2 } from 'lucide-react';
-import TuneTasticLogo from './TuneTasticLogo';
 import { searchItunes } from '../utils/itunes-song-search';
 
 const ItunesSearchView: React.FC = () => {
