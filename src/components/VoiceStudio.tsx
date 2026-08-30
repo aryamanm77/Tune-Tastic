@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mic, Play, Pause, Trash2, Plus, Check, ChevronDown, ChevronUp, User, Info, Radio } from 'lucide-react';
+import { Mic, Play, Pause, Trash2, Plus, Check, ChevronDown, ChevronUp, User, Info, Volume2 } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 
 // Sentences to read aloud during recording
@@ -35,7 +35,7 @@ const VoiceStudio: React.FC = () => {
   const [isPlayingPreview, setIsPlayingPreview] = useState(false);
   const [isSinging, setIsSinging] = useState(false);
 
-  const { isPlaying } = usePlayer();
+  const { isPlaying, setDjState } = usePlayer();
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
@@ -155,11 +155,12 @@ const VoiceStudio: React.FC = () => {
     if (voiceLoopRef.current) { voiceLoopRef.current.pause(); voiceLoopRef.current = null; }
     const audio = new Audio(activeAvatar.url);
     audio.loop = true;
-    // Slight reverb-like effect via playback rate variation
     audio.playbackRate = 1.0;
-    audio.volume = 0.85;
+    audio.volume = 0.9;
     audio.play();
     voiceLoopRef.current = audio;
+    // Cut original vocals so user's voice stands out
+    setDjState({ karaoke: true });
     setIsSinging(true);
   };
 
@@ -168,6 +169,8 @@ const VoiceStudio: React.FC = () => {
       voiceLoopRef.current.pause();
       voiceLoopRef.current = null;
     }
+    // Restore original vocals
+    setDjState({ karaoke: false });
     setIsSinging(false);
   };
 
@@ -185,9 +188,42 @@ const VoiceStudio: React.FC = () => {
     };
   }, []);
 
+  // DJ Studio style subcomponents
+  const SectionLabel = ({ text }: { text: string }) => (
+    <p style={{
+      margin: 0, padding: '12px 0 6px',
+      fontSize: '12px', fontWeight: 700,
+      color: 'rgba(255,255,255,0.4)',
+      textTransform: 'uppercase', letterSpacing: '1.5px',
+    }}>{text}</p>
+  );
+
+  const Toggle = ({ active, onClick, color = '#FF2D55' }: { active: boolean; onClick: () => void; color?: string }) => (
+    <button
+      onClick={onClick}
+      role="switch"
+      aria-checked={active}
+      style={{
+        width: '51px', height: '31px', borderRadius: '16px',
+        background: active ? color : 'rgba(255,255,255,0.18)',
+        border: 'none', cursor: 'pointer', position: 'relative',
+        flexShrink: 0, transition: 'background 0.25s',
+      }}
+    >
+      <div style={{
+        position: 'absolute', top: '2px',
+        left: active ? '22px' : '2px',
+        width: '27px', height: '27px',
+        borderRadius: '50%', background: 'white',
+        boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+        transition: 'left 0.25s cubic-bezier(.34,1.56,.64,1)',
+      }} />
+    </button>
+  );
+
   return (
-    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: activeAvatar ? 'rgba(29,185,84,0.06)' : 'transparent' }}>
-      {/* Header row — always visible */}
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: isSinging ? 'rgba(255,45,85,0.06)' : activeAvatar ? 'rgba(29,185,84,0.04)' : 'transparent' }}>
+      {/* Header row — always visible, same style as DJ Studio rows */}
       <button
         onClick={() => setIsExpanded(e => !e)}
         style={{
@@ -195,11 +231,11 @@ const VoiceStudio: React.FC = () => {
           padding: '14px 24px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left',
         }}
       >
-        <div style={{ color: '#FF2D55', flexShrink: 0 }}><Mic size={20} /></div>
+        <div style={{ color: isSinging ? '#FF2D55' : '#FF2D55', flexShrink: 0 }}><Mic size={20} /></div>
         <div style={{ flex: 1 }}>
           <p style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: 'white' }}>Voice Avatar Studio</p>
-          <p style={{ margin: '2px 0 0', fontSize: '13px', color: 'rgba(255,255,255,0.45)' }}>
-            {activeAvatar ? `🎙️ Active: ${activeAvatar.name}` : 'Record your voice & use it as your avatar'}
+          <p style={{ margin: '2px 0 0', fontSize: '13px', color: isSinging ? '#FF2D55' : 'rgba(255,255,255,0.45)' }}>
+            {isSinging ? `🔴 Singing in "${activeAvatar?.name}"` : activeAvatar ? `🎙️ Active: ${activeAvatar.name}` : 'Record your voice & use it as your avatar'}
           </p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -278,42 +314,59 @@ const VoiceStudio: React.FC = () => {
                 ))}
               </div>
 
-              {/* ── SING IN MY VOICE BUTTON ── */}
+              {/* ── SING IN MY VOICE (DJ STUDIO STYLE ROW) ── */}
               {activeAvatar && (
-                <div style={{ marginTop: '16px' }}>
-                  <button
-                    onClick={isSinging ? stopSinging : startSinging}
-                    disabled={!isPlaying && !isSinging}
-                    style={{
-                      width: '100%', padding: '16px', borderRadius: '14px', border: 'none', cursor: isPlaying || isSinging ? 'pointer' : 'not-allowed',
-                      background: isSinging
-                        ? 'linear-gradient(135deg, #FF2D55, #FF6B8A)'
-                        : isPlaying ? 'linear-gradient(135deg, #1db954, #17a349)' : 'rgba(255,255,255,0.07)',
-                      color: isSinging || isPlaying ? (isSinging ? 'white' : 'black') : 'rgba(255,255,255,0.3)',
-                      fontWeight: 800, fontSize: '16px',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
-                      boxShadow: isSinging ? '0 0 24px rgba(255,45,85,0.5)' : isPlaying ? '0 0 16px rgba(29,185,84,0.35)' : 'none',
-                      transition: 'all 0.3s',
-                    }}
-                  >
-                    <Radio size={20} />
-                    {isSinging ? '🔴 Stop Singing' : isPlaying ? `🎙️ Sing in My Voice — ${activeAvatar.name}` : 'Play a song first to enable'}
-                  </button>
-                  {isSinging && (
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: '3px', height: '24px', marginTop: '10px' }}>
-                      {Array(12).fill(0).map((_, i) => (
-                        <div key={i} style={{
-                          width: '3px', borderRadius: '2px',
-                          background: '#FF2D55',
-                          height: `${Math.random() * 18 + 4}px`,
-                          animation: `eq-pulse ${0.4 + (i % 4) * 0.1}s infinite alternate ease-in-out`,
-                          animationDelay: `${i * 0.05}s`,
-                        }} />
-                      ))}
+                <>
+                  <SectionLabel text="Sing in My Voice" />
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: '16px',
+                    padding: '14px 0',
+                    borderTop: '1px solid rgba(255,255,255,0.06)',
+                    opacity: (!isPlaying && !isSinging) ? 0.4 : 1,
+                    transition: 'opacity 0.2s'
+                  }}>
+                    <div style={{ color: isSinging ? '#FF2D55' : 'rgba(255,255,255,0.5)', flexShrink: 0 }}>
+                      <Volume2 size={20} />
                     </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <p style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: 'white' }}>
+                        Sing in My Voice
+                      </p>
+                      <p style={{ margin: '2px 0 0', fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.4 }}>
+                        {isSinging
+                          ? `🔴 Live — original vocals cut, your voice is playing!`
+                          : isPlaying
+                          ? `Using "${activeAvatar.name}" — tap to activate`
+                          : 'Play a song first to enable this'}
+                      </p>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+                      {isSinging && (
+                        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '2px', height: '20px' }}>
+                          {Array(6).fill(0).map((_, i) => (
+                            <div key={i} style={{
+                              width: '3px', borderRadius: '2px', background: '#FF2D55',
+                              animation: `eq-pulse ${0.4 + (i % 3) * 0.15}s infinite alternate ease-in-out`,
+                              animationDelay: `${i * 0.06}s`,
+                            }} />
+                          ))}
+                        </div>
+                      )}
+                      <Toggle
+                        active={isSinging}
+                        onClick={() => (isPlaying || isSinging) ? (isSinging ? stopSinging() : startSinging()) : undefined}
+                        color="#FF2D55"
+                      />
+                    </div>
+                  </div>
+                  {isSinging && (
+                    <p style={{ margin: '0 0 8px', fontSize: '12px', color: 'rgba(255,45,85,0.7)', lineHeight: 1.5 }}>
+                      💡 Original vocals are muted. Your recorded voice is playing on loop over the song's beat!
+                    </p>
                   )}
-                </div>
+                </>
               )}
+
             </div>
           )}
 
