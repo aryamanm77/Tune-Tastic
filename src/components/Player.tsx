@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Volume2, VolumeX, Heart, Timer, X } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Volume2, VolumeX, Heart, Timer, X, ListMusic } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
+import QueuePanel from './QueuePanel';
 
 const SLEEP_OPTIONS = [5, 10, 15, 20, 30, 45, 60];
 
@@ -13,6 +14,7 @@ const Player: React.FC = () => {
   } = usePlayer();
 
   const [touchStartX, setTouchStartX] = useState(0);
+  const [showQueue, setShowQueue] = useState(false);
 
   // ─── Sleep Timer ──────────────────────────────────────────────
   const [showSleepMenu, setShowSleepMenu] = useState(false);
@@ -214,6 +216,16 @@ const Player: React.FC = () => {
           )}
         </div>
 
+        {/* Queue button */}
+        <button
+          onClick={() => setShowQueue(v => !v)}
+          title="Queue"
+          className="hide-mobile"
+          style={{ color: showQueue ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
+        >
+          <ListMusic size={16} />
+        </button>
+
         {/* Volume */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100px' }}>
           <button onClick={() => setVolume(volume > 0 ? 0 : 1)}>
@@ -228,6 +240,8 @@ const Player: React.FC = () => {
           />
         </div>
       </div>
+
+      {showQueue && <QueuePanel onClose={() => setShowQueue(false)} />}
 
     </div>
   );

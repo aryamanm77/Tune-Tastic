@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import { Play, MoreHorizontal, Plus } from 'lucide-react';
@@ -10,6 +10,19 @@ const MainView: React.FC = () => {
   const [modalSong, setModalSong] = useState<Song | null>(null);
   const [creatingPlaylist, setCreatingPlaylist] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState('');
+  const [activeArtist, setActiveArtist] = useState<string>('All');
+
+  // Build unique artist list from songs
+  const artists = useMemo(() => {
+    const unique = [...new Set(songs.map(s => s.artist).filter(a => a && a !== 'Unknown Artist'))];
+    return unique.sort();
+  }, [songs]);
+
+  // Filtered songs
+  const filteredSongs = useMemo(() => {
+    if (activeArtist === 'All') return songs;
+    return songs.filter(s => s.artist === activeArtist);
+  }, [songs, activeArtist]);
 
   const handlePlay = (song: Song) => {
     if (currentSong?.id === song.id) {
@@ -88,7 +101,39 @@ const MainView: React.FC = () => {
         </div>
       )}
 
-      <h2 style={{ marginBottom: '24px', fontSize: '24px', fontWeight: 700 }}>All Music</h2>
+      {/* Filter chips */}
+      <div style={{ marginBottom: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 700, margin: 0 }}>All Music</h2>
+          {activeArtist !== 'All' && (
+            <span style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>
+              {filteredSongs.length} songs
+            </span>
+          )}
+        </div>
+        <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px' }}>
+          {['All', ...artists].map(artist => (
+            <button
+              key={artist}
+              onClick={() => setActiveArtist(artist)}
+              style={{
+                flexShrink: 0,
+                padding: '6px 16px',
+                borderRadius: '20px',
+                fontSize: '13px',
+                fontWeight: 600,
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                backgroundColor: activeArtist === artist ? 'var(--spotify-green)' : 'rgba(255,255,255,0.1)',
+                color: activeArtist === artist ? 'black' : 'white',
+              }}
+            >
+              {artist}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div style={{
         display: 'flex',
@@ -96,7 +141,7 @@ const MainView: React.FC = () => {
         gap: '8px',
         paddingBottom: '40px',
       }} className="library-list">
-        {songs.map((song, index) => {
+        {filteredSongs.map((song, index) => {
           const isCurrent = currentSong?.id === song.id;
           return (
             <div
