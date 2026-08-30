@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Ghost, Play } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 
@@ -6,30 +6,46 @@ const GhostWhisperer: React.FC = () => {
   const { isPlaying } = usePlayer();
   const [text, setText] = useState('You are unstoppable');
   const [isWhispering, setIsWhispering] = useState(false);
+  const timeoutRef = useRef<number>();
+
+  useEffect(() => {
+    if (!isWhispering || !isPlaying) {
+      window.speechSynthesis.cancel();
+      clearTimeout(timeoutRef.current);
+      if (!isPlaying && isWhispering) setIsWhispering(false);
+      return;
+    }
+
+    const speakLoop = () => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.pitch = 0.1; 
+      utterance.rate = 0.6; 
+      utterance.volume = 0.4; 
+
+      utterance.onend = () => {
+        if (isWhispering) timeoutRef.current = window.setTimeout(speakLoop, 4000);
+      };
+      utterance.onerror = () => {
+        if (isWhispering) timeoutRef.current = window.setTimeout(speakLoop, 4000);
+      };
+
+      window.speechSynthesis.speak(utterance);
+    };
+
+    speakLoop();
+
+    return () => {
+      window.speechSynthesis.cancel();
+      clearTimeout(timeoutRef.current);
+    };
+  }, [isWhispering, text, isPlaying]);
 
   const handleWhisper = () => {
     if (!('speechSynthesis' in window)) {
       alert('Speech Synthesis not supported in this browser.');
       return;
     }
-
-    if (isWhispering) {
-      window.speechSynthesis.cancel();
-      setIsWhispering(false);
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    // Configure to sound creepy/ethereal
-    utterance.pitch = 0.1; // Very low pitch
-    utterance.rate = 0.6; // Slow rate
-    utterance.volume = 0.4; // Low volume so it sits "under" the music
-
-    utterance.onend = () => setIsWhispering(false);
-    utterance.onerror = () => setIsWhispering(false);
-
-    setIsWhispering(true);
-    window.speechSynthesis.speak(utterance);
+    setIsWhispering(!isWhispering);
   };
 
   return (
