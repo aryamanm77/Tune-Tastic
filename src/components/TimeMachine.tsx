@@ -18,18 +18,28 @@ const TimeMachine: React.FC = () => {
       lofi: false,
       spin8D: false,
       phaser: false,
+      reverb: 0,
+      alien: false,
     };
 
-    if (newYear < 1960) {
-      // 1920s-1950s: Old Radio / Gramophone
+    if (newYear < 1920) {
+      // 1500s-1920s: Medieval / Classical
+      newState.vinyl = true;
+      newState.reverb = 30; // Cathedral echo
+    } else if (newYear < 1960) {
+      // 1920s-1960s: Old Radio / Gramophone
       newState.vinyl = true;
       newState.telephone = true;
     } else if (newYear < 1995) {
       // 1960s-1990s: Cassette / Synthwave / LoFi
       newState.chorus = true;
       newState.lofi = true;
+    } else if (newYear > 2200) {
+      // 2200+: Deep Future
+      newState.spin8D = true;
+      newState.alien = true;
     } else if (newYear > 2030) {
-      // 2030+: Futuristic Sci-Fi HUD
+      // 2030-2200: Futuristic Sci-Fi HUD
       newState.spin8D = true;
       newState.phaser = true;
     }
@@ -74,8 +84,8 @@ const TimeMachine: React.FC = () => {
       <div style={{ position: 'relative', padding: '10px 0' }}>
         <input
           type="range"
-          min={1800}
-          max={2100}
+          min={1500}
+          max={2500}
           value={year}
           onChange={(e) => handleYearChange(parseInt(e.target.value))}
           style={{
@@ -83,10 +93,13 @@ const TimeMachine: React.FC = () => {
             height: '8px',
             WebkitAppearance: 'none',
             background: `linear-gradient(to right, 
-              #d4af37 0%, 
-              #ff00ff 33%, 
-              var(--spotify-green) 66%, 
-              #00e5ff 100%)`,
+              #8b0000 0%,      /* 1500s Red */
+              #d4af37 15%,     /* 1800s Gold */
+              #ff8c00 30%,     /* 1950s Orange */
+              #ff00ff 48%,     /* 1980s Pink */
+              var(--spotify-green) 53%, /* 2026 Green */
+              #00e5ff 70%,     /* 2200s Cyan */
+              #8a2be2 100%)    /* 2500s Purple */`,
             borderRadius: '4px',
             outline: 'none',
             cursor: 'pointer',
@@ -96,11 +109,12 @@ const TimeMachine: React.FC = () => {
           onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
           onMouseOut={(e) => e.currentTarget.style.opacity = '0.8'}
         />
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '11px', fontWeight: 800 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '10px', fontWeight: 800, letterSpacing: '0.5px' }}>
+          <span style={{ color: '#8b0000' }}>1500s</span>
           <span style={{ color: '#d4af37' }}>1800s</span>
           <span style={{ color: '#ff00ff' }}>1980s</span>
           <span style={{ color: 'var(--spotify-green)' }}>2026</span>
-          <span style={{ color: '#00e5ff' }}>2100s</span>
+          <span style={{ color: '#8a2be2' }}>2500s</span>
         </div>
       </div>
     </div>
