@@ -64,16 +64,19 @@ const SearchView: React.FC = () => {
             marginBottom: '32px',
           }} className="library-grid">
             {[
-              { label: 'Hindi Hits',  color: '#E13300', pick: 2 },
-              { label: 'English Pop', color: '#1e3264', pick: 8 },
-              { label: 'Kannada',     color: '#006450', pick: 15 },
-              { label: 'Trending',    color: '#8D67AB', pick: 30 },
-              { label: 'Romantic',    color: '#c13584', pick: 45 },
-              { label: 'Party',       color: '#E8115B', pick: 60 },
-              { label: 'Chill',       color: '#0d73ec', pick: 75 },
-              { label: 'All Songs',   color: '#1db954', pick: 90 },
+              { label: 'Pop', color: '#E8115B', image: '/genres/pop.jpg', query: 'Dua Lipa' },
+              { label: 'Hip-Hop', color: '#BA5D07', image: '/genres/hiphop.jpg', query: 'Post Malone' },
+              { label: 'Dance/Electronic', color: '#1E3264', image: '/genres/dance.jpg', query: 'Avicii' },
+              { label: 'R&B', color: '#E8115B', image: '/genres/rb.jpg', query: 'The Weeknd' },
+              { label: 'Rock', color: '#8D67AB', image: '/genres/rock.jpg', query: 'Imagine Dragons' },
+              { label: 'K-Pop', color: '#1E3264', image: '/genres/kpop.jpg', query: 'BTS' },
+              { label: 'Indie', color: '#477D95', image: '/genres/indie.jpg', query: 'Arctic Monkeys' },
+              { label: 'Podcasts', color: '#E91429', image: '/genres/podcasts.jpg', query: 'Podcast' },
+              { label: 'Classical', color: '#056952', image: '/genres/classical.jpg', query: 'Beethoven' },
+              { label: 'Latin', color: '#BA5D07', image: '/genres/latin.jpg', query: 'Bad Bunny' },
+              { label: 'Country', color: '#477D95', image: '/genres/country.jpg', query: 'Country' },
+              { label: 'Jazz', color: '#503750', image: '/genres/jazz.jpg', query: 'Jazz' },
             ].map(cat => {
-              const coverSong = songs.find((s, i) => i === cat.pick && s.coverArt) || songs.find((_, i) => i > cat.pick && songs[i]?.coverArt);
               return (
               <div
                 key={cat.label}
@@ -88,25 +91,26 @@ const SearchView: React.FC = () => {
                 }}
                 onMouseOver={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1.15)'}
                 onMouseOut={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1)'}
-                onClick={() => coverSong && playSong(coverSong)}
+                onClick={() => setQuery(cat.query || cat.label)}
               >
                 <span style={{
                   position: 'absolute', top: '14px', left: '14px',
                   fontWeight: 800, fontSize: '18px', color: 'white',
                   textShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                  zIndex: 2,
                 }}>{cat.label}</span>
-                {coverSong?.coverArt && (
-                  <img
-                    src={coverSong.coverArt}
-                    alt=""
-                    style={{
-                      position: 'absolute', bottom: '-4px', right: '-4px',
-                      width: '70px', height: '70px', objectFit: 'cover',
-                      borderRadius: '6px', transform: 'rotate(25deg)',
-                      boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
-                    }}
-                  />
-                )}
+                <img
+                  src={cat.image}
+                  alt={cat.label}
+                  loading="lazy"
+                  style={{
+                    position: 'absolute', bottom: '-10px', right: '-15px',
+                    width: '80px', height: '80px', objectFit: 'cover',
+                    borderRadius: '4px', transform: 'rotate(25deg)',
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.4)',
+                    pointerEvents: 'none'
+                  }}
+                />
               </div>
               );
             })}          </div>
