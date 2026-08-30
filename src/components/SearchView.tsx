@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getAudioUrl } from '../utils/cloudinary';
 import { Play, Search } from 'lucide-react';
-import MusicTrivia from './MusicTrivia';
+import ConstellationMap from './ConstellationMap';
 
 const SearchView: React.FC = () => {
   const { songs, currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
@@ -54,71 +54,11 @@ const SearchView: React.FC = () => {
         </div>
       </div>
 
-      {/* Browse All — shown when not searching */}
+      {/* Constellation Map — shown when not searching */}
       {!query.trim() && (
-        <>
-          <div style={{ marginBottom: '32px' }}>
-            <MusicTrivia />
-          </div>
-          <h2 style={{ marginBottom: '16px', fontSize: '22px', fontWeight: 700 }}>Browse All</h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-            gap: '16px',
-            marginBottom: '32px',
-          }} className="library-grid">
-            {[
-              { label: 'Pop', color: '#E8115B', image: '/genres/pop.jpg', query: 'Dua Lipa' },
-              { label: 'Hip-Hop', color: '#BA5D07', image: '/genres/hiphop.jpg', query: 'Post Malone' },
-              { label: 'Dance/Electronic', color: '#1E3264', image: '/genres/dance.jpg', query: 'Avicii' },
-              { label: 'R&B', color: '#E8115B', image: '/genres/rb.jpg', query: 'The Weeknd' },
-              { label: 'Rock', color: '#8D67AB', image: '/genres/rock.jpg', query: 'Imagine Dragons' },
-              { label: 'K-Pop', color: '#1E3264', image: '/genres/kpop.jpg', query: 'BTS' },
-              { label: 'Indie', color: '#477D95', image: '/genres/indie.jpg', query: 'Arctic Monkeys' },
-              { label: 'Podcasts', color: '#E91429', image: '/genres/podcasts.jpg', query: 'Podcast' },
-              { label: 'Classical', color: '#056952', image: '/genres/classical.jpg', query: 'Beethoven' },
-              { label: 'Latin', color: '#BA5D07', image: '/genres/latin.jpg', query: 'Bad Bunny' },
-              { label: 'Country', color: '#477D95', image: '/genres/country.jpg', query: 'Country' },
-              { label: 'Jazz', color: '#503750', image: '/genres/jazz.jpg', query: 'Jazz' },
-            ].map(cat => {
-              return (
-              <div
-                key={cat.label}
-                style={{
-                  backgroundColor: cat.color,
-                  borderRadius: '10px',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  height: '110px',
-                  position: 'relative',
-                  transition: 'filter 0.2s ease',
-                }}
-                onMouseOver={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1.15)'}
-                onMouseOut={e => (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1)'}
-                onClick={() => setQuery(cat.query || cat.label)}
-              >
-                <span style={{
-                  position: 'absolute', top: '14px', left: '14px',
-                  fontWeight: 800, fontSize: '18px', color: 'white',
-                  textShadow: '0 2px 8px rgba(0,0,0,0.4)',
-                  zIndex: 2,
-                }}>{cat.label}</span>
-                <img
-                  src={cat.image}
-                  alt={cat.label}
-                  loading="lazy"
-                  style={{
-                    position: 'absolute', bottom: '-10px', right: '-15px',
-                    width: '80px', height: '80px', objectFit: 'cover',
-                    borderRadius: '4px', transform: 'rotate(25deg)',
-                    boxShadow: '0 2px 10px rgba(0,0,0,0.4)',
-                    pointerEvents: 'none'
-                  }}
-                />
-              </div>
-              );
-            })}          </div>
-        </>
+        <div style={{ marginTop: '16px' }}>
+          <ConstellationMap />
+        </div>
       )}
 
       {query.trim() && (
