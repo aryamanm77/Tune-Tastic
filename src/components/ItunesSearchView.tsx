@@ -39,9 +39,14 @@ const ItunesSearchView: React.FC = () => {
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    if (e.currentTarget.dataset.fallbackAttempted) return;
-    e.currentTarget.dataset.fallbackAttempted = 'true';
-    e.currentTarget.src = '/logo.png';
+    const target = e.currentTarget;
+    if (target.src.includes('600x600bb')) {
+      target.src = target.src.replace('600x600bb', '100x100bb');
+      return;
+    }
+    if (target.dataset.fallbackAttempted) return;
+    target.dataset.fallbackAttempted = 'true';
+    target.src = '/logo.png';
   };
 
   const isCurrent = (song: Song) => currentSong?.id === song.id;

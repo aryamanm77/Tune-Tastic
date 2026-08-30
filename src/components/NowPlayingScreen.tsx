@@ -78,7 +78,13 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ onClose, onMoreOpti
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 0' }}>
           <img
             src={currentSong.coverArt || getCoverArtUrl(currentSong.audioId)}
-            onError={e => { e.currentTarget.src = '/logo.png'; }}
+            onError={e => {
+              if (e.currentTarget.src.includes('600x600bb')) {
+                e.currentTarget.src = e.currentTarget.src.replace('600x600bb', '100x100bb');
+              } else {
+                e.currentTarget.src = '/logo.png';
+              }
+            }}
             alt={currentSong.title}
             style={{
               width: '100%',

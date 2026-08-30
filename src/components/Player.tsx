@@ -99,7 +99,13 @@ const Player: React.FC = () => {
           <>
             <img 
               src={currentSong.coverArt || getCoverArtUrl(currentSong.audioId)} 
-              onError={(e) => { e.currentTarget.src = '/logo.png'; }}
+              onError={(e) => {
+                if (e.currentTarget.src.includes('600x600bb')) {
+                  e.currentTarget.src = e.currentTarget.src.replace('600x600bb', '100x100bb');
+                } else {
+                  e.currentTarget.src = '/logo.png';
+                }
+              }}
               alt={currentSong.title}
               style={{ width: '56px', height: '56px', borderRadius: '4px', objectFit: 'cover' }}
             />
