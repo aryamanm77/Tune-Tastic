@@ -32,6 +32,7 @@ const NebulaBackground: React.FC = () => {
     img.onload = () => { imgLoaded = true; };
     
     let currentScale = 1.1;
+    let bgScroll = 0;
 
     // Create stars
     const stars = Array.from({ length: 200 }, () => ({
@@ -66,17 +67,41 @@ const NebulaBackground: React.FC = () => {
         // Smoothly approach target scale
         currentScale += (targetScale - currentScale) * 0.1;
         
-        // Draw the image centered, scaled, and slowly rotating
-        // Make sure it's large enough to cover corners during rotation
-        const baseSize = Math.max(canvas.width, canvas.height) * 1.5;
-        const imgWidth = baseSize * currentScale;
-        const imgHeight = baseSize * currentScale;
+        // Update background scroll position
+        if (djState.zeroGravity) {
+          bgScroll += speedMult * 0.5; // Scroll up/down in zero G
+        } else {
+          bgScroll -= speedMult * 1.5; // Scroll left normally
+        }
+
+        const baseHeight = canvas.height * 1.5; // Ensure it covers height
+        const aspectRatio = img.width / img.height;
+        const baseWidth = baseHeight * aspectRatio;
+        
+        const imgWidth = baseWidth * currentScale;
+        const imgHeight = baseHeight * currentScale;
+        
+        // Wrap the scroll position so it loops infinitely
+        const scrollWrapped = ((bgScroll % imgWidth) + imgWidth) % imgWidth;
         
         ctx.save();
-        ctx.translate(canvas.width / 2, canvas.height / 2);
-        ctx.rotate(time * 0.05); // Slow rotation
         ctx.globalAlpha = 0.6 + (pulse * 0.4); // Image gets brighter on bass hits
-        ctx.drawImage(img, -imgWidth / 2, -imgHeight / 2, imgWidth, imgHeight);
+        
+        // Draw the image twice for an infinite scrolling effect
+        const yOffset = (canvas.height - imgHeight) / 2;
+        
+        if (djState.zeroGravity) {
+            // Vertical infinite scroll
+            const vScrollWrapped = ((bgScroll % imgHeight) + imgHeight) % imgHeight;
+            const xOffset = (canvas.width - imgWidth) / 2;
+            ctx.drawImage(img, xOffset, vScrollWrapped, imgWidth, imgHeight);
+            ctx.drawImage(img, xOffset, vScrollWrapped - imgHeight, imgWidth, imgHeight);
+        } else {
+            // Horizontal infinite scroll
+            ctx.drawImage(img, scrollWrapped, yOffset, imgWidth, imgHeight);
+            ctx.drawImage(img, scrollWrapped - imgWidth, yOffset, imgWidth, imgHeight);
+        }
+        
         ctx.restore();
       }
 
