@@ -93,13 +93,10 @@ const TimeMachine: React.FC = () => {
             height: '8px',
             WebkitAppearance: 'none',
             background: `linear-gradient(to right, 
-              #8b0000 0%,      /* 1500s Red */
-              #d4af37 15%,     /* 1800s Gold */
-              #ff8c00 30%,     /* 1950s Orange */
-              #ff00ff 48%,     /* 1980s Pink */
-              var(--spotify-green) 53%, /* 2026 Green */
-              #00e5ff 70%,     /* 2200s Cyan */
-              #8a2be2 100%)    /* 2500s Purple */`,
+              rgba(255,255,255,0.8) 0%, 
+              rgba(255,255,255,0.8) ${((year - 1500) / (2500 - 1500)) * 100}%, 
+              rgba(255,255,255,0.1) ${((year - 1500) / (2500 - 1500)) * 100}%, 
+              rgba(255,255,255,0.1) 100%)`,
             borderRadius: '4px',
             outline: 'none',
             cursor: 'pointer',
@@ -109,12 +106,12 @@ const TimeMachine: React.FC = () => {
           onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
           onMouseOut={(e) => e.currentTarget.style.opacity = '0.8'}
         />
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '10px', fontWeight: 800, letterSpacing: '0.5px' }}>
-          <span style={{ color: '#8b0000' }}>1500s</span>
-          <span style={{ color: '#d4af37' }}>1800s</span>
-          <span style={{ color: '#ff00ff' }}>1980s</span>
-          <span style={{ color: 'var(--spotify-green)' }}>2026</span>
-          <span style={{ color: '#8a2be2' }}>2500s</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.5px' }}>
+          <span>1500s</span>
+          <span>1800s</span>
+          <span>1980s</span>
+          <span>2026</span>
+          <span>2500s</span>
         </div>
       </div>
     </div>
