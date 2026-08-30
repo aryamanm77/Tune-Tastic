@@ -49,6 +49,10 @@ const VoiceStudio: React.FC = () => {
 
   const startRecording = async () => {
     try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert('Microphone not supported on this device/browser. If you are on mobile, you must use HTTPS to access the microphone.');
+        return;
+      }
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       streamRef.current = stream;
       const recorder = new MediaRecorder(stream);
@@ -439,57 +443,57 @@ const VoiceStudio: React.FC = () => {
       )}
 
       {/* ── SING IN MY VOICE (DJ STUDIO STYLE ROW) - ALWAYS VISIBLE ── */}
-      {activeAvatar && (
-        <div style={{ padding: '0 24px 12px' }}>
-          <SectionLabel text="Sing in My Voice" />
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '16px',
-            padding: '14px 0',
-            borderTop: '1px solid rgba(255,255,255,0.06)',
-            opacity: (!isPlaying && !isSinging) ? 0.4 : 1,
-            transition: 'opacity 0.2s'
-          }}>
-            <div style={{ color: isSinging ? '#FF2D55' : 'rgba(255,255,255,0.5)', flexShrink: 0 }}>
-              <Volume2 size={20} />
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: 'white' }}>
-                Sing in My Voice
-              </p>
-              <p style={{ margin: '2px 0 0', fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.4 }}>
-                {isSinging
-                  ? `🔴 Live — original vocals cut, your voice is playing!`
-                  : isPlaying
-                  ? `Using "${activeAvatar.name}" — tap to activate`
-                  : 'Play a song first to enable this'}
-              </p>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-              {isSinging && (
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: '2px', height: '20px' }}>
-                  {Array(6).fill(0).map((_, i) => (
-                    <div key={i} style={{
-                      width: '3px', borderRadius: '2px', background: '#FF2D55',
-                      animation: `eq-pulse ${0.4 + (i % 3) * 0.15}s infinite alternate ease-in-out`,
-                      animationDelay: `${i * 0.06}s`,
-                    }} />
-                  ))}
-                </div>
-              )}
-              <Toggle
-                active={isSinging}
-                onClick={() => (isPlaying || isSinging) ? (isSinging ? stopSinging() : startSinging()) : undefined}
-                color="#FF2D55"
-              />
-            </div>
+      <div style={{ padding: '0 24px 12px' }}>
+        <SectionLabel text="Sing in My Voice" />
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: '16px',
+          padding: '14px 0',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          opacity: ((!isPlaying && !isSinging) || !activeAvatar) ? 0.4 : 1,
+          transition: 'opacity 0.2s'
+        }}>
+          <div style={{ color: isSinging ? '#FF2D55' : 'rgba(255,255,255,0.5)', flexShrink: 0 }}>
+            <Volume2 size={20} />
           </div>
-          {isSinging && (
-            <p style={{ margin: '0 0 8px', fontSize: '12px', color: 'rgba(255,45,85,0.7)', lineHeight: 1.5 }}>
-              💡 Original vocals are muted. Your recorded voice is playing on loop over the song's beat!
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <p style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: 'white' }}>
+              Sing in My Voice
             </p>
-          )}
+            <p style={{ margin: '2px 0 0', fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.4 }}>
+              {!activeAvatar 
+                ? 'Record a voice avatar above first!'
+                : isSinging
+                ? `🔴 Live — original vocals cut, your voice is playing!`
+                : isPlaying
+                ? `Using "${activeAvatar.name}" — tap to activate`
+                : 'Play a song first to enable this'}
+            </p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+            {isSinging && (
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: '2px', height: '20px' }}>
+                {Array(6).fill(0).map((_, i) => (
+                  <div key={i} style={{
+                    width: '3px', borderRadius: '2px', background: '#FF2D55',
+                    animation: `eq-pulse ${0.4 + (i % 3) * 0.15}s infinite alternate ease-in-out`,
+                    animationDelay: `${i * 0.06}s`,
+                  }} />
+                ))}
+              </div>
+            )}
+            <Toggle
+              active={isSinging}
+              onClick={() => (activeAvatar && (isPlaying || isSinging)) ? (isSinging ? stopSinging() : startSinging()) : undefined}
+              color="#FF2D55"
+            />
+          </div>
         </div>
-      )}
+        {isSinging && (
+          <p style={{ margin: '0 0 8px', fontSize: '12px', color: 'rgba(255,45,85,0.7)', lineHeight: 1.5 }}>
+            💡 Original vocals are muted. Your recorded voice is playing on loop over the song's beat!
+          </p>
+        )}
+      </div>
     </div>
   );
 };
