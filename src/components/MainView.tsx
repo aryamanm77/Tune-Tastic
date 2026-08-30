@@ -212,7 +212,7 @@ const MainView: React.FC = () => {
         onClick={() => setCreatingPlaylist(true)}
         style={{
           display: 'none',
-          position: 'fixed', bottom: '84px', right: '20px',
+          position: 'fixed', bottom: '144px', right: '20px',
           width: '52px', height: '52px', borderRadius: '50%',
           background: 'var(--spotify-green)', color: 'black',
           boxShadow: '0 4px 16px rgba(29,185,84,0.5)',
