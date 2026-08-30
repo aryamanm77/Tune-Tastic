@@ -32,10 +32,6 @@ const PremiumAd: React.FC = () => (
           fontSize: '11px', fontWeight: 700, letterSpacing: '1.5px',
           textTransform: 'uppercase', color: '#1db954',
         }}>Coming Soon</span>
-        <span style={{
-          fontSize: '11px', fontWeight: 600, letterSpacing: '1px',
-          textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)',
-        }}>· Under Development</span>
       </div>
       <h2 style={{
         margin: '0 0 4px', fontSize: '20px', fontWeight: 800,
