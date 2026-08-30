@@ -2,8 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { usePlayer } from '../context/PlayerContext';
 
 const NebulaBackground: React.FC = () => {
-  const { getAnalyserData, isPlaying, djState } = usePlayer();
+  const { getAnalyserData, isPlaying, djState, currentSong } = usePlayer();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
+  useEffect(() => {
+    audioRef.current = document.querySelector('audio');
+  }, [currentSong]);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -107,13 +112,6 @@ const NebulaBackground: React.FC = () => {
       cancelAnimationFrame(animationId);
     };
   }, [getAnalyserData, isPlaying, djState]);
-
-  // Hacky way to access audioRef from context to check warp state
-  const { currentSong } = usePlayer();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  useEffect(() => {
-    audioRef.current = document.querySelector('audio');
-  }, [currentSong]);
 
   return (
     <canvas 
