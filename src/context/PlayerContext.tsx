@@ -486,7 +486,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
 
     // Binaural Beats
-    if (state.astralMode && isPlaying && audioContextRef.current) {
+    if (state.astralMode && audioContextRef.current) {
       if (!binauralNodesRef.current) {
         const ctx = audioContextRef.current;
         const merger = ctx.createChannelMerger(2);
@@ -522,7 +522,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   };
 
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying || djState.astralMode) {
       initAudioContext();
       if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
         audioContextRef.current.resume();
