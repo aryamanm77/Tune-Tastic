@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mic, Play, Pause, Trash2, Plus, Check, ChevronDown, ChevronUp, User, Info } from 'lucide-react';
+import { Mic, Play, Pause, Trash2, Plus, Check, ChevronDown, ChevronUp, User, Info, Radio } from 'lucide-react';
+import { usePlayer } from '../context/PlayerContext';
 
 // Sentences to read aloud during recording
 const RECORDING_PROMPTS = [
@@ -32,12 +33,16 @@ const VoiceStudio: React.FC = () => {
   const [previewBlob, setPreviewBlob] = useState<Blob | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isPlayingPreview, setIsPlayingPreview] = useState(false);
+  const [isSinging, setIsSinging] = useState(false);
+
+  const { isPlaying } = usePlayer();
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const timerRef = useRef<number | null>(null);
   const promptTimerRef = useRef<number | null>(null);
   const previewAudioRef = useRef<HTMLAudioElement | null>(null);
+  const voiceLoopRef = useRef<HTMLAudioElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
   const activeAvatar = avatars.find(a => a.id === activeAvatarId) || null;
@@ -145,11 +150,38 @@ const VoiceStudio: React.FC = () => {
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
 
+  const startSinging = () => {
+    if (!activeAvatar) return;
+    if (voiceLoopRef.current) { voiceLoopRef.current.pause(); voiceLoopRef.current = null; }
+    const audio = new Audio(activeAvatar.url);
+    audio.loop = true;
+    // Slight reverb-like effect via playback rate variation
+    audio.playbackRate = 1.0;
+    audio.volume = 0.85;
+    audio.play();
+    voiceLoopRef.current = audio;
+    setIsSinging(true);
+  };
+
+  const stopSinging = () => {
+    if (voiceLoopRef.current) {
+      voiceLoopRef.current.pause();
+      voiceLoopRef.current = null;
+    }
+    setIsSinging(false);
+  };
+
+  useEffect(() => {
+    // Auto-stop singing when song stops
+    if (!isPlaying && isSinging) stopSinging();
+  }, [isPlaying]);
+
   useEffect(() => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
       if (promptTimerRef.current) clearInterval(promptTimerRef.current);
       streamRef.current?.getTracks().forEach(t => t.stop());
+      voiceLoopRef.current?.pause();
     };
   }, []);
 
@@ -196,7 +228,7 @@ const VoiceStudio: React.FC = () => {
               <p style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
                 1️⃣ <b>Record</b> — Click record and read the sentences that appear on screen.<br/>
                 2️⃣ <b>Save</b> — Give your recording a name (like "My Singing Voice").<br/>
-                3️⃣ <b>Switch</b> — Pick any saved Voice Avatar to use it as your active voice. You can record as many as you want and switch between them anytime!
+                3️⃣ <b>Sing!</b> — Play any song, then hit <b>"Sing in My Voice"</b> to overlay your recorded voice on the song! Switch avatars anytime!
               </p>
             </div>
           </div>
@@ -245,6 +277,43 @@ const VoiceStudio: React.FC = () => {
                   </div>
                 ))}
               </div>
+
+              {/* ── SING IN MY VOICE BUTTON ── */}
+              {activeAvatar && (
+                <div style={{ marginTop: '16px' }}>
+                  <button
+                    onClick={isSinging ? stopSinging : startSinging}
+                    disabled={!isPlaying && !isSinging}
+                    style={{
+                      width: '100%', padding: '16px', borderRadius: '14px', border: 'none', cursor: isPlaying || isSinging ? 'pointer' : 'not-allowed',
+                      background: isSinging
+                        ? 'linear-gradient(135deg, #FF2D55, #FF6B8A)'
+                        : isPlaying ? 'linear-gradient(135deg, #1db954, #17a349)' : 'rgba(255,255,255,0.07)',
+                      color: isSinging || isPlaying ? (isSinging ? 'white' : 'black') : 'rgba(255,255,255,0.3)',
+                      fontWeight: 800, fontSize: '16px',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+                      boxShadow: isSinging ? '0 0 24px rgba(255,45,85,0.5)' : isPlaying ? '0 0 16px rgba(29,185,84,0.35)' : 'none',
+                      transition: 'all 0.3s',
+                    }}
+                  >
+                    <Radio size={20} />
+                    {isSinging ? '🔴 Stop Singing' : isPlaying ? `🎙️ Sing in My Voice — ${activeAvatar.name}` : 'Play a song first to enable'}
+                  </button>
+                  {isSinging && (
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: '3px', height: '24px', marginTop: '10px' }}>
+                      {Array(12).fill(0).map((_, i) => (
+                        <div key={i} style={{
+                          width: '3px', borderRadius: '2px',
+                          background: '#FF2D55',
+                          height: `${Math.random() * 18 + 4}px`,
+                          animation: `eq-pulse ${0.4 + (i % 4) * 0.1}s infinite alternate ease-in-out`,
+                          animationDelay: `${i * 0.05}s`,
+                        }} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 
