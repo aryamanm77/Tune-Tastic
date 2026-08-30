@@ -50,8 +50,8 @@ interface PlayerContextType {
   deletePlaylist: (playlistId: string) => void;
   renamePlaylist: (playlistId: string, newName: string) => void;
   addToQueue: (song: Song) => void;
-  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean };
-  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean }>) => void;
+  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean; astralMode: boolean };
+  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean; astralMode: boolean }>) => void;
   getAnalyserData: () => Uint8Array;
   setPlaybackRate: (rate: number) => void;
   setPan: (panValue: number) => void;
@@ -215,10 +215,11 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     reverb: 0, speed: 10, lofi: false, karaoke: false,
     tremolo: false, phaser: false, vinyl: false,
     chorus: false, telephone: false, alien: false,
-    era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false
+    era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
+  const binauralNodesRef = useRef<{ oscL: OscillatorNode; oscR: OscillatorNode; gain: GainNode } | null>(null);
   
   // Audio Nodes
   const bassNodeRef = useRef<BiquadFilterNode | null>(null);
@@ -419,6 +420,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         audioRef.current.playbackRate = 1.3;
         (audioRef.current as any).preservesPitch = false;
         (audioRef.current as any).webkitPreservesPitch = false;
+      } else if (state.astralMode) {
+        audioRef.current.playbackRate = 432 / 440;
+        (audioRef.current as any).preservesPitch = false;
+        (audioRef.current as any).webkitPreservesPitch = false;
       } else {
         const speedMultiplier = (state.speed ?? 10) / 10;
         audioRef.current.playbackRate = speedMultiplier;
@@ -478,6 +483,41 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         phaserIntervalRef.current = null;
       }
       if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 0;
+    }
+
+    // Binaural Beats
+    if (state.astralMode && isPlaying && audioContextRef.current) {
+      if (!binauralNodesRef.current) {
+        const ctx = audioContextRef.current;
+        const merger = ctx.createChannelMerger(2);
+        
+        const oscL = ctx.createOscillator();
+        oscL.frequency.value = 100;
+        const pannerL = ctx.createStereoPanner();
+        pannerL.pan.value = -1;
+        oscL.connect(pannerL).connect(merger, 0, 0);
+        
+        const oscR = ctx.createOscillator();
+        oscR.frequency.value = 104.5;
+        const pannerR = ctx.createStereoPanner();
+        pannerR.pan.value = 1;
+        oscR.connect(pannerR).connect(merger, 0, 1);
+        
+        const gain = ctx.createGain();
+        gain.gain.value = 0.15;
+        merger.connect(gain).connect(ctx.destination);
+        
+        oscL.start();
+        oscR.start();
+        binauralNodesRef.current = { oscL, oscR, gain };
+      }
+    } else if (binauralNodesRef.current) {
+      binauralNodesRef.current.oscL.stop();
+      binauralNodesRef.current.oscR.stop();
+      binauralNodesRef.current.oscL.disconnect();
+      binauralNodesRef.current.oscR.disconnect();
+      binauralNodesRef.current.gain.disconnect();
+      binauralNodesRef.current = null;
     }
   };
 

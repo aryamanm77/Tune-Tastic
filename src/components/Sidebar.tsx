@@ -1,11 +1,11 @@
 import React from 'react';
-import { Home, Search, Library, PlusSquare, Heart, Sliders, Sparkles } from 'lucide-react';
+import { Home, Search, Library, PlusSquare, Heart, Sliders, Sparkles, Hexagon } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import TuneTasticLogo from './TuneTasticLogo';
 
 interface SidebarProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium' | 'astral') => void;
   onOpenPlaylist: (id: string) => void;
 }
 
@@ -68,6 +68,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
           style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'dj' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
         >
           <Sliders size={24} /> DJ Studio
+        </button>
+        <button 
+          onClick={() => setActiveTab('astral')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'astral' ? '#b45bff' : 'var(--text-secondary)' }}
+        >
+          <Hexagon size={24} /> Astral Mode
         </button>
       </div>
       
