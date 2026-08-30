@@ -50,10 +50,11 @@ interface PlayerContextType {
   deletePlaylist: (playlistId: string) => void;
   renamePlaylist: (playlistId: string, newName: string) => void;
   addToQueue: (song: Song) => void;
-  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean };
-  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean }>) => void;
+  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean };
+  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean }>) => void;
   getAnalyserData: () => Uint8Array;
   setPlaybackRate: (rate: number) => void;
+  setPan: (panValue: number) => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -214,7 +215,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     reverb: 0, speed: 10, lofi: false, karaoke: false,
     tremolo: false, phaser: false, vinyl: false,
     chorus: false, telephone: false, alien: false,
-    era: 2026, hapticBass: false
+    era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
@@ -712,6 +713,13 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     return dataArray;
   };
 
+  const setPan = (panValue: number) => {
+    if (pannerNodeRef.current) {
+      // Clamp between -1 and 1
+      pannerNodeRef.current.pan.value = Math.max(-1, Math.min(1, panValue));
+    }
+  };
+
   const setPlaybackRate = (rate: number) => {
     if (audioRef.current) {
       audioRef.current.playbackRate = rate;
@@ -727,7 +735,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       djState,
       setDjState,
       getAnalyserData,
-      setPlaybackRate
+      setPlaybackRate,
+      setPan
     }}>
       {children}
     </PlayerContext.Provider>

@@ -3,14 +3,18 @@ import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import {
   Zap, AudioLines, Sparkles, Music2, Wind, Gauge,
-  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity
+  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity, Compass
 } from 'lucide-react';
 import TimeMachine from './TimeMachine';
+import GhostWhisperer from './GhostWhisperer';
+import MotionControlDJ from './MotionControlDJ';
 import { useHapticBass } from '../hooks/useHapticBass';
+import { useAnchorSpatialAudio } from '../hooks/useAnchorSpatialAudio';
 
 const DJView: React.FC = () => {
   const { djState, setDjState, isPlaying, currentSong } = usePlayer();
   const { isHitting } = useHapticBass(djState.hapticBass ?? false);
+  const { requestPermission: requestSpatialAudio } = useAnchorSpatialAudio(djState.spatialAudio ?? false);
 
   // ─── Toggle switch ──────────────────────────────────────────────────────────
   const Toggle = ({ active, onClick }: { active: boolean; onClick: () => void }) => (
@@ -189,6 +193,24 @@ const DJView: React.FC = () => {
           desc="Phone vibrates to the kick drum (Android only)"
           right={<Toggle active={djState.hapticBass ?? false} onClick={() => setDjState({ hapticBass: !djState.hapticBass })} />}
         />
+        <Row
+          icon={<Compass size={20} />}
+          title="Anchor Spatial Audio"
+          desc="Locks the music to a physical spot in your room"
+          right={<Toggle active={djState.spatialAudio ?? false} onClick={async () => {
+            const nextState = !djState.spatialAudio;
+            if (nextState) {
+              const granted = await requestSpatialAudio();
+              if (!granted) {
+                alert('Gyroscope permission denied.');
+                return;
+              }
+            }
+            setDjState({ spatialAudio: nextState });
+          }} />}
+        />
+        <GhostWhisperer />
+        <MotionControlDJ />
 
         {/* ── Equalizer ─── */}
         <SectionHeader title="Equalizer" />
