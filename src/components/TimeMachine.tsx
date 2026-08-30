@@ -80,23 +80,27 @@ const TimeMachine: React.FC = () => {
           onChange={(e) => handleYearChange(parseInt(e.target.value))}
           style={{
             width: '100%',
-            height: '6px',
+            height: '8px',
             WebkitAppearance: 'none',
             background: `linear-gradient(to right, 
-              rgba(255,255,255,0.1) 0%, 
-              rgba(255,255,255,0.1) ${((year - 1800) / (2100 - 1800)) * 100}%, 
-              rgba(255,255,255,0.05) ${((year - 1800) / (2100 - 1800)) * 100}%, 
-              rgba(255,255,255,0.05) 100%)`,
+              #d4af37 0%, 
+              #ff00ff 33%, 
+              var(--spotify-green) 66%, 
+              #00e5ff 100%)`,
             borderRadius: '4px',
             outline: 'none',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            opacity: 0.8,
+            transition: 'opacity 0.2s'
           }}
+          onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
+          onMouseOut={(e) => e.currentTarget.style.opacity = '0.8'}
         />
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px', fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>
-          <span>1800s</span>
-          <span>1980s</span>
-          <span>2026</span>
-          <span>2100s</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '11px', fontWeight: 800 }}>
+          <span style={{ color: '#d4af37' }}>1800s</span>
+          <span style={{ color: '#ff00ff' }}>1980s</span>
+          <span style={{ color: 'var(--spotify-green)' }}>2026</span>
+          <span style={{ color: '#00e5ff' }}>2100s</span>
         </div>
       </div>
     </div>
