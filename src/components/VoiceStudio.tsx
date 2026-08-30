@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mic, Play, Pause, Trash2, Plus, Check, ChevronDown, ChevronUp, User, Info, Volume2 } from 'lucide-react';
+import { Mic, Play, Pause, Trash2, Plus, Check, ChevronDown, ChevronUp, User, Volume2 } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 
 // Sentences to read aloud during recording
@@ -252,22 +252,6 @@ const VoiceStudio: React.FC = () => {
 
       {isExpanded && (
         <div style={{ padding: '0 24px 24px' }}>
-
-          {/* ── HOW IT WORKS INFO BOX ── */}
-          <div style={{
-            background: 'rgba(255,255,255,0.05)', borderRadius: '12px',
-            padding: '16px', marginBottom: '20px', display: 'flex', gap: '12px'
-          }}>
-            <Info size={18} style={{ color: '#4fc3f7', flexShrink: 0, marginTop: '2px' }} />
-            <div>
-              <p style={{ margin: '0 0 6px', fontWeight: 700, fontSize: '13px', color: '#4fc3f7' }}>How it works (3 easy steps!)</p>
-              <p style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
-                1️⃣ <b>Record</b> — Click record and read the sentences that appear on screen.<br/>
-                2️⃣ <b>Save</b> — Give your recording a name (like "My Singing Voice").<br/>
-                3️⃣ <b>Sing!</b> — Play any song, then hit <b>"Sing in My Voice"</b> to overlay your recorded voice on the song! Switch avatars anytime!
-              </p>
-            </div>
-          </div>
 
           {/* ── SAVED AVATARS ── */}
           {avatars.length > 0 && (
