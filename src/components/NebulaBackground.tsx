@@ -66,15 +66,17 @@ const NebulaBackground: React.FC = () => {
         // Smoothly approach target scale
         currentScale += (targetScale - currentScale) * 0.1;
         
-        // Draw the image centered and scaled
-        const imgWidth = canvas.width * currentScale;
-        const imgHeight = canvas.height * currentScale;
-        const offsetX = (canvas.width - imgWidth) / 2;
-        const offsetY = (canvas.height - imgHeight) / 2;
+        // Draw the image centered, scaled, and slowly rotating
+        // Make sure it's large enough to cover corners during rotation
+        const baseSize = Math.max(canvas.width, canvas.height) * 1.5;
+        const imgWidth = baseSize * currentScale;
+        const imgHeight = baseSize * currentScale;
         
         ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate(time * 0.05); // Slow rotation
         ctx.globalAlpha = 0.6 + (pulse * 0.4); // Image gets brighter on bass hits
-        ctx.drawImage(img, offsetX, offsetY, imgWidth, imgHeight);
+        ctx.drawImage(img, -imgWidth / 2, -imgHeight / 2, imgWidth, imgHeight);
         ctx.restore();
       }
 
@@ -115,10 +117,12 @@ const NebulaBackground: React.FC = () => {
         if (star.y > canvas.height) star.y = 0;
 
         const pulseSize = star.size + (pulse * star.z * 3);
+        const twinkle = Math.abs(Math.sin(time * 2 + star.x));
+        const alpha = Math.min(1, star.baseAlpha + (pulse * 0.5) + (twinkle * 0.3));
         
         ctx.beginPath();
         ctx.arc(star.x, star.y, isWarping ? pulseSize * 4 : pulseSize, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.baseAlpha + (pulse * 0.5)})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
         ctx.fill();
         
         if (pulse > 0.5 && star.z > 1.5) {
