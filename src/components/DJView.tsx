@@ -3,10 +3,9 @@ import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import {
   Zap, AudioLines, Sparkles, Music2, Wind, Gauge,
-  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity, Palette
+  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity
 } from 'lucide-react';
 import TimeMachine from './TimeMachine';
-import SynesthesiaCanvas from './SynesthesiaCanvas';
 import { useHapticBass } from '../hooks/useHapticBass';
 
 const DJView: React.FC = () => {
@@ -190,12 +189,6 @@ const DJView: React.FC = () => {
           desc="Phone vibrates to the kick drum (Android only)"
           right={<Toggle active={djState.hapticBass ?? false} onClick={() => setDjState({ hapticBass: !djState.hapticBass })} />}
         />
-        <Row
-          icon={<Palette size={20} />}
-          title="Synesthesia Canvas"
-          desc="Paint with the music in a generative art zen mode"
-          right={<Toggle active={djState.synesthesia ?? false} onClick={() => setDjState({ synesthesia: !djState.synesthesia })} />}
-        />
 
         {/* ── Equalizer ─── */}
         <SectionHeader title="Equalizer" />
@@ -307,10 +300,6 @@ const DJView: React.FC = () => {
           </div>
         )}
       </div>
-      
-      {djState.synesthesia && (
-        <SynesthesiaCanvas onClose={() => setDjState({ synesthesia: false })} />
-      )}
     </div>
   );
 };
