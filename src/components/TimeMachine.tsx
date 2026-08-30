@@ -94,8 +94,8 @@ const TimeMachine: React.FC = () => {
       <div style={{ position: 'relative', padding: '10px 0' }}>
         <input
           type="range"
-          min={1500}
-          max={2500}
+          min={1800}
+          max={2200}
           value={year}
           onChange={(e) => handleYearChange(parseInt(e.target.value))}
           style={{
@@ -104,8 +104,8 @@ const TimeMachine: React.FC = () => {
             WebkitAppearance: 'none',
             background: `linear-gradient(to right, 
               ${currentColor} 0%, 
-              ${currentColor} ${((year - 1500) / (2500 - 1500)) * 100}%, 
-              rgba(255,255,255,0.1) ${((year - 1500) / (2500 - 1500)) * 100}%, 
+              ${currentColor} ${((year - 1800) / (2200 - 1800)) * 100}%, 
+              rgba(255,255,255,0.1) ${((year - 1800) / (2200 - 1800)) * 100}%, 
               rgba(255,255,255,0.1) 100%)`,
             borderRadius: '4px',
             outline: 'none',
@@ -117,11 +117,11 @@ const TimeMachine: React.FC = () => {
           onMouseOut={(e) => e.currentTarget.style.opacity = '0.8'}
         />
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.5px' }}>
-          <span>1500s</span>
           <span>1800s</span>
+          <span>1950s</span>
           <span>1980s</span>
           <span>2026</span>
-          <span>2500s</span>
+          <span>2200s</span>
         </div>
       </div>
     </div>
