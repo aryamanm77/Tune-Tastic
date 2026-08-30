@@ -24,7 +24,7 @@ const DJView: React.FC = () => {
       role="switch"
       style={{
         width: '51px', height: '31px', borderRadius: '16px',
-        background: active ? 'var(--spotify-green)' : 'rgba(255,255,255,0.18)',
+        background: active ? '#1db954' : 'rgba(255,255,255,0.18)',
         border: 'none', cursor: 'pointer', position: 'relative',
         flexShrink: 0, transition: 'background 0.25s',
       }}
