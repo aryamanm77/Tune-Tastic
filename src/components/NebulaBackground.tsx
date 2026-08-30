@@ -58,7 +58,9 @@ const NebulaBackground: React.FC = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const isWarping = djState.isWarping;
+      // Pulse affects stars and zoom, but background pans at a smooth normal speed
       const speedMult = (isPlaying ? (pulse * 10 + 0.5) : 0.1) * (isWarping ? 50 : 1);
+      const bgSpeed = (isPlaying ? 1.0 : 0.1) * (isWarping ? 10 : 1);
 
       if (imgLoaded) {
         // Calculate target scale based on music and warp drive
@@ -68,11 +70,11 @@ const NebulaBackground: React.FC = () => {
         // Smoothly approach target scale
         currentScale += (targetScale - currentScale) * 0.1;
         
-        // Update background scroll position
+        // Update background scroll position (smooth constant speed)
         if (djState.zeroGravity) {
-          bgScroll += speedMult * 0.5; // Scroll up/down in zero G
+          bgScroll += bgSpeed * 0.5; // Scroll up/down in zero G
         } else {
-          bgScroll -= speedMult * 1.5; // Scroll left normally
+          bgScroll -= bgSpeed * 1.5; // Scroll left normally
         }
 
         const baseHeight = canvas.height * 1.5; // Ensure it covers height
@@ -145,14 +147,35 @@ const NebulaBackground: React.FC = () => {
         const pulseSize = star.size + (pulse * star.z * 3);
         const twinkle = Math.abs(Math.sin(time * 2 + star.x));
         const alpha = Math.min(1, star.baseAlpha + (pulse * 0.5) + (twinkle * 0.3));
+        const tailLength = star.z * speedMult * 12 + 5; // Long tail for shooting star
         
         ctx.beginPath();
-        ctx.arc(star.x, star.y, isWarping ? pulseSize * 4 : pulseSize, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-        ctx.fill();
+        if (djState.zeroGravity) {
+          // Shooting up, tail extends down
+          ctx.moveTo(star.x, star.y);
+          ctx.lineTo(star.x, star.y + tailLength);
+        } else if (isWarping) {
+          // Pull to center
+          const cx = canvas.width / 2;
+          const cy = canvas.height / 2;
+          const dx = star.x - cx;
+          const dy = star.y - cy;
+          const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+          ctx.moveTo(star.x, star.y);
+          ctx.lineTo(star.x + (dx/dist)*tailLength, star.y + (dy/dist)*tailLength);
+        } else {
+          // Shooting left, tail extends right
+          ctx.moveTo(star.x, star.y);
+          ctx.lineTo(star.x + tailLength, star.y);
+        }
+        
+        ctx.lineWidth = isWarping ? pulseSize * 2 : pulseSize;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.lineCap = 'round';
+        ctx.stroke();
         
         if (pulse > 0.5 && star.z > 1.5) {
-            ctx.shadowBlur = 10;
+            ctx.shadowBlur = 15;
             ctx.shadowColor = 'white';
         } else {
             ctx.shadowBlur = 0;
