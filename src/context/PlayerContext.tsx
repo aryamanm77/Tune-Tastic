@@ -32,6 +32,7 @@ interface PlayerContextType {
   queue: Song[];
   playlists: Playlist[];
   likedSongs: Song[];
+  recentlyPlayed: Song[];
   playSong: (song: Song) => void;
   togglePlayPause: () => void;
   nextSong: () => void;
@@ -79,6 +80,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     const saved = localStorage.getItem('tunetastic_liked');
     return saved ? JSON.parse(saved) : [];
   });
+  const [recentlyPlayed, setRecentlyPlayed] = useState<Song[]>(() => {
+    const saved = localStorage.getItem('tunetastic_recent');
+    return saved ? JSON.parse(saved) : [];
+  });
 
   useEffect(() => {
     localStorage.setItem('tunetastic_playlists', JSON.stringify(playlists));
@@ -87,6 +92,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   useEffect(() => {
     localStorage.setItem('tunetastic_liked', JSON.stringify(likedSongs));
   }, [likedSongs]);
+
+  useEffect(() => {
+    localStorage.setItem('tunetastic_recent', JSON.stringify(recentlyPlayed));
+  }, [recentlyPlayed]);
 
   useEffect(() => {
     import('../data/songs.json').then((module) => {
@@ -554,6 +563,12 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
     setCurrentSong(song);
 
+    // Track recently played (deduplicated, newest first, max 20)
+    setRecentlyPlayed(prev => {
+      const filtered = prev.filter(s => s.id !== song.id);
+      return [song, ...filtered].slice(0, 20);
+    });
+
     const audio = audioRef.current;
     if (audio) {
       audio.src = song.audioUrl || getAudioUrl(song.audioId);
@@ -670,7 +685,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   return (
     <PlayerContext.Provider value={{
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
-      playlists, likedSongs,
+      playlists, likedSongs, recentlyPlayed,
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
       createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists, deletePlaylist, renamePlaylist,
       djState,

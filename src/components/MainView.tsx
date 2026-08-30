@@ -6,7 +6,7 @@ import TuneTasticLogo from './TuneTasticLogo';
 import AddToPlaylistModal from './AddToPlaylistModal';
 
 const MainView: React.FC = () => {
-  const { songs, currentSong, playSong, togglePlayPause, createPlaylist } = usePlayer();
+  const { songs, currentSong, playSong, togglePlayPause, createPlaylist, recentlyPlayed } = usePlayer();
   const [modalSong, setModalSong] = useState<Song | null>(null);
   const [creatingPlaylist, setCreatingPlaylist] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState('');
@@ -36,6 +36,57 @@ const MainView: React.FC = () => {
           }}>TuneTastic</span>
         </div>
       </div>
+
+      {/* Recently Played */}
+      {recentlyPlayed.length > 0 && (
+        <div style={{ marginBottom: '32px' }}>
+          <h2 style={{ marginBottom: '16px', fontSize: '22px', fontWeight: 700 }}>Recently Played</h2>
+          <div style={{ display: 'flex', gap: '16px', overflowX: 'auto', paddingBottom: '8px' }}>
+            {recentlyPlayed.slice(0, 10).map((song: Song) => {
+              const isCurrent = currentSong?.id === song.id;
+              return (
+                <div
+                  key={`recent-${song.id}`}
+                  onClick={() => handlePlay(song)}
+                  style={{
+                    flexShrink: 0,
+                    width: '140px',
+                    cursor: 'pointer',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    backgroundColor: isCurrent ? 'rgba(29,185,84,0.12)' : 'rgba(255,255,255,0.05)',
+                    transition: 'background-color 0.2s',
+                  }}
+                  onMouseOver={e => { if (!isCurrent) (e.currentTarget as HTMLDivElement).style.backgroundColor = 'rgba(255,255,255,0.1)'; }}
+                  onMouseOut={e => { if (!isCurrent) (e.currentTarget as HTMLDivElement).style.backgroundColor = 'rgba(255,255,255,0.05)'; }}
+                >
+                  <div style={{ position: 'relative', marginBottom: '10px' }}>
+                    <img
+                      src={song.coverArt || getCoverArtUrl(song.audioId)}
+                      onError={e => { e.currentTarget.src = '/logo.png'; }}
+                      alt={song.title}
+                      style={{ width: '116px', height: '116px', borderRadius: '6px', objectFit: 'cover', display: 'block' }}
+                    />
+                    {isCurrent && (
+                      <div style={{
+                        position: 'absolute', bottom: '6px', right: '6px',
+                        width: '32px', height: '32px', borderRadius: '50%',
+                        backgroundColor: 'var(--spotify-green)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+                      }}>
+                        <Play size={14} fill="black" color="black" style={{ marginLeft: '2px' }} />
+                      </div>
+                    )}
+                  </div>
+                  <p style={{ margin: 0, fontWeight: 600, fontSize: '13px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{song.title}</p>
+                  <p style={{ margin: '2px 0 0', fontSize: '12px', color: 'var(--text-secondary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{song.artist}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <h2 style={{ marginBottom: '24px', fontSize: '24px', fontWeight: 700 }}>All Music</h2>
 
