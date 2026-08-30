@@ -9,10 +9,9 @@ import PlaylistView from './components/PlaylistView';
 import BottomNav from './components/BottomNav';
 import DJView from './components/DJView';
 import ItunesSearchView from './components/ItunesSearchView';
-import MusicTrivia from './components/MusicTrivia';
 
 const AppContent: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'home' | 'search' | 'premium' | 'library' | 'playlist' | 'dj' | 'games'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'search' | 'premium' | 'library' | 'playlist' | 'dj'>('home');
   const [activePlaylistId, setActivePlaylistId] = useState<string | null>(null);
 
   const navigateToPlaylist = (id: string) => {
@@ -30,7 +29,6 @@ const AppContent: React.FC = () => {
       {activeTab === 'playlist' && <PlaylistView playlistId={activePlaylistId} goHome={() => setActiveTab('home')} />}
       {activeTab === 'dj' && <DJView />}
       {activeTab === 'premium' && <ItunesSearchView />}
-      {activeTab === 'games' && <MusicTrivia />}
       
       <Player />
       <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />

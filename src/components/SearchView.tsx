@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getAudioUrl } from '../utils/cloudinary';
 import { Play, Search } from 'lucide-react';
+import MusicTrivia from './MusicTrivia';
 
 const SearchView: React.FC = () => {
   const { songs, currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
@@ -56,6 +57,9 @@ const SearchView: React.FC = () => {
       {/* Browse All — shown when not searching */}
       {!query.trim() && (
         <>
+          <div style={{ marginBottom: '32px' }}>
+            <MusicTrivia />
+          </div>
           <h2 style={{ marginBottom: '16px', fontSize: '22px', fontWeight: 700 }}>Browse All</h2>
           <div style={{
             display: 'grid',
