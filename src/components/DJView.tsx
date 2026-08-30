@@ -239,6 +239,13 @@ const DJView: React.FC = () => {
         />
 
         <Row
+          icon={<Sparkles size={20} />}
+          title="Nebula Starfield UI"
+          desc="Immersive space visualizer background"
+          right={<Toggle active={djState.nebulaMode ?? false} onClick={() => setDjState({ nebulaMode: !djState.nebulaMode })} />}
+        />
+
+        <Row
           icon={<Activity size={20} color={isHitting ? 'var(--spotify-green)' : 'currentColor'} style={{ transition: 'color 0.1s' }} />}
           title="Haptic Bass Engine"
           desc="Phone vibrates to the kick drum (Android only)"

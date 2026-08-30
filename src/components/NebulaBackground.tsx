@@ -113,6 +113,8 @@ const NebulaBackground: React.FC = () => {
     };
   }, [getAnalyserData, isPlaying, djState]);
 
+  if (!djState.nebulaMode) return null;
+
   return (
     <canvas 
       ref={canvasRef}
