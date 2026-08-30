@@ -6,6 +6,16 @@ const TimeMachine: React.FC = () => {
   const { djState, setDjState } = usePlayer();
   const [year, setYear] = useState(djState.era ?? 2026);
 
+  const getEraColor = (y: number) => {
+    if (y < 1920) return '#8b0000'; // Medieval Red
+    if (y < 1960) return '#d4af37'; // Vintage Gold
+    if (y < 1995) return '#ff00ff'; // Retro Pink
+    if (y < 2200) return '#1db954'; // Modern Green
+    return '#00e5ff'; // Future Cyan
+  };
+
+  const currentColor = getEraColor(year);
+
   const handleYearChange = (newYear: number) => {
     setYear(newYear);
     
@@ -73,9 +83,10 @@ const TimeMachine: React.FC = () => {
           </p>
         </div>
         <div style={{ 
-          background: 'rgba(29,185,84,0.15)', border: '1px solid var(--spotify-green)', 
-          padding: '4px 12px', borderRadius: '100px', color: 'var(--spotify-green)', 
-          fontWeight: 800, fontSize: '16px', fontFamily: 'monospace'
+          background: `${currentColor}22`, border: `1px solid ${currentColor}`, 
+          padding: '4px 12px', borderRadius: '100px', color: currentColor, 
+          fontWeight: 800, fontSize: '16px', fontFamily: 'monospace',
+          transition: 'all 0.3s ease'
         }}>
           {year}
         </div>
@@ -93,15 +104,15 @@ const TimeMachine: React.FC = () => {
             height: '8px',
             WebkitAppearance: 'none',
             background: `linear-gradient(to right, 
-              rgba(255,255,255,0.8) 0%, 
-              rgba(255,255,255,0.8) ${((year - 1500) / (2500 - 1500)) * 100}%, 
+              ${currentColor} 0%, 
+              ${currentColor} ${((year - 1500) / (2500 - 1500)) * 100}%, 
               rgba(255,255,255,0.1) ${((year - 1500) / (2500 - 1500)) * 100}%, 
               rgba(255,255,255,0.1) 100%)`,
             borderRadius: '4px',
             outline: 'none',
             cursor: 'pointer',
             opacity: 0.8,
-            transition: 'opacity 0.2s'
+            transition: 'opacity 0.2s, background 0.3s ease'
           }}
           onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
           onMouseOut={(e) => e.currentTarget.style.opacity = '0.8'}
