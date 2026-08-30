@@ -182,6 +182,29 @@ const DJView: React.FC = () => {
           </div>
         )}
 
+        {/* ── Spiritual ─── */}
+        <SectionHeader title="Spiritual" />
+        <Row
+          icon={<Hexagon size={20} color={djState.astralMode ? '#b45bff' : 'currentColor'} style={{ transition: 'color 0.3s' }} />}
+          title="Astral Projection"
+          desc="432Hz tuning + Theta Binaural Beats for deep meditation"
+          right={
+            <button
+              onClick={() => setDjState({ astralMode: !djState.astralMode })}
+              style={{
+                background: djState.astralMode ? 'transparent' : 'white',
+                color: djState.astralMode ? '#b45bff' : 'black',
+                border: djState.astralMode ? '1px solid #b45bff' : '1px solid white',
+                padding: '6px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 800, cursor: 'pointer',
+                transition: 'all 0.3s ease', letterSpacing: '0.5px', textTransform: 'uppercase',
+                boxShadow: djState.astralMode ? '0 0 15px rgba(180, 91, 255, 0.3)' : 'none'
+              }}
+            >
+              {djState.astralMode ? 'Return to Earth' : 'Ascend'}
+            </button>
+          }
+        />
+
         {/* ── Time Machine ─── */}
         <TimeMachine />
 
@@ -261,12 +284,6 @@ const DJView: React.FC = () => {
           title="Vocal Boost"
           desc="Amplifies mid-range to bring out the vocals"
           right={<Toggle active={djState.karaoke ?? false} onClick={() => setDjState({ karaoke: !djState.karaoke })} />}
-        />
-        <Row
-          icon={<Hexagon size={20} />}
-          title="Astral Projection"
-          desc="432Hz tuning + Theta Binaural Beats for deep meditation"
-          right={<Toggle active={djState.astralMode ?? false} onClick={() => setDjState({ astralMode: !djState.astralMode })} />}
         />
 
         {/* ── Advanced ─── */}
