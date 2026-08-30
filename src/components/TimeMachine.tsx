@@ -15,6 +15,8 @@ const TimeMachine: React.FC = () => {
   };
 
   const currentColor = getEraColor(year);
+  const years = [1800, 1980, 2026, 2050];
+  const currentIndex = years.includes(year) ? years.indexOf(year) : 2;
 
   const handleYearChange = (newYear: number) => {
     setYear(newYear);
@@ -94,18 +96,19 @@ const TimeMachine: React.FC = () => {
       <div style={{ position: 'relative', padding: '10px 0' }}>
         <input
           type="range"
-          min={1800}
-          max={2050}
-          value={year}
-          onChange={(e) => handleYearChange(parseInt(e.target.value))}
+          min={0}
+          max={3}
+          step={1}
+          value={currentIndex}
+          onChange={(e) => handleYearChange(years[parseInt(e.target.value)])}
           style={{
             width: '100%',
             height: '8px',
             WebkitAppearance: 'none',
             background: `linear-gradient(to right, 
               ${currentColor} 0%, 
-              ${currentColor} ${((year - 1800) / (2050 - 1800)) * 100}%, 
-              rgba(255,255,255,0.1) ${((year - 1800) / (2050 - 1800)) * 100}%, 
+              ${currentColor} ${(currentIndex / 3) * 100}%, 
+              rgba(255,255,255,0.1) ${(currentIndex / 3) * 100}%, 
               rgba(255,255,255,0.1) 100%)`,
             borderRadius: '4px',
             outline: 'none',
