@@ -192,15 +192,7 @@ const VoiceStudio: React.FC = () => {
     };
   }, []);
 
-  // DJ Studio style subcomponents
-  const SectionLabel = ({ text }: { text: string }) => (
-    <p style={{
-      margin: 0, padding: '12px 0 6px',
-      fontSize: '12px', fontWeight: 700,
-      color: 'rgba(255,255,255,0.4)',
-      textTransform: 'uppercase', letterSpacing: '1.5px',
-    }}>{text}</p>
-  );
+
 
   const Toggle = ({ active, onClick, color = '#FF2D55' }: { active: boolean; onClick: () => void; color?: string }) => (
     <button
@@ -443,12 +435,11 @@ const VoiceStudio: React.FC = () => {
       )}
 
       {/* ── SING IN MY VOICE (DJ STUDIO STYLE ROW) - ALWAYS VISIBLE ── */}
-      <div style={{ padding: '0 24px 12px' }}>
-        <SectionLabel text="Sing in My Voice" />
+      <div style={{ padding: '0 24px' }}>
         <div style={{
           display: 'flex', alignItems: 'center', gap: '16px',
           padding: '14px 0',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
           opacity: ((!isPlaying && !isSinging) || !activeAvatar) ? 0.4 : 1,
           transition: 'opacity 0.2s'
         }}>

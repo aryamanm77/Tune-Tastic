@@ -176,9 +176,6 @@ const DJView: React.FC = () => {
           </div>
         )}
 
-        {/* ── Voice Avatar Studio (top of list) ─── */}
-        <VoiceStudio />
-
         {/* ── Equalizer ─── */}
         <SectionHeader title="Equalizer" />
         <SliderRow
@@ -205,6 +202,7 @@ const DJView: React.FC = () => {
 
         {/* ── Sound Effects ─── */}
         <SectionHeader title="Sound Effects" />
+        <VoiceStudio />
         <Row
           icon={<Sparkles size={20} />}
           title="8D Surround"
