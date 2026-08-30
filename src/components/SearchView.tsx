@@ -1,8 +1,127 @@
 import React, { useState, useMemo } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getAudioUrl } from '../utils/cloudinary';
-import { Play, Search } from 'lucide-react';
-import ConstellationMap from './ConstellationMap';
+import { Play, Search, Lock, Zap, Crown } from 'lucide-react';
+
+const PremiumAd: React.FC = () => (
+  <div style={{
+    marginTop: '24px',
+    borderRadius: '20px',
+    overflow: 'hidden',
+    position: 'relative',
+    background: 'linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 40%, #0d1f3c 100%)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    boxShadow: '0 24px 64px rgba(0,0,0,0.6)',
+    minHeight: '220px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: '40px 32px',
+  }}>
+    <style>{`
+      @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes glow-pulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.9; }
+      }
+    `}</style>
+
+    {/* Background glow orbs */}
+    <div style={{
+      position: 'absolute', top: '-40px', right: '-40px',
+      width: '200px', height: '200px', borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%)',
+      animation: 'glow-pulse 3s ease-in-out infinite',
+      pointerEvents: 'none'
+    }} />
+    <div style={{
+      position: 'absolute', bottom: '-60px', left: '-20px',
+      width: '250px', height: '250px', borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(138,43,226,0.12) 0%, transparent 70%)',
+      animation: 'glow-pulse 4s ease-in-out infinite reverse',
+      pointerEvents: 'none'
+    }} />
+
+    {/* Coming Soon badge */}
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '6px',
+        padding: '5px 12px', borderRadius: '100px',
+        background: 'rgba(255,215,0,0.12)',
+        border: '1px solid rgba(255,215,0,0.3)',
+      }}>
+        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#FFD700', animation: 'glow-pulse 1.5s infinite' }} />
+        <span style={{ fontSize: '11px', fontWeight: 800, color: '#FFD700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+          Under Development
+        </span>
+      </div>
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '6px',
+        padding: '5px 12px', borderRadius: '100px',
+        background: 'rgba(138,43,226,0.15)',
+        border: '1px solid rgba(138,43,226,0.35)',
+      }}>
+        <Lock size={10} style={{ color: '#a855f7' }} />
+        <span style={{ fontSize: '11px', fontWeight: 800, color: '#a855f7', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+          Coming Soon
+        </span>
+      </div>
+    </div>
+
+    {/* Main content */}
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', zIndex: 1, position: 'relative' }}>
+      <div style={{ animation: 'float 3s ease-in-out infinite', flexShrink: 0 }}>
+        <Crown size={48} style={{ color: '#FFD700', filter: 'drop-shadow(0 0 12px rgba(255,215,0,0.5))' }} />
+      </div>
+      <div>
+        <h2 style={{
+          margin: '0 0 8px', fontSize: '28px', fontWeight: 900,
+          background: 'linear-gradient(90deg, #FFD700, #FFA500, #FF6B6B, #a855f7, #FFD700)',
+          backgroundSize: '200% auto',
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+          animation: 'shimmer 4s linear infinite',
+          letterSpacing: '-0.5px',
+        }}>
+          TuneTastic Premium
+        </h2>
+        <p style={{ margin: '0 0 4px', fontSize: '15px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
+          🎵 Unlimited song streaming from the internet
+        </p>
+        <p style={{ margin: '0 0 4px', fontSize: '15px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
+          🤖 AI-powered voice cloning (real this time!)
+        </p>
+        <p style={{ margin: '0 0 4px', fontSize: '15px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
+          🎛️ Studio-grade DJ effects &amp; mastering
+        </p>
+        <p style={{ margin: '16px 0 0', fontSize: '13px', color: 'rgba(255,255,255,0.35)' }}>
+          We're working hard to bring you the ultimate music experience. Stay tuned! 🚀
+        </p>
+      </div>
+    </div>
+
+    {/* Feature pills */}
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '24px', zIndex: 1, position: 'relative' }}>
+      {['Offline Mode', 'High Quality Audio', 'No Ads', 'Social Sharing', 'Cloud Sync', 'Lyrics'].map(f => (
+        <div key={f} style={{
+          padding: '5px 14px', borderRadius: '100px',
+          background: 'rgba(255,255,255,0.06)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.5)',
+          display: 'flex', alignItems: 'center', gap: '5px'
+        }}>
+          <Zap size={10} style={{ color: '#FFD700' }} /> {f}
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 const SearchView: React.FC = () => {
   const { songs, currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
@@ -11,8 +130,8 @@ const SearchView: React.FC = () => {
   const filteredSongs = useMemo(() => {
     if (!query.trim()) return [];
     const lowerQuery = query.toLowerCase();
-    return songs.filter(s => 
-      s.title.toLowerCase().includes(lowerQuery) || 
+    return songs.filter(s =>
+      s.title.toLowerCase().includes(lowerQuery) ||
       s.artist.toLowerCase().includes(lowerQuery)
     );
   }, [songs, query]);
@@ -34,12 +153,12 @@ const SearchView: React.FC = () => {
 
   return (
     <div className="main-view" style={{ padding: '24px' }}>
-      <div style={{ position: 'sticky', top: '0', backgroundColor: 'var(--bg-base)', paddingBottom: '24px', zIndex: 10 }}>
+      <div style={{ position: 'sticky', top: '0', backgroundColor: 'var(--bg-base)', paddingBottom: '16px', zIndex: 10 }}>
         <div style={{ position: 'relative', maxWidth: '400px' }}>
           <Search size={24} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'black' }} />
-          <input 
-            type="text" 
-            placeholder="What do you want to listen to?" 
+          <input
+            type="text"
+            placeholder="Search your local songs..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             style={{
@@ -54,12 +173,9 @@ const SearchView: React.FC = () => {
         </div>
       </div>
 
-      {/* Constellation Map — shown when not searching */}
-      {!query.trim() && (
-        <div style={{ marginTop: '16px' }}>
-          <ConstellationMap />
-        </div>
-      )}
+      {/* Premium Ad — shown when not searching */}
+      {!query.trim() && <PremiumAd />}
+
 
       {query.trim() && (
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', marginTop: '16px' }}>
