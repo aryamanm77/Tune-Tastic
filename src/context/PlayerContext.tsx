@@ -50,8 +50,8 @@ interface PlayerContextType {
   deletePlaylist: (playlistId: string) => void;
   renamePlaylist: (playlistId: string, newName: string) => void;
   addToQueue: (song: Song) => void;
-  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean };
-  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean }>) => void;
+  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean; isWarping: boolean };
+  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean; isWarping: boolean }>) => void;
   getAnalyserData: () => Uint8Array;
   setPlaybackRate: (rate: number) => void;
   setPan: (panValue: number) => void;
@@ -209,7 +209,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     tremolo: false, phaser: false, vinyl: false,
     chorus: false, telephone: false, alien: false,
     era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false,
-    zeroGravity: false, nebulaMode: false
+    zeroGravity: false, nebulaMode: false, isWarping: false
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
@@ -367,7 +367,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         (audioRef.current as any).preservesPitch = false;
       } else {
         const speedMultiplier = (state.speed ?? 10) / 10;
-        audioRef.current.playbackRate = speedMultiplier;
+        audioRef.current.playbackRate = state.isWarping ? Math.max(0.1, audioRef.current.playbackRate - 0.05) : speedMultiplier;
         (audioRef.current as any).preservesPitch = true;
       }
     }
@@ -682,23 +682,31 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const triggerWarp = () => {
     if (!audioRef.current) return;
     const audio = audioRef.current;
+    
+    // Set warping state so UI reacts immediately
+    setDjState({ isWarping: true });
+    
     (audio as any).preservesPitch = false;
+    if ('webkitPreservesPitch' in audio) (audio as any).webkitPreservesPitch = false;
     
     const startRate = audio.playbackRate;
     let rate = startRate;
     
     const drop = () => {
-      rate -= 0.05;
+      rate -= 0.015; // Slower drop over ~1 second (60 frames)
       if (rate > 0.1) {
         audio.playbackRate = rate;
         requestAnimationFrame(drop);
       } else {
+        // Hold the drop for a moment, then recover
         setTimeout(() => {
           audio.playbackRate = djState.speed ? djState.speed / 10 : 1;
           if (!djState.nightcore && !djState.astralMode) {
              (audio as any).preservesPitch = true;
+             if ('webkitPreservesPitch' in audio) (audio as any).webkitPreservesPitch = true;
           }
-        }, 300);
+          setDjState({ isWarping: false });
+        }, 800);
       }
     };
     drop();
