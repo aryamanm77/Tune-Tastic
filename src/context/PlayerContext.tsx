@@ -127,6 +127,76 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     };
   }, [currentSong]);
 
+  // ─── Media Session API — lock screen / notification controls ──────────────
+  useEffect(() => {
+    if (!('mediaSession' in navigator)) return;
+
+    if (!currentSong) {
+      navigator.mediaSession.metadata = null;
+      return;
+    }
+
+    // Build artwork array - prefer coverArt, fallback to logo
+    const artworkSrc = currentSong.coverArt || '/logo.png';
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: currentSong.title,
+      artist: currentSong.artist,
+      album: currentSong.album || '',
+      artwork: [
+        { src: artworkSrc, sizes: '96x96',   type: 'image/png' },
+        { src: artworkSrc, sizes: '128x128', type: 'image/png' },
+        { src: artworkSrc, sizes: '192x192', type: 'image/png' },
+        { src: artworkSrc, sizes: '256x256', type: 'image/png' },
+        { src: artworkSrc, sizes: '384x384', type: 'image/png' },
+        { src: artworkSrc, sizes: '512x512', type: 'image/png' },
+      ],
+    });
+
+    // Wire up hardware / lock-screen buttons
+    navigator.mediaSession.setActionHandler('play', () => {
+      audioRef.current?.play();
+      setIsPlaying(true);
+    });
+    navigator.mediaSession.setActionHandler('pause', () => {
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    });
+    navigator.mediaSession.setActionHandler('nexttrack', () => nextSongRef.current());
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+      if (audioRef.current && audioRef.current.currentTime > 3) {
+        audioRef.current.currentTime = 0;
+      } else {
+        const currentIndex = queue.findIndex(s => s.id === currentSong.id);
+        if (currentIndex > 0) playSong(queue[currentIndex - 1]);
+      }
+    });
+    navigator.mediaSession.setActionHandler('seekto', (details) => {
+      if (details.seekTime !== undefined && audioRef.current) {
+        audioRef.current.currentTime = details.seekTime;
+      }
+    });
+  }, [currentSong]);
+
+  // Sync Media Session playback state with isPlaying
+  useEffect(() => {
+    if (!('mediaSession' in navigator)) return;
+    navigator.mediaSession.playbackState = isPlaying ? 'playing' : 'paused';
+  }, [isPlaying]);
+
+  // Sync Media Session position state for lock-screen seek bar
+  useEffect(() => {
+    if (!('mediaSession' in navigator) || !audioRef.current) return;
+    try {
+      if (duration > 0) {
+        navigator.mediaSession.setPositionState({
+          duration,
+          playbackRate: audioRef.current.playbackRate || 1,
+          position: Math.min(currentTime, duration),
+        });
+      }
+    } catch (_) { /* ignore if not supported */ }
+  }, [currentTime, duration]);
+
   // DJ State
   const [djState, setDjStateInternal] = useState({ 
     bass: 0, spin8D: false, nightcore: false, 
