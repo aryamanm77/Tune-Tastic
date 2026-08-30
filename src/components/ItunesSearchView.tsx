@@ -247,7 +247,7 @@ const ItunesSearchView: React.FC = () => {
                   <p className="sp-section-title">Top result</p>
                   <div className="sp-top-card" onClick={() => handlePlay(results[0])}>
                     <img
-                      src={results[0].coverArt}
+                      src={results[0].coverArt?.replace('600x600bb', '300x300bb')}
                       onError={handleImageError}
                       alt=""
                       style={{ width: '92px', height: '92px', borderRadius: '6px', objectFit: 'cover', marginBottom: '16px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)', display: 'block' }}
@@ -286,7 +286,7 @@ const ItunesSearchView: React.FC = () => {
                                   : <Play size={14} fill="white" color="white" />}
                               </span>
                             </div>
-                            <img className="sp-row-img" src={song.coverArt} onError={handleImageError} alt="" />
+                            <img className="sp-row-img" src={song.coverArt?.replace('600x600bb', '100x100bb')} onError={handleImageError} alt="" />
                             <div style={{ minWidth: 0 }}>
                               <p className="ellipsis" style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: active ? 'var(--spotify-green)' : 'white' }}>{song.title}</p>
                               <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
@@ -331,7 +331,7 @@ const ItunesSearchView: React.FC = () => {
                                 <span className="sp-play-icon"><Play size={14} fill="white" color="white" /></span>
                               </>}
                         </div>
-                        <img className="sp-row-img" src={song.coverArt} onError={handleImageError} alt="" />
+                        <img className="sp-row-img" src={song.coverArt?.replace('600x600bb', '100x100bb')} onError={handleImageError} loading="lazy" alt="" />
                         <div style={{ minWidth: 0 }}>
                           <p className="ellipsis" style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: active ? 'var(--spotify-green)' : 'white' }}>{song.title}</p>
                           <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
