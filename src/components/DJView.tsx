@@ -3,11 +3,15 @@ import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import {
   Zap, AudioLines, Sparkles, Music2, Wind, Gauge,
-  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot
+  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity, Palette
 } from 'lucide-react';
+import TimeMachine from './TimeMachine';
+import SynesthesiaCanvas from './SynesthesiaCanvas';
+import { useHapticBass } from '../hooks/useHapticBass';
 
 const DJView: React.FC = () => {
   const { djState, setDjState, isPlaying, currentSong } = usePlayer();
+  const { isHitting } = useHapticBass(djState.hapticBass ?? false);
 
   // ─── Toggle switch ──────────────────────────────────────────────────────────
   const Toggle = ({ active, onClick }: { active: boolean; onClick: () => void }) => (
@@ -175,6 +179,24 @@ const DJView: React.FC = () => {
           </div>
         )}
 
+        {/* ── Time Machine ─── */}
+        <TimeMachine />
+
+        {/* ── Experimental Features ─── */}
+        <SectionHeader title="Next-Gen Experimental" />
+        <Row
+          icon={<Activity size={20} color={isHitting ? 'var(--spotify-green)' : 'currentColor'} style={{ transition: 'color 0.1s' }} />}
+          title="Haptic Bass Engine"
+          desc="Phone vibrates to the kick drum (Android only)"
+          right={<Toggle active={djState.hapticBass ?? false} onClick={() => setDjState({ hapticBass: !djState.hapticBass })} />}
+        />
+        <Row
+          icon={<Palette size={20} />}
+          title="Synesthesia Canvas"
+          desc="Paint with the music in a generative art zen mode"
+          right={<Toggle active={djState.synesthesia ?? false} onClick={() => setDjState({ synesthesia: !djState.synesthesia })} />}
+        />
+
         {/* ── Equalizer ─── */}
         <SectionHeader title="Equalizer" />
         <SliderRow
@@ -285,6 +307,10 @@ const DJView: React.FC = () => {
           </div>
         )}
       </div>
+      
+      {djState.synesthesia && (
+        <SynesthesiaCanvas onClose={() => setDjState({ synesthesia: false })} />
+      )}
     </div>
   );
 };

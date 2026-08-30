@@ -367,3 +367,48 @@ div:hover > div > .card-play-overlay {
     height: 50px;
   }
 }
+
+/* ─── TIME MACHINE THEMES ─── */
+body.theme-1920 {
+  filter: sepia(0.8) contrast(1.2) grayscale(0.5);
+  background: #3b2f2f; /* Dark brown vintage */
+  --spotify-green: #d4af37; /* Gold */
+  --spotify-green-hover: #e5c158;
+  --bg-base: #2a211e;
+  --bg-elevated: #3a2e2a;
+}
+body.theme-1920::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.15"/%3E%3C/svg%3E');
+}
+
+body.theme-1980 {
+  --spotify-green: #ff00ff; /* Neon pink */
+  --spotify-green-hover: #ff4dff;
+  --bg-base: #0a0a2a;
+  --bg-elevated: #1a1a4a;
+  --text-primary: #00ffff; /* Cyan text */
+  --text-secondary: #ff00ff;
+}
+body.theme-1980 * {
+  text-shadow: 0 0 2px rgba(0, 255, 255, 0.5);
+}
+body.theme-1980::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+}
+
+body.theme-2050 {
+  --spotify-green: #00e5ff; /* Cyan glowing */
+  --spotify-green-hover: #00ffff;
+  --bg-base: rgba(0, 10, 20, 0.85);
+  --bg-elevated: rgba(10, 20, 40, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+body.theme-2050 .main-view, body.theme-2050 .sidebar, body.theme-2050 .player-bar {
+  background: transparent;
+  box-shadow: inset 0 0 40px rgba(0, 229, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.1);
+}
