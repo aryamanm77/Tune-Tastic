@@ -50,11 +50,12 @@ interface PlayerContextType {
   deletePlaylist: (playlistId: string) => void;
   renamePlaylist: (playlistId: string, newName: string) => void;
   addToQueue: (song: Song) => void;
-  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean; astralMode: boolean };
-  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean; astralMode: boolean }>) => void;
+  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean; astralMode: boolean; zeroGravity: boolean };
+  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean; astralMode: boolean; zeroGravity: boolean }>) => void;
   getAnalyserData: () => Uint8Array;
   setPlaybackRate: (rate: number) => void;
   setPan: (panValue: number) => void;
+  triggerWarp: () => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -74,7 +75,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [repeatMode, setRepeatMode] = useState<'none' | 'all' | 'one'>('none');
   const [queue, setQueue] = useState<Song[]>([]);
 
-  // Local Storage State
   const [playlists, setPlaylists] = useState<Playlist[]>(() => {
     const saved = localStorage.getItem('tunetastic_playlists');
     return saved ? JSON.parse(saved) : [];
@@ -108,7 +108,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     });
   }, []);
 
-  // Dynamic background color — extracts dominant color from album art like Spotify
   useEffect(() => {
     if (!currentSong?.coverArt) {
       document.documentElement.style.setProperty('--dynamic-bg-color', '#1e3a29');
@@ -129,7 +128,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       for (let i = 0; i < data.length; i += 4) {
         r += data[i]; g += data[i+1]; b += data[i+2]; count++;
       }
-      r = Math.round(r / count * 0.5); // Darken so it's background-safe
+      r = Math.round(r / count * 0.5);
       g = Math.round(g / count * 0.5);
       b = Math.round(b / count * 0.5);
       document.documentElement.style.setProperty('--dynamic-bg-color', `rgb(${r},${g},${b})`);
@@ -139,7 +138,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     };
   }, [currentSong]);
 
-  // ─── Media Session API — lock screen / notification controls ──────────────
   useEffect(() => {
     if (!('mediaSession' in navigator)) return;
 
@@ -148,7 +146,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       return;
     }
 
-    // Build artwork array - prefer coverArt, fallback to logo
     const artworkSrc = currentSong.coverArt || '/logo.png';
     navigator.mediaSession.metadata = new MediaMetadata({
       title: currentSong.title,
@@ -164,7 +161,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       ],
     });
 
-    // Wire up hardware / lock-screen buttons
     navigator.mediaSession.setActionHandler('play', () => {
       audioRef.current?.play();
       setIsPlaying(true);
@@ -189,13 +185,11 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     });
   }, [currentSong]);
 
-  // Sync Media Session playback state with isPlaying
   useEffect(() => {
     if (!('mediaSession' in navigator)) return;
     navigator.mediaSession.playbackState = isPlaying ? 'playing' : 'paused';
   }, [isPlaying]);
 
-  // Sync Media Session position state for lock-screen seek bar
   useEffect(() => {
     if (!('mediaSession' in navigator) || !audioRef.current) return;
     try {
@@ -206,22 +200,21 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
           position: Math.min(currentTime, duration),
         });
       }
-    } catch (_) { /* ignore if not supported */ }
+    } catch (_) { }
   }, [currentTime, duration]);
 
-  // DJ State
   const [djState, setDjStateInternal] = useState({ 
     bass: 0, spin8D: false, nightcore: false, 
     reverb: 0, speed: 10, lofi: false, karaoke: false,
     tremolo: false, phaser: false, vinyl: false,
     chorus: false, telephone: false, alien: false,
-    era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false
+    era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false,
+    zeroGravity: false
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
   const binauralNodesRef = useRef<{ oscL: OscillatorNode; oscR: OscillatorNode; gain: GainNode } | null>(null);
   
-  // Audio Nodes
   const bassNodeRef = useRef<BiquadFilterNode | null>(null);
   const vocalNodeRef = useRef<BiquadFilterNode | null>(null);
   const lofiNodeRef = useRef<BiquadFilterNode | null>(null);
@@ -238,6 +231,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const alienOscNodeRef = useRef<OscillatorNode | null>(null);
   const analyserNodeRef = useRef<AnalyserNode | null>(null);
   
+  const zgHPFRef = useRef<BiquadFilterNode | null>(null);
+  const zgConvolverRef = useRef<ConvolverNode | null>(null);
+  const zgGainRef = useRef<GainNode | null>(null);
+  
   const pannerIntervalRef = useRef<number | null>(null);
   const tremoloIntervalRef = useRef<number | null>(null);
   const phaserIntervalRef = useRef<number | null>(null);
@@ -250,6 +247,20 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
     }
     return curve;
+  };
+
+  const generateImpulseResponse = (ctx: AudioContext, duration: number, decay: number) => {
+    const length = ctx.sampleRate * duration;
+    const impulse = ctx.createBuffer(2, length, ctx.sampleRate);
+    const left = impulse.getChannelData(0);
+    const right = impulse.getChannelData(1);
+    for (let i = 0; i < length; i++) {
+      const n = i / length;
+      const env = Math.exp(-n * decay);
+      left[i] = (Math.random() * 2 - 1) * env;
+      right[i] = (Math.random() * 2 - 1) * env;
+    }
+    return impulse;
   };
 
   const initAudioContext = () => {
@@ -265,110 +276,43 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const source = ctx.createMediaElementSource(audioRef.current);
         sourceNodeRef.current = source;
 
-        // 1. Bass Boost Node (LowShelf)
-        const bassNode = ctx.createBiquadFilter();
-        bassNode.type = 'lowshelf';
-        bassNode.frequency.value = 150; 
-        bassNodeRef.current = bassNode;
-
-        // 2. Vocal Boost / Karaoke Node (Peaking)
-        const vocalNode = ctx.createBiquadFilter();
-        vocalNode.type = 'peaking';
-        vocalNode.frequency.value = 3000; 
-        vocalNode.Q.value = 1.5;
-        vocalNodeRef.current = vocalNode;
-
-        // 3. Lo-Fi Node (Lowpass)
-        const lofiNode = ctx.createBiquadFilter();
-        lofiNode.type = 'lowpass';
-        lofiNodeRef.current = lofiNode;
-
-        // 4. Tremolo Gain Node
-        const tremoloNode = ctx.createGain();
-        tremoloGainNodeRef.current = tremoloNode;
-
-        // 5. Phaser Node (Peaking with modulated freq)
-        const phaserNode = ctx.createBiquadFilter();
-        phaserNode.type = 'peaking';
-        phaserNode.Q.value = 5;
-        phaserNodeRef.current = phaserNode;
-
-        // 6. Vinyl Distortion Node (WaveShaper)
-        const vinylNode = ctx.createWaveShaper();
-        vinylNode.oversample = '4x';
-        vinylNodeRef.current = vinylNode;
-
-        // 7. Telephone Node (Bandpass)
-        const telephoneNode = ctx.createBiquadFilter();
-        telephoneNode.type = 'bandpass';
-        telephoneNode.frequency.value = 1500;
-        telephoneNodeRef.current = telephoneNode;
-
-        // 8. Alien Ring Modulator (Gain + Osc)
-        const alienGain = ctx.createGain();
-        alienGainNodeRef.current = alienGain;
+        const bassNode = ctx.createBiquadFilter(); bassNode.type = 'lowshelf'; bassNode.frequency.value = 150; bassNodeRef.current = bassNode;
+        const vocalNode = ctx.createBiquadFilter(); vocalNode.type = 'peaking'; vocalNode.frequency.value = 3000; vocalNode.Q.value = 1.5; vocalNodeRef.current = vocalNode;
+        const lofiNode = ctx.createBiquadFilter(); lofiNode.type = 'lowpass'; lofiNodeRef.current = lofiNode;
+        const tremoloNode = ctx.createGain(); tremoloGainNodeRef.current = tremoloNode;
+        const phaserNode = ctx.createBiquadFilter(); phaserNode.type = 'peaking'; phaserNode.Q.value = 5; phaserNodeRef.current = phaserNode;
+        const vinylNode = ctx.createWaveShaper(); vinylNode.oversample = '4x'; vinylNodeRef.current = vinylNode;
+        const telephoneNode = ctx.createBiquadFilter(); telephoneNode.type = 'bandpass'; telephoneNode.frequency.value = 1500; telephoneNodeRef.current = telephoneNode;
         
-        const alienOsc = ctx.createOscillator();
-        alienOsc.type = 'sine';
-        alienOsc.frequency.value = 50; 
-        alienOsc.start();
-        alienOscNodeRef.current = alienOsc;
+        const alienGain = ctx.createGain(); alienGain.gain.value = 1;
+        const alienOsc = ctx.createOscillator(); alienOsc.type = 'sawtooth'; alienOsc.frequency.value = 50; alienOsc.start();
+        alienGainNodeRef.current = alienGain; alienOscNodeRef.current = alienOsc;
 
-        // 9. Reverb/Echo (Delay + Mix)
-        const delayNode = ctx.createDelay(1.0);
-        delayNode.delayTime.value = 0.3;
-        echoDelayNodeRef.current = delayNode;
+        const chorusDelay = ctx.createDelay(0.1); chorusDelay.delayTime.value = 0.03; chorusDelayNodeRef.current = chorusDelay;
+        const chorusGain = ctx.createGain(); chorusGain.gain.value = 0; chorusGainNodeRef.current = chorusGain;
+        const pannerNode = ctx.createStereoPanner(); pannerNodeRef.current = pannerNode;
         
-        // This gain node controls how much of the delayed signal goes to output
-        const echoMixGain = ctx.createGain();
-        echoMixGain.gain.value = 0; // Off by default
-        echoGainNodeRef.current = echoMixGain;
+        const zgHPF = ctx.createBiquadFilter(); zgHPF.type = 'highpass'; zgHPF.frequency.value = 400; zgHPFRef.current = zgHPF;
+        const zgConvolver = ctx.createConvolver(); zgConvolver.buffer = generateImpulseResponse(ctx, 10, 5); zgConvolverRef.current = zgConvolver;
+        const zgGain = ctx.createGain(); zgGain.gain.value = 0; zgGainRef.current = zgGain;
         
-        // This gain controls the feedback loop (constant)
-        const feedbackGain = ctx.createGain();
-        feedbackGain.gain.value = 0.4;
-
-        // 10. Chorus (Short Delay 30ms)
-        const chorusDelay = ctx.createDelay(0.1);
-        chorusDelay.delayTime.value = 0.03;
-        chorusDelayNodeRef.current = chorusDelay;
-        const chorusGain = ctx.createGain();
-        chorusGainNodeRef.current = chorusGain;
-
-        // 11. Stereo Panner Node (8D Spin)
-        const pannerNode = ctx.createStereoPanner();
-        pannerNodeRef.current = pannerNode;
-
-        // 12. Analyser Node (Visualizer)
-        const analyserNode = ctx.createAnalyser();
-        analyserNode.fftSize = 256;
-        analyserNodeRef.current = analyserNode;
-
-        // Connect the graph (Dry Path)
-        source.connect(vinylNode);
-        vinylNode.connect(bassNode);
-        bassNode.connect(telephoneNode);
-        telephoneNode.connect(vocalNode);
-        vocalNode.connect(phaserNode);
-        phaserNode.connect(lofiNode);
-        lofiNode.connect(alienGain);
-        alienGain.connect(tremoloNode);
-        tremoloNode.connect(pannerNode);
-        pannerNode.connect(analyserNode);
-        analyserNode.connect(ctx.destination);
-
-        // Wet signal path (Echo)
-        lofiNode.connect(delayNode);
-        delayNode.connect(echoMixGain); // Route delayed signal through Mix gain
-        echoMixGain.connect(pannerNode); // Mix into output
+        const delayNode = ctx.createDelay(1.0); delayNode.delayTime.value = 0.3; echoDelayNodeRef.current = delayNode;
+        const echoMixGain = ctx.createGain(); echoMixGain.gain.value = 0; echoGainNodeRef.current = echoMixGain;
+        const feedbackGain = ctx.createGain(); feedbackGain.gain.value = 0.4;
         
-        delayNode.connect(feedbackGain); // Feedback loop
-        feedbackGain.connect(delayNode); 
+        const analyser = ctx.createAnalyser(); analyser.fftSize = 256; analyserNodeRef.current = analyser;
 
-        // Wet signal path (Chorus)
-        lofiNode.connect(chorusDelay);
-        chorusDelay.connect(chorusGain);
-        chorusGain.connect(pannerNode);
+        source.connect(vinylNode).connect(bassNode).connect(telephoneNode).connect(vocalNode).connect(phaserNode).connect(lofiNode).connect(alienGain);
+        alienGain.connect(tremoloNode).connect(pannerNode).connect(analyser);
+        chorusGain.connect(alienGain);
+        
+        alienGain.connect(zgHPF).connect(zgConvolver).connect(zgGain).connect(analyser);
+        
+        lofiNode.connect(delayNode).connect(echoMixGain).connect(pannerNode);
+        delayNode.connect(feedbackGain).connect(delayNode);
+        lofiNode.connect(chorusDelay).connect(chorusGain);
+        
+        analyser.connect(ctx.destination);
 
       } catch (err) {
         console.error("Failed to initialize AudioContext:", err);
@@ -380,10 +324,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     if (bassNodeRef.current) bassNodeRef.current.gain.value = state.bass;
     if (vocalNodeRef.current) vocalNodeRef.current.gain.value = state.karaoke ? 8 : 0;
     if (lofiNodeRef.current) lofiNodeRef.current.frequency.value = state.lofi ? 2500 : 20000;
-    
-    // Mix gain controls how loud the echo is
     if (echoGainNodeRef.current) echoGainNodeRef.current.gain.value = (state.reverb ?? 0) > 0 ? (state.reverb! / 15) : 0;
-    
     if (vinylNodeRef.current) vinylNodeRef.current.curve = state.vinyl ? makeDistortionCurve(400) : null;
     if (telephoneNodeRef.current) telephoneNodeRef.current.Q.value = state.telephone ? 2.5 : 0.0001; 
 
@@ -398,11 +339,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
             if (chorusDelayNodeRef.current) chorusDelayNodeRef.current.delayTime.value = delay;
           }, 50);
         }
-      } else {
-        if (chorusIntervalRef.current) {
-          window.clearInterval(chorusIntervalRef.current);
-          chorusIntervalRef.current = null;
-        }
+      } else if (chorusIntervalRef.current) {
+        window.clearInterval(chorusIntervalRef.current);
+        chorusIntervalRef.current = null;
       }
     }
 
@@ -415,20 +354,21 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       }
     }
 
+    if (zgGainRef.current) {
+      zgGainRef.current.gain.setTargetAtTime(state.zeroGravity ? 2.0 : 0, (audioContextRef.current?.currentTime || 0), 0.5);
+    }
+
     if (audioRef.current) {
       if (state.nightcore) {
         audioRef.current.playbackRate = 1.3;
         (audioRef.current as any).preservesPitch = false;
-        (audioRef.current as any).webkitPreservesPitch = false;
       } else if (state.astralMode) {
         audioRef.current.playbackRate = 432 / 440;
         (audioRef.current as any).preservesPitch = false;
-        (audioRef.current as any).webkitPreservesPitch = false;
       } else {
         const speedMultiplier = (state.speed ?? 10) / 10;
         audioRef.current.playbackRate = speedMultiplier;
         (audioRef.current as any).preservesPitch = true;
-        (audioRef.current as any).webkitPreservesPitch = true;
       }
     }
 
@@ -443,10 +383,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         }, 50);
       }
     } else {
-      if (pannerIntervalRef.current) {
-        window.clearInterval(pannerIntervalRef.current);
-        pannerIntervalRef.current = null;
-      }
+      if (pannerIntervalRef.current) { window.clearInterval(pannerIntervalRef.current); pannerIntervalRef.current = null; }
       if (pannerNodeRef.current) pannerNodeRef.current.pan.value = 0;
     }
 
@@ -460,10 +397,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         }, 20);
       }
     } else {
-      if (tremoloIntervalRef.current) {
-        window.clearInterval(tremoloIntervalRef.current);
-        tremoloIntervalRef.current = null;
-      }
+      if (tremoloIntervalRef.current) { window.clearInterval(tremoloIntervalRef.current); tremoloIntervalRef.current = null; }
       if (tremoloGainNodeRef.current && !state.alien) tremoloGainNodeRef.current.gain.value = 1;
     }
 
@@ -478,46 +412,29 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         }, 50);
       }
     } else {
-      if (phaserIntervalRef.current) {
-        window.clearInterval(phaserIntervalRef.current);
-        phaserIntervalRef.current = null;
-      }
+      if (phaserIntervalRef.current) { window.clearInterval(phaserIntervalRef.current); phaserIntervalRef.current = null; }
       if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 0;
     }
 
-    // Binaural Beats
     if (state.astralMode && audioContextRef.current) {
       if (!binauralNodesRef.current) {
         const ctx = audioContextRef.current;
         const merger = ctx.createChannelMerger(2);
-        
-        const oscL = ctx.createOscillator();
-        oscL.frequency.value = 100;
-        const pannerL = ctx.createStereoPanner();
-        pannerL.pan.value = -1;
+        const oscL = ctx.createOscillator(); oscL.frequency.value = 100;
+        const pannerL = ctx.createStereoPanner(); pannerL.pan.value = -1;
         oscL.connect(pannerL).connect(merger, 0, 0);
-        
-        const oscR = ctx.createOscillator();
-        oscR.frequency.value = 104.5;
-        const pannerR = ctx.createStereoPanner();
-        pannerR.pan.value = 1;
+        const oscR = ctx.createOscillator(); oscR.frequency.value = 104.5;
+        const pannerR = ctx.createStereoPanner(); pannerR.pan.value = 1;
         oscR.connect(pannerR).connect(merger, 0, 1);
-        
-        const gain = ctx.createGain();
-        gain.gain.value = 0.15;
+        const gain = ctx.createGain(); gain.gain.value = 0.15;
         merger.connect(gain).connect(ctx.destination);
-        
-        oscL.start();
-        oscR.start();
+        oscL.start(); oscR.start();
         binauralNodesRef.current = { oscL, oscR, gain };
       }
     } else if (binauralNodesRef.current) {
-      binauralNodesRef.current.oscL.stop();
-      binauralNodesRef.current.oscR.stop();
-      binauralNodesRef.current.oscL.disconnect();
-      binauralNodesRef.current.oscR.disconnect();
-      binauralNodesRef.current.gain.disconnect();
-      binauralNodesRef.current = null;
+      binauralNodesRef.current.oscL.stop(); binauralNodesRef.current.oscR.stop();
+      binauralNodesRef.current.oscL.disconnect(); binauralNodesRef.current.oscR.disconnect();
+      binauralNodesRef.current.gain.disconnect(); binauralNodesRef.current = null;
     }
   };
 
@@ -535,10 +452,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     setDjStateInternal(prev => ({ ...prev, ...newState }));
   };
 
-  // Initialize audio element
   useEffect(() => {
     audioRef.current = new Audio();
-    audioRef.current.crossOrigin = 'anonymous'; // CRITICAL: Set this BEFORE any src is loaded!
+    audioRef.current.crossOrigin = 'anonymous';
     audioRef.current.volume = volume;
 
     const audio = audioRef.current;
@@ -614,7 +530,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
     setCurrentSong(song);
 
-    // Track recently played (deduplicated, newest first, max 20)
     setRecentlyPlayed(prev => {
       const filtered = prev.filter(s => s.id !== song.id);
       return [song, ...filtered].slice(0, 20);
@@ -717,7 +632,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       const currentIndex = prev.findIndex(s => s.id === currentSong?.id);
       const insertAt = currentIndex >= 0 ? currentIndex + 1 : prev.length;
       const next = [...prev];
-      // Remove existing instance to avoid duplicates in queue
       const existingIdx = next.findIndex(s => s.id === song.id);
       if (existingIdx > insertAt) next.splice(existingIdx, 1);
       next.splice(insertAt, 0, song);
@@ -755,7 +669,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const setPan = (panValue: number) => {
     if (pannerNodeRef.current) {
-      // Clamp between -1 and 1
       pannerNodeRef.current.pan.value = Math.max(-1, Math.min(1, panValue));
     }
   };
@@ -764,6 +677,31 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     if (audioRef.current) {
       audioRef.current.playbackRate = rate;
     }
+  };
+
+  const triggerWarp = () => {
+    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    (audio as any).preservesPitch = false;
+    
+    const startRate = audio.playbackRate;
+    let rate = startRate;
+    
+    const drop = () => {
+      rate -= 0.05;
+      if (rate > 0.1) {
+        audio.playbackRate = rate;
+        requestAnimationFrame(drop);
+      } else {
+        setTimeout(() => {
+          audio.playbackRate = djState.speed ? djState.speed / 10 : 1;
+          if (!djState.nightcore && !djState.astralMode) {
+             (audio as any).preservesPitch = true;
+          }
+        }, 300);
+      }
+    };
+    drop();
   };
 
   return (
@@ -776,7 +714,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       setDjState,
       getAnalyserData,
       setPlaybackRate,
-      setPan
+      setPan,
+      triggerWarp
     }}>
       {children}
     </PlayerContext.Provider>

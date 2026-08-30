@@ -3,16 +3,17 @@ import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import {
   Zap, AudioLines, Sparkles, Music2, Wind, Gauge,
-  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity, Compass, Hexagon
+  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity, Compass, Hexagon, Rocket, Moon
 } from 'lucide-react';
 import TimeMachine from './TimeMachine';
 import GhostWhisperer from './GhostWhisperer';
 import MotionControlDJ from './MotionControlDJ';
+import NebulaBackground from './NebulaBackground';
 import { useHapticBass } from '../hooks/useHapticBass';
 import { useAnchorSpatialAudio } from '../hooks/useAnchorSpatialAudio';
 
 const DJView: React.FC = () => {
-  const { djState, setDjState, isPlaying, currentSong } = usePlayer();
+  const { djState, setDjState, isPlaying, currentSong, triggerWarp } = usePlayer();
   const { isHitting } = useHapticBass(djState.hapticBass ?? false);
   const { requestPermission: requestSpatialAudio } = useAnchorSpatialAudio(djState.spatialAudio ?? false);
 
@@ -109,10 +110,11 @@ const DJView: React.FC = () => {
   const anyActive = djState.bass > 0 || djState.spin8D || djState.nightcore || djState.lofi
     || djState.karaoke || djState.tremolo || djState.phaser || djState.vinyl
     || djState.chorus || djState.telephone || djState.alien || (djState.reverb ?? 0) > 0
-    || (djState.speed ?? 10) !== 10 || djState.astralMode;
+    || (djState.speed ?? 10) !== 10 || djState.astralMode || djState.zeroGravity;
 
   return (
-    <div className="main-view" style={{ padding: 0, background: '#000' }}>
+    <div className="main-view" style={{ padding: 0, background: 'transparent' }}>
+      <NebulaBackground />
       <style>{`
         @keyframes eq-pulse {
           0%, 100% { height: 6px; }
@@ -208,8 +210,34 @@ const DJView: React.FC = () => {
         {/* ── Time Machine ─── */}
         <TimeMachine />
 
-        {/* ── Experimental Features ─── */}
         <SectionHeader title="Next-Gen Experimental" />
+        <div style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}>
+          <button 
+            onClick={triggerWarp}
+            style={{
+              background: 'linear-gradient(135deg, #ff0f7b, #f89b29)',
+              border: 'none', borderRadius: '16px', padding: '16px 32px',
+              color: 'white', fontWeight: 900, fontSize: '18px', letterSpacing: '2px', textTransform: 'uppercase',
+              boxShadow: '0 10px 30px rgba(255, 15, 123, 0.4)', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: '12px', width: '100%', justifyContent: 'center',
+              transform: 'scale(1)', transition: 'transform 0.1s'
+            }}
+            onMouseDown={e => e.currentTarget.style.transform = 'scale(0.95)'}
+            onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
+            onTouchStart={e => e.currentTarget.style.transform = 'scale(0.95)'}
+            onTouchEnd={e => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <Rocket size={24} /> WARP DRIVE DROP
+          </button>
+        </div>
+
+        <Row
+          icon={<Moon size={20} />}
+          title="Zero-Gravity Mode"
+          desc="Floats the music in a massive cavern of space"
+          right={<Toggle active={djState.zeroGravity ?? false} onClick={() => setDjState({ zeroGravity: !djState.zeroGravity })} />}
+        />
+
         <Row
           icon={<Activity size={20} color={isHitting ? 'var(--spotify-green)' : 'currentColor'} style={{ transition: 'color 0.1s' }} />}
           title="Haptic Bass Engine"
