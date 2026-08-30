@@ -181,18 +181,18 @@ const ItunesSearchView: React.FC = () => {
               <p style={{ fontSize: '22px', fontWeight: 700, marginBottom: '16px' }}>Search for any song</p>
               <div className="sp-browse-grid">
                 {[
-                  { label: 'Pop', color: '#E8115B' },
-                  { label: 'Hip-Hop', color: '#BA5D07' },
-                  { label: 'Dance/Electronic', color: '#1E3264' },
-                  { label: 'R&B', color: '#E8115B' },
-                  { label: 'Rock', color: '#8D67AB' },
-                  { label: 'K-Pop', color: '#1E3264' },
-                  { label: 'Indie', color: '#477D95' },
-                  { label: 'Podcasts', color: '#E91429' },
-                  { label: 'Classical', color: '#056952' },
-                  { label: 'Latin', color: '#BA5D07' },
-                  { label: 'Country', color: '#477D95' },
-                  { label: 'Jazz', color: '#503750' },
+                  { label: 'Pop', color: '#E8115B', image: '/genres/pop.png' },
+                  { label: 'Hip-Hop', color: '#BA5D07', image: '/genres/hiphop.png' },
+                  { label: 'Dance/Electronic', color: '#1E3264', image: '/genres/dance.png' },
+                  { label: 'R&B', color: '#E8115B', image: '/genres/rb.png' },
+                  { label: 'Rock', color: '#8D67AB', image: '/genres/rock.png' },
+                  { label: 'K-Pop', color: '#1E3264', image: '/genres/kpop.png' },
+                  { label: 'Indie', color: '#477D95', image: '/genres/indie.png' },
+                  { label: 'Podcasts', color: '#E91429', image: '/genres/podcasts.png' },
+                  { label: 'Classical', color: '#056952', image: '/genres/classical.png' },
+                  { label: 'Latin', color: '#BA5D07', image: '/genres/latin.png' },
+                  { label: 'Country', color: '#477D95', image: '/genres/country.png' },
+                  { label: 'Jazz', color: '#503750', image: '/genres/jazz.png' },
                 ].map(cat => (
                   <div
                     key={cat.label}
@@ -201,13 +201,19 @@ const ItunesSearchView: React.FC = () => {
                     onClick={() => { setQuery(cat.label); inputRef.current?.focus(); }}
                   >
                     <p style={{ margin: 0, fontWeight: 700, fontSize: '16px', color: 'white' }}>{cat.label}</p>
-                    <div style={{
-                      position: 'absolute', bottom: '-10px', right: '-10px',
-                      width: '72px', height: '72px',
-                      background: 'rgba(0,0,0,0.2)',
-                      borderRadius: '6px',
-                      transform: 'rotate(25deg)',
-                    }} />
+                    <img 
+                      src={cat.image} 
+                      alt={cat.label}
+                      style={{
+                        position: 'absolute', bottom: '-10px', right: '-15px',
+                        width: '80px', height: '80px',
+                        objectFit: 'cover',
+                        borderRadius: '4px',
+                        transform: 'rotate(25deg)',
+                        boxShadow: '0 2px 10px rgba(0,0,0,0.4)',
+                        pointerEvents: 'none'
+                      }} 
+                    />
                   </div>
                 ))}
               </div>
