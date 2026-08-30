@@ -50,9 +50,10 @@ interface PlayerContextType {
   deletePlaylist: (playlistId: string) => void;
   renamePlaylist: (playlistId: string, newName: string) => void;
   addToQueue: (song: Song) => void;
-  // DJ State
   djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean };
   setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean }>) => void;
+  getAnalyserData: () => Uint8Array;
+  setPlaybackRate: (rate: number) => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -232,6 +233,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const chorusGainNodeRef = useRef<GainNode | null>(null);
   const alienGainNodeRef = useRef<GainNode | null>(null);
   const alienOscNodeRef = useRef<OscillatorNode | null>(null);
+  const analyserNodeRef = useRef<AnalyserNode | null>(null);
   
   const pannerIntervalRef = useRef<number | null>(null);
   const tremoloIntervalRef = useRef<number | null>(null);
@@ -334,6 +336,11 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const pannerNode = ctx.createStereoPanner();
         pannerNodeRef.current = pannerNode;
 
+        // 12. Analyser Node (Visualizer)
+        const analyserNode = ctx.createAnalyser();
+        analyserNode.fftSize = 256;
+        analyserNodeRef.current = analyserNode;
+
         // Connect the graph (Dry Path)
         source.connect(vinylNode);
         vinylNode.connect(bassNode);
@@ -344,7 +351,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         lofiNode.connect(alienGain);
         alienGain.connect(tremoloNode);
         tremoloNode.connect(pannerNode);
-        pannerNode.connect(ctx.destination);
+        pannerNode.connect(analyserNode);
+        analyserNode.connect(ctx.destination);
 
         // Wet signal path (Echo)
         lofiNode.connect(delayNode);
@@ -696,6 +704,19 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   };
 
+  const getAnalyserData = () => {
+    if (!analyserNodeRef.current) return new Uint8Array(0);
+    const dataArray = new Uint8Array(analyserNodeRef.current.frequencyBinCount);
+    analyserNodeRef.current.getByteFrequencyData(dataArray);
+    return dataArray;
+  };
+
+  const setPlaybackRate = (rate: number) => {
+    if (audioRef.current) {
+      audioRef.current.playbackRate = rate;
+    }
+  };
+
   return (
     <PlayerContext.Provider value={{
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
@@ -703,7 +724,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
       createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists, deletePlaylist, renamePlaylist, addToQueue,
       djState,
-      setDjState
+      setDjState,
+      getAnalyserData,
+      setPlaybackRate
     }}>
       {children}
     </PlayerContext.Provider>

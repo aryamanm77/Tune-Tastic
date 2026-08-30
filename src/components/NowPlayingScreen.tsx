@@ -9,7 +9,11 @@ import { getCoverArtUrl } from '../utils/cloudinary';
 import {
   Play, Pause, SkipBack, SkipForward, Shuffle, Repeat,
   Heart, ChevronDown, MoreHorizontal, Volume2, VolumeX,
+  Sparkles, Disc, Mic2, Image as ImageIcon
 } from 'lucide-react';
+import Visualizer from './Visualizer';
+import VinylScratch from './VinylScratch';
+import KaraokeMode from './KaraokeMode';
 
 interface NowPlayingScreenProps {
   onClose: () => void;
@@ -25,6 +29,7 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ onClose, onMoreOpti
   } = usePlayer();
 
   const [touching, setTouching] = useState(false);
+  const [activeMode, setActiveMode] = useState<'normal' | 'party' | 'vinyl' | 'karaoke'>('normal');
 
   if (!currentSong) return null;
 
@@ -58,6 +63,8 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ onClose, onMoreOpti
         pointerEvents: 'none',
       }} />
 
+      {activeMode === 'party' && <Visualizer />}
+
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%', padding: '0 28px' }}>
 
@@ -74,31 +81,62 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ onClose, onMoreOpti
           </button>
         </div>
 
-        {/* Album Art */}
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 0' }}>
-          <img
-            src={currentSong.coverArt || getCoverArtUrl(currentSong.audioId)}
-            onError={e => {
-              if (e.currentTarget.src.includes('600x600bb')) {
-                e.currentTarget.src = e.currentTarget.src.replace('600x600bb', '100x100bb');
-              } else {
-                e.currentTarget.src = '/logo.png';
-              }
-            }}
-            alt={currentSong.title}
-            style={{
-              width: '100%',
-              maxWidth: '320px',
-              aspectRatio: '1 / 1',
-              borderRadius: '12px',
-              objectFit: 'cover',
-              boxShadow: '0 24px 64px rgba(0,0,0,0.6)',
-              transform: touching ? 'scale(0.95)' : isPlaying ? 'scale(1)' : 'scale(0.88)',
-              transition: 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1)',
-            }}
-            onTouchStart={() => setTouching(true)}
-            onTouchEnd={() => setTouching(false)}
-          />
+        {/* Fun Modes Toggle */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '12px' }}>
+          {[
+            { id: 'normal', icon: ImageIcon, label: 'Art' },
+            { id: 'party', icon: Sparkles, label: 'Party' },
+            { id: 'vinyl', icon: Disc, label: 'Vinyl' },
+            { id: 'karaoke', icon: Mic2, label: 'Karaoke' }
+          ].map(m => (
+            <button
+              key={m.id}
+              onClick={() => setActiveMode(m.id as any)}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '6px 12px', borderRadius: '100px', border: 'none',
+                backgroundColor: activeMode === m.id ? 'var(--spotify-green)' : 'rgba(255,255,255,0.1)',
+                color: activeMode === m.id ? 'black' : 'white',
+                fontWeight: 600, fontSize: '12px', cursor: 'pointer',
+                transition: 'all 0.2s ease', zIndex: 2
+              }}
+            >
+              <m.icon size={14} />
+              {m.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Central Display Area */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 0', zIndex: 2 }}>
+          {activeMode === 'vinyl' && <VinylScratch />}
+          {activeMode === 'karaoke' && <KaraokeMode />}
+          
+          {(activeMode === 'normal' || activeMode === 'party') && (
+            <img
+              src={currentSong.coverArt || getCoverArtUrl(currentSong.audioId)}
+              onError={e => {
+                if (e.currentTarget.src.includes('600x600bb')) {
+                  e.currentTarget.src = e.currentTarget.src.replace('600x600bb', '100x100bb');
+                } else {
+                  e.currentTarget.src = '/logo.png';
+                }
+              }}
+              alt={currentSong.title}
+              style={{
+                width: '100%',
+                maxWidth: '320px',
+                aspectRatio: '1 / 1',
+                borderRadius: '12px',
+                objectFit: 'cover',
+                boxShadow: activeMode === 'party' ? '0 0 40px rgba(29, 185, 84, 0.4)' : '0 24px 64px rgba(0,0,0,0.6)',
+                transform: touching ? 'scale(0.95)' : isPlaying ? 'scale(1)' : 'scale(0.88)',
+                transition: 'all 0.3s cubic-bezier(0.34,1.56,0.64,1)',
+              }}
+              onTouchStart={() => setTouching(true)}
+              onTouchEnd={() => setTouching(false)}
+            />
+          )}
         </div>
 
         {/* Song info + like */}
