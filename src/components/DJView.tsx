@@ -115,7 +115,8 @@ const DJView: React.FC = () => {
   return (
     <div className="main-view" style={{ padding: 0, background: 'transparent' }}>
       <NebulaBackground />
-      <style>{`
+      <div style={{ position: 'relative', zIndex: 10 }}>
+        <style>{`
         @keyframes eq-pulse {
           0%, 100% { height: 6px; }
           50% { height: 28px; }
@@ -379,6 +380,7 @@ const DJView: React.FC = () => {
             </button>
           </div>
         )}
+      </div>
       </div>
     </div>
   );
