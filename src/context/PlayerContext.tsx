@@ -46,6 +46,8 @@ interface PlayerContextType {
   isLiked: (songId: string) => boolean;
   clearSong: () => void;
   setPlaylists: React.Dispatch<React.SetStateAction<Playlist[]>>;
+  deletePlaylist: (playlistId: string) => void;
+  renamePlaylist: (playlistId: string, newName: string) => void;
   // DJ State
   djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean };
   setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean }>) => void;
@@ -566,6 +568,14 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }));
   };
 
+  const deletePlaylist = (playlistId: string) => {
+    setPlaylists(playlists.filter(p => p.id !== playlistId));
+  };
+
+  const renamePlaylist = (playlistId: string, newName: string) => {
+    setPlaylists(playlists.map(p => p.id === playlistId ? { ...p, name: newName } : p));
+  };
+
   const toggleLike = (song: Song) => {
     if (likedSongs.find(s => s.id === song.id)) {
       setLikedSongs(likedSongs.filter(s => s.id !== song.id));
@@ -592,7 +602,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
       playlists, likedSongs,
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
-      createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists,
+      createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists, deletePlaylist, renamePlaylist,
       djState,
       setDjState
     }}>

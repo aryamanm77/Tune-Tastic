@@ -6,11 +6,13 @@ import AddToPlaylistModal from './AddToPlaylistModal';
 
 interface PlaylistViewProps {
   playlistId: string | null;
+  goHome?: () => void;
 }
 
-const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
-  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs, toggleLike, setPlaylists } = usePlayer() as any;
+const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
+  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs, toggleLike, setPlaylists, deletePlaylist, renamePlaylist } = usePlayer() as any;
   const [modalSong, setModalSong] = useState<Song | null>(null);
+  const [showMenu, setShowMenu] = useState(false);
 
   if (!playlistId) return <div className="main-view"></div>;
 
@@ -42,6 +44,27 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
     const m = Math.floor(totalSeconds / 60);
     const s = totalSeconds % 60;
     return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+
+  const handlePlayAll = () => {
+    if (songs.length > 0) {
+      playSong(songs[0]);
+    }
+  };
+
+  const handleDelete = () => {
+    if (playlistId && window.confirm("Are you sure you want to delete this playlist?")) {
+      deletePlaylist(playlistId);
+      if (goHome) goHome();
+    }
+  };
+
+  const handleRename = () => {
+    const newName = prompt("Enter new playlist name:", title);
+    if (newName && newName.trim() && playlistId) {
+      renamePlaylist(playlistId, newName.trim());
+    }
+    setShowMenu(false);
   };
 
   return (
@@ -83,6 +106,67 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId }) => {
       </div>
 
       <div style={{ padding: '0 24px 24px 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '24px', marginTop: '16px' }}>
+          <button 
+            onClick={handlePlayAll}
+            style={{
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--spotify-green)',
+              border: 'none',
+              color: 'black',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              boxShadow: '0 8px 8px rgba(0,0,0,0.3)',
+            }}>
+            <Play size={28} fill="black" style={{ marginLeft: '4px' }} />
+          </button>
+          
+          {!isLikedPlaylist && (
+            <div style={{ position: 'relative' }}>
+              <button 
+                onClick={() => setShowMenu(!showMenu)}
+                style={{ color: '#b3b3b3', background: 'none', border: 'none', cursor: 'pointer', padding: '8px' }}>
+                <MoreHorizontal size={32} />
+              </button>
+              
+              {showMenu && (
+                <div style={{
+                  position: 'absolute',
+                  top: '100%',
+                  left: 0,
+                  backgroundColor: '#282828',
+                  borderRadius: '4px',
+                  boxShadow: '0 16px 24px rgba(0,0,0,.3), 0 6px 8px rgba(0,0,0,.2)',
+                  padding: '4px',
+                  zIndex: 10,
+                  minWidth: '160px'
+                }}>
+                  <button 
+                    onClick={handleRename} 
+                    style={{ width: '100%', textAlign: 'left', padding: '12px', background: 'none', border: 'none', color: 'white', cursor: 'pointer', fontSize: '14px' }}
+                    onMouseOver={e => e.currentTarget.style.backgroundColor = '#333'}
+                    onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}
+                  >
+                    Rename
+                  </button>
+                  <button 
+                    onClick={handleDelete} 
+                    style={{ width: '100%', textAlign: 'left', padding: '12px', background: 'none', border: 'none', color: '#ff4d4d', cursor: 'pointer', fontSize: '14px' }}
+                    onMouseOver={e => e.currentTarget.style.backgroundColor = '#333'}
+                    onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}
+                  >
+                    Delete Playlist
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ color: 'var(--text-secondary)', borderBottom: '1px solid #282828', fontSize: '14px' }}>

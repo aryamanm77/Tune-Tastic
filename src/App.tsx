@@ -26,7 +26,7 @@ const AppContent: React.FC = () => {
       {activeTab === 'home' && <MainView />}
       {activeTab === 'search' && <SearchView />}
       {activeTab === 'library' && <LibraryView onOpenPlaylist={navigateToPlaylist} />}
-      {activeTab === 'playlist' && <PlaylistView playlistId={activePlaylistId} />}
+      {activeTab === 'playlist' && <PlaylistView playlistId={activePlaylistId} goHome={() => setActiveTab('home')} />}
       {activeTab === 'dj' && <DJView />}
       {activeTab === 'premium' && <ItunesSearchView />}
       
