@@ -14,11 +14,18 @@ interface AddToPlaylistModalProps {
 }
 
 const AddToPlaylistModal: React.FC<AddToPlaylistModalProps> = ({ song, onClose }) => {
-  const { playlists, createPlaylist, addToPlaylist, toggleLike, isLiked } = usePlayer();
+  const { playlists, createPlaylist, addToPlaylist, toggleLike, isLiked, addToQueue } = usePlayer();
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState('');
   const [added, setAdded] = useState<string | null>(null);
+  const [queuedToast, setQueuedToast] = useState(false);
   const liked = isLiked(song.id);
+
+  const handleAddToQueue = () => {
+    addToQueue(song);
+    setQueuedToast(true);
+    setTimeout(() => { setQueuedToast(false); onClose(); }, 1200);
+  };
 
   const handleAddTo = (playlistId: string) => {
     addToPlaylist(playlistId, song);
@@ -110,6 +117,20 @@ const AddToPlaylistModal: React.FC<AddToPlaylistModalProps> = ({ song, onClose }
           </div>
           <span style={{ fontSize: '15px', fontWeight: 500 }}>{liked ? 'Remove from Liked Songs' : 'Like'}</span>
           {liked && <Check size={16} color="var(--spotify-green)" style={{ marginLeft: 'auto' }} />}
+        </button>
+
+        {/* Add to Queue */}
+        <button className="apt-row" onClick={handleAddToQueue}>
+          <div style={{
+            width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
+            background: queuedToast ? 'rgba(29,185,84,0.2)' : 'rgba(255,255,255,0.08)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            {queuedToast ? <Check size={20} color="var(--spotify-green)" /> : <ListMusic size={20} color="white" />}
+          </div>
+          <span style={{ fontSize: '15px', fontWeight: 500 }}>
+            {queuedToast ? 'Added to queue!' : 'Add to queue'}
+          </span>
         </button>
 
         {/* Divider */}

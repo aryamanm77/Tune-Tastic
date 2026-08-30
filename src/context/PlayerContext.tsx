@@ -49,6 +49,7 @@ interface PlayerContextType {
   setPlaylists: React.Dispatch<React.SetStateAction<Playlist[]>>;
   deletePlaylist: (playlistId: string) => void;
   renamePlaylist: (playlistId: string, newName: string) => void;
+  addToQueue: (song: Song) => void;
   // DJ State
   djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean };
   setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean }>) => void;
@@ -661,6 +662,19 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     setPlaylists(playlists.map(p => p.id === playlistId ? { ...p, name: newName } : p));
   };
 
+  const addToQueue = (song: Song) => {
+    setQueue(prev => {
+      const currentIndex = prev.findIndex(s => s.id === currentSong?.id);
+      const insertAt = currentIndex >= 0 ? currentIndex + 1 : prev.length;
+      const next = [...prev];
+      // Remove existing instance to avoid duplicates in queue
+      const existingIdx = next.findIndex(s => s.id === song.id);
+      if (existingIdx > insertAt) next.splice(existingIdx, 1);
+      next.splice(insertAt, 0, song);
+      return next;
+    });
+  };
+
   const toggleLike = (song: Song) => {
     if (likedSongs.find(s => s.id === song.id)) {
       setLikedSongs(likedSongs.filter(s => s.id !== song.id));
@@ -687,7 +701,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
       playlists, likedSongs, recentlyPlayed,
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
-      createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists, deletePlaylist, renamePlaylist,
+      createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists, deletePlaylist, renamePlaylist, addToQueue,
       djState,
       setDjState
     }}>

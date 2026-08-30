@@ -3,6 +3,7 @@ import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Volume2, VolumeX, 
 import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import QueuePanel from './QueuePanel';
+import NowPlayingScreen from './NowPlayingScreen';
 
 const SLEEP_OPTIONS = [5, 10, 15, 20, 30, 45, 60];
 
@@ -15,6 +16,7 @@ const Player: React.FC = () => {
 
   const [touchStartX, setTouchStartX] = useState(0);
   const [showQueue, setShowQueue] = useState(false);
+  const [showNowPlaying, setShowNowPlaying] = useState(false);
 
   // ─── Sleep Timer ──────────────────────────────────────────────
   const [showSleepMenu, setShowSleepMenu] = useState(false);
@@ -88,8 +90,11 @@ const Player: React.FC = () => {
       style={{ display: currentSong ? 'flex' : 'none' }}
     >
       
-      {/* Left: Song Info */}
-      <div style={{ width: '30%', display: 'flex', alignItems: 'center', gap: '16px' }}>
+      {/* Left: Song Info — tapping on mobile opens full screen player */}
+      <div
+        style={{ width: '30%', display: 'flex', alignItems: 'center', gap: '16px' }}
+        onClick={() => { if (window.innerWidth < 768) setShowNowPlaying(true); }}
+      >
         {currentSong ? (
           <>
             <img 
@@ -242,6 +247,14 @@ const Player: React.FC = () => {
       </div>
 
       {showQueue && <QueuePanel onClose={() => setShowQueue(false)} />}
+
+      {/* Full-screen Now Playing for mobile */}
+      {showNowPlaying && (
+        <NowPlayingScreen
+          onClose={() => setShowNowPlaying(false)}
+          onMoreOptions={() => setShowNowPlaying(false)}
+        />
+      )}
 
     </div>
   );
