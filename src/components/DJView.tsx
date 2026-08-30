@@ -3,7 +3,7 @@ import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import {
   Zap, AudioLines, Sparkles, Music2, Wind, Gauge,
-  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity, Compass
+  Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot, Activity, Compass, Hexagon
 } from 'lucide-react';
 import TimeMachine from './TimeMachine';
 import GhostWhisperer from './GhostWhisperer';
@@ -109,7 +109,7 @@ const DJView: React.FC = () => {
   const anyActive = djState.bass > 0 || djState.spin8D || djState.nightcore || djState.lofi
     || djState.karaoke || djState.tremolo || djState.phaser || djState.vinyl
     || djState.chorus || djState.telephone || djState.alien || (djState.reverb ?? 0) > 0
-    || (djState.speed ?? 10) !== 10;
+    || (djState.speed ?? 10) !== 10 || djState.astralMode;
 
   return (
     <div className="main-view" style={{ padding: 0, background: '#000' }}>
@@ -261,6 +261,12 @@ const DJView: React.FC = () => {
           title="Vocal Boost"
           desc="Amplifies mid-range to bring out the vocals"
           right={<Toggle active={djState.karaoke ?? false} onClick={() => setDjState({ karaoke: !djState.karaoke })} />}
+        />
+        <Row
+          icon={<Hexagon size={20} />}
+          title="Astral Projection"
+          desc="432Hz tuning + Theta Binaural Beats for deep meditation"
+          right={<Toggle active={djState.astralMode ?? false} onClick={() => setDjState({ astralMode: !djState.astralMode })} />}
         />
 
         {/* ── Advanced ─── */}

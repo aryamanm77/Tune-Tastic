@@ -1,9 +1,9 @@
 import React from 'react';
-import { Home, Search, Library, Sliders, Sparkles, Hexagon } from 'lucide-react';
+import { Home, Search, Library, Sliders, Sparkles } from 'lucide-react';
 
 interface BottomNavProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium' | 'astral') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium') => void;
 }
 
 const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
@@ -48,14 +48,6 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
       >
         <Sliders size={24} />
         <span>DJ Studio</span>
-      </button>
-
-      <button 
-        className={`bottom-nav-item ${activeTab === 'astral' ? 'active' : ''}`}
-        onClick={() => setActiveTab('astral')}
-      >
-        <Hexagon size={24} />
-        <span>Astral</span>
       </button>
     </div>
   );
