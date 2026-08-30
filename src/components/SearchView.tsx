@@ -8,7 +8,7 @@ const SearchView: React.FC = () => {
   const [query, setQuery] = useState('');
 
   const filteredSongs = useMemo(() => {
-    if (!query.trim()) return songs;
+    if (!query.trim()) return [];
     const lowerQuery = query.toLowerCase();
     return songs.filter(s =>
       s.title.toLowerCase().includes(lowerQuery) ||
@@ -53,7 +53,8 @@ const SearchView: React.FC = () => {
         </div>
       </div>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', marginTop: '16px' }}>
+      {query.trim() && (
+        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', marginTop: '16px' }}>
           <thead>
             <tr style={{ color: 'var(--text-secondary)', borderBottom: '1px solid #282828', fontSize: '14px' }}>
               <th className="hide-mobile" style={{ padding: '8px 16px', width: '40px', fontWeight: 'normal' }}>#</th>
@@ -117,6 +118,7 @@ const SearchView: React.FC = () => {
             })}
           </tbody>
         </table>
+      )}
       
       {query.trim() && filteredSongs.length === 0 && (
         <div style={{ textAlign: 'center', marginTop: '64px', color: 'var(--text-secondary)' }}>
