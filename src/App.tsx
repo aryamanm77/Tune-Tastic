@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { PlayerProvider } from './context/PlayerContext';
+import React, { useState, useEffect } from 'react';
+import { PlayerProvider, usePlayer } from './context/PlayerContext';
 import Sidebar from './components/Sidebar';
 import Player from './components/Player';
 import MainView from './components/MainView';
@@ -9,10 +9,20 @@ import PlaylistView from './components/PlaylistView';
 import BottomNav from './components/BottomNav';
 import DJView from './components/DJView';
 import ItunesSearchView from './components/ItunesSearchView';
+import NebulaBackground from './components/NebulaBackground';
 
 const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'home' | 'search' | 'premium' | 'library' | 'playlist' | 'dj'>('home');
   const [activePlaylistId, setActivePlaylistId] = useState<string | null>(null);
+  const { djState } = usePlayer();
+
+  useEffect(() => {
+    if (djState.nebulaMode) {
+      document.body.classList.add('nebula-active');
+    } else {
+      document.body.classList.remove('nebula-active');
+    }
+  }, [djState.nebulaMode]);
 
   const navigateToPlaylist = (id: string) => {
     setActivePlaylistId(id);
@@ -20,7 +30,9 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="app-container">
+    <>
+      <NebulaBackground />
+      <div className="app-container" style={{ position: 'relative', zIndex: 10 }}>
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} onOpenPlaylist={navigateToPlaylist} />
       
       {activeTab === 'home' && <MainView />}
@@ -33,6 +45,7 @@ const AppContent: React.FC = () => {
       <Player />
       <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
+    </>
   );
 };
 

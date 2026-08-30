@@ -412,3 +412,18 @@ body.theme-2050 .main-view, body.theme-2050 .sidebar, body.theme-2050 .player-ba
   box-shadow: inset 0 0 40px rgba(0, 229, 255, 0.05);
   border: 1px solid rgba(0, 229, 255, 0.1);
 }
+
+body.nebula-active .main-view,
+body.nebula-active .sidebar,
+body.nebula-active .player,
+body.nebula-active .search-view,
+body.nebula-active .library-view,
+body.nebula-active .playlist-view,
+body.nebula-active .bottom-nav {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.nebula-active .app-container {
+  background: transparent !important;
+}

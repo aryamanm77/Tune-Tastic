@@ -8,7 +8,6 @@ import {
 import TimeMachine from './TimeMachine';
 import GhostWhisperer from './GhostWhisperer';
 import MotionControlDJ from './MotionControlDJ';
-import NebulaBackground from './NebulaBackground';
 import { useHapticBass } from '../hooks/useHapticBass';
 import { useAnchorSpatialAudio } from '../hooks/useAnchorSpatialAudio';
 
@@ -114,7 +113,6 @@ const DJView: React.FC = () => {
 
   return (
     <div className="main-view" style={{ padding: 0, background: 'transparent' }}>
-      <NebulaBackground />
       <div style={{ position: 'relative', zIndex: 10 }}>
         <style>{`
         @keyframes eq-pulse {
