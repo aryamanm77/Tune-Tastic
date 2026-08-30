@@ -9,7 +9,6 @@ import PlaylistView from './components/PlaylistView';
 import BottomNav from './components/BottomNav';
 import DJView from './components/DJView';
 import ItunesSearchView from './components/ItunesSearchView';
-import SacredGeometry from './components/SacredGeometry';
 
 const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'home' | 'search' | 'premium' | 'library' | 'playlist' | 'dj'>('home');
@@ -33,7 +32,6 @@ const AppContent: React.FC = () => {
       
       <Player />
       <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
-      <SacredGeometry />
     </div>
   );
 };
