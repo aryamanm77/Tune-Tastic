@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { usePlayer } from '../context/PlayerContext';
+import nebulaImage from '../assets/images/deep_space_nebula.png';
 
 const NebulaBackground: React.FC = () => {
   const { getAnalyserData, isPlaying, djState, currentSong } = usePlayer();
@@ -27,7 +28,7 @@ const NebulaBackground: React.FC = () => {
     window.addEventListener('resize', resize);
 
     const img = new Image();
-    img.src = '/images/deep_space_nebula.png';
+    img.src = nebulaImage;
     let imgLoaded = false;
     img.onload = () => { imgLoaded = true; };
     
