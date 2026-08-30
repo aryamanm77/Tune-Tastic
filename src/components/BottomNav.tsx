@@ -1,9 +1,9 @@
 import React from 'react';
-import { Home, Search, Library, Sliders, Sparkles } from 'lucide-react';
+import { Home, Search, Library, Sliders, Sparkles, Gamepad2 } from 'lucide-react';
 
 interface BottomNavProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium' | 'games') => void;
 }
 
 const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
@@ -48,6 +48,15 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
       >
         <Sliders size={24} />
         <span>DJ Studio</span>
+      </button>
+
+      <button 
+        className={`bottom-nav-item ${activeTab === 'games' ? 'active' : ''}`}
+        onClick={() => setActiveTab('games')}
+        style={{ color: activeTab === 'games' ? '#FF9500' : undefined }}
+      >
+        <Gamepad2 size={24} />
+        <span>Games</span>
       </button>
     </div>
   );
