@@ -1,71 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getAudioUrl } from '../utils/cloudinary';
-import { Play, Search, Crown } from 'lucide-react';
-
-const PremiumAd: React.FC = () => (
-  <div style={{
-    marginTop: '24px',
-    borderRadius: '8px',
-    overflow: 'hidden',
-    position: 'relative',
-    background: 'linear-gradient(90deg, #1e3a5f 0%, #2d1b4e 100%)',
-    padding: '24px 24px 24px 28px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '20px',
-  }}>
-    {/* Left accent bar */}
-    <div style={{
-      position: 'absolute', left: 0, top: 0, bottom: 0,
-      width: '4px',
-      background: 'linear-gradient(180deg, #1db954, #a855f7)',
-    }} />
-
-    {/* Crown icon */}
-    <Crown size={40} style={{ color: '#1db954', flexShrink: 0 }} />
-
-    {/* Text */}
-    <div style={{ flex: 1, minWidth: 0 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-        <span style={{
-          fontSize: '11px', fontWeight: 700, letterSpacing: '1.5px',
-          textTransform: 'uppercase', color: '#1db954',
-        }}>Coming Soon</span>
-      </div>
-      <h2 style={{
-        margin: '0 0 4px', fontSize: '20px', fontWeight: 800,
-        color: 'white', letterSpacing: '-0.3px',
-      }}>
-        TuneTastic Premium
-      </h2>
-      <p style={{
-        margin: 0, fontSize: '13px',
-        color: 'rgba(255,255,255,0.55)', lineHeight: 1.5,
-      }}>
-        Unlimited streaming · AI voice cloning · Studio DJ effects · Lyrics · No ads
-      </p>
-    </div>
-
-    {/* Badge */}
-    <div style={{
-      padding: '8px 16px', borderRadius: '500px', flexShrink: 0,
-      background: 'rgba(255,255,255,0.08)',
-      border: '1px solid rgba(255,255,255,0.12)',
-      fontSize: '13px', fontWeight: 700, color: 'rgba(255,255,255,0.5)',
-      whiteSpace: 'nowrap',
-    }}>
-      Notify me
-    </div>
-  </div>
-);
+import { Play, Search } from 'lucide-react';
 
 const SearchView: React.FC = () => {
   const { songs, currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
   const [query, setQuery] = useState('');
 
   const filteredSongs = useMemo(() => {
-    if (!query.trim()) return [];
+    if (!query.trim()) return songs;
     const lowerQuery = query.toLowerCase();
     return songs.filter(s =>
       s.title.toLowerCase().includes(lowerQuery) ||
@@ -110,12 +53,7 @@ const SearchView: React.FC = () => {
         </div>
       </div>
 
-      {/* Premium Ad — shown when not searching */}
-      {!query.trim() && <PremiumAd />}
-
-
-      {query.trim() && (
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', marginTop: '16px' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', marginTop: '16px' }}>
           <thead>
             <tr style={{ color: 'var(--text-secondary)', borderBottom: '1px solid #282828', fontSize: '14px' }}>
               <th className="hide-mobile" style={{ padding: '8px 16px', width: '40px', fontWeight: 'normal' }}>#</th>
@@ -179,7 +117,6 @@ const SearchView: React.FC = () => {
             })}
           </tbody>
         </table>
-      )}
       
       {query.trim() && filteredSongs.length === 0 && (
         <div style={{ textAlign: 'center', marginTop: '64px', color: 'var(--text-secondary)' }}>
