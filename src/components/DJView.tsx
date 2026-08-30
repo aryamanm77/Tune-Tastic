@@ -5,6 +5,7 @@ import {
   Zap, AudioLines, Sparkles, Music2, Wind, Gauge,
   Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot
 } from 'lucide-react';
+import VoiceStudio from './VoiceStudio';
 
 const DJView: React.FC = () => {
   const { djState, setDjState, isPlaying, currentSong } = usePlayer();
@@ -174,6 +175,9 @@ const DJView: React.FC = () => {
             <p style={{ margin: 0, fontSize: '13px', color: 'var(--spotify-green)', fontWeight: 600 }}>Effects active — sound is being processed</p>
           </div>
         )}
+
+        {/* ── Voice Avatar Studio (top of list) ─── */}
+        <VoiceStudio />
 
         {/* ── Equalizer ─── */}
         <SectionHeader title="Equalizer" />
