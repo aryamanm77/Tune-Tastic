@@ -50,48 +50,7 @@ const Player: React.FC = () => {
     return () => { if (sleepTimerRef.current) clearInterval(sleepTimerRef.current); };
   }, []);
 
-  // ─── Keyboard Shortcuts ───────────────────────────────────────
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement;
-      // Don't fire if user is typing in an input/textarea
-      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return;
 
-      switch (e.code) {
-        case 'Space':
-          e.preventDefault();
-          if (currentSong) togglePlayPause();
-          break;
-        case 'ArrowRight':
-          if (e.ctrlKey || e.metaKey) { e.preventDefault(); nextSong(); }
-          else if (currentSong) { e.preventDefault(); seekTo(Math.min(1, progress + 0.05)); }
-          break;
-        case 'ArrowLeft':
-          if (e.ctrlKey || e.metaKey) { e.preventDefault(); prevSong(); }
-          else if (currentSong) { e.preventDefault(); seekTo(Math.max(0, progress - 0.05)); }
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          setVolume(Math.min(1, volume + 0.1));
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          setVolume(Math.max(0, volume - 0.1));
-          break;
-        case 'KeyM':
-          setVolume(volume > 0 ? 0 : 1);
-          break;
-        case 'KeyS':
-          if (e.shiftKey) toggleShuffle();
-          break;
-        case 'KeyR':
-          cycleRepeat();
-          break;
-      }
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [currentSong, isPlaying, progress, volume, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
