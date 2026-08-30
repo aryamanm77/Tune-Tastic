@@ -53,6 +53,18 @@ const SearchView: React.FC = () => {
         </div>
       </div>
 
+      {!query.trim() && (
+        <div style={{ textAlign: 'center', marginTop: '120px', color: 'var(--text-secondary)', animation: 'fadeIn 0.3s ease' }}>
+          <Search size={64} style={{ marginBottom: '24px', opacity: 0.2 }} />
+          <h2 style={{ color: 'var(--text-primary)', margin: '0 0 12px', fontSize: '24px', fontWeight: 700 }}>
+            Search your local library
+          </h2>
+          <p style={{ margin: 0, fontSize: '15px' }}>
+            Find your favorite songs, artists, and albums in your local files.
+          </p>
+        </div>
+      )}
+
       {query.trim() && (
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', marginTop: '16px' }}>
           <thead>
