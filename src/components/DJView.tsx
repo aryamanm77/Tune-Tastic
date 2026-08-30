@@ -5,7 +5,6 @@ import {
   Zap, AudioLines, Sparkles, Music2, Wind, Gauge,
   Radio, HeartPulse, Orbit, Disc, Users, PhoneCall, Bot
 } from 'lucide-react';
-import VoiceStudio from './VoiceStudio';
 
 const DJView: React.FC = () => {
   const { djState, setDjState, isPlaying, currentSong } = usePlayer();
@@ -202,7 +201,6 @@ const DJView: React.FC = () => {
 
         {/* ── Sound Effects ─── */}
         <SectionHeader title="Sound Effects" />
-        <VoiceStudio />
         <Row
           icon={<Sparkles size={20} />}
           title="8D Surround"
