@@ -22,7 +22,7 @@ const ItunesSearchView: React.FC = () => {
         const newSongs = await searchItunes(query, { limit: 20 });
         setResults(newSongs);
       } catch { /* silent */ } finally { setIsSearching(false); }
-    }, 200);
+    }, 400);
     return () => { if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current); };
   }, [query]);
 
@@ -181,18 +181,18 @@ const ItunesSearchView: React.FC = () => {
               <p style={{ fontSize: '22px', fontWeight: 700, marginBottom: '16px' }}>Search for any song</p>
               <div className="sp-browse-grid">
                 {[
-                  { label: 'Pop', color: '#E8115B', image: '/genres/pop.jpg' },
-                  { label: 'Hip-Hop', color: '#BA5D07', image: '/genres/hiphop.jpg' },
-                  { label: 'Dance/Electronic', color: '#1E3264', image: '/genres/dance.jpg' },
-                  { label: 'R&B', color: '#E8115B', image: '/genres/rb.jpg' },
-                  { label: 'Rock', color: '#8D67AB', image: '/genres/rock.jpg' },
-                  { label: 'K-Pop', color: '#1E3264', image: '/genres/kpop.jpg' },
-                  { label: 'Indie', color: '#477D95', image: '/genres/indie.jpg' },
-                  { label: 'Podcasts', color: '#E91429', image: '/genres/podcasts.jpg' },
-                  { label: 'Classical', color: '#056952', image: '/genres/classical.jpg' },
-                  { label: 'Latin', color: '#BA5D07', image: '/genres/latin.jpg' },
-                  { label: 'Country', color: '#477D95', image: '/genres/country.jpg' },
-                  { label: 'Jazz', color: '#503750', image: '/genres/jazz.jpg' },
+                  { label: 'Pop', color: '#E8115B', image: '/genres/pop.png' },
+                  { label: 'Hip-Hop', color: '#BA5D07', image: '/genres/hiphop.png' },
+                  { label: 'Dance/Electronic', color: '#1E3264', image: '/genres/dance.png' },
+                  { label: 'R&B', color: '#E8115B', image: '/genres/rb.png' },
+                  { label: 'Rock', color: '#8D67AB', image: '/genres/rock.png' },
+                  { label: 'K-Pop', color: '#1E3264', image: '/genres/kpop.png' },
+                  { label: 'Indie', color: '#477D95', image: '/genres/indie.png' },
+                  { label: 'Podcasts', color: '#E91429', image: '/genres/podcasts.png' },
+                  { label: 'Classical', color: '#056952', image: '/genres/classical.png' },
+                  { label: 'Latin', color: '#BA5D07', image: '/genres/latin.png' },
+                  { label: 'Country', color: '#477D95', image: '/genres/country.png' },
+                  { label: 'Jazz', color: '#503750', image: '/genres/jazz.png' },
                 ].map(cat => (
                   <div
                     key={cat.label}
@@ -250,7 +250,6 @@ const ItunesSearchView: React.FC = () => {
                       src={results[0].coverArt}
                       onError={handleImageError}
                       alt=""
-                      loading="lazy"
                       style={{ width: '92px', height: '92px', borderRadius: '6px', objectFit: 'cover', marginBottom: '16px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)', display: 'block' }}
                     />
                     <p style={{ fontSize: '28px', fontWeight: 800, color: 'white', margin: '0 0 4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -287,7 +286,7 @@ const ItunesSearchView: React.FC = () => {
                                   : <Play size={14} fill="white" color="white" />}
                               </span>
                             </div>
-                            <img className="sp-row-img" src={song.coverArt} onError={handleImageError} loading="lazy" alt="" />
+                            <img className="sp-row-img" src={song.coverArt} onError={handleImageError} alt="" />
                             <div style={{ minWidth: 0 }}>
                               <p className="ellipsis" style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: active ? 'var(--spotify-green)' : 'white' }}>{song.title}</p>
                               <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
@@ -332,7 +331,7 @@ const ItunesSearchView: React.FC = () => {
                                 <span className="sp-play-icon"><Play size={14} fill="white" color="white" /></span>
                               </>}
                         </div>
-                        <img className="sp-row-img" src={song.coverArt} onError={handleImageError} loading="lazy" alt="" />
+                        <img className="sp-row-img" src={song.coverArt} onError={handleImageError} alt="" />
                         <div style={{ minWidth: 0 }}>
                           <p className="ellipsis" style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: active ? 'var(--spotify-green)' : 'white' }}>{song.title}</p>
                           <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
