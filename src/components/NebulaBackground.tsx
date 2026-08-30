@@ -26,6 +26,13 @@ const NebulaBackground: React.FC = () => {
     resize();
     window.addEventListener('resize', resize);
 
+    const img = new Image();
+    img.src = '/images/deep_space_nebula.png';
+    let imgLoaded = false;
+    img.onload = () => { imgLoaded = true; };
+    
+    let currentScale = 1.1;
+
     // Create stars
     const stars = Array.from({ length: 200 }, () => ({
       x: Math.random() * canvas.width,
@@ -44,9 +51,32 @@ const NebulaBackground: React.FC = () => {
       const audioPulse = isNaN(bassSum) ? 0 : bassSum / 5;
       const pulse = audioPulse / 255; // 0 to 1
 
-      // Dynamic trail effect (less alpha = longer trails, speeds up on bass)
-      ctx.fillStyle = `rgba(5, 5, 12, ${0.1 + (pulse * 0.1)})`;
+      // Base background color
+      ctx.fillStyle = '#05050c';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const isWarping = djState.isWarping;
+      const speedMult = (isPlaying ? (pulse * 10 + 0.5) : 0.1) * (isWarping ? 50 : 1);
+
+      if (imgLoaded) {
+        // Calculate target scale based on music and warp drive
+        let targetScale = 1.1 + (pulse * 0.15);
+        if (isWarping) targetScale = 3.0; // Huge zoom into hyperspace
+        
+        // Smoothly approach target scale
+        currentScale += (targetScale - currentScale) * 0.1;
+        
+        // Draw the image centered and scaled
+        const imgWidth = canvas.width * currentScale;
+        const imgHeight = canvas.height * currentScale;
+        const offsetX = (canvas.width - imgWidth) / 2;
+        const offsetY = (canvas.height - imgHeight) / 2;
+        
+        ctx.save();
+        ctx.globalAlpha = 0.6 + (pulse * 0.4); // Image gets brighter on bass hits
+        ctx.drawImage(img, offsetX, offsetY, imgWidth, imgHeight);
+        ctx.restore();
+      }
 
       // Draw Nebula Clouds if zeroGravity or space effects are on
       if (djState.zeroGravity || djState.spin8D || djState.alien) {
@@ -55,14 +85,11 @@ const NebulaBackground: React.FC = () => {
           canvas.width/2, canvas.height/2, canvas.width/1.5
         );
         const hue = (time * 50 + pulse * 100) % 360;
-        grd.addColorStop(0, `hsla(${hue}, 80%, 40%, ${0.05 + pulse * 0.1})`);
+        grd.addColorStop(0, `hsla(${hue}, 80%, 40%, ${0.1 + pulse * 0.2})`);
         grd.addColorStop(1, 'transparent');
         ctx.fillStyle = grd;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
-
-      const isWarping = (audioRef?.current as any)?.playbackRate < 0.9 && !(djState as any).astralMode;
-      const speedMult = (isPlaying ? (pulse * 10 + 0.5) : 0.1) * (isWarping ? 50 : 1);
 
       stars.forEach(star => {
         // Move stars (warp drive pulls them to center, zero gravity floats them up)
