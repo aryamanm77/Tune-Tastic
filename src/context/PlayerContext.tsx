@@ -55,7 +55,6 @@ interface PlayerContextType {
   getAnalyserData: () => Uint8Array;
   setPlaybackRate: (rate: number) => void;
   setPan: (panValue: number) => void;
-  triggerWarp: () => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -213,7 +212,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
-  const binauralNodesRef = useRef<{ oscL: OscillatorNode; oscR: OscillatorNode; gain: GainNode } | null>(null);
+  const warpIntervalRef = useRef<number | null>(null);
+  const binauralNodesRef = useRef<{ oscL: OscillatorNode, oscR: OscillatorNode, gain: GainNode } | null>(null);
   
   const bassNodeRef = useRef<BiquadFilterNode | null>(null);
   const vocalNodeRef = useRef<BiquadFilterNode | null>(null);
@@ -359,16 +359,33 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
 
     if (audioRef.current) {
-      if (state.nightcore) {
-        audioRef.current.playbackRate = 1.3;
+      if (warpIntervalRef.current) { window.clearInterval(warpIntervalRef.current); warpIntervalRef.current = null; }
+
+      if (state.isWarping) {
         (audioRef.current as any).preservesPitch = false;
-      } else if (state.astralMode) {
-        audioRef.current.playbackRate = 432 / 440;
-        (audioRef.current as any).preservesPitch = false;
+        if ('webkitPreservesPitch' in audioRef.current) (audioRef.current as any).webkitPreservesPitch = false;
+        
+        warpIntervalRef.current = window.setInterval(() => {
+          if (!audioRef.current) return;
+          if (audioRef.current.playbackRate > 0.1) {
+            audioRef.current.playbackRate = Math.max(0.1, audioRef.current.playbackRate - 0.02);
+          } else {
+            if (warpIntervalRef.current) window.clearInterval(warpIntervalRef.current);
+          }
+        }, 16);
       } else {
-        const speedMultiplier = (state.speed ?? 10) / 10;
-        audioRef.current.playbackRate = state.isWarping ? Math.max(0.1, audioRef.current.playbackRate - 0.05) : speedMultiplier;
-        (audioRef.current as any).preservesPitch = true;
+        if (state.nightcore) {
+          audioRef.current.playbackRate = 1.3;
+          (audioRef.current as any).preservesPitch = false;
+        } else if (state.astralMode) {
+          audioRef.current.playbackRate = 432 / 440;
+          (audioRef.current as any).preservesPitch = false;
+        } else {
+          const speedMultiplier = (state.speed ?? 10) / 10;
+          audioRef.current.playbackRate = speedMultiplier;
+          (audioRef.current as any).preservesPitch = true;
+          if ('webkitPreservesPitch' in audioRef.current) (audioRef.current as any).webkitPreservesPitch = true;
+        }
       }
     }
 
@@ -679,39 +696,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   };
 
-  const triggerWarp = () => {
-    if (!audioRef.current) return;
-    const audio = audioRef.current;
-    
-    // Set warping state so UI reacts immediately
-    setDjState({ isWarping: true });
-    
-    (audio as any).preservesPitch = false;
-    if ('webkitPreservesPitch' in audio) (audio as any).webkitPreservesPitch = false;
-    
-    const startRate = audio.playbackRate;
-    let rate = startRate;
-    
-    const drop = () => {
-      rate -= 0.015; // Slower drop over ~1 second (60 frames)
-      if (rate > 0.1) {
-        audio.playbackRate = rate;
-        requestAnimationFrame(drop);
-      } else {
-        // Hold the drop for a moment, then recover
-        setTimeout(() => {
-          audio.playbackRate = djState.speed ? djState.speed / 10 : 1;
-          if (!djState.nightcore && !djState.astralMode) {
-             (audio as any).preservesPitch = true;
-             if ('webkitPreservesPitch' in audio) (audio as any).webkitPreservesPitch = true;
-          }
-          setDjState({ isWarping: false });
-        }, 800);
-      }
-    };
-    drop();
-  };
-
   return (
     <PlayerContext.Provider value={{
       songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
@@ -722,8 +706,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       setDjState,
       getAnalyserData,
       setPlaybackRate,
-      setPan,
-      triggerWarp
+      setPan
     }}>
       {children}
     </PlayerContext.Provider>

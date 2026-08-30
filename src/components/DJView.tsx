@@ -13,7 +13,7 @@ import { useHapticBass } from '../hooks/useHapticBass';
 import { useAnchorSpatialAudio } from '../hooks/useAnchorSpatialAudio';
 
 const DJView: React.FC = () => {
-  const { djState, setDjState, isPlaying, currentSong, triggerWarp } = usePlayer();
+  const { djState, setDjState, isPlaying, currentSong } = usePlayer();
   const { isHitting } = useHapticBass(djState.hapticBass ?? false);
   const { requestPermission: requestSpatialAudio } = useAnchorSpatialAudio(djState.spatialAudio ?? false);
 
@@ -212,25 +212,13 @@ const DJView: React.FC = () => {
         <TimeMachine />
 
         <SectionHeader title="Next-Gen Experimental" />
-        <div style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}>
-          <button 
-            onClick={triggerWarp}
-            style={{
-              background: 'linear-gradient(135deg, #ff0f7b, #f89b29)',
-              border: 'none', borderRadius: '16px', padding: '16px 32px',
-              color: 'white', fontWeight: 900, fontSize: '18px', letterSpacing: '2px', textTransform: 'uppercase',
-              boxShadow: '0 10px 30px rgba(255, 15, 123, 0.4)', cursor: 'pointer',
-              display: 'flex', alignItems: 'center', gap: '12px', width: '100%', justifyContent: 'center',
-              transform: 'scale(1)', transition: 'transform 0.1s'
-            }}
-            onMouseDown={e => e.currentTarget.style.transform = 'scale(0.95)'}
-            onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
-            onTouchStart={e => e.currentTarget.style.transform = 'scale(0.95)'}
-            onTouchEnd={e => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            <Rocket size={24} /> WARP DRIVE DROP
-          </button>
-        </div>
+
+        <Row
+          icon={<Rocket size={20} />}
+          title="Warp Drive"
+          desc="Slow down time and stretch the stars into hyperspace"
+          right={<Toggle active={djState.isWarping ?? false} onClick={() => setDjState({ isWarping: !djState.isWarping })} />}
+        />
 
         <Row
           icon={<Moon size={20} />}
