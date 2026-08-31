@@ -235,10 +235,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const zgConvolverRef = useRef<ConvolverNode | null>(null);
   const zgGainRef = useRef<GainNode | null>(null);
   
-  const pannerLFOGainRef = useRef<GainNode | null>(null);
   const tremoloLFOGainRef = useRef<GainNode | null>(null);
   const phaserLFOGainRef = useRef<GainNode | null>(null);
   const chorusIntervalRef = useRef<number | null>(null);
+  const pannerAnimRef = useRef<number | null>(null);
 
   const makeDistortionCurve = (amount: number) => {
     let k = amount, n_samples = 44100, curve = new Float32Array(n_samples), deg = Math.PI / 180, i = 0, x;
@@ -302,9 +302,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const chorusGain = ctx.createGain(); chorusGain.gain.value = 0; chorusGainNodeRef.current = chorusGain;
         
         const pannerNode = ctx.createStereoPanner(); pannerNodeRef.current = pannerNode;
-        const pannerLFO = ctx.createOscillator(); pannerLFO.type = 'triangle'; pannerLFO.frequency.value = 0.2; pannerLFO.start();
-        const pannerLFOGain = ctx.createGain(); pannerLFOGain.gain.value = 0; pannerLFOGainRef.current = pannerLFOGain;
-        pannerLFO.connect(pannerLFOGain).connect(pannerNode.pan);
         
         const zgHPF = ctx.createBiquadFilter(); zgHPF.type = 'highpass'; zgHPF.frequency.value = 400; zgHPFRef.current = zgHPF;
         const zgConvolver = ctx.createConvolver(); zgConvolver.buffer = generateImpulseResponse(ctx, 10, 5); zgConvolverRef.current = zgConvolver;
@@ -414,9 +411,23 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     const now = audioContextRef.current?.currentTime || 0;
 
     if (state.spin8D) {
-      if (pannerLFOGainRef.current) pannerLFOGainRef.current.gain.setTargetAtTime(1, now, 0.1);
+      if (!pannerAnimRef.current && pannerNodeRef.current) {
+        const panner = pannerNodeRef.current;
+        const ctx = audioContextRef.current;
+        const updatePan = () => {
+          if (!ctx) return;
+          // Smooth sine wave based on current audio time, no zipper noise!
+          // 0.4 * PI rad/sec means a full cycle takes 5 seconds
+          panner.pan.value = Math.sin(ctx.currentTime * Math.PI * 0.4);
+          pannerAnimRef.current = requestAnimationFrame(updatePan);
+        };
+        pannerAnimRef.current = requestAnimationFrame(updatePan);
+      }
     } else {
-      if (pannerLFOGainRef.current) pannerLFOGainRef.current.gain.setTargetAtTime(0, now, 0.1);
+      if (pannerAnimRef.current) {
+        cancelAnimationFrame(pannerAnimRef.current);
+        pannerAnimRef.current = null;
+      }
       if (pannerNodeRef.current) pannerNodeRef.current.pan.setTargetAtTime(0, now, 0.1);
     }
 
