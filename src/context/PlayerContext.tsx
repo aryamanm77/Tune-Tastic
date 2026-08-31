@@ -234,6 +234,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const zgHPFRef = useRef<BiquadFilterNode | null>(null);
   const zgConvolverRef = useRef<ConvolverNode | null>(null);
   const zgGainRef = useRef<GainNode | null>(null);
+  const spatialPannerRef = useRef<StereoPannerNode | null>(null);
   
   const tremoloLFOGainRef = useRef<GainNode | null>(null);
   const phaserLFOGainRef = useRef<GainNode | null>(null);
@@ -310,16 +311,18 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const leftGain = ctx.createGain(); leftGainRef.current = leftGain;
         const rightGain = ctx.createGain(); rightGainRef.current = rightGain;
         const pannerMerger = ctx.createChannelMerger(2); pannerNodeRef.current = pannerInput as any;
+        const spatialPanner = ctx.createStereoPanner(); spatialPannerRef.current = spatialPanner;
         
         pannerInput.connect(leftGain);
         pannerInput.connect(rightGain);
         leftGain.connect(pannerMerger, 0, 0); // Connect to Left ear
         rightGain.connect(pannerMerger, 0, 1); // Connect to Right ear
+        pannerMerger.connect(spatialPanner);
         
         // pannerInput acts as the "pannerNode" for the rest of the chain to connect INTO.
-        // We must override its connect method to ensure the signal comes OUT of the merger!
+        // We must override its connect method to ensure the signal comes OUT of the spatial panner!
         (pannerInput as any).connect = (destination: AudioNode) => {
-          return pannerMerger.connect(destination);
+          return spatialPanner.connect(destination);
         };
 
         const spinLfo = ctx.createOscillator(); spinLfo.type = 'sine'; spinLfo.frequency.value = 0.2; spinLfo.start();
@@ -718,8 +721,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, []);
 
   const setPan = (panValue: number) => {
-    if (pannerNodeRef.current) {
-      pannerNodeRef.current.pan.value = Math.max(-1, Math.min(1, panValue));
+    if (spatialPannerRef.current) {
+      spatialPannerRef.current.pan.value = Math.max(-1, Math.min(1, panValue));
     }
   };
 
