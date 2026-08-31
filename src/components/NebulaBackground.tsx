@@ -7,6 +7,11 @@ const NebulaBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
+  // Persist animation state across re-renders (like play/pause toggles)
+  const bgScrollRef = useRef(0);
+  const currentScaleRef = useRef(1.1);
+  const starsRef = useRef<{x: number, y: number, z: number, size: number, baseAlpha: number}[]>([]);
+  
   useEffect(() => {
     audioRef.current = document.querySelector('audio');
   }, [currentSong]);
@@ -32,17 +37,16 @@ const NebulaBackground: React.FC = () => {
     let imgLoaded = false;
     img.onload = () => { imgLoaded = true; };
     
-    let currentScale = 1.1;
-    let bgScroll = 0;
-
-    // Create stars
-    const stars = Array.from({ length: 200 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      z: Math.random() * 2, // depth/parallax
-      size: Math.random() * 2 + 0.5,
-      baseAlpha: Math.random() * 0.8 + 0.2
-    }));
+    // Initialize stars once
+    if (starsRef.current.length === 0) {
+      starsRef.current = Array.from({ length: 200 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        z: Math.random() * 2 + 0.5,
+        size: Math.random() * 1.5 + 0.5,
+        baseAlpha: Math.random() * 0.5 + 0.3
+      }));
+    }
 
     const render = () => {
       time += 0.01;
@@ -68,24 +72,24 @@ const NebulaBackground: React.FC = () => {
         if (isWarping) targetScale = 3.0; // Huge zoom into hyperspace
         
         // Smoothly approach target scale
-        currentScale += (targetScale - currentScale) * 0.1;
+        currentScaleRef.current += (targetScale - currentScaleRef.current) * 0.1;
         
         // Update background scroll position (smooth constant speed)
         if (djState.zeroGravity) {
-          bgScroll += bgSpeed * 0.5; // Scroll up/down in zero G
+          bgScrollRef.current += bgSpeed * 0.5; // Scroll up/down in zero G
         } else {
-          bgScroll -= bgSpeed * 1.5; // Scroll left normally
+          bgScrollRef.current -= bgSpeed * 1.5; // Scroll left normally
         }
 
         const baseHeight = canvas.height * 1.5; // Ensure it covers height
         const aspectRatio = img.width / img.height;
         const baseWidth = baseHeight * aspectRatio;
         
-        const imgWidth = baseWidth * currentScale;
-        const imgHeight = baseHeight * currentScale;
+        const imgWidth = baseWidth * currentScaleRef.current;
+        const imgHeight = baseHeight * currentScaleRef.current;
         
         // Wrap the scroll position so it loops infinitely
-        const scrollWrapped = ((bgScroll % imgWidth) + imgWidth) % imgWidth;
+        const scrollWrapped = ((bgScrollRef.current % imgWidth) + imgWidth) % imgWidth;
         
         ctx.save();
         ctx.globalAlpha = 0.6 + (pulse * 0.4); // Image pulses brightness on bass hits
@@ -95,7 +99,7 @@ const NebulaBackground: React.FC = () => {
         
         if (djState.zeroGravity) {
             // Vertical infinite scroll
-            const vScrollWrapped = ((bgScroll % imgHeight) + imgHeight) % imgHeight;
+            const vScrollWrapped = ((bgScrollRef.current % imgHeight) + imgHeight) % imgHeight;
             const xOffset = (canvas.width - imgWidth) / 2;
             ctx.drawImage(img, xOffset, vScrollWrapped, imgWidth, imgHeight);
             ctx.drawImage(img, xOffset, vScrollWrapped - imgHeight, imgWidth, imgHeight);
@@ -121,7 +125,7 @@ const NebulaBackground: React.FC = () => {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
-      stars.forEach(star => {
+      starsRef.current.forEach(star => {
         // Move stars (warp drive pulls them to center, zero gravity floats them up)
         if (djState.zeroGravity) {
           star.y -= (star.z * speedMult * 2);

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useRef, useEffect, useCallback, ReactNode } from 'react';
 import { getAudioUrl } from '../utils/cloudinary';
 
 export interface Song {
@@ -677,12 +677,12 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   };
 
-  const getAnalyserData = () => {
+  const getAnalyserData = useCallback(() => {
     if (!analyserNodeRef.current) return new Uint8Array(0);
     const dataArray = new Uint8Array(analyserNodeRef.current.frequencyBinCount);
     analyserNodeRef.current.getByteFrequencyData(dataArray);
     return dataArray;
-  };
+  }, []);
 
   const setPan = (panValue: number) => {
     if (pannerNodeRef.current) {
