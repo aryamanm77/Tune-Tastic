@@ -37,7 +37,7 @@ const TimeMachine: React.FC = () => {
     if (newYear < 1920) {
       // 1500s-1920s: Medieval / Classical
       newState.vinyl = true;
-      newState.reverb = 30; // Cathedral echo
+      newState.reverb = 10; // Subtle Cathedral echo
     } else if (newYear < 1960) {
       // 1920s-1960s: Old Radio / Gramophone
       newState.vinyl = true;
