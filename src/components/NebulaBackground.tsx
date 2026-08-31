@@ -56,16 +56,13 @@ const NebulaBackground: React.FC = () => {
       // Base background color
       ctx.fillStyle = '#05050c';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const isWarping = djState.isWarping;
       // Stars and background always pan at a constant very slow speed, regardless of music or effects
       const speedMult = 0.1;
       const bgSpeed = 0.1;
 
       if (imgLoaded) {
-        // Background scale stays constant, no pulsing
+        // Background scale stays constant
         let targetScale = 1.1;
-        if (isWarping) targetScale = 3.0; // Huge zoom into hyperspace
         
         // Smoothly approach target scale
         currentScaleRef.current += (targetScale - currentScaleRef.current) * 0.1;
@@ -113,7 +110,7 @@ const NebulaBackground: React.FC = () => {
         const alpha = Math.min(1, star.baseAlpha + (twinkle * 0.3));
         
         ctx.beginPath();
-        ctx.arc(star.x, star.y, isWarping ? baseSize * 4 : baseSize, 0, Math.PI * 2);
+        ctx.arc(star.x, star.y, baseSize, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
         ctx.fill();
         
