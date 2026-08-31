@@ -235,9 +235,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const zgConvolverRef = useRef<ConvolverNode | null>(null);
   const zgGainRef = useRef<GainNode | null>(null);
   
-  const pannerIntervalRef = useRef<number | null>(null);
-  const tremoloIntervalRef = useRef<number | null>(null);
-  const phaserIntervalRef = useRef<number | null>(null);
+  const pannerLFOGainRef = useRef<GainNode | null>(null);
+  const tremoloLFOGainRef = useRef<GainNode | null>(null);
+  const phaserLFOGainRef = useRef<GainNode | null>(null);
   const chorusIntervalRef = useRef<number | null>(null);
 
   const makeDistortionCurve = (amount: number) => {
@@ -281,7 +281,16 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const vocalNode = ctx.createBiquadFilter(); vocalNode.type = 'peaking'; vocalNode.frequency.value = 3000; vocalNode.Q.value = 1.5; vocalNodeRef.current = vocalNode;
         const lofiNode = ctx.createBiquadFilter(); lofiNode.type = 'lowpass'; lofiNodeRef.current = lofiNode;
         const tremoloNode = ctx.createGain(); tremoloGainNodeRef.current = tremoloNode;
+        const tremoloLFO = ctx.createOscillator(); tremoloLFO.type = 'sine'; tremoloLFO.frequency.value = 5; tremoloLFO.start();
+        const tremoloLFOGain = ctx.createGain(); tremoloLFOGain.gain.value = 0; tremoloLFOGainRef.current = tremoloLFOGain;
+        tremoloLFO.connect(tremoloLFOGain).connect(tremoloNode.gain);
+
         const phaserNode = ctx.createBiquadFilter(); phaserNode.type = 'peaking'; phaserNode.Q.value = 1.5; phaserNodeRef.current = phaserNode;
+        phaserNode.frequency.value = 2250;
+        const phaserLFO = ctx.createOscillator(); phaserLFO.type = 'sine'; phaserLFO.frequency.value = 0.3; phaserLFO.start();
+        const phaserLFOGain = ctx.createGain(); phaserLFOGain.gain.value = 0; phaserLFOGainRef.current = phaserLFOGain;
+        phaserLFO.connect(phaserLFOGain).connect(phaserNode.frequency);
+        
         const vinylNode = ctx.createWaveShaper(); vinylNode.oversample = '4x'; vinylNodeRef.current = vinylNode;
         const telephoneNode = ctx.createBiquadFilter(); telephoneNode.type = 'bandpass'; telephoneNode.frequency.value = 1500; telephoneNodeRef.current = telephoneNode;
         
@@ -291,7 +300,11 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
         const chorusDelay = ctx.createDelay(0.1); chorusDelay.delayTime.value = 0.03; chorusDelayNodeRef.current = chorusDelay;
         const chorusGain = ctx.createGain(); chorusGain.gain.value = 0; chorusGainNodeRef.current = chorusGain;
+        
         const pannerNode = ctx.createStereoPanner(); pannerNodeRef.current = pannerNode;
+        const pannerLFO = ctx.createOscillator(); pannerLFO.type = 'triangle'; pannerLFO.frequency.value = 0.2; pannerLFO.start();
+        const pannerLFOGain = ctx.createGain(); pannerLFOGain.gain.value = 0; pannerLFOGainRef.current = pannerLFOGain;
+        pannerLFO.connect(pannerLFOGain).connect(pannerNode.pan);
         
         const zgHPF = ctx.createBiquadFilter(); zgHPF.type = 'highpass'; zgHPF.frequency.value = 400; zgHPFRef.current = zgHPF;
         const zgConvolver = ctx.createConvolver(); zgConvolver.buffer = generateImpulseResponse(ctx, 10, 5); zgConvolverRef.current = zgConvolver;
@@ -390,56 +403,29 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       }
     }
 
+    const now = audioContextRef.current?.currentTime || 0;
+
     if (state.spin8D) {
-      if (!pannerIntervalRef.current && pannerNodeRef.current) {
-        let panValue = 0, direction = 1;
-        pannerIntervalRef.current = window.setInterval(() => {
-          panValue += 0.02 * direction;
-          if (panValue >= 1) { panValue = 1; direction = -1; }
-          if (pannerNodeRef.current) {
-            const now = audioContextRef.current?.currentTime || 0;
-            pannerNodeRef.current.pan.setTargetAtTime(Math.max(-1, Math.min(1, panValue)), now, 0.05);
-          }
-        }, 50);
-      }
+      if (pannerLFOGainRef.current) pannerLFOGainRef.current.gain.setTargetAtTime(1, now, 0.1);
     } else {
-      if (pannerIntervalRef.current) { window.clearInterval(pannerIntervalRef.current); pannerIntervalRef.current = null; }
-      if (pannerNodeRef.current) pannerNodeRef.current.pan.value = 0;
+      if (pannerLFOGainRef.current) pannerLFOGainRef.current.gain.setTargetAtTime(0, now, 0.1);
+      if (pannerNodeRef.current) pannerNodeRef.current.pan.setTargetAtTime(0, now, 0.1);
     }
 
-    if (state.tremolo) {
-      if (!tremoloIntervalRef.current && tremoloGainNodeRef.current && !state.alien) {
-        let time = 0;
-        tremoloIntervalRef.current = window.setInterval(() => {
-          time += 0.1;
-          const vol = 0.65 + 0.35 * Math.sin(time * 5);
-          if (tremoloGainNodeRef.current) {
-            const now = audioContextRef.current?.currentTime || 0;
-            tremoloGainNodeRef.current.gain.setTargetAtTime(vol, now, 0.02);
-          }
-        }, 20);
-      }
+    if (state.tremolo && !state.alien) {
+      if (tremoloGainNodeRef.current) tremoloGainNodeRef.current.gain.setTargetAtTime(0.65, now, 0.1);
+      if (tremoloLFOGainRef.current) tremoloLFOGainRef.current.gain.setTargetAtTime(0.35, now, 0.1);
     } else {
-      if (tremoloIntervalRef.current) { window.clearInterval(tremoloIntervalRef.current); tremoloIntervalRef.current = null; }
-      if (tremoloGainNodeRef.current && !state.alien) tremoloGainNodeRef.current.gain.value = 1;
+      if (tremoloGainNodeRef.current) tremoloGainNodeRef.current.gain.setTargetAtTime(1, now, 0.1);
+      if (tremoloLFOGainRef.current) tremoloLFOGainRef.current.gain.setTargetAtTime(0, now, 0.1);
     }
 
     if (state.phaser) {
-      if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 5;
-      if (!phaserIntervalRef.current && phaserNodeRef.current) {
-        let time = 0;
-        phaserIntervalRef.current = window.setInterval(() => {
-          time += 0.05;
-          const freq = 2250 + 1750 * Math.sin(time);
-          if (phaserNodeRef.current) {
-            const now = audioContextRef.current?.currentTime || 0;
-            phaserNodeRef.current.frequency.setTargetAtTime(freq, now, 0.05);
-          }
-        }, 50);
-      }
+      if (phaserNodeRef.current) phaserNodeRef.current.gain.setTargetAtTime(5, now, 0.1);
+      if (phaserLFOGainRef.current) phaserLFOGainRef.current.gain.setTargetAtTime(1750, now, 0.1);
     } else {
-      if (phaserIntervalRef.current) { window.clearInterval(phaserIntervalRef.current); phaserIntervalRef.current = null; }
-      if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 0;
+      if (phaserNodeRef.current) phaserNodeRef.current.gain.setTargetAtTime(0, now, 0.1);
+      if (phaserLFOGainRef.current) phaserLFOGainRef.current.gain.setTargetAtTime(0, now, 0.1);
     }
 
     if (state.astralMode && audioContextRef.current) {
@@ -508,7 +494,6 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       audio.removeEventListener('ended', onEnded);
       audio.pause();
       audio.src = '';
-      if (pannerIntervalRef.current) clearInterval(pannerIntervalRef.current);
     };
   }, []);
 
