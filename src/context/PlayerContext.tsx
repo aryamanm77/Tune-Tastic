@@ -145,7 +145,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       return;
     }
 
-    const artworkSrc = currentSong.coverArt || '/logo.png';
+    const artworkSrc = currentSong.coverArt || './logo.png';
     navigator.mediaSession.metadata = new MediaMetadata({
       title: currentSong.title,
       artist: currentSong.artist,

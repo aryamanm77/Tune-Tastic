@@ -1,9 +1,35 @@
 {
   "name": "tunetastic-web",
   "private": true,
-  "version": "0.0.0",
+  "author": "Aryaman M",
+  "version": "1.0.0",
   "type": "module",
+  "main": "main.cjs",
+  "build": {
+    "appId": "com.aryaman.tunetastic",
+    "productName": "Tune Tastic",
+    "directories": {
+      "output": "release3"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.png",
+      "certificateFile": "build/cert.pfx",
+      "certificatePassword": "password"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "files": [
+      "dist/**/*",
+      "main.cjs"
+    ]
+  },
   "scripts": {
+    "package": "npm run build && electron-builder --win",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -23,6 +49,8 @@
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",

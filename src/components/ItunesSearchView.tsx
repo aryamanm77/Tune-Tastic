@@ -46,7 +46,7 @@ const ItunesSearchView: React.FC = () => {
     }
     if (target.dataset.fallbackAttempted) return;
     target.dataset.fallbackAttempted = 'true';
-    target.src = '/logo.png';
+    target.src = './logo.png';
   };
 
   const isCurrent = (song: Song) => currentSong?.id === song.id;
@@ -186,18 +186,18 @@ const ItunesSearchView: React.FC = () => {
               <p style={{ fontSize: '22px', fontWeight: 700, marginBottom: '16px' }}>Search for any song</p>
               <div className="sp-browse-grid">
                 {[
-                  { label: 'Pop', color: '#E8115B', image: '/genres/pop.png' },
-                  { label: 'Hip-Hop', color: '#BA5D07', image: '/genres/hiphop.png' },
-                  { label: 'Dance/Electronic', color: '#1E3264', image: '/genres/dance.png' },
-                  { label: 'R&B', color: '#E8115B', image: '/genres/rb.png' },
-                  { label: 'Rock', color: '#8D67AB', image: '/genres/rock.png' },
-                  { label: 'K-Pop', color: '#1E3264', image: '/genres/kpop.png' },
-                  { label: 'Indie', color: '#477D95', image: '/genres/indie.png' },
-                  { label: 'Podcasts', color: '#E91429', image: '/genres/podcasts.png' },
-                  { label: 'Classical', color: '#056952', image: '/genres/classical.png' },
-                  { label: 'Latin', color: '#BA5D07', image: '/genres/latin.png' },
-                  { label: 'Country', color: '#477D95', image: '/genres/country.png' },
-                  { label: 'Jazz', color: '#503750', image: '/genres/jazz.png' },
+                  { label: 'Pop', color: '#E8115B', image: './genres/pop.png' },
+                  { label: 'Hip-Hop', color: '#BA5D07', image: './genres/hiphop.png' },
+                  { label: 'Dance/Electronic', color: '#1E3264', image: './genres/dance.png' },
+                  { label: 'R&B', color: '#E8115B', image: './genres/rb.png' },
+                  { label: 'Rock', color: '#8D67AB', image: './genres/rock.png' },
+                  { label: 'K-Pop', color: '#1E3264', image: './genres/kpop.png' },
+                  { label: 'Indie', color: '#477D95', image: './genres/indie.png' },
+                  { label: 'Podcasts', color: '#E91429', image: './genres/podcasts.png' },
+                  { label: 'Classical', color: '#056952', image: './genres/classical.png' },
+                  { label: 'Latin', color: '#BA5D07', image: './genres/latin.png' },
+                  { label: 'Country', color: '#477D95', image: './genres/country.png' },
+                  { label: 'Jazz', color: '#503750', image: './genres/jazz.png' },
                 ].map(cat => (
                   <div
                     key={cat.label}

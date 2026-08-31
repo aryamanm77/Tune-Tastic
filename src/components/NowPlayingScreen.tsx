@@ -119,7 +119,7 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ onClose, onMoreOpti
                 if (e.currentTarget.src.includes('600x600bb')) {
                   e.currentTarget.src = e.currentTarget.src.replace('600x600bb', '100x100bb');
                 } else {
-                  e.currentTarget.src = '/logo.png';
+                  e.currentTarget.src = './logo.png';
                 }
               }}
               alt={currentSong.title}

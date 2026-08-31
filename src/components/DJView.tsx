@@ -122,8 +122,7 @@ const DJView: React.FC = () => {
       `}</style>
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
-      <div style={{
-        background: 'linear-gradient(180deg, #1a2a1a 0%, #000 100%)',
+      <div className="dj-header" style={{
         padding: '32px 24px 24px',
         display: 'flex', alignItems: 'center', gap: '20px',
         borderBottom: '1px solid rgba(255,255,255,0.08)',
@@ -131,8 +130,8 @@ const DJView: React.FC = () => {
         {/* Album art or placeholder */}
         <div style={{ position: 'relative', flexShrink: 0 }}>
           <img
-            src={currentSong?.coverArt || (currentSong ? getCoverArtUrl(currentSong.audioId) : '/logo.png')}
-            onError={e => { e.currentTarget.src = '/logo.png'; }}
+            src={currentSong?.coverArt || (currentSong ? getCoverArtUrl(currentSong.audioId) : './logo.png')}
+            onError={e => { e.currentTarget.src = './logo.png'; }}
             alt=""
             style={{ width: '64px', height: '64px', borderRadius: '8px', objectFit: 'cover', display: 'block' }}
           />

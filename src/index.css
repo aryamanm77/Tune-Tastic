@@ -427,3 +427,12 @@ body.nebula-active .bottom-nav {
 body.nebula-active .app-container {
   background: transparent !important;
 }
+
+.dj-header {
+  background: linear-gradient(180deg, #1a2a1a 0%, #000 100%);
+}
+body.nebula-active .dj-header {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}

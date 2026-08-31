@@ -92,7 +92,7 @@ const SearchView: React.FC = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <img 
                         src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')} 
-                        onError={(e) => { e.currentTarget.src = '/logo.png'; }}
+                        onError={(e) => { e.currentTarget.src = './logo.png'; }}
                         style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                         alt="" 
                       />

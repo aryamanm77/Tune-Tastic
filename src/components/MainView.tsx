@@ -76,7 +76,7 @@ const MainView: React.FC = () => {
                   <div style={{ position: 'relative', marginBottom: '10px' }}>
                     <img
                       src={song.coverArt || getCoverArtUrl(song.audioId)}
-                      onError={e => { e.currentTarget.src = '/logo.png'; }}
+                      onError={e => { e.currentTarget.src = './logo.png'; }}
                       alt={song.title}
                       style={{ width: '116px', height: '116px', borderRadius: '6px', objectFit: 'cover', display: 'block' }}
                     />
@@ -173,7 +173,7 @@ const MainView: React.FC = () => {
               <div style={{ width: '40px', height: '40px', borderRadius: '4px', overflow: 'hidden', flexShrink: 0 }}>
                 <img
                   src={song.coverArt || getCoverArtUrl(song.audioId)}
-                  onError={e => { e.currentTarget.src = '/logo.png'; }}
+                  onError={e => { e.currentTarget.src = './logo.png'; }}
                   alt={song.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />

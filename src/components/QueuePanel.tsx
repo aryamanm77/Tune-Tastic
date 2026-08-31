@@ -57,7 +57,7 @@ const QueuePanel: React.FC<QueuePanelProps> = ({ onClose }) => {
             }}>
               <img
                 src={currentSong.coverArt || getCoverArtUrl(currentSong.audioId)}
-                onError={e => { e.currentTarget.src = '/logo.png'; }}
+                onError={e => { e.currentTarget.src = './logo.png'; }}
                 alt={currentSong.title}
                 style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover', flexShrink: 0 }}
               />
@@ -90,7 +90,7 @@ const QueuePanel: React.FC<QueuePanelProps> = ({ onClose }) => {
                 <div style={{ position: 'relative', flexShrink: 0 }}>
                   <img
                     src={song.coverArt || getCoverArtUrl(song.audioId)}
-                    onError={e => { e.currentTarget.src = '/logo.png'; }}
+                    onError={e => { e.currentTarget.src = './logo.png'; }}
                     alt={song.title}
                     style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover', display: 'block' }}
                   />
