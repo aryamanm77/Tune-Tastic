@@ -244,7 +244,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     let k = amount, n_samples = 44100, curve = new Float32Array(n_samples), deg = Math.PI / 180, i = 0, x;
     for ( ; i < n_samples; ++i ) {
       x = i * 2 / n_samples - 1;
-      curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+      // Multiply by 0.4 to compensate for the heavy RMS loudness boost of distortion
+      curve[i] = (( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) )) * 0.4;
     }
     return curve;
   };
@@ -324,7 +325,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     if (bassNodeRef.current) bassNodeRef.current.gain.value = state.bass;
     if (vocalNodeRef.current) vocalNodeRef.current.gain.value = state.karaoke ? 8 : 0;
     if (lofiNodeRef.current) lofiNodeRef.current.frequency.value = state.lofi ? 2500 : 20000;
-    if (echoGainNodeRef.current) echoGainNodeRef.current.gain.value = (state.reverb ?? 0) > 0 ? (state.reverb! / 15) : 0;
+    if (echoGainNodeRef.current) echoGainNodeRef.current.gain.value = (state.reverb ?? 0) > 0 ? (state.reverb! / 50) : 0;
     if (vinylNodeRef.current) vinylNodeRef.current.curve = state.vinyl ? makeDistortionCurve(400) : null;
     if (telephoneNodeRef.current) telephoneNodeRef.current.Q.value = state.telephone ? 2.5 : 0.0001; 
 
