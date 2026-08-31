@@ -161,6 +161,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     });
 
     navigator.mediaSession.setActionHandler('play', () => {
+      if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+        audioContextRef.current.resume();
+      }
       audioRef.current?.play();
       setIsPlaying(true);
     });
