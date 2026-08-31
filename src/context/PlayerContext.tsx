@@ -280,7 +280,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const vocalNode = ctx.createBiquadFilter(); vocalNode.type = 'peaking'; vocalNode.frequency.value = 3000; vocalNode.Q.value = 1.5; vocalNodeRef.current = vocalNode;
         const lofiNode = ctx.createBiquadFilter(); lofiNode.type = 'lowpass'; lofiNodeRef.current = lofiNode;
         const tremoloNode = ctx.createGain(); tremoloGainNodeRef.current = tremoloNode;
-        const phaserNode = ctx.createBiquadFilter(); phaserNode.type = 'peaking'; phaserNode.Q.value = 5; phaserNodeRef.current = phaserNode;
+        const phaserNode = ctx.createBiquadFilter(); phaserNode.type = 'peaking'; phaserNode.Q.value = 1.5; phaserNodeRef.current = phaserNode;
         const vinylNode = ctx.createWaveShaper(); vinylNode.oversample = '4x'; vinylNodeRef.current = vinylNode;
         const telephoneNode = ctx.createBiquadFilter(); telephoneNode.type = 'bandpass'; telephoneNode.frequency.value = 1500; telephoneNodeRef.current = telephoneNode;
         
@@ -396,7 +396,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
           panValue += 0.02 * direction;
           if (panValue >= 1) { panValue = 1; direction = -1; }
           if (panValue <= -1) { panValue = -1; direction = 1; }
-          if (pannerNodeRef.current) pannerNodeRef.current.pan.value = panValue;
+          if (pannerNodeRef.current) pannerNodeRef.current.pan.value = Math.max(-1, Math.min(1, panValue));
         }, 50);
       }
     } else {
@@ -419,7 +419,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
 
     if (state.phaser) {
-      if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 15;
+      if (phaserNodeRef.current) phaserNodeRef.current.gain.value = 5;
       if (!phaserIntervalRef.current && phaserNodeRef.current) {
         let time = 0;
         phaserIntervalRef.current = window.setInterval(() => {
