@@ -58,16 +58,13 @@ const NebulaBackground: React.FC = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const isWarping = djState.isWarping;
-      // Stars move medium-fast when playing, slow when paused.
-      const starSpeed = isPlaying ? 2.5 : 0.2;
-      const speedMult = starSpeed * (isWarping ? 50 : 1);
-      
-      // Background pans medium-fast when playing, slow when paused.
-      const bgSpeed = (isPlaying ? 0.8 : 0.1) * (isWarping ? 10 : 1);
+      // Stars and background always pan at a constant slow speed, regardless of music
+      const speedMult = 0.5 * (isWarping ? 50 : 1);
+      const bgSpeed = 0.5 * (isWarping ? 10 : 1);
 
       if (imgLoaded) {
-        // Calculate target scale (constant unless warp drive is on)
-        let targetScale = 1.1;
+        // Background pulses in size to the beat
+        let targetScale = 1.1 + (pulse * 0.15);
         if (isWarping) targetScale = 3.0; // Huge zoom into hyperspace
         
         // Smoothly approach target scale
@@ -91,7 +88,7 @@ const NebulaBackground: React.FC = () => {
         const scrollWrapped = ((bgScroll % imgWidth) + imgWidth) % imgWidth;
         
         ctx.save();
-        ctx.globalAlpha = 0.6; // Constant brightness
+        ctx.globalAlpha = 0.6 + (pulse * 0.4); // Image pulses brightness on bass hits
         
         // Draw the image twice for an infinite scrolling effect
         const yOffset = (canvas.height - imgHeight) / 2;
@@ -147,17 +144,17 @@ const NebulaBackground: React.FC = () => {
         if (star.y < 0) star.y = canvas.height;
         if (star.y > canvas.height) star.y = 0;
 
-        const baseSize = star.size;
+        const pulseSize = star.size + (pulse * star.z * 3);
         const twinkle = Math.abs(Math.sin(time * 2 + star.x));
-        const alpha = Math.min(1, star.baseAlpha + (twinkle * 0.3));
+        const alpha = Math.min(1, star.baseAlpha + (pulse * 0.5) + (twinkle * 0.3));
         
         ctx.beginPath();
-        ctx.arc(star.x, star.y, isWarping ? baseSize * 4 : baseSize, 0, Math.PI * 2);
+        ctx.arc(star.x, star.y, isWarping ? pulseSize * 4 : pulseSize, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
         ctx.fill();
         
-        if (star.z > 1.5) {
-            ctx.shadowBlur = 10;
+        if (pulse > 0.5 && star.z > 1.5) {
+            ctx.shadowBlur = 15;
             ctx.shadowColor = 'white';
         } else {
             ctx.shadowBlur = 0;
