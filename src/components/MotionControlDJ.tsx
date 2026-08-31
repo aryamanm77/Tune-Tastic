@@ -57,13 +57,13 @@ const MotionControlDJ: React.FC = () => {
           // Compare pixel by pixel (we only check the red channel for speed, since overall luma correlates)
           for (let i = 0; i < frameData.length; i += 4) {
             const diff = Math.abs(frameData[i] - prevFrameRef.current[i]);
-            if (diff > 20) { // Threshold for a pixel change
+            if (diff > 15) { // Threshold for a pixel change
               score++;
             }
           }
 
-          // If a significant amount of pixels changed (e.g. 400 out of 4096)
-          if (score > 400) {
+          // If a significant amount of pixels changed (e.g. 150 out of 4096)
+          if (score > 150) {
             const now = Date.now();
             if (now - lastTriggerRef.current > 1000) { // 1 second cooldown
               lastTriggerRef.current = now;
@@ -133,9 +133,9 @@ const MotionControlDJ: React.FC = () => {
         </button>
       </div>
       
-      {/* Hidden elements for processing */}
-      <video ref={videoRef} autoPlay playsInline muted style={{ display: 'none' }} />
-      <canvas ref={canvasRef} width="64" height="64" style={{ display: 'none' }} />
+      {/* Hidden elements for processing (using opacity/absolute instead of display:none to fix Safari pause bug) */}
+      <video ref={videoRef} autoPlay playsInline muted style={{ opacity: 0, position: 'absolute', width: '1px', height: '1px', pointerEvents: 'none' }} />
+      <canvas ref={canvasRef} width="64" height="64" style={{ opacity: 0, position: 'absolute', width: '1px', height: '1px', pointerEvents: 'none' }} />
     </div>
   );
 };
