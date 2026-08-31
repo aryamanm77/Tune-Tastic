@@ -51,24 +51,20 @@ const NebulaBackground: React.FC = () => {
     const render = () => {
       time += 0.01;
       
-      const audioData = getAnalyserData();
-      let bassSum = 0;
-      for (let i = 0; i < 5; i++) bassSum += audioData[i];
-      const audioPulse = isNaN(bassSum) ? 0 : bassSum / 5;
-      const pulse = audioPulse / 255; // 0 to 1
+      // The pulse is no longer calculated as visuals are entirely decoupled from audio
 
       // Base background color
       ctx.fillStyle = '#05050c';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const isWarping = djState.isWarping;
-      // Stars and background always pan at a constant slow speed, regardless of music or effects
-      const speedMult = 0.5;
-      const bgSpeed = 0.5;
+      // Stars and background always pan at a constant very slow speed, regardless of music or effects
+      const speedMult = 0.1;
+      const bgSpeed = 0.1;
 
       if (imgLoaded) {
-        // Background pulses in size to the beat
-        let targetScale = 1.1 + (pulse * 0.15);
+        // Background scale stays constant, no pulsing
+        let targetScale = 1.1;
         if (isWarping) targetScale = 3.0; // Huge zoom into hyperspace
         
         // Smoothly approach target scale
@@ -88,7 +84,7 @@ const NebulaBackground: React.FC = () => {
         const scrollWrapped = ((bgScrollRef.current % imgWidth) + imgWidth) % imgWidth;
         
         ctx.save();
-        ctx.globalAlpha = 0.6 + (pulse * 0.4); // Image pulses brightness on bass hits
+        ctx.globalAlpha = 0.6; // Constant brightness
         
         // Draw the image twice for an infinite scrolling effect
         const yOffset = (canvas.height - imgHeight) / 2;
@@ -106,8 +102,8 @@ const NebulaBackground: React.FC = () => {
           canvas.width/2, canvas.height/2, 0,
           canvas.width/2, canvas.height/2, canvas.width/1.5
         );
-        const hue = (time * 50 + pulse * 100) % 360;
-        grd.addColorStop(0, `hsla(${hue}, 80%, 40%, ${0.1 + pulse * 0.2})`);
+        const hue = (time * 50) % 360;
+        grd.addColorStop(0, `hsla(${hue}, 80%, 40%, 0.1)`);
         grd.addColorStop(1, 'transparent');
         ctx.fillStyle = grd;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -123,17 +119,17 @@ const NebulaBackground: React.FC = () => {
         if (star.y < 0) star.y = canvas.height;
         if (star.y > canvas.height) star.y = 0;
 
-        const pulseSize = star.size + (pulse * star.z * 3);
+        const baseSize = star.size;
         const twinkle = Math.abs(Math.sin(time * 2 + star.x));
-        const alpha = Math.min(1, star.baseAlpha + (pulse * 0.5) + (twinkle * 0.3));
+        const alpha = Math.min(1, star.baseAlpha + (twinkle * 0.3));
         
         ctx.beginPath();
-        ctx.arc(star.x, star.y, isWarping ? pulseSize * 4 : pulseSize, 0, Math.PI * 2);
+        ctx.arc(star.x, star.y, isWarping ? baseSize * 4 : baseSize, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
         ctx.fill();
         
-        if (pulse > 0.5 && star.z > 1.5) {
-            ctx.shadowBlur = 15;
+        if (star.z > 1.5) {
+            ctx.shadowBlur = 10;
             ctx.shadowColor = 'white';
         } else {
             ctx.shadowBlur = 0;
