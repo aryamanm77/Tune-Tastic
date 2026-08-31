@@ -285,7 +285,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const tremoloLFOGain = ctx.createGain(); tremoloLFOGain.gain.value = 0; tremoloLFOGainRef.current = tremoloLFOGain;
         tremoloLFO.connect(tremoloLFOGain).connect(tremoloNode.gain);
 
-        const phaserNode = ctx.createBiquadFilter(); phaserNode.type = 'peaking'; phaserNode.Q.value = 1.5; phaserNodeRef.current = phaserNode;
+        const phaserNode = ctx.createBiquadFilter(); phaserNode.type = 'peaking'; phaserNode.Q.value = 4; phaserNodeRef.current = phaserNode;
         phaserNode.frequency.value = 2250;
         const phaserLFO = ctx.createOscillator(); phaserLFO.type = 'sine'; phaserLFO.frequency.value = 0.3; phaserLFO.start();
         const phaserLFOGain = ctx.createGain(); phaserLFOGain.gain.value = 0; phaserLFOGainRef.current = phaserLFOGain;
@@ -326,7 +326,15 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         delayNode.connect(feedbackGain).connect(delayNode);
         lofiNode.connect(chorusDelay).connect(chorusGain);
         
-        analyser.connect(ctx.destination);
+        const compressor = ctx.createDynamicsCompressor();
+        compressor.threshold.value = -3;
+        compressor.knee.value = 10;
+        compressor.ratio.value = 12;
+        compressor.attack.value = 0.003;
+        compressor.release.value = 0.25;
+
+        analyser.connect(compressor);
+        compressor.connect(ctx.destination);
 
       } catch (err) {
         console.error("Failed to initialize AudioContext:", err);
@@ -421,7 +429,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
 
     if (state.phaser) {
-      if (phaserNodeRef.current) phaserNodeRef.current.gain.setTargetAtTime(5, now, 0.1);
+      if (phaserNodeRef.current) phaserNodeRef.current.gain.setTargetAtTime(12, now, 0.1);
       if (phaserLFOGainRef.current) phaserLFOGainRef.current.gain.setTargetAtTime(1750, now, 0.1);
     } else {
       if (phaserNodeRef.current) phaserNodeRef.current.gain.setTargetAtTime(0, now, 0.1);
