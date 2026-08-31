@@ -238,7 +238,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const tremoloLFOGainRef = useRef<GainNode | null>(null);
   const phaserLFOGainRef = useRef<GainNode | null>(null);
   const chorusIntervalRef = useRef<number | null>(null);
-  const pannerAnimRef = useRef<number | null>(null);
+  const leftGainRef = useRef<GainNode | null>(null);
+  const rightGainRef = useRef<GainNode | null>(null);
+  const lfoGainLRef = useRef<GainNode | null>(null);
+  const lfoGainRRef = useRef<GainNode | null>(null);
 
   const makeDistortionCurve = (amount: number) => {
     let k = amount, n_samples = 44100, curve = new Float32Array(n_samples), deg = Math.PI / 180, i = 0, x;
@@ -301,8 +304,34 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const chorusDelay = ctx.createDelay(0.1); chorusDelay.delayTime.value = 0.03; chorusDelayNodeRef.current = chorusDelay;
         const chorusGain = ctx.createGain(); chorusGain.gain.value = 0; chorusGainNodeRef.current = chorusGain;
         
-        const pannerNode = ctx.createStereoPanner(); pannerNodeRef.current = pannerNode;
+        // --- BULLETPROOF 8D SURROUND IMPLEMENTATION (Splitter/Merger + Native LFOs) ---
+        // By using ONLY GainNodes, this is mathematically flawless, zero-zipper-noise, and immune to Safari WebKit bugs.
+        const pannerInput = ctx.createGain();
+        const leftGain = ctx.createGain(); leftGainRef.current = leftGain;
+        const rightGain = ctx.createGain(); rightGainRef.current = rightGain;
+        const pannerMerger = ctx.createChannelMerger(2); pannerNodeRef.current = pannerInput as any;
         
+        pannerInput.connect(leftGain);
+        pannerInput.connect(rightGain);
+        leftGain.connect(pannerMerger, 0, 0); // Connect to Left ear
+        rightGain.connect(pannerMerger, 0, 1); // Connect to Right ear
+        
+        // pannerInput acts as the "pannerNode" for the rest of the chain to connect INTO.
+        // We must override its connect method to ensure the signal comes OUT of the merger!
+        (pannerInput as any).connect = (destination: AudioNode) => {
+          return pannerMerger.connect(destination);
+        };
+
+        const spinLfo = ctx.createOscillator(); spinLfo.type = 'sine'; spinLfo.frequency.value = 0.2; spinLfo.start();
+        const spinLfoInv = ctx.createGain(); spinLfoInv.gain.value = -1; spinLfo.connect(spinLfoInv);
+        
+        const lfoGainL = ctx.createGain(); lfoGainL.gain.value = 0; lfoGainLRef.current = lfoGainL;
+        const lfoGainR = ctx.createGain(); lfoGainR.gain.value = 0; lfoGainRRef.current = lfoGainR;
+        
+        spinLfo.connect(lfoGainL).connect(leftGain.gain);
+        spinLfoInv.connect(lfoGainR).connect(rightGain.gain);
+        // -----------------------------------------------------------------------------
+
         const zgHPF = ctx.createBiquadFilter(); zgHPF.type = 'highpass'; zgHPF.frequency.value = 400; zgHPFRef.current = zgHPF;
         const zgConvolver = ctx.createConvolver(); zgConvolver.buffer = generateImpulseResponse(ctx, 10, 5); zgConvolverRef.current = zgConvolver;
         const zgGain = ctx.createGain(); zgGain.gain.value = 0; zgGainRef.current = zgGain;
@@ -314,12 +343,12 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const analyser = ctx.createAnalyser(); analyser.fftSize = 256; analyserNodeRef.current = analyser;
 
         source.connect(vinylNode).connect(bassNode).connect(telephoneNode).connect(vocalNode).connect(phaserNode).connect(lofiNode).connect(alienGain);
-        alienGain.connect(tremoloNode).connect(pannerNode).connect(analyser);
+        alienGain.connect(tremoloNode).connect(pannerInput).connect(analyser);
         chorusGain.connect(alienGain);
         
         alienGain.connect(zgHPF).connect(zgConvolver).connect(zgGain).connect(analyser);
         
-        lofiNode.connect(delayNode).connect(echoMixGain).connect(pannerNode);
+        lofiNode.connect(delayNode).connect(echoMixGain).connect(pannerInput);
         delayNode.connect(feedbackGain).connect(delayNode);
         lofiNode.connect(chorusDelay).connect(chorusGain);
         
@@ -411,24 +440,15 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     const now = audioContextRef.current?.currentTime || 0;
 
     if (state.spin8D) {
-      if (!pannerAnimRef.current && pannerNodeRef.current) {
-        const panner = pannerNodeRef.current;
-        const ctx = audioContextRef.current;
-        const updatePan = () => {
-          if (!ctx) return;
-          // Smooth sine wave based on current audio time, no zipper noise!
-          // 0.4 * PI rad/sec means a full cycle takes 5 seconds
-          panner.pan.value = Math.sin(ctx.currentTime * Math.PI * 0.4);
-          pannerAnimRef.current = requestAnimationFrame(updatePan);
-        };
-        pannerAnimRef.current = requestAnimationFrame(updatePan);
-      }
+      if (leftGainRef.current) leftGainRef.current.gain.setTargetAtTime(0.5, now, 0.1);
+      if (rightGainRef.current) rightGainRef.current.gain.setTargetAtTime(0.5, now, 0.1);
+      if (lfoGainLRef.current) lfoGainLRef.current.gain.setTargetAtTime(0.5, now, 0.1);
+      if (lfoGainRRef.current) lfoGainRRef.current.gain.setTargetAtTime(0.5, now, 0.1);
     } else {
-      if (pannerAnimRef.current) {
-        cancelAnimationFrame(pannerAnimRef.current);
-        pannerAnimRef.current = null;
-      }
-      if (pannerNodeRef.current) pannerNodeRef.current.pan.setTargetAtTime(0, now, 0.1);
+      if (leftGainRef.current) leftGainRef.current.gain.setTargetAtTime(1, now, 0.1);
+      if (rightGainRef.current) rightGainRef.current.gain.setTargetAtTime(1, now, 0.1);
+      if (lfoGainLRef.current) lfoGainLRef.current.gain.setTargetAtTime(0, now, 0.1);
+      if (lfoGainRRef.current) lfoGainRRef.current.gain.setTargetAtTime(0, now, 0.1);
     }
 
     if (state.tremolo && !state.alien) {
