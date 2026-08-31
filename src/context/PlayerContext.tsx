@@ -396,8 +396,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         pannerIntervalRef.current = window.setInterval(() => {
           panValue += 0.02 * direction;
           if (panValue >= 1) { panValue = 1; direction = -1; }
-          if (panValue <= -1) { panValue = -1; direction = 1; }
-          if (pannerNodeRef.current) pannerNodeRef.current.pan.value = Math.max(-1, Math.min(1, panValue));
+          if (pannerNodeRef.current) {
+            const now = audioContextRef.current?.currentTime || 0;
+            pannerNodeRef.current.pan.setTargetAtTime(Math.max(-1, Math.min(1, panValue)), now, 0.05);
+          }
         }, 50);
       }
     } else {
@@ -411,7 +413,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         tremoloIntervalRef.current = window.setInterval(() => {
           time += 0.1;
           const vol = 0.65 + 0.35 * Math.sin(time * 5);
-          if (tremoloGainNodeRef.current) tremoloGainNodeRef.current.gain.value = vol;
+          if (tremoloGainNodeRef.current) {
+            const now = audioContextRef.current?.currentTime || 0;
+            tremoloGainNodeRef.current.gain.setTargetAtTime(vol, now, 0.02);
+          }
         }, 20);
       }
     } else {
@@ -426,7 +431,10 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         phaserIntervalRef.current = window.setInterval(() => {
           time += 0.05;
           const freq = 2250 + 1750 * Math.sin(time);
-          if (phaserNodeRef.current) phaserNodeRef.current.frequency.value = freq;
+          if (phaserNodeRef.current) {
+            const now = audioContextRef.current?.currentTime || 0;
+            phaserNodeRef.current.frequency.setTargetAtTime(freq, now, 0.05);
+          }
         }, 50);
       }
     } else {
