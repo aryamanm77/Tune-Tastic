@@ -84,7 +84,7 @@ const NebulaBackground: React.FC = () => {
         const scrollWrapped = ((bgScrollRef.current % imgWidth) + imgWidth) % imgWidth;
         
         ctx.save();
-        ctx.globalAlpha = 0.6; // Constant brightness
+        ctx.globalAlpha = 1.0; // Fully clear image
         
         // Draw the image twice for an infinite scrolling effect
         const yOffset = (canvas.height - imgHeight) / 2;
@@ -96,18 +96,7 @@ const NebulaBackground: React.FC = () => {
         ctx.restore();
       }
 
-      // Draw Nebula Clouds if zeroGravity or space effects are on
-      if (djState.zeroGravity || djState.spin8D || djState.alien) {
-        const grd = ctx.createRadialGradient(
-          canvas.width/2, canvas.height/2, 0,
-          canvas.width/2, canvas.height/2, canvas.width/1.5
-        );
-        const hue = (time * 50) % 360;
-        grd.addColorStop(0, `hsla(${hue}, 80%, 40%, 0.1)`);
-        grd.addColorStop(1, 'transparent');
-        ctx.fillStyle = grd;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
+      // No overlays to ensure a perfectly clear view of space
 
       starsRef.current.forEach(star => {
         // Move stars constantly to the left
