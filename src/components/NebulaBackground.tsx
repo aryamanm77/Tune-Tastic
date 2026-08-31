@@ -62,9 +62,9 @@ const NebulaBackground: React.FC = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const isWarping = djState.isWarping;
-      // Stars and background always pan at a constant slow speed, regardless of music
-      const speedMult = 0.5 * (isWarping ? 50 : 1);
-      const bgSpeed = 0.5 * (isWarping ? 10 : 1);
+      // Stars and background always pan at a constant slow speed, regardless of music or effects
+      const speedMult = 0.5;
+      const bgSpeed = 0.5;
 
       if (imgLoaded) {
         // Background pulses in size to the beat
@@ -75,11 +75,7 @@ const NebulaBackground: React.FC = () => {
         currentScaleRef.current += (targetScale - currentScaleRef.current) * 0.1;
         
         // Update background scroll position (smooth constant speed)
-        if (djState.zeroGravity) {
-          bgScrollRef.current += bgSpeed * 0.5; // Scroll up/down in zero G
-        } else {
-          bgScrollRef.current -= bgSpeed * 1.5; // Scroll left normally
-        }
+        bgScrollRef.current -= bgSpeed * 1.5; // Scroll left normally
 
         const baseHeight = canvas.height * 1.5; // Ensure it covers height
         const aspectRatio = img.width / img.height;
@@ -97,17 +93,9 @@ const NebulaBackground: React.FC = () => {
         // Draw the image twice for an infinite scrolling effect
         const yOffset = (canvas.height - imgHeight) / 2;
         
-        if (djState.zeroGravity) {
-            // Vertical infinite scroll
-            const vScrollWrapped = ((bgScrollRef.current % imgHeight) + imgHeight) % imgHeight;
-            const xOffset = (canvas.width - imgWidth) / 2;
-            ctx.drawImage(img, xOffset, vScrollWrapped, imgWidth, imgHeight);
-            ctx.drawImage(img, xOffset, vScrollWrapped - imgHeight, imgWidth, imgHeight);
-        } else {
-            // Horizontal infinite scroll
-            ctx.drawImage(img, scrollWrapped, yOffset, imgWidth, imgHeight);
-            ctx.drawImage(img, scrollWrapped - imgWidth, yOffset, imgWidth, imgHeight);
-        }
+        // Horizontal infinite scroll
+        ctx.drawImage(img, scrollWrapped, yOffset, imgWidth, imgHeight);
+        ctx.drawImage(img, scrollWrapped - imgWidth, yOffset, imgWidth, imgHeight);
         
         ctx.restore();
       }
@@ -126,21 +114,8 @@ const NebulaBackground: React.FC = () => {
       }
 
       starsRef.current.forEach(star => {
-        // Move stars (warp drive pulls them to center, zero gravity floats them up)
-        if (djState.zeroGravity) {
-          star.y -= (star.z * speedMult * 2);
-          star.x += Math.sin(time + star.z) * 0.5;
-        } else {
-          star.x -= star.z * speedMult * 5; // standard left drift
-        }
-
-        // Warp drive effect (pull towards center)
-        if (isWarping) {
-            const cx = canvas.width / 2;
-            const cy = canvas.height / 2;
-            star.x += (cx - star.x) * 0.05;
-            star.y += (cy - star.y) * 0.05;
-        }
+        // Move stars constantly to the left
+        star.x -= star.z * speedMult * 5; // standard left drift
 
         // Wrap around screen
         if (star.x < 0) star.x = canvas.width;
