@@ -78,7 +78,6 @@ const NebulaBackground: React.FC = () => {
         const imgHeight = baseHeight * currentScaleRef.current;
         
         // Calculate which tile index is currently at x=0
-        const doubleWidth = imgWidth * 2;
         const startTileIndex = Math.floor(-bgScrollRef.current / imgWidth);
         
         ctx.save();
