@@ -18,9 +18,9 @@ const GhostWhisperer: React.FC = () => {
 
     const speakLoop = () => {
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.pitch = 0.1; 
-      utterance.rate = 0.6; 
-      utterance.volume = 0.4; 
+      utterance.pitch = 0.5; 
+      utterance.rate = 0.8; 
+      utterance.volume = 1.0; 
 
       utterance.onend = () => {
         if (isWhispering) timeoutRef.current = window.setTimeout(speakLoop, 4000);

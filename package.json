@@ -9,7 +9,7 @@
     "appId": "com.aryaman.tunetastic",
     "productName": "Tune Tastic",
     "directories": {
-      "output": "release4"
+      "output": "release5"
     },
     "win": {
       "target": ["nsis"],
