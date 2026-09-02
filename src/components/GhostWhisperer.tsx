@@ -9,6 +9,8 @@ const GhostWhisperer: React.FC = () => {
   const timeoutRef = useRef<number>();
 
   useEffect(() => {
+    let active = true;
+
     if (!isWhispering || !isPlaying) {
       window.speechSynthesis.cancel();
       clearTimeout(timeoutRef.current);
@@ -17,16 +19,17 @@ const GhostWhisperer: React.FC = () => {
     }
 
     const speakLoop = () => {
+      if (!active) return;
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.pitch = 0.5; 
       utterance.rate = 0.8; 
       utterance.volume = 1.0; 
 
       utterance.onend = () => {
-        if (isWhispering) timeoutRef.current = window.setTimeout(speakLoop, 4000);
+        if (active) timeoutRef.current = window.setTimeout(speakLoop, 4000);
       };
       utterance.onerror = () => {
-        if (isWhispering) timeoutRef.current = window.setTimeout(speakLoop, 4000);
+        if (active) timeoutRef.current = window.setTimeout(speakLoop, 4000);
       };
 
       window.speechSynthesis.speak(utterance);
@@ -35,6 +38,7 @@ const GhostWhisperer: React.FC = () => {
     speakLoop();
 
     return () => {
+      active = false;
       window.speechSynthesis.cancel();
       clearTimeout(timeoutRef.current);
     };
