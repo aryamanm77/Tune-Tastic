@@ -77,18 +77,28 @@ const NebulaBackground: React.FC = () => {
         const imgWidth = baseWidth * currentScaleRef.current;
         const imgHeight = baseHeight * currentScaleRef.current;
         
-        // Wrap the scroll position so it loops infinitely
-        const scrollWrapped = ((bgScrollRef.current % imgWidth) + imgWidth) % imgWidth;
+        // Calculate which tile index is currently at x=0
+        const doubleWidth = imgWidth * 2;
+        const startTileIndex = Math.floor(-bgScrollRef.current / imgWidth);
         
         ctx.save();
-        ctx.globalAlpha = 1.0; // Fully clear image
-        
-        // Draw the image twice for an infinite scrolling effect
+        ctx.globalAlpha = 1.0; 
         const yOffset = (canvas.height - imgHeight) / 2;
         
-        // Horizontal infinite scroll
-        ctx.drawImage(img, scrollWrapped, yOffset, imgWidth, imgHeight);
-        ctx.drawImage(img, scrollWrapped - imgWidth, yOffset, imgWidth, imgHeight);
+        for (let i = startTileIndex - 1; i <= startTileIndex + 2; i++) {
+          const xPos = bgScrollRef.current + i * imgWidth;
+          ctx.save();
+          if (i % 2 !== 0) {
+            // Odd tile: mirror it
+            ctx.translate(xPos + imgWidth, 0);
+            ctx.scale(-1, 1);
+            ctx.drawImage(img, 0, yOffset, imgWidth + 1, imgHeight);
+          } else {
+            // Even tile: normal
+            ctx.drawImage(img, xPos, yOffset, imgWidth + 1, imgHeight);
+          }
+          ctx.restore();
+        }
         
         ctx.restore();
       }
