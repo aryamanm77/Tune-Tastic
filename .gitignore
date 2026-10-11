@@ -4,3 +4,10 @@ dist
 .env.*
 !.env.example
 .DS_Store
+release/
+release2/
+release3/
+build/
+
+release4/
+release5/
