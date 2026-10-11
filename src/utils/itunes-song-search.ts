@@ -1,6 +1,6 @@
 import { Song } from '../context/PlayerContext';
 
-const PROXY_URL = '/api/itunes-search';
+const PROXY_URL = 'https://itunes.apple.com/search';
 
 export async function searchItunes(query: string, options: any = {}): Promise<Song[]> {
   const { limit = 20 } = options;

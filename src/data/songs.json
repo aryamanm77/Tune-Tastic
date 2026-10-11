@@ -46,9 +46,9 @@
   },
   {
     "id": "d7010c83-5038-4ac1-872c-53c0846b55bb",
-    "title": "Believer 1",
-    "artist": "Unknown Artist",
-    "album": "Unknown Album",
+    "title": "Believer",
+    "artist": "Imagine Dragons",
+    "album": "Evolve",
     "durationMs": null,
     "audioId": "04_Believer_1",
     "coverArt": "https://res.cloudinary.com/rgnz1qq3/image/upload/w_500,h_500,c_fill,q_auto/04_Believer.jpg"

@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
-import { Heart, Plus, ListMusic, Check, X } from 'lucide-react';
+import { Heart, Plus, ListMusic, Check, X, Download, Trash2 } from 'lucide-react';
 
 interface AddToPlaylistModalProps {
   song: Song;
@@ -14,12 +14,14 @@ interface AddToPlaylistModalProps {
 }
 
 const AddToPlaylistModal: React.FC<AddToPlaylistModalProps> = ({ song, onClose }) => {
-  const { playlists, createPlaylist, addToPlaylist, toggleLike, isLiked, addToQueue } = usePlayer();
+  const { playlists, createPlaylist, addToPlaylist, toggleLike, isLiked, addToQueue, downloadSong, downloadedSongs, downloadProgress, deleteDownload, downloadedSongList } = usePlayer();
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState('');
   const [added, setAdded] = useState<string | null>(null);
   const [queuedToast, setQueuedToast] = useState(false);
+  const [createdToast, setCreatedToast] = useState<string | null>(null);
   const liked = isLiked(song.id);
+  const isDownloaded = Boolean(downloadedSongs.has(song.id) || (downloadedSongList && downloadedSongList.some(s => s.id === song.id)));
 
   const handleAddToQueue = () => {
     addToQueue(song);
@@ -34,16 +36,16 @@ const AddToPlaylistModal: React.FC<AddToPlaylistModalProps> = ({ song, onClose }
   };
 
   const handleCreate = () => {
-    if (!newName.trim()) return;
-    createPlaylist(newName.trim());
-    // find the newly created playlist and add the song
-    setTimeout(() => {
-      const latest = JSON.parse(localStorage.getItem('tunetastic_playlists') || '[]');
-      const newest = latest[latest.length - 1];
-      if (newest) handleAddTo(newest.id);
-    }, 50);
+    const trimmed = newName.trim();
+    if (!trimmed) return;
+    createPlaylist(trimmed, song);
+    setCreatedToast(trimmed);
     setCreating(false);
     setNewName('');
+    setTimeout(() => {
+      setCreatedToast(null);
+      onClose();
+    }, 900);
   };
 
   return (
@@ -132,6 +134,42 @@ const AddToPlaylistModal: React.FC<AddToPlaylistModalProps> = ({ song, onClose }
             {queuedToast ? 'Added to queue!' : 'Add to queue'}
           </span>
         </button>
+
+        {/* Download or Remove from downloads */}
+        {isDownloaded ? (
+          <button className="apt-row" onClick={() => { deleteDownload(song.id); onClose(); }}>
+            <div style={{
+              width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
+              background: 'rgba(255,75,75,0.15)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <Trash2 size={20} color="#ff4b4b" />
+            </div>
+            <span style={{ fontSize: '15px', fontWeight: 500, color: '#ff6b6b' }}>
+              Remove from downloads
+            </span>
+          </button>
+        ) : (
+          <button className="apt-row" onClick={() => { downloadSong(song); onClose(); }}>
+            <div style={{
+              width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
+              background: 'rgba(255,255,255,0.08)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <Download size={20} color="white" />
+            </div>
+            <span style={{ fontSize: '15px', fontWeight: 500 }}>
+              {downloadProgress[song.id] !== undefined ? 'Downloading...' : 'Download song'}
+            </span>
+          </button>
+        )}
+
+        {createdToast && (
+          <div style={{ margin: '6px 20px', padding: '10px 14px', borderRadius: '8px', background: 'rgba(29,185,84,0.18)', color: 'var(--spotify-green)', fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Check size={18} />
+            Playlist "{createdToast}" created & song added!
+          </div>
+        )}
 
         {/* Divider */}
         <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '4px 0' }} />

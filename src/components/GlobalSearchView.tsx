@@ -75,7 +75,7 @@ const GlobalSearchView: React.FC = () => {
     const imgElement = e.currentTarget;
     if (imgElement.dataset.fallbackAttempted) return;
     imgElement.dataset.fallbackAttempted = 'true';
-    imgElement.src = '/logo.png';
+    imgElement.src = './logo.png';
   };
 
   return (

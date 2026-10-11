@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Volume2, VolumeX, Heart, Timer, X, ListMusic } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Volume2, VolumeX, Heart, Timer, X, ListMusic, Maximize2, Mic2 } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import QueuePanel from './QueuePanel';
 import NowPlayingScreen from './NowPlayingScreen';
+import { createPortal } from 'react-dom';
 
 const SLEEP_OPTIONS = [5, 10, 15, 20, 30, 45, 60];
 
@@ -92,8 +93,8 @@ const Player: React.FC = () => {
       
       {/* Left: Song Info — tapping on mobile opens full screen player */}
       <div
-        style={{ width: '30%', display: 'flex', alignItems: 'center', gap: '16px' }}
-        onClick={() => { if (window.innerWidth < 768) setShowNowPlaying(true); }}
+        style={{ width: '30%', display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }}
+        onClick={() => setShowNowPlaying(true)}
       >
         {currentSong ? (
           <>
@@ -103,7 +104,7 @@ const Player: React.FC = () => {
                 if (e.currentTarget.src.includes('600x600bb')) {
                   e.currentTarget.src = e.currentTarget.src.replace('600x600bb', '100x100bb');
                 } else {
-                  e.currentTarget.src = '/logo.png';
+                  e.currentTarget.src = './logo.png';
                 }
               }}
               alt={currentSong.title}
@@ -237,6 +238,26 @@ const Player: React.FC = () => {
           <ListMusic size={16} />
         </button>
 
+        {/* Lyrics button */}
+        <button
+          onClick={() => setShowNowPlaying(true)}
+          title="Lyrics (Spotify Synced)"
+          className="hide-mobile"
+          style={{ color: showNowPlaying ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
+        >
+          <Mic2 size={16} />
+        </button>
+
+        {/* Now Playing Full-screen button */}
+        <button
+          onClick={() => setShowNowPlaying(true)}
+          title="Open Now Playing"
+          className="hide-mobile"
+          style={{ color: showNowPlaying ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
+        >
+          <Maximize2 size={16} />
+        </button>
+
         {/* Volume */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100px' }}>
           <button onClick={() => setVolume(volume > 0 ? 0 : 1)}>
@@ -254,12 +275,12 @@ const Player: React.FC = () => {
 
       {showQueue && <QueuePanel onClose={() => setShowQueue(false)} />}
 
-      {/* Full-screen Now Playing for mobile */}
-      {showNowPlaying && (
+      {/* Full-screen Now Playing via Portal to escape stacking context */}
+      {showNowPlaying && createPortal(
         <NowPlayingScreen
           onClose={() => setShowNowPlaying(false)}
-          onMoreOptions={() => setShowNowPlaying(false)}
-        />
+        />,
+        document.body
       )}
 
     </div>

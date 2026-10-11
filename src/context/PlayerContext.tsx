@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useRef, useEffect, useCallback, ReactNode } from 'react';
 import { getAudioUrl } from '../utils/cloudinary';
+import { getDownloadedSong, saveDownloadedSong, deleteDownloadedSong, getAllDownloadedSongs, getUploadedSong, saveUploadedSong, deleteUploadedSong, getAllUploadedSongs } from '../db';
 
 export interface Song {
   id: string;
@@ -30,10 +31,15 @@ interface PlayerContextType {
   isShuffled: boolean;
   repeatMode: 'none' | 'all' | 'one';
   queue: Song[];
+  playbackTracklist?: Song[];
+  clearQueue?: () => void;
+  removeFromQueue?: (songId: string) => void;
   playlists: Playlist[];
   likedSongs: Song[];
   recentlyPlayed: Song[];
-  playSong: (song: Song) => void;
+  removeFromRecentlyPlayed: (songId: string) => void;
+  setQueue: React.Dispatch<React.SetStateAction<Song[]>>;
+  playSong: (song: Song, newQueue?: Song[]) => void;
   togglePlayPause: () => void;
   nextSong: () => void;
   prevSong: () => void;
@@ -41,7 +47,7 @@ interface PlayerContextType {
   setVolume: (volume: number) => void;
   toggleShuffle: () => void;
   cycleRepeat: () => void;
-  createPlaylist: (name: string) => void;
+  createPlaylist: (name: string, initialSong?: Song) => Playlist;
   addToPlaylist: (playlistId: string, song: Song) => void;
   toggleLike: (song: Song) => void;
   isLiked: (songId: string) => boolean;
@@ -50,11 +56,24 @@ interface PlayerContextType {
   deletePlaylist: (playlistId: string) => void;
   renamePlaylist: (playlistId: string, newName: string) => void;
   addToQueue: (song: Song) => void;
-  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean; isWarping: boolean };
-  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean; isWarping: boolean }>) => void;
+  djState: { bass: number; spin8D: boolean; nightcore: boolean; reverb?: number; speed?: number; lofi?: boolean; karaoke?: boolean; tremolo?: boolean; phaser?: boolean; vinyl?: boolean; chorus?: boolean; telephone?: boolean; alien?: boolean; era?: number; hapticBass?: boolean; spatialAudio?: boolean; motionDJ?: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean; isWarping: boolean; themeBackground?: string; videoSourceMode?: 'youtube' | 'instant' };
+  setDjState: (state: Partial<{ bass: number; spin8D: boolean; nightcore: boolean; reverb: number; speed: number; lofi: boolean; karaoke: boolean; tremolo: boolean; phaser: boolean; vinyl: boolean; chorus: boolean; telephone: boolean; alien: boolean; era: number; hapticBass: boolean; spatialAudio: boolean; motionDJ: boolean; astralMode: boolean; zeroGravity: boolean; nebulaMode: boolean; isWarping: boolean; themeBackground: string; videoSourceMode: 'youtube' | 'instant' }>) => void;
   getAnalyserData: () => Uint8Array;
   setPlaybackRate: (rate: number) => void;
   setPan: (panValue: number) => void;
+  downloadedSongs: Set<string>;
+  downloadedSongList: Song[];
+  downloadProgress: Record<string, number>;
+  downloadSong: (song: Song) => Promise<void>;
+  downloadAllSongs: (songs: Song[]) => Promise<void>;
+  deleteDownload: (songId: string) => Promise<void>;
+  uploadedSongs: Song[];
+  uploadSong: (song: Song, blob: Blob) => Promise<void>;
+  deleteUpload: (songId: string) => Promise<void>;
+  userName: string;
+  setUserName: (name: string) => void;
+  isNameModalOpen: boolean;
+  setIsNameModalOpen: (open: boolean) => void;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -62,6 +81,37 @@ const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
 export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [songs, setSongs] = useState<Song[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const [userName, setUserNameState] = useState<string>(() => {
+    const saved = localStorage.getItem('tunetastic_user_name');
+    if (!saved || saved.trim() === '' || saved === 'Aryaman') return '';
+    return saved.trim();
+  });
+
+  const [isNameModalOpen, setIsNameModalOpen] = useState<boolean>(() => {
+    const saved = localStorage.getItem('tunetastic_user_name');
+    return !saved || saved.trim() === '' || saved === 'Aryaman';
+  });
+
+  useEffect(() => {
+    const saved = localStorage.getItem('tunetastic_user_name');
+    if (saved === 'Aryaman') {
+      localStorage.removeItem('tunetastic_user_name');
+      setUserNameState('');
+      setIsNameModalOpen(true);
+    }
+  }, []);
+
+  const setUserName = (name: string) => {
+    const trimmed = name.trim();
+    if (trimmed && trimmed !== 'Aryaman') {
+      setUserNameState(trimmed);
+      localStorage.setItem('tunetastic_user_name', trimmed);
+    } else {
+      setUserNameState('');
+      localStorage.removeItem('tunetastic_user_name');
+    }
+  };
 
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -72,7 +122,12 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   
   const [isShuffled, setIsShuffled] = useState(false);
   const [repeatMode, setRepeatMode] = useState<'none' | 'all' | 'one'>('none');
-  const [queue, setQueue] = useState<Song[]>([]);
+  const [userQueue, setUserQueue] = useState<Song[]>(() => {
+    const saved = localStorage.getItem('tunetastic_user_queue');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [playbackTracklist, setPlaybackTracklist] = useState<Song[]>([]);
+  const [originalTracklist, setOriginalTracklist] = useState<Song[]>([]);
 
   const [playlists, setPlaylists] = useState<Playlist[]>(() => {
     const saved = localStorage.getItem('tunetastic_playlists');
@@ -87,6 +142,21 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [downloadedSongs, setDownloadedSongs] = useState<Set<string>>(new Set());
+  const [downloadedSongList, setDownloadedSongList] = useState<Song[]>([]);
+  const [downloadProgress, setDownloadProgress] = useState<Record<string, number>>({});
+  const [uploadedSongs, setUploadedSongs] = useState<Song[]>([]);
+
+  useEffect(() => {
+    getAllDownloadedSongs().then(songs => {
+      setDownloadedSongs(new Set(songs.map(s => s.songId)));
+      setDownloadedSongList(songs.map(s => s.songData).filter(Boolean));
+    });
+    getAllUploadedSongs().then(uploads => {
+      setUploadedSongs(uploads.map(u => u.songData));
+    });
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('tunetastic_playlists', JSON.stringify(playlists));
   }, [playlists]);
@@ -99,11 +169,21 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     localStorage.setItem('tunetastic_recent', JSON.stringify(recentlyPlayed));
   }, [recentlyPlayed]);
 
+  const removeFromRecentlyPlayed = (songId: string) => {
+    setRecentlyPlayed(prev => prev.filter(s => s.id !== songId));
+  };
+
+  useEffect(() => {
+    localStorage.setItem('tunetastic_user_queue', JSON.stringify(userQueue));
+  }, [userQueue]);
+
   useEffect(() => {
     import('../data/songs.json').then((module) => {
       const allSongs = module.default as Song[];
       setSongs(allSongs);
-      setQueue(allSongs);
+      setPlaybackTracklist(allSongs);
+      setOriginalTracklist(allSongs);
+      // NOTE: userQueue remains empty by default - only explicitly queued songs go into userQueue!
     });
   }, []);
 
@@ -145,7 +225,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       return;
     }
 
-    const artworkSrc = currentSong.coverArt || '/logo.png';
+    const artworkSrc = currentSong.coverArt || './logo.png';
     navigator.mediaSession.metadata = new MediaMetadata({
       title: currentSong.title,
       artist: currentSong.artist,
@@ -172,14 +252,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       setIsPlaying(false);
     });
     navigator.mediaSession.setActionHandler('nexttrack', () => nextSongRef.current());
-    navigator.mediaSession.setActionHandler('previoustrack', () => {
-      if (audioRef.current && audioRef.current.currentTime > 3) {
-        audioRef.current.currentTime = 0;
-      } else {
-        const currentIndex = queue.findIndex(s => s.id === currentSong.id);
-        if (currentIndex > 0) playSong(queue[currentIndex - 1]);
-      }
-    });
+    navigator.mediaSession.setActionHandler('previoustrack', () => prevSongRef.current());
     navigator.mediaSession.setActionHandler('seekto', (details) => {
       if (details.seekTime !== undefined && audioRef.current) {
         audioRef.current.currentTime = details.seekTime;
@@ -205,13 +278,18 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     } catch (_) { }
   }, [currentTime, duration]);
 
-  const [djState, setDjStateInternal] = useState({ 
-    bass: 0, spin8D: false, nightcore: false, 
-    reverb: 0, speed: 10, lofi: false, karaoke: false,
-    tremolo: false, phaser: false, vinyl: false,
-    chorus: false, telephone: false, alien: false,
-    era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false,
-    zeroGravity: false, nebulaMode: false, isWarping: false
+  const [djState, setDjStateInternal] = useState(() => {
+    const savedTheme = localStorage.getItem('tunetastic_theme_bg') || 'racing-cars';
+    const savedVideoMode = (localStorage.getItem('tunetastic_video_mode') as 'youtube' | 'instant') || 'youtube';
+    return {
+      bass: 0, spin8D: false, nightcore: false, 
+      reverb: 0, speed: 10, lofi: false, karaoke: false,
+      tremolo: false, phaser: false, vinyl: false,
+      chorus: false, telephone: false, alien: false,
+      era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false,
+      zeroGravity: false, nebulaMode: false, isWarping: false, themeBackground: savedTheme,
+      videoSourceMode: savedVideoMode
+    };
   });
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
@@ -506,6 +584,12 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, [djState, isPlaying]);
 
   const setDjState = (newState: Partial<typeof djState>) => {
+    if (newState.themeBackground !== undefined) {
+      localStorage.setItem('tunetastic_theme_bg', newState.themeBackground);
+    }
+    if (newState.videoSourceMode !== undefined) {
+      localStorage.setItem('tunetastic_video_mode', newState.videoSourceMode);
+    }
     setDjStateInternal(prev => ({ ...prev, ...newState }));
   };
 
@@ -543,6 +627,7 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, []);
 
   const nextSongRef = useRef(() => {});
+  const prevSongRef = useRef(() => {});
 
   useEffect(() => {
     nextSongRef.current = () => {
@@ -554,19 +639,32 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         return;
       }
       
-      if (!currentSong) return;
-      const currentIndex = queue.findIndex(s => s.id === currentSong.id);
-      if (currentIndex === -1) return;
+      // 1. Prioritize user-queued songs (only explicit queued songs)
+      if (userQueue.length > 0) {
+        const nextInQueue = userQueue[0];
+        setUserQueue(prev => prev.slice(1));
+        playSong(nextInQueue);
+        return;
+      }
 
-      if (currentIndex < queue.length - 1) {
-        playSong(queue[currentIndex + 1]);
+      // 2. Play next in background playlist tracklist
+      if (!currentSong) return;
+      const tracklist = playbackTracklist.length > 0 ? playbackTracklist : songs;
+      const currentIndex = tracklist.findIndex(s => s.id === currentSong.id);
+      if (currentIndex === -1) {
+        if (tracklist.length > 0) playSong(tracklist[0]);
+        return;
+      }
+
+      if (currentIndex < tracklist.length - 1) {
+        playSong(tracklist[currentIndex + 1]);
       } else if (repeatMode === 'all') {
-        playSong(queue[0]);
+        playSong(tracklist[0]);
       } else {
         setIsPlaying(false);
       }
     };
-  }, [queue, currentSong, repeatMode]);
+  }, [userQueue, playbackTracklist, songs, currentSong, repeatMode]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -578,7 +676,30 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   }, [isPlaying]);
 
-  const playSong = (song: Song) => {
+  const playSong = async (song: Song, newQueue?: Song[]) => {
+    // If user played a song that is in userQueue, remove it from queue
+    setUserQueue(prev => prev.filter(s => s.id !== song.id));
+
+    if (newQueue) {
+      setOriginalTracklist(newQueue);
+      if (isShuffled) {
+        const others = newQueue.filter(s => s.id !== song.id);
+        const shuffled = [...others].sort(() => Math.random() - 0.5);
+        setPlaybackTracklist([song, ...shuffled]);
+      } else {
+        setPlaybackTracklist(newQueue);
+      }
+    } else {
+      setPlaybackTracklist(prev => {
+        if (prev.some(s => s.id === song.id)) return prev;
+        const all = songs.length > 0 ? songs : [song];
+        const idx = all.findIndex(s => s.id === song.id);
+        if (idx !== -1) {
+          return all.slice(idx);
+        }
+        return [song, ...prev];
+      });
+    }
     initAudioContext();
     if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
       audioContextRef.current.resume();
@@ -593,7 +714,28 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
     const audio = audioRef.current;
     if (audio) {
-      audio.src = song.audioUrl || getAudioUrl(song.audioId);
+      try {
+        if (song.audioUrl) {
+          audio.src = song.audioUrl;
+        } else if (song.audioId && song.audioId.startsWith('upload:')) {
+          const uploaded = await getUploadedSong(song.id);
+          if (uploaded) {
+            audio.src = URL.createObjectURL(uploaded.audioBlob);
+          } else {
+            audio.src = getAudioUrl(song.audioId);
+          }
+        } else {
+          const downloaded = await getDownloadedSong(song.id);
+          if (downloaded) {
+            audio.src = URL.createObjectURL(downloaded.audioBlob);
+          } else {
+            audio.src = song.audioId ? getAudioUrl(song.audioId) : (song.audioUrl || '');
+          }
+        }
+      } catch (e) {
+        audio.src = song.audioUrl || (song.audioId ? getAudioUrl(song.audioId) : '');
+      }
+      
       audio.load();
       audio.play().then(() => {
         setIsPlaying(true);
@@ -602,6 +744,66 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         console.error("Playback failed", err);
       });
     }
+  };
+
+  const downloadSong = async (song: Song) => {
+    if (downloadedSongs.has(song.id)) return;
+    
+    setDownloadProgress(prev => ({ ...prev, [song.id]: 0 }));
+    try {
+      const url = song.audioUrl || (song.audioId ? getAudioUrl(song.audioId) : '');
+      if (!url) throw new Error('No audio URL found');
+      
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const blob = await response.blob();
+      
+      await saveDownloadedSong(song, blob);
+      setDownloadedSongs(prev => new Set(prev).add(song.id));
+      setDownloadedSongList(prev => {
+        if (prev.some(s => s.id === song.id)) return prev;
+        return [...prev, song];
+      });
+
+      setDownloadProgress(prev => {
+        const next = { ...prev };
+        delete next[song.id];
+        return next;
+      });
+    } catch (e) {
+      console.error("Download failed", e);
+      setDownloadProgress(prev => {
+        const next = { ...prev };
+        delete next[song.id];
+        return next;
+      });
+    }
+  };
+
+  const downloadAllSongs = async (songsToDownload: Song[]) => {
+    for (const s of songsToDownload) {
+      await downloadSong(s);
+    }
+  };
+
+  const deleteDownload = async (songId: string) => {
+    await deleteDownloadedSong(songId);
+    setDownloadedSongs(prev => {
+      const next = new Set(prev);
+      next.delete(songId);
+      return next;
+    });
+    setDownloadedSongList(prev => prev.filter(s => s.id !== songId));
+  };
+
+  const uploadSong = async (song: Song, blob: Blob) => {
+    await saveUploadedSong(song, blob);
+    setUploadedSongs(prev => [...prev, song]);
+  };
+
+  const deleteUpload = async (songId: string) => {
+    await deleteUploadedSong(songId);
+    setUploadedSongs(prev => prev.filter(s => s.id !== songId));
   };
 
   const togglePlayPause = () => {
@@ -626,13 +828,23 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       audioRef.current.currentTime = 0;
       return;
     }
+
+    if (recentlyPlayed.length > 1) {
+      playSong(recentlyPlayed[1]);
+      return;
+    }
     
     if (!currentSong) return;
-    const currentIndex = queue.findIndex(s => s.id === currentSong.id);
+    const tracklist = playbackTracklist.length > 0 ? playbackTracklist : songs;
+    const currentIndex = tracklist.findIndex(s => s.id === currentSong.id);
     if (currentIndex > 0) {
-      playSong(queue[currentIndex - 1]);
+      playSong(tracklist[currentIndex - 1]);
     }
   };
+
+  useEffect(() => {
+    prevSongRef.current = prevSong;
+  });
 
   const seekTo = (newProgress: number) => {
     if (audioRef.current && audioRef.current.duration) {
@@ -650,9 +862,15 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const toggleShuffle = () => {
     if (!isShuffled) {
-      setQueue([...songs].sort(() => Math.random() - 0.5));
+      const tracklist = playbackTracklist.length > 0 ? playbackTracklist : songs;
+      if (currentSong) {
+        const others = tracklist.filter(s => s.id !== currentSong.id);
+        setPlaybackTracklist([currentSong, ...others.sort(() => Math.random() - 0.5)]);
+      } else {
+        setPlaybackTracklist([...tracklist].sort(() => Math.random() - 0.5));
+      }
     } else {
-      setQueue(songs);
+      setPlaybackTracklist(originalTracklist.length > 0 ? originalTracklist : songs);
     }
     setIsShuffled(!isShuffled);
   };
@@ -661,9 +879,21 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     setRepeatMode(prev => prev === 'none' ? 'all' : prev === 'all' ? 'one' : 'none');
   };
 
-  const createPlaylist = (name: string) => {
-    const newPlaylist: Playlist = { id: crypto.randomUUID(), name, songs: [] };
-    setPlaylists([...playlists, newPlaylist]);
+  const createPlaylist = (name: string, initialSong?: Song): Playlist => {
+    const newPlaylist: Playlist = {
+      id: crypto.randomUUID(),
+      name,
+      songs: initialSong ? [initialSong] : [],
+      coverArt: initialSong ? (initialSong.coverArt || (initialSong.audioId ? getAudioUrl(initialSong.audioId) : undefined)) : undefined
+    };
+    setPlaylists(prev => {
+      const next = [...prev, newPlaylist];
+      try {
+        localStorage.setItem('tunetastic_playlists', JSON.stringify(next));
+      } catch (_) {}
+      return next;
+    });
+    return newPlaylist;
   };
 
   const addToPlaylist = (playlistId: string, song: Song) => {
@@ -684,15 +914,18 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   };
 
   const addToQueue = (song: Song) => {
-    setQueue(prev => {
-      const currentIndex = prev.findIndex(s => s.id === currentSong?.id);
-      const insertAt = currentIndex >= 0 ? currentIndex + 1 : prev.length;
-      const next = [...prev];
-      const existingIdx = next.findIndex(s => s.id === song.id);
-      if (existingIdx > insertAt) next.splice(existingIdx, 1);
-      next.splice(insertAt, 0, song);
-      return next;
+    setUserQueue(prev => {
+      const filtered = prev.filter(s => s.id !== song.id);
+      return [...filtered, song];
     });
+  };
+
+  const removeFromQueue = (songId: string) => {
+    setUserQueue(prev => prev.filter(s => s.id !== songId));
+  };
+
+  const clearQueue = () => {
+    setUserQueue([]);
   };
 
   const toggleLike = (song: Song) => {
@@ -737,15 +970,33 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   return (
     <PlayerContext.Provider value={{
-      songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode, queue,
-      playlists, likedSongs, recentlyPlayed,
+      songs, currentSong, isPlaying, progress, currentTime, duration, volume, isShuffled, repeatMode,
+      queue: userQueue,
+      playbackTracklist,
+      clearQueue,
+      removeFromQueue,
+      playlists, likedSongs, recentlyPlayed, removeFromRecentlyPlayed,
+      setQueue: setUserQueue,
       playSong, togglePlayPause, nextSong, prevSong, seekTo, setVolume, toggleShuffle, cycleRepeat,
       createPlaylist, addToPlaylist, toggleLike, isLiked, clearSong, setPlaylists, deletePlaylist, renamePlaylist, addToQueue,
       djState,
       setDjState,
       getAnalyserData,
       setPlaybackRate,
-      setPan
+      setPan,
+      downloadedSongs,
+      downloadedSongList,
+      downloadProgress,
+      downloadSong,
+      downloadAllSongs,
+      deleteDownload,
+      uploadedSongs,
+      uploadSong,
+      deleteUpload,
+      userName,
+      setUserName,
+      isNameModalOpen,
+      setIsNameModalOpen
     }}>
       {children}
     </PlayerContext.Provider>

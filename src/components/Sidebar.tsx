@@ -1,16 +1,17 @@
 import React from 'react';
-import { Home, Search, Library, PlusSquare, Heart, Sliders, Sparkles } from 'lucide-react';
+import { Home, Search, Library, PlusSquare, Heart, Sliders, Sparkles, Download, Film, User, Edit3 } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import TuneTasticLogo from './TuneTasticLogo';
 
 interface SidebarProps {
   activeTab: string;
-  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium') => void;
+  setActiveTab: (tab: 'home' | 'search' | 'library' | 'playlist' | 'dj' | 'premium' | 'downloads') => void;
   onOpenPlaylist: (id: string) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlaylist }) => {
-  const { createPlaylist, playlists } = usePlayer();
+  const { createPlaylist, playlists, djState, setDjState, userName, setIsNameModalOpen } = usePlayer();
+  const isVideoActive = Boolean(djState.themeBackground && djState.themeBackground !== 'none' && !djState.nebulaMode);
 
   const handleCreatePlaylist = () => {
     const name = prompt("Enter a name for your new playlist:");
@@ -64,10 +65,49 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
           <Library size={24} /> Your Library
         </button>
         <button 
+          onClick={() => setActiveTab('downloads')}
+          style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'downloads' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
+        >
+          <Download size={24} /> Downloads
+        </button>
+        <button 
           onClick={() => setActiveTab('dj')}
           style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', fontWeight: 'bold', color: activeTab === 'dj' ? 'var(--text-primary)' : 'var(--text-secondary)' }}
         >
           <Sliders size={24} /> DJ Studio
+        </button>
+        <button
+          onClick={() => {
+            if (isVideoActive) {
+              setDjState({ themeBackground: 'none' });
+              localStorage.setItem('tunetastic_theme_bg', 'none');
+            } else {
+              setDjState({ themeBackground: 'racing-cars', nebulaMode: false });
+              localStorage.setItem('tunetastic_theme_bg', 'racing-cars');
+            }
+          }}
+          title="Toggle Background Video across entire app"
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            fontSize: '13px', fontWeight: 'bold',
+            color: isVideoActive ? 'var(--spotify-green)' : 'var(--text-secondary)',
+            background: isVideoActive ? 'rgba(29, 185, 84, 0.12)' : 'rgba(255,255,255,0.04)',
+            padding: '8px 12px', borderRadius: '8px',
+            border: isVideoActive ? '1px solid rgba(29, 185, 84, 0.3)' : '1px solid transparent',
+            transition: 'all 0.2s ease',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <Film size={20} color={isVideoActive ? 'var(--spotify-green)' : 'currentColor'} />
+            <span>Video BG</span>
+          </div>
+          <span style={{
+            fontSize: '10px', fontWeight: 800, padding: '2px 6px', borderRadius: '4px',
+            background: isVideoActive ? 'var(--spotify-green)' : 'rgba(255,255,255,0.1)',
+            color: isVideoActive ? 'black' : 'white',
+          }}>
+            {isVideoActive ? 'ON' : 'OFF'}
+          </span>
         </button>
       </div>
       
@@ -92,7 +132,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
         </button>
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', marginTop: '16px', borderTop: '1px solid #282828', paddingTop: '16px' }}>
+      <div style={{ flex: 1, overflowY: 'auto', marginTop: '16px', borderTop: '1px solid #282828', paddingTop: '16px', minHeight: '60px' }}>
         {playlists.map(playlist => (
           <button 
             key={playlist.id}
@@ -103,6 +143,75 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
             {playlist.name}
           </button>
         ))}
+      </div>
+
+      {/* User Profile Card with Live Name & Quick Edit */}
+      <div style={{
+        marginTop: 'auto',
+        paddingTop: '14px',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '10px',
+      }}>
+        <div 
+          onClick={() => setIsNameModalOpen(true)}
+          style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, cursor: 'pointer', flex: 1 }}
+          title="Click to edit your name"
+        >
+          <div style={{
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #1db954 0%, #10b981 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '15px',
+            fontWeight: 800,
+            color: 'white',
+            flexShrink: 0,
+            boxShadow: '0 0 14px rgba(29, 185, 84, 0.45)',
+          }}>
+            {userName ? userName[0].toUpperCase() : <User size={18} strokeWidth={2.5} />}
+          </div>
+          <div style={{ minWidth: 0 }}>
+            <div style={{
+              fontSize: '13px',
+              fontWeight: 700,
+              color: 'white',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}>
+              {userName || 'Set Your Name'}
+            </div>
+            <div style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.5)' }}>
+              {userName ? 'Listener' : 'Click to personalize'}
+            </div>
+          </div>
+        </div>
+        <button
+          onClick={() => setIsNameModalOpen(true)}
+          title="Change Name"
+          style={{
+            background: 'rgba(255, 255, 255, 0.08)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '8px',
+            color: 'white',
+            padding: '6px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.16)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)')}
+        >
+          <Edit3 size={14} />
+        </button>
       </div>
     </div>
   );

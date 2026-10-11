@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
-import { Play, Search, Loader2, Pause, Music2, MoreHorizontal } from 'lucide-react';
+import { Play, Search, Loader2, Pause, Music2, MoreHorizontal, ListPlus, Download, Check } from 'lucide-react';
 import { searchItunes } from '../utils/itunes-song-search';
 import AddToPlaylistModal from './AddToPlaylistModal';
 
 const ItunesSearchView: React.FC = () => {
-  const { currentSong, isPlaying, playSong, togglePlayPause } = usePlayer();
+  const { currentSong, isPlaying, playSong, togglePlayPause, addToQueue, downloadSong, downloadedSongs } = usePlayer();
   const [query, setQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<Song[]>([]);
   const [modalSong, setModalSong] = useState<Song | null>(null);
+  const [queuedIds, setQueuedIds] = useState<Set<string>>(new Set());
   const searchTimeoutRef = useRef<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -19,7 +20,7 @@ const ItunesSearchView: React.FC = () => {
     setIsSearching(true);
     searchTimeoutRef.current = window.setTimeout(async () => {
       try {
-        const newSongs = await searchItunes(query, { limit: 20 });
+        const newSongs = await searchItunes(query, { limit: 25 });
         setResults(newSongs);
       } catch { /* silent */ } finally { setIsSearching(false); }
     }, 400);
@@ -29,7 +30,25 @@ const ItunesSearchView: React.FC = () => {
   const handlePlay = (song: Song) => {
     if (currentSong?.id === song.id) { togglePlayPause(); return; }
     if (!song.audioUrl) return;
-    playSong(song);
+    playSong(song, results);
+  };
+
+  const handleAddToQueue = (song: Song, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (addToQueue) addToQueue(song);
+    setQueuedIds(prev => new Set(prev).add(song.id));
+    setTimeout(() => {
+      setQueuedIds(prev => {
+        const next = new Set(prev);
+        next.delete(song.id);
+        return next;
+      });
+    }, 1800);
+  };
+
+  const handleDownload = (song: Song, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (downloadSong) downloadSong(song);
   };
 
   const formatTime = (ms: number) => {
@@ -46,7 +65,7 @@ const ItunesSearchView: React.FC = () => {
     }
     if (target.dataset.fallbackAttempted) return;
     target.dataset.fallbackAttempted = 'true';
-    target.src = '/logo.png';
+    target.src = './logo.png';
   };
 
   const isCurrent = (song: Song) => currentSong?.id === song.id;
@@ -109,6 +128,9 @@ const ItunesSearchView: React.FC = () => {
           .sp-row-img { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; display: block; }
           .sp-row-actions { display: flex; align-items: center; gap: 8px; opacity: 0; }
           .sp-song-row:hover .sp-row-actions { opacity: 1; }
+          @media (max-width: 768px) {
+            .sp-row-actions { opacity: 1 !important; }
+          }
           /* Top result card */
           .sp-top-card {
             background: rgba(255,255,255,0.07);
@@ -186,18 +208,18 @@ const ItunesSearchView: React.FC = () => {
               <p style={{ fontSize: '22px', fontWeight: 700, marginBottom: '16px' }}>Search for any song</p>
               <div className="sp-browse-grid">
                 {[
-                  { label: 'Pop', color: '#E8115B', image: '/genres/pop.png' },
-                  { label: 'Hip-Hop', color: '#BA5D07', image: '/genres/hiphop.png' },
-                  { label: 'Dance/Electronic', color: '#1E3264', image: '/genres/dance.png' },
-                  { label: 'R&B', color: '#E8115B', image: '/genres/rb.png' },
-                  { label: 'Rock', color: '#8D67AB', image: '/genres/rock.png' },
-                  { label: 'K-Pop', color: '#1E3264', image: '/genres/kpop.png' },
-                  { label: 'Indie', color: '#477D95', image: '/genres/indie.png' },
-                  { label: 'Podcasts', color: '#E91429', image: '/genres/podcasts.png' },
-                  { label: 'Classical', color: '#056952', image: '/genres/classical.png' },
-                  { label: 'Latin', color: '#BA5D07', image: '/genres/latin.png' },
-                  { label: 'Country', color: '#477D95', image: '/genres/country.png' },
-                  { label: 'Jazz', color: '#503750', image: '/genres/jazz.png' },
+                  { label: 'Pop', color: '#E8115B', image: './genres/pop.png' },
+                  { label: 'Hip-Hop', color: '#BA5D07', image: './genres/hiphop.png' },
+                  { label: 'Dance/Electronic', color: '#1E3264', image: './genres/dance.png' },
+                  { label: 'R&B', color: '#E8115B', image: './genres/rb.png' },
+                  { label: 'Rock', color: '#8D67AB', image: './genres/rock.png' },
+                  { label: 'K-Pop', color: '#1E3264', image: './genres/kpop.png' },
+                  { label: 'Indie', color: '#477D95', image: './genres/indie.png' },
+                  { label: 'Podcasts', color: '#E91429', image: './genres/podcasts.png' },
+                  { label: 'Classical', color: '#056952', image: './genres/classical.png' },
+                  { label: 'Latin', color: '#BA5D07', image: './genres/latin.png' },
+                  { label: 'Country', color: '#477D95', image: './genres/country.png' },
+                  { label: 'Jazz', color: '#503750', image: './genres/jazz.png' },
                 ].map(cat => (
                   <div
                     key={cat.label}
@@ -263,6 +285,40 @@ const ItunesSearchView: React.FC = () => {
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', margin: '0 0 16px' }}>
                       Song · {results[0].artist}
                     </p>
+
+                    {/* Quick action buttons on Top Result */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <button
+                        onClick={e => handleAddToQueue(results[0], e)}
+                        style={{
+                          display: 'flex', alignItems: 'center', gap: '6px',
+                          background: queuedIds.has(results[0].id) ? 'rgba(29,185,84,0.2)' : 'rgba(255,255,255,0.12)',
+                          color: queuedIds.has(results[0].id) ? 'var(--spotify-green)' : 'white',
+                          border: 'none', borderRadius: '500px', padding: '6px 14px',
+                          fontSize: '12px', fontWeight: 600, cursor: 'pointer',
+                          transition: 'all 0.15s'
+                        }}
+                      >
+                        {queuedIds.has(results[0].id) ? <Check size={14} /> : <ListPlus size={14} />}
+                        <span>{queuedIds.has(results[0].id) ? 'Queued' : 'Queue'}</span>
+                      </button>
+
+                      <button
+                        onClick={e => handleDownload(results[0], e)}
+                        style={{
+                          display: 'flex', alignItems: 'center', gap: '6px',
+                          background: downloadedSongs.has(results[0].id) ? 'rgba(29,185,84,0.2)' : 'rgba(255,255,255,0.12)',
+                          color: downloadedSongs.has(results[0].id) ? 'var(--spotify-green)' : 'white',
+                          border: 'none', borderRadius: '500px', padding: '6px 14px',
+                          fontSize: '12px', fontWeight: 600, cursor: 'pointer',
+                          transition: 'all 0.15s'
+                        }}
+                      >
+                        {downloadedSongs.has(results[0].id) ? <Check size={14} /> : <Download size={14} />}
+                        <span>{downloadedSongs.has(results[0].id) ? 'Downloaded' : 'Download'}</span>
+                      </button>
+                    </div>
+
                     <button
                       className={`sp-top-card-fab ${isCurrent(results[0]) && isPlaying ? 'playing' : ''}`}
                       onClick={e => { e.stopPropagation(); handlePlay(results[0]); }}
@@ -281,6 +337,8 @@ const ItunesSearchView: React.FC = () => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       {results.slice(1, 5).map(song => {
                         const active = isCurrent(song);
+                        const isQueued = queuedIds.has(song.id);
+                        const isDownloaded = downloadedSongs.has(song.id);
                         return (
                           <div key={song.id} className="sp-song-row" onClick={() => handlePlay(song)}>
                             <div className="sp-row-num">
@@ -297,7 +355,21 @@ const ItunesSearchView: React.FC = () => {
                               <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
                             </div>
                             <div className="sp-row-actions">
-                              <button onClick={e => { e.stopPropagation(); setModalSong(song); }} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer' }}>
+                              <button
+                                onClick={e => handleAddToQueue(song, e)}
+                                title={isQueued ? 'Added to queue' : 'Add to queue'}
+                                style={{ color: isQueued ? 'var(--spotify-green)' : 'rgba(255,255,255,0.7)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                              >
+                                {isQueued ? <Check size={16} /> : <ListPlus size={16} />}
+                              </button>
+                              <button
+                                onClick={e => handleDownload(song, e)}
+                                title={isDownloaded ? 'Downloaded inside app' : 'Download to app'}
+                                style={{ color: isDownloaded ? 'var(--spotify-green)' : 'rgba(255,255,255,0.7)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                              >
+                                {isDownloaded ? <Check size={16} /> : <Download size={16} />}
+                              </button>
+                              <button onClick={e => { e.stopPropagation(); setModalSong(song); }} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}>
                                 <MoreHorizontal size={16} />
                               </button>
                             </div>
@@ -324,6 +396,8 @@ const ItunesSearchView: React.FC = () => {
                   </div>
                   {results.slice(5).map((song, i) => {
                     const active = isCurrent(song);
+                    const isQueued = queuedIds.has(song.id);
+                    const isDownloaded = downloadedSongs.has(song.id);
                     return (
                       <div key={song.id} className="sp-song-row" onClick={() => handlePlay(song)}>
                         <div className="sp-row-num">
@@ -342,7 +416,21 @@ const ItunesSearchView: React.FC = () => {
                           <p className="ellipsis" style={{ margin: 0, fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{song.artist}</p>
                         </div>
                         <div className="sp-row-actions">
-                          <button onClick={e => { e.stopPropagation(); setModalSong(song); }} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer' }}>
+                          <button
+                            onClick={e => handleAddToQueue(song, e)}
+                            title={isQueued ? 'Added to queue' : 'Add to queue'}
+                            style={{ color: isQueued ? 'var(--spotify-green)' : 'rgba(255,255,255,0.7)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                          >
+                            {isQueued ? <Check size={16} /> : <ListPlus size={16} />}
+                          </button>
+                          <button
+                            onClick={e => handleDownload(song, e)}
+                            title={isDownloaded ? 'Downloaded inside app' : 'Download to app'}
+                            style={{ color: isDownloaded ? 'var(--spotify-green)' : 'rgba(255,255,255,0.7)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                          >
+                            {isDownloaded ? <Check size={16} /> : <Download size={16} />}
+                          </button>
+                          <button onClick={e => { e.stopPropagation(); setModalSong(song); }} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}>
                             <MoreHorizontal size={16} />
                           </button>
                         </div>

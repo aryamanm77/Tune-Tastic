@@ -427,3 +427,175 @@ body.nebula-active .bottom-nav {
 body.nebula-active .app-container {
   background: transparent !important;
 }
+
+.dj-header {
+  background: linear-gradient(180deg, #1a2a1a 0%, #000 100%);
+}
+body.nebula-active .dj-header,
+body.nebula-active .sp-search-header {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* --- NEW ANIMATED BACKGROUNDS --- */
+
+/* Ocean Waves */
+body.theme-ocean-waves {
+  --dynamic-bg-color: transparent;
+  background: linear-gradient(-45deg, #001a33, #003366, #0059b3, #0080ff);
+  background-size: 400% 400%;
+  animation: oceanGradient 15s ease infinite;
+}
+@keyframes oceanGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+body.theme-ocean-waves::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255,255,255,0.03) 21px, rgba(255,255,255,0.03) 22px);
+  animation: wavesMove 10s linear infinite;
+}
+@keyframes wavesMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(22px); }
+}
+
+/* Cyber Matrix */
+body.theme-cyber-matrix {
+  --dynamic-bg-color: transparent;
+  background-color: #000;
+}
+body.theme-cyber-matrix::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(500px) rotateX(60deg) translateY(0);
+  animation: gridMove 3s linear infinite;
+}
+@keyframes gridMove {
+  from { transform: perspective(500px) rotateX(60deg) translateY(0); }
+  to { transform: perspective(500px) rotateX(60deg) translateY(40px); }
+}
+
+/* Deep Space */
+body.theme-deep-space {
+  --dynamic-bg-color: transparent;
+  background-color: #000;
+}
+body.theme-deep-space::before {
+  content: "";
+  position: fixed;
+  width: 200vw;
+  height: 200vh;
+  top: -50%;
+  left: -50%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: spaceZoom 60s linear infinite;
+  transform-origin: center center;
+}
+@keyframes spaceZoom {
+  from { transform: scale(1) rotate(0deg); }
+  to { transform: scale(1.5) rotate(10deg); }
+}
+
+/* Real Video Background Active Mode - Entire App Transparency & Frosted Glass */
+body.video-bg-active,
+body[class*="theme-"] {
+  background-color: transparent !important;
+}
+
+body.video-bg-active .app-container,
+body[class*="theme-"] .app-container {
+  background: transparent !important;
+}
+
+body.video-bg-active .sidebar,
+body[class*="theme-"] .sidebar {
+  background-color: rgba(8, 8, 12, 0.45) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+body.video-bg-active .main-view,
+body[class*="theme-"] .main-view {
+  background-color: rgba(0, 0, 0, 0.18) !important;
+  background-image: none !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+body.video-bg-active .player-bar,
+body[class*="theme-"] .player-bar {
+  background-color: rgba(10, 10, 15, 0.6) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.video-bg-active .bottom-nav,
+body[class*="theme-"] .bottom-nav {
+  background-color: rgba(12, 12, 18, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+body.video-bg-active .playlist-header,
+body.video-bg-active .playlist-view,
+body.video-bg-active .search-view,
+body.video-bg-active .library-view,
+body.video-bg-active .downloads-view,
+body.video-bg-active .uploads-view {
+  background: transparent !important;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .playlist-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    padding-top: 40px !important;
+  }
+  .playlist-cover {
+    width: 200px !important;
+    height: 200px !important;
+    margin-bottom: 16px;
+  }
+  .playlist-title {
+    font-size: 36px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { usePlayer, Song, Playlist } from '../context/PlayerContext';
 import { getAudioUrl } from '../utils/cloudinary';
-import { Play, Heart, Music, MoreHorizontal, Trash2 } from 'lucide-react';
+import { Play, Heart, Music, MoreHorizontal, Trash2, ListMusic } from 'lucide-react';
 import AddToPlaylistModal from './AddToPlaylistModal';
 
 interface PlaylistViewProps {
@@ -10,28 +10,42 @@ interface PlaylistViewProps {
 }
 
 const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
-  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs, toggleLike, setPlaylists, deletePlaylist, renamePlaylist } = usePlayer() as any;
+  const { currentSong, isPlaying, playSong, togglePlayPause, playlists, likedSongs, toggleLike, setPlaylists, deletePlaylist, renamePlaylist, queue, setQueue, clearQueue } = usePlayer() as any;
   const [modalSong, setModalSong] = useState<Song | null>(null);
   const [showMenu, setShowMenu] = useState(false);
 
   if (!playlistId) return <div className="main-view"></div>;
 
   const isLikedPlaylist = playlistId === 'liked';
-  const playlist: Playlist | null = isLikedPlaylist ? null : playlists.find((p: Playlist) => p.id === playlistId);
+  const isQueue = playlistId === 'queue';
+  const playlist: Playlist | null = (isLikedPlaylist || isQueue) ? null : playlists.find((p: Playlist) => p.id === playlistId);
   
-  const title = isLikedPlaylist ? "Liked Songs" : playlist?.name || "Unknown Playlist";
-  const songs: Song[] = isLikedPlaylist ? likedSongs : (playlist?.songs || []);
-  const cover = isLikedPlaylist ? null : playlist?.coverArt;
+  const title = isLikedPlaylist ? "Liked Songs" : isQueue ? "Queue" : playlist?.name || "Unknown Playlist";
+  const songs: Song[] = isLikedPlaylist ? likedSongs : isQueue ? (queue || []) : (playlist?.songs || []);
+  const cover = (isLikedPlaylist || isQueue) ? null : playlist?.coverArt;
 
   const handlePlay = (song: Song) => {
-    if (currentSong?.id === song.id) togglePlayPause();
-    else playSong(song);
+    if (currentSong?.id === song.id) {
+      togglePlayPause();
+    } else if (isQueue) {
+      const songIdx = songs.findIndex(s => s.id === song.id);
+      if (songIdx !== -1) {
+        setQueue(songs.slice(songIdx + 1));
+      } else {
+        setQueue((prev: Song[]) => prev.filter(s => s.id !== song.id));
+      }
+      playSong(song);
+    } else {
+      playSong(song, songs);
+    }
   };
 
   const removeSong = (songId: string) => {
     if (isLikedPlaylist) {
       const s = songs.find((x: Song) => x.id === songId);
       if (s) toggleLike(s);
+    } else if (isQueue) {
+      setQueue((prev: Song[]) => prev.filter(s => s.id !== songId));
     } else {
       setPlaylists((prev: Playlist[]) =>
         prev.map(p => p.id === playlistId ? { ...p, songs: p.songs.filter(s => s.id !== songId) } : p)
@@ -48,7 +62,13 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
 
   const handlePlayAll = () => {
     if (songs.length > 0) {
-      playSong(songs[0]);
+      if (isQueue) {
+        const [first, ...rest] = songs;
+        setQueue(rest);
+        playSong(first);
+      } else {
+        playSong(songs[0], songs);
+      }
     }
   };
 
@@ -74,7 +94,11 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
         alignItems: 'flex-end',
         gap: '24px',
         padding: '24px',
-        background: isLikedPlaylist ? 'linear-gradient(180deg, #450af5 0%, var(--bg-base) 100%)' : 'linear-gradient(180deg, #535353 0%, var(--bg-base) 100%)',
+        background: isLikedPlaylist 
+          ? 'linear-gradient(180deg, #450af5 0%, var(--bg-base) 100%)' 
+          : isQueue
+          ? 'linear-gradient(180deg, #ff416c 0%, var(--bg-base) 100%)'
+          : 'linear-gradient(180deg, #535353 0%, var(--bg-base) 100%)',
         paddingTop: '80px',
         paddingBottom: '24px'
       }} className="playlist-header">
@@ -91,6 +115,8 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
         }} className="playlist-cover">
           {isLikedPlaylist ? (
             <Heart size={80} color="white" fill="white" />
+          ) : isQueue ? (
+            <ListMusic size={80} color="white" />
           ) : cover ? (
             <img src={cover} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           ) : (
@@ -99,33 +125,59 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
         </div>
         
         <div>
-          <p style={{ fontSize: '14px', fontWeight: 'bold' }}>Playlist</p>
+          <p style={{ fontSize: '14px', fontWeight: 'bold' }}>{isQueue ? 'Queue' : 'Playlist'}</p>
           <h1 style={{ fontSize: '72px', margin: '8px 0', fontWeight: '900', lineHeight: 1 }} className="playlist-title ellipsis">{title}</h1>
-          <p style={{ color: 'var(--text-secondary)', fontWeight: 'bold' }}>{songs.length} songs</p>
+          <p style={{ color: 'var(--text-secondary)', fontWeight: 'bold' }}>{songs.length} {songs.length === 1 ? 'song' : 'songs'}{isQueue ? ' queued' : ''}</p>
         </div>
       </div>
 
       <div style={{ padding: '0 24px 24px 24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '24px', marginTop: '16px' }}>
-          <button 
-            onClick={handlePlayAll}
-            style={{
-              width: '56px',
-              height: '56px',
-              borderRadius: '50%',
-              backgroundColor: 'var(--spotify-green)',
-              border: 'none',
-              color: 'black',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              boxShadow: '0 8px 8px rgba(0,0,0,0.3)',
-            }}>
-            <Play size={28} fill="black" style={{ marginLeft: '4px' }} />
-          </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '24px', marginTop: '16px' }}>
+          {songs.length > 0 && (
+            <button 
+              onClick={handlePlayAll}
+              style={{
+                width: '56px',
+                height: '56px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--spotify-green)',
+                border: 'none',
+                color: 'black',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 8px 8px rgba(0,0,0,0.3)',
+              }}>
+              <Play size={28} fill="black" style={{ marginLeft: '4px' }} />
+            </button>
+          )}
+
+          {isQueue && songs.length > 0 && (
+            <button
+              onClick={() => {
+                if (clearQueue) clearQueue();
+                else setQueue([]);
+              }}
+              style={{
+                backgroundColor: 'rgba(255,255,255,0.1)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                borderRadius: '24px',
+                color: '#fff',
+                padding: '10px 20px',
+                fontWeight: 600,
+                fontSize: '14px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+              onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.2)'}
+              onMouseOut={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+            >
+              Clear Queue
+            </button>
+          )}
           
-          {!isLikedPlaylist && (
+          {!isLikedPlaylist && !isQueue && (
             <div style={{ position: 'relative' }}>
               <button 
                 onClick={() => setShowMenu(!showMenu)}
@@ -167,6 +219,13 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
           )}
         </div>
 
+        {songs.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '64px 24px', color: 'var(--text-secondary)' }}>
+            <Music size={64} style={{ margin: '0 auto 24px', opacity: 0.5 }} />
+            <h2 style={{ color: 'white', marginBottom: '8px' }}>Nothing here</h2>
+            <p>Play a song or add something.</p>
+          </div>
+        ) : (
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ color: 'var(--text-secondary)', borderBottom: '1px solid #282828', fontSize: '14px' }}>
@@ -207,7 +266,7 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <img 
                         src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')} 
-                        onError={(e) => { e.currentTarget.src = '/logo.png'; }}
+                        onError={(e) => { e.currentTarget.src = './logo.png'; }}
                         style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                         alt="" 
                       />
@@ -251,12 +310,6 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
             })}
           </tbody>
         </table>
-
-        {songs.length === 0 && (
-          <div style={{ textAlign: 'center', marginTop: '64px', color: 'var(--text-secondary)' }}>
-            <h2 style={{ color: 'var(--text-primary)', marginBottom: '8px' }}>It's a bit empty here...</h2>
-            <p>Search for songs and tap ··· to add them to this playlist!</p>
-          </div>
         )}
       </div>
 

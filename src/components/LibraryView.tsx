@@ -1,13 +1,14 @@
 import React from 'react';
-import { usePlayer } from '../context/PlayerContext';
-import { Heart, Music } from 'lucide-react';
+import { usePlayer, Playlist } from '../context/PlayerContext';
+import { Heart, Music, UploadCloud, ListMusic } from 'lucide-react';
 
 interface LibraryViewProps {
   onOpenPlaylist: (id: string) => void;
+  onOpenUploads: () => void;
 }
 
-const LibraryView: React.FC<LibraryViewProps> = ({ onOpenPlaylist }) => {
-  const { playlists, likedSongs } = usePlayer();
+const LibraryView: React.FC<LibraryViewProps> = ({ onOpenPlaylist, onOpenUploads }) => {
+  const { playlists, likedSongs, queue } = usePlayer();
 
   return (
     <div className="main-view" style={{ padding: '24px' }}>
@@ -42,8 +43,56 @@ const LibraryView: React.FC<LibraryViewProps> = ({ onOpenPlaylist }) => {
           </div>
         </div>
 
+        {/* My Uploads Tile */}
+        <div 
+          style={{
+            background: 'linear-gradient(135deg, #ff8c00, #ffb347)',
+            padding: '24px',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            aspectRatio: '1',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+          onClick={onOpenUploads}
+        >
+          <UploadCloud size={64} style={{ position: 'absolute', bottom: '-10px', right: '-10px', opacity: 0.1, color: 'white' }} />
+          <div>
+            <h2 style={{ fontSize: '32px', marginBottom: '8px', color: 'white' }}>My Uploads</h2>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 'bold' }}>Local Music</p>
+          </div>
+        </div>
+
+        {/* Room Queue Tile */}
+        <div 
+          style={{
+            background: 'linear-gradient(135deg, #ff416c, #ff4b2b)',
+            padding: '24px',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            aspectRatio: '1',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+          onClick={() => onOpenPlaylist('queue')}
+        >
+          <ListMusic size={64} style={{ position: 'absolute', bottom: '-10px', right: '-10px', opacity: 0.15, color: 'white' }} />
+          <div>
+            <h2 style={{ fontSize: '32px', marginBottom: '8px', color: 'white' }}>Queue</h2>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 'bold' }}>
+              {queue && queue.length > 0 ? `${queue.length} ${queue.length === 1 ? 'song' : 'songs'} queued` : 'Empty (0 songs)'}
+            </p>
+          </div>
+        </div>
+
         {/* Custom Playlists */}
-        {playlists.map(playlist => (
+        {playlists.map((playlist: Playlist) => (
           <div 
             key={playlist.id}
             style={{

@@ -35,7 +35,7 @@ const TuneTasticLogo: React.FC<{ size?: number }> = ({ size = 36 }) => {
       />
 
       <img 
-        src="/logo.png" 
+        src="./logo.png" 
         alt="TuneTastic Premium Logo"
         style={{
           width: '100%',
