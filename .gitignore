@@ -11,3 +11,4 @@ build/
 
 release4/
 release5/
+*.tsbuildinfo
