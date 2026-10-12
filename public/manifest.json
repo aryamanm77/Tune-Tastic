@@ -1,28 +1,30 @@
 {
+  "id": "/",
   "name": "TuneTastic Web Player",
   "short_name": "TuneTastic",
   "description": "Your personal music streaming app with 492 songs",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#000000",
+  "background_color": "#05050c",
   "theme_color": "#1db954",
-  "scope": "/",
+  "categories": ["music", "entertainment"],
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/logo.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/logo.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

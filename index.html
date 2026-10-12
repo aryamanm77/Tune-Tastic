@@ -2,12 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" type="image/png" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#0a0a12" />
+    <meta name="theme-color" content="#1db954" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="TuneTastic" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>TuneTastic Premium — Web Player</title>
   </head>
@@ -15,11 +17,70 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
+      // Register service worker for PWA installability
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js');
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js').catch(function(err) {
+            console.log('SW registration error:', err);
+          });
         });
       }
+
+      // Automatically trigger the default browser installation notification/prompt
+      (function() {
+        // Do not prompt if already running in standalone/installed mode
+        var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        if (isStandalone) return;
+
+        var deferredPrompt = null;
+        var hasTriggered = false;
+
+        function promptInstall() {
+          if (!deferredPrompt || hasTriggered) return;
+          hasTriggered = true;
+          try {
+            deferredPrompt.prompt().then(function() {
+              return deferredPrompt.userChoice;
+            }).then(function(choiceResult) {
+              console.log('Native browser install choice:', choiceResult ? choiceResult.outcome : 'unknown');
+              deferredPrompt = null;
+            }).catch(function(err) {
+              console.log('Default prompt deferred for gesture:', err);
+              hasTriggered = false;
+            });
+          } catch (e) {
+            hasTriggered = false;
+          }
+        }
+
+        // When the browser detects PWA installability, capture the native event
+        window.addEventListener('beforeinstallprompt', function(e) {
+          deferredPrompt = e;
+          // Attempt default browser prompt immediately upon page load
+          promptInstall();
+        });
+
+        // For browsers requiring a user gesture before showing native prompt,
+        // trigger the default browser prompt on the very first tap/click anywhere
+        var gestureEvents = ['click', 'touchstart', 'pointerdown'];
+        function onGesture() {
+          if (deferredPrompt && !hasTriggered) {
+            promptInstall();
+          }
+        }
+        gestureEvents.forEach(function(evt) {
+          window.addEventListener(evt, onGesture, { passive: true });
+        });
+
+        window.addEventListener('appinstalled', function() {
+          deferredPrompt = null;
+          hasTriggered = true;
+          gestureEvents.forEach(function(evt) {
+            window.removeEventListener(evt, onGesture);
+          });
+          console.log('TuneTastic installed');
+        });
+      })();
     </script>
   </body>
 </html>
