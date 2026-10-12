@@ -3,93 +3,38 @@
  * Full-screen Spotify-style Now Playing view for mobile.
  * Opens when user taps the mini player bar.
  */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePlayer } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
 import {
   Play, Pause, SkipBack, SkipForward, Shuffle, Repeat,
   Heart, ChevronDown, MoreHorizontal, Volume2, VolumeX,
-  Sparkles, Disc, Image as ImageIcon, Download, Plus, ListMusic, Trash2,
-  Search, RefreshCw, Target, X
+  Sparkles, Disc, Image as ImageIcon, Download, Plus, ListMusic, Trash2
 } from 'lucide-react';
 import Visualizer from './Visualizer';
 import VinylScratch from './VinylScratch';
 import AuraMode from './AuraMode';
 import AddToPlaylistModal from './AddToPlaylistModal';
-import { getCuratedLyrics, parseLrcLyrics, SyncedLyricLine } from '../data/lyricsDatabase';
 
 interface NowPlayingScreenProps {
   onClose: () => void;
 }
 
-interface LyricsCardProps {
-  artist: string;
-  title: string;
-  currentTime: number;
-  seekTo: (time: number) => void;
-  isPlaying?: boolean;
-  duration?: number;
-}
-
-const LyricsCard: React.FC<LyricsCardProps> = ({ artist, title, currentTime, seekTo, duration }) => {
-  const [syncedLines, setSyncedLines] = useState<SyncedLyricLine[]>([]);
-  const [plainLyrics, setPlainLyrics] = useState<string | null>(null);
+const LyricsCard: React.FC<{ artist: string, title: string }> = ({ artist, title }) => {
+  const [lyrics, setLyrics] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [source, setSource] = useState<string>('');
-  const [userScrolled, setUserScrolled] = useState(false);
-  const [showSearchModal, setShowSearchModal] = useState(false);
-  const [customSearchQuery, setCustomSearchQuery] = useState('');
-  const [customPastedLyrics, setCustomPastedLyrics] = useState('');
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const activeLineRef = useRef<HTMLDivElement>(null);
-  const userScrollTimeoutRef = useRef<any>(null);
-
-  // Compute active lyric line index
-  const activeIndex = syncedLines.length > 0
-    ? syncedLines.reduce((acc, line, idx) => (currentTime >= line.time ? idx : acc), -1)
-    : -1;
-
-  // Auto-scroll to keep active line centered
   useEffect(() => {
-    if (!userScrolled && activeLineRef.current && scrollContainerRef.current) {
-      activeLineRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }
-  }, [activeIndex, userScrolled]);
-
-  const fetchLyrics = (searchTitle: string, searchArtist: string) => {
-    setSyncedLines([]);
-    setPlainLyrics(null);
+    setLyrics(null);
     setError(false);
     setSource('');
-    setUserScrolled(false);
 
-    // 1. Check local curated database first for instant real synchronized lyrics
-    const curated = getCuratedLyrics(searchTitle, searchArtist);
-    if (curated) {
-      const parsed = parseLrcLyrics(curated.syncedLyrics);
-      if (parsed.length > 0) {
-        setSyncedLines(parsed);
-        setSource('TuneTastic Synced');
-        return;
-      }
-    }
+    const cleanArtist = (artist || '').split(',')[0].replace(/feat\.?.*/i, '').trim();
+    const cleanTitle  = (title  || '').replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').trim();
 
-    // Smart cleaning of artist and title
-    let cleanArtist = (searchArtist || '').split(',')[0].replace(/feat\.?.*/i, '').replace(/ft\.?.*/i, '').replace(/with .*/i, '').trim();
-    let cleanTitle = (searchTitle || '').replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/feat\.?.*/i, '').replace(/ft\.?.*/i, '').replace(/remix.*/i, '').trim();
-
-    if (cleanTitle.toLowerCase().includes('believer') && (!cleanArtist || cleanArtist.toLowerCase() === 'unknown artist')) {
-      cleanArtist = 'Imagine Dragons';
-      cleanTitle = 'Believer';
-    }
-    cleanTitle = cleanTitle.replace(/\s+\d+$/, '').trim();
-
-    if (!cleanTitle) {
+    if (!cleanArtist || cleanArtist.toLowerCase() === 'unknown artist') {
       setError(true);
       return;
     }
@@ -98,16 +43,24 @@ const LyricsCard: React.FC<LyricsCardProps> = ({ artist, title, currentTime, see
     setLoading(true);
 
     const tryLrcLib = () =>
-      fetch(`https://lrclib.net/api/search?q=${encodeURIComponent((cleanArtist ? cleanArtist + ' ' : '') + cleanTitle)}`)
+      fetch(`https://lrclib.net/api/search?q=${encodeURIComponent(cleanArtist + ' ' + cleanTitle)}`)
         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
         .then(data => {
-          const syncedHit = data?.find((d: any) => d.syncedLyrics);
-          if (syncedHit?.syncedLyrics) {
-            const parsed = parseLrcLyrics(syncedHit.syncedLyrics);
-            if (parsed.length > 0) return { synced: parsed, src: 'LRCLIB (Synced)' };
+          const hit = data?.find((d: any) => d.plainLyrics) ?? data?.[0];
+          if (hit?.plainLyrics) return { text: hit.plainLyrics, src: 'lrclib' };
+          if (hit?.syncedLyrics) {
+            // strip timestamps like [01:23.45]
+            const stripped = hit.syncedLyrics.replace(/\[\d+:\d+\.\d+\]/g, '').trim();
+            if (stripped) return { text: stripped, src: 'lrclib' };
           }
-          const plainHit = data?.find((d: any) => d.plainLyrics) ?? data?.[0];
-          if (plainHit?.plainLyrics) return { plain: plainHit.plainLyrics, src: 'LRCLIB' };
+          throw new Error('empty');
+        });
+
+    const tryLyricsOvh = () =>
+      fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(cleanArtist)}/${encodeURIComponent(cleanTitle)}`)
+        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        .then(data => {
+          if (data?.lyrics) return { text: data.lyrics.trim(), src: 'lyrics.ovh' };
           throw new Error('empty');
         });
 
@@ -115,43 +68,21 @@ const LyricsCard: React.FC<LyricsCardProps> = ({ artist, title, currentTime, see
       fetch(`https://lrclib.net/api/get?artist_name=${encodeURIComponent(cleanArtist)}&track_name=${encodeURIComponent(cleanTitle)}`)
         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
         .then(data => {
+          if (data?.plainLyrics) return { text: data.plainLyrics, src: 'lrclib' };
           if (data?.syncedLyrics) {
-            const parsed = parseLrcLyrics(data.syncedLyrics);
-            if (parsed.length > 0) return { synced: parsed, src: 'LRCLIB (Synced)' };
+            const stripped = data.syncedLyrics.replace(/\[\d+:\d+\.\d+\]/g, '').trim();
+            if (stripped) return { text: stripped, src: 'lrclib' };
           }
-          if (data?.plainLyrics) return { plain: data.plainLyrics, src: 'LRCLIB' };
           throw new Error('empty');
         });
 
-    const tryLyricsOvh = () =>
-      cleanArtist
-        ? fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(cleanArtist)}/${encodeURIComponent(cleanTitle)}`)
-            .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-            .then(data => {
-              if (data?.lyrics) return { plain: data.lyrics.trim(), src: 'Lyrics.ovh' };
-              throw new Error('empty');
-            })
-        : Promise.reject(new Error('no artist'));
-
+    // Chain: lrclib search → lrclib direct get → lyrics.ovh
     tryLrcLib()
       .catch(() => tryLrcLibByTrack())
       .catch(() => tryLyricsOvh())
-      .then((result: any) => {
+      .then(result => {
         if (cancelled) return;
-        if (result.synced) {
-          setSyncedLines(result.synced);
-        } else if (result.plain) {
-          // Convert plain lyrics into estimated time blocks so user gets moving highlight
-          const rawLines = result.plain.split('\n').map((l: string) => l.trim()).filter(Boolean);
-          const trackDuration = duration && duration > 20 ? duration : 180;
-          const interval = Math.max(3, (trackDuration - 10) / Math.max(rawLines.length, 1));
-          const generated: SyncedLyricLine[] = rawLines.map((text: string, i: number) => ({
-            time: Math.round(i * interval * 10) / 10,
-            text,
-          }));
-          setSyncedLines(generated);
-          setPlainLyrics(result.plain);
-        }
+        setLyrics(result.text);
         setSource(result.src);
       })
       .catch(() => {
@@ -162,324 +93,57 @@ const LyricsCard: React.FC<LyricsCardProps> = ({ artist, title, currentTime, see
       });
 
     return () => { cancelled = true; };
-  };
-
-  useEffect(() => {
-    fetchLyrics(title, artist);
-  }, [artist, title, duration]);
-
-  // Handle manual scroll detection
-  const handleScroll = () => {
-    setUserScrolled(true);
-    if (userScrollTimeoutRef.current) clearTimeout(userScrollTimeoutRef.current);
-    userScrollTimeoutRef.current = setTimeout(() => {
-      // Resume auto scroll after 4 seconds of idle
-      setUserScrolled(false);
-    }, 4500);
-  };
+  }, [artist, title]);
 
   return (
     <div style={{
-      background: 'linear-gradient(135deg, rgba(15,15,22,0.65) 0%, rgba(10,10,16,0.45) 100%)',
-      backdropFilter: 'blur(28px)',
-      WebkitBackdropFilter: 'blur(28px)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      borderRadius: '20px',
-      padding: '24px 20px',
-      marginTop: '28px',
+      background: 'linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.2) 100%)',
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: '16px',
+      padding: '28px 24px',
+      marginTop: '32px',
       marginBottom: '32px',
-      minHeight: '280px',
-      position: 'relative',
-      overflow: 'hidden',
-      boxShadow: '0 16px 40px rgba(0,0,0,0.4)',
+      minHeight: '200px',
     }}>
-      {/* Header bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <h3 style={{ margin: 0, fontSize: '13px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)' }}>
-            Spotify Synced Lyrics
-          </h3>
-          {source && (
-            <span style={{ fontSize: '10px', color: 'var(--spotify-green)', fontWeight: 700, background: 'rgba(29, 185, 84, 0.15)', padding: '2px 8px', borderRadius: '100px' }}>
-              {source}
-            </span>
-          )}
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <button
-            type="button"
-            onClick={() => {
-              setCustomSearchQuery(`${artist} ${title}`);
-              setShowSearchModal(true);
-            }}
-            title="Search or Add Lyrics Manually"
-            style={{
-              background: 'rgba(255,255,255,0.08)',
-              border: '1px solid rgba(255,255,255,0.15)',
-              color: 'white',
-              padding: '6px 12px',
-              borderRadius: '100px',
-              fontSize: '11px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              transition: 'all 0.2s',
-            }}
-          >
-            <Search size={12} />
-            <span>Search Lyrics</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => fetchLyrics(title, artist)}
-            title="Reload Lyrics"
-            style={{
-              background: 'rgba(255,255,255,0.08)',
-              border: 'none',
-              color: 'rgba(255,255,255,0.7)',
-              padding: '6px',
-              borderRadius: '50%',
-              cursor: 'pointer',
-            }}
-          >
-            <RefreshCw size={13} />
-          </button>
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+        <h3 style={{ margin: 0, fontSize: '14px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Lyrics</h3>
+        {source && <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '1px' }}>{source}</span>}
       </div>
 
-      {/* Synchronized Live Moving Block Content */}
       {loading ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0' }}>
-          {[1, 0.75, 0.9, 0.6, 0.85, 0.7].map((w, i) => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          {[1, 0.7, 0.9, 0.6, 0.8].map((w, i) => (
             <div key={i} style={{
-              height: '24px', borderRadius: '12px',
-              background: 'rgba(255,255,255,0.1)',
+              height: '18px', borderRadius: '9px',
+              background: `rgba(255,255,255,0.1)`,
               width: `${w * 100}%`,
               animation: 'shimmer 1.5s infinite',
               animationDelay: `${i * 0.1}s`,
             }} />
           ))}
         </div>
-      ) : error || (syncedLines.length === 0 && !plainLyrics) ? (
-        <div style={{ textAlign: 'center', padding: '36px 16px', color: 'rgba(255,255,255,0.6)' }}>
-          <div style={{ fontSize: '42px', marginBottom: '12px' }}>🎵</div>
-          <p style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: 'white' }}>Lyrics not found yet</p>
-          <p style={{ margin: '8px 0 16px', fontSize: '13px', lineHeight: 1.5, opacity: 0.75 }}>
-            Don't worry! You can search online or paste lyrics manually with one click.
+      ) : error ? (
+        <div style={{ textAlign: 'center', padding: '24px 0', color: 'rgba(255,255,255,0.4)' }}>
+          <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎵</div>
+          <p style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: 'rgba(255,255,255,0.6)' }}>Lyrics not found</p>
+          <p style={{ margin: '8px 0 0', fontSize: '13px', lineHeight: 1.5, opacity: 0.7 }}>
+            This track isn't in our lyrics database yet.<br/>Try a different song.
           </p>
-          <button
-            type="button"
-            onClick={() => {
-              setCustomSearchQuery(`${artist} ${title}`);
-              setShowSearchModal(true);
-            }}
-            style={{
-              background: 'var(--spotify-green)',
-              color: 'black',
-              border: 'none',
-              padding: '10px 22px',
-              borderRadius: '100px',
-              fontSize: '13px',
-              fontWeight: 800,
-              cursor: 'pointer',
-              boxShadow: '0 4px 16px rgba(29, 185, 84, 0.4)',
-            }}
-          >
-            Search & Add Lyrics Now
-          </button>
         </div>
-      ) : syncedLines.length > 0 ? (
-        <div
-          ref={scrollContainerRef}
-          onScroll={handleScroll}
-          style={{
-            maxHeight: '360px',
-            overflowY: 'auto',
-            paddingRight: '6px',
-            scrollBehavior: 'smooth',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '14px',
-          }}
-        >
-          {syncedLines.map((line, idx) => {
-            const isActive = idx === activeIndex;
-            const isPast = activeIndex !== -1 && idx < activeIndex;
-
-            return (
-              <div
-                key={idx}
-                ref={isActive ? activeLineRef : null}
-                onClick={() => seekTo(line.time)}
-                title={`Seek to ${Math.floor(line.time / 60)}:${Math.floor(line.time % 60).toString().padStart(2, '0')}`}
-                style={{
-                  padding: isActive ? '12px 18px' : '8px 14px',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  fontSize: isActive ? '24px' : '19px',
-                  fontWeight: isActive ? 800 : 600,
-                  color: isActive ? '#ffffff' : isPast ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.28)',
-                  background: isActive ? 'rgba(29, 185, 84, 0.16)' : 'transparent',
-                  borderLeft: isActive ? '4px solid var(--spotify-green)' : '4px solid transparent',
-                  transform: isActive ? 'scale(1.02)' : 'scale(1)',
-                  transformOrigin: 'left center',
-                  transition: 'all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1)',
-                  textShadow: isActive ? '0 0 18px rgba(255,255,255,0.45)' : 'none',
-                  lineHeight: 1.5,
-                  userSelect: 'none',
-                }}
-                onMouseEnter={e => {
-                  if (!isActive) {
-                    e.currentTarget.style.color = 'rgba(255,255,255,0.85)';
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                  }
-                }}
-                onMouseLeave={e => {
-                  if (!isActive) {
-                    e.currentTarget.style.color = isPast ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.28)';
-                    e.currentTarget.style.background = 'transparent';
-                  }
-                }}
-              >
-                {line.text}
-              </div>
-            );
-          })}
+      ) : lyrics ? (
+        <div style={{
+          fontSize: '22px',
+          fontWeight: 700,
+          lineHeight: 1.7,
+          color: 'white',
+          whiteSpace: 'pre-wrap',
+          fontFamily: 'inherit',
+        }}>
+          {lyrics}
         </div>
       ) : null}
-
-      {/* Floating Sync Button if User Scrolled Away */}
-      {userScrolled && activeIndex !== -1 && (
-        <button
-          type="button"
-          onClick={() => {
-            setUserScrolled(false);
-            activeLineRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }}
-          style={{
-            position: 'absolute',
-            bottom: '16px',
-            right: '18px',
-            background: 'var(--spotify-green)',
-            color: 'black',
-            border: 'none',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            fontSize: '12px',
-            fontWeight: 800,
-            cursor: 'pointer',
-            boxShadow: '0 6px 20px rgba(0,0,0,0.5)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            zIndex: 10,
-            animation: 'fadeIn 0.2s ease',
-          }}
-        >
-          <Target size={14} />
-          <span>Sync to Audio</span>
-        </button>
-      )}
-
-      {/* Manual Search & Add Lyrics Modal */}
-      {showSearchModal && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 9999,
-          background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(16px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px'
-        }}>
-          <div style={{
-            background: '#181822', border: '1px solid rgba(255,255,255,0.12)',
-            borderRadius: '20px', padding: '24px', width: '100%', maxWidth: '480px',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-              <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: 'white' }}>Search & Add Lyrics</h3>
-              <button onClick={() => setShowSearchModal(false)} style={{ color: 'rgba(255,255,255,0.6)', cursor: 'pointer' }}>
-                <X size={20} />
-              </button>
-            </div>
-
-            <p style={{ margin: '0 0 14px', fontSize: '13px', color: 'rgba(255,255,255,0.6)' }}>
-              Search LRCLib or paste text to synchronize line-by-line:
-            </p>
-
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
-              <input
-                type="text"
-                placeholder="Song title or artist..."
-                value={customSearchQuery}
-                onChange={e => setCustomSearchQuery(e.target.value)}
-                style={{
-                  flex: 1, padding: '10px 14px', borderRadius: '10px',
-                  background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)',
-                  color: 'white', fontSize: '14px', outline: 'none',
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  setShowSearchModal(false);
-                  fetchLyrics(customSearchQuery, '');
-                }}
-                style={{
-                  background: 'var(--spotify-green)', color: 'black',
-                  padding: '10px 18px', borderRadius: '10px', fontWeight: 800, fontSize: '13px',
-                  border: 'none', cursor: 'pointer',
-                }}
-              >
-                Search
-              </button>
-            </div>
-
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '14px' }}>
-              <p style={{ margin: '0 0 8px', fontSize: '13px', fontWeight: 700, color: 'rgba(255,255,255,0.8)' }}>
-                Or paste lyrics manually:
-              </p>
-              <textarea
-                placeholder="Paste lyrics line-by-line here..."
-                rows={5}
-                value={customPastedLyrics}
-                onChange={e => setCustomPastedLyrics(e.target.value)}
-                style={{
-                  width: '100%', padding: '10px 14px', borderRadius: '10px',
-                  background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)',
-                  color: 'white', fontSize: '13px', outline: 'none', resize: 'none', boxSizing: 'border-box'
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  if (customPastedLyrics.trim()) {
-                    const rawLines = customPastedLyrics.split('\n').map(l => l.trim()).filter(Boolean);
-                    const trackDuration = duration && duration > 20 ? duration : 180;
-                    const interval = Math.max(3, (trackDuration - 10) / Math.max(rawLines.length, 1));
-                    const generated = rawLines.map((text, i) => ({
-                      time: Math.round(i * interval * 10) / 10,
-                      text,
-                    }));
-                    setSyncedLines(generated);
-                    setSource('Manual Lyrics');
-                    setShowSearchModal(false);
-                  }
-                }}
-                style={{
-                  marginTop: '10px', width: '100%',
-                  background: 'white', color: 'black',
-                  padding: '10px', borderRadius: '10px', fontWeight: 800, fontSize: '13px',
-                  border: 'none', cursor: 'pointer',
-                }}
-              >
-                Apply Pasted Lyrics
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
@@ -730,15 +394,8 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ onClose }) => {
           </button>
         </div>
 
-        {/* Lyrics Card (Spotify-style live moving block synchronized lyrics) */}
-        <LyricsCard
-          artist={currentSong.artist}
-          title={currentSong.title}
-          currentTime={currentTime}
-          seekTo={seekTo}
-          isPlaying={isPlaying}
-          duration={duration}
-        />
+        {/* Lyrics Card (Always shown so user can scroll down to it) */}
+        <LyricsCard artist={currentSong.artist} title={currentSong.title} />
       </div>
       
       {showAddModal && <AddToPlaylistModal song={currentSong} onClose={() => setShowAddModal(false)} />}

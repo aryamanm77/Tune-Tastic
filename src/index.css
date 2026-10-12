@@ -520,56 +520,13 @@ body.theme-deep-space::before {
   to { transform: scale(1.5) rotate(10deg); }
 }
 
-/* Real Video Background Active Mode - Entire App Transparency & Frosted Glass */
-body.video-bg-active,
-body[class*="theme-"] {
-  background-color: transparent !important;
-}
-
-body.video-bg-active .app-container,
-body[class*="theme-"] .app-container {
-  background: transparent !important;
-}
-
-body.video-bg-active .sidebar,
-body[class*="theme-"] .sidebar {
-  background-color: rgba(8, 8, 12, 0.45) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-body.video-bg-active .main-view,
-body[class*="theme-"] .main-view {
-  background-color: rgba(0, 0, 0, 0.18) !important;
-  background-image: none !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-body.video-bg-active .player-bar,
+/* Make backgrounds visible by making main views transparent when a theme is active */
+body[class*="theme-"] .main-view,
+body[class*="theme-"] .sidebar,
 body[class*="theme-"] .player-bar {
-  background-color: rgba(10, 10, 15, 0.6) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-body.video-bg-active .bottom-nav,
-body[class*="theme-"] .bottom-nav {
-  background-color: rgba(12, 12, 18, 0.75) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-}
-
-body.video-bg-active .playlist-header,
-body.video-bg-active .playlist-view,
-body.video-bg-active .search-view,
-body.video-bg-active .library-view,
-body.video-bg-active .downloads-view,
-body.video-bg-active .uploads-view {
-  background: transparent !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 @keyframes spin {

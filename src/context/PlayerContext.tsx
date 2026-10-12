@@ -279,16 +279,16 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, [currentTime, duration]);
 
   const [djState, setDjStateInternal] = useState(() => {
-    const savedTheme = localStorage.getItem('tunetastic_theme_bg') || 'racing-cars';
-    const savedVideoMode = (localStorage.getItem('tunetastic_video_mode') as 'youtube' | 'instant') || 'youtube';
+    localStorage.removeItem('tunetastic_theme_bg');
+    localStorage.removeItem('tunetastic_video_mode');
     return {
       bass: 0, spin8D: false, nightcore: false, 
       reverb: 0, speed: 10, lofi: false, karaoke: false,
       tremolo: false, phaser: false, vinyl: false,
       chorus: false, telephone: false, alien: false,
       era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false,
-      zeroGravity: false, nebulaMode: false, isWarping: false, themeBackground: savedTheme,
-      videoSourceMode: savedVideoMode
+      zeroGravity: false, nebulaMode: false, isWarping: false, themeBackground: 'none',
+      videoSourceMode: 'instant' as 'youtube' | 'instant'
     };
   });
   const audioContextRef = useRef<AudioContext | null>(null);

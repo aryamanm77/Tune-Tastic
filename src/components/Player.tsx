@@ -241,7 +241,7 @@ const Player: React.FC = () => {
         {/* Lyrics button */}
         <button
           onClick={() => setShowNowPlaying(true)}
-          title="Lyrics (Spotify Synced)"
+          title="Lyrics"
           className="hide-mobile"
           style={{ color: showNowPlaying ? 'var(--spotify-green)' : 'var(--text-secondary)' }}
         >
