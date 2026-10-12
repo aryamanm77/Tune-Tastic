@@ -281,13 +281,15 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [djState, setDjStateInternal] = useState(() => {
     localStorage.removeItem('tunetastic_theme_bg');
     localStorage.removeItem('tunetastic_video_mode');
+    const savedNebula = localStorage.getItem('tunetastic_nebula_mode');
+    const initialNebula = savedNebula !== null ? savedNebula === 'true' : true;
     return {
       bass: 0, spin8D: false, nightcore: false, 
       reverb: 0, speed: 10, lofi: false, karaoke: false,
       tremolo: false, phaser: false, vinyl: false,
       chorus: false, telephone: false, alien: false,
       era: 2026, hapticBass: false, spatialAudio: false, motionDJ: false, astralMode: false,
-      zeroGravity: false, nebulaMode: false, isWarping: false, themeBackground: 'none',
+      zeroGravity: false, nebulaMode: initialNebula, isWarping: false, themeBackground: 'none',
       videoSourceMode: 'instant' as 'youtube' | 'instant'
     };
   });
@@ -589,6 +591,9 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
     if (newState.videoSourceMode !== undefined) {
       localStorage.setItem('tunetastic_video_mode', newState.videoSourceMode);
+    }
+    if (newState.nebulaMode !== undefined) {
+      localStorage.setItem('tunetastic_nebula_mode', String(newState.nebulaMode));
     }
     setDjStateInternal(prev => ({ ...prev, ...newState }));
   };

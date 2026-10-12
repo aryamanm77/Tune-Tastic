@@ -413,15 +413,31 @@ body.theme-2050 .main-view, body.theme-2050 .sidebar, body.theme-2050 .player-ba
   border: 1px solid rgba(0, 229, 255, 0.1);
 }
 
+body.nebula-active {
+  background-color: #05050c !important;
+}
+
 body.nebula-active .main-view,
 body.nebula-active .sidebar,
-body.nebula-active .player,
 body.nebula-active .search-view,
 body.nebula-active .library-view,
-body.nebula-active .playlist-view,
+body.nebula-active .playlist-view {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.nebula-active .player-bar {
+  background: rgba(18, 18, 24, 0.78) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 body.nebula-active .bottom-nav {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: rgba(10, 10, 15, 0.8) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 body.nebula-active .app-container {

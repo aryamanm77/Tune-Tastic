@@ -3,18 +3,13 @@ import { usePlayer } from '../context/PlayerContext';
 import nebulaImage from '../assets/images/deep_space_nebula.png';
 
 const NebulaBackground: React.FC = () => {
-  const { getAnalyserData, isPlaying, djState, currentSong } = usePlayer();
+  const { djState } = usePlayer();
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   
-  // Persist animation state across re-renders (like play/pause toggles)
+  // Persist animation state across re-renders
   const bgScrollRef = useRef(0);
   const currentScaleRef = useRef(1.1);
   const starsRef = useRef<{x: number, y: number, z: number, size: number, baseAlpha: number}[]>([]);
-  
-  useEffect(() => {
-    audioRef.current = document.querySelector('audio');
-  }, [currentSong]);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -33,15 +28,18 @@ const NebulaBackground: React.FC = () => {
     window.addEventListener('resize', resize);
 
     const img = new Image();
-    img.src = nebulaImage;
     let imgLoaded = false;
     img.onload = () => { imgLoaded = true; };
+    img.src = nebulaImage;
+    if (img.complete && img.naturalWidth > 0) {
+      imgLoaded = true;
+    }
     
     // Initialize stars once
     if (starsRef.current.length === 0) {
-      starsRef.current = Array.from({ length: 200 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+      starsRef.current = Array.from({ length: 220 }, () => ({
+        x: Math.random() * (canvas.width || window.innerWidth),
+        y: Math.random() * (canvas.height || window.innerHeight),
         z: Math.random() * 2 + 0.5,
         size: Math.random() * 1.5 + 0.5,
         baseAlpha: Math.random() * 0.5 + 0.3
@@ -50,34 +48,25 @@ const NebulaBackground: React.FC = () => {
 
     const render = () => {
       time += 0.01;
-      
-      // The pulse is no longer calculated as visuals are entirely decoupled from audio
 
       // Base background color
       ctx.fillStyle = '#05050c';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      // Stars and background always pan at a constant very slow speed, regardless of music or effects
       const speedMult = 0.1;
       const bgSpeed = 0.1;
 
-      if (imgLoaded) {
-        // Background scale stays constant
-        let targetScale = 1.1;
-        
-        // Smoothly approach target scale
+      if (imgLoaded && img.naturalWidth > 0) {
+        const targetScale = 1.1;
         currentScaleRef.current += (targetScale - currentScaleRef.current) * 0.1;
-        
-        // Update background scroll position (smooth constant speed)
-        bgScrollRef.current -= bgSpeed * 1.5; // Scroll left normally
+        bgScrollRef.current -= bgSpeed * 1.5;
 
-        const baseHeight = canvas.height * 1.5; // Ensure it covers height
-        const aspectRatio = img.width / img.height;
+        const baseHeight = canvas.height * 1.5;
+        const aspectRatio = img.naturalWidth / img.naturalHeight;
         const baseWidth = baseHeight * aspectRatio;
         
         const imgWidth = baseWidth * currentScaleRef.current;
         const imgHeight = baseHeight * currentScaleRef.current;
         
-        // Calculate which tile index is currently at x=0
         const startTileIndex = Math.floor(-bgScrollRef.current / imgWidth);
         
         ctx.save();
@@ -88,27 +77,35 @@ const NebulaBackground: React.FC = () => {
           const xPos = bgScrollRef.current + i * imgWidth;
           ctx.save();
           if (i % 2 !== 0) {
-            // Odd tile: mirror it
             ctx.translate(xPos + imgWidth, 0);
             ctx.scale(-1, 1);
             ctx.drawImage(img, 0, yOffset, imgWidth + 1, imgHeight);
           } else {
-            // Even tile: normal
             ctx.drawImage(img, xPos, yOffset, imgWidth + 1, imgHeight);
           }
           ctx.restore();
         }
-        
         ctx.restore();
+      } else {
+        // High-fidelity cosmic nebula gradient fallback
+        const grad1 = ctx.createRadialGradient(canvas.width * 0.35, canvas.height * 0.35, 60, canvas.width * 0.35, canvas.height * 0.35, canvas.width * 0.7);
+        grad1.addColorStop(0, 'rgba(124, 58, 237, 0.45)');
+        grad1.addColorStop(0.5, 'rgba(76, 29, 149, 0.2)');
+        grad1.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad1;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const grad2 = ctx.createRadialGradient(canvas.width * 0.7, canvas.height * 0.65, 80, canvas.width * 0.7, canvas.height * 0.65, canvas.width * 0.6);
+        grad2.addColorStop(0, 'rgba(6, 182, 212, 0.35)');
+        grad2.addColorStop(0.5, 'rgba(16, 185, 129, 0.18)');
+        grad2.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad2;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
-      // No overlays to ensure a perfectly clear view of space
-
+      // Draw drifting stars
       starsRef.current.forEach(star => {
-        // Move stars constantly to the left
-        star.x -= star.z * speedMult * 5; // standard left drift
-
-        // Wrap around screen
+        star.x -= star.z * speedMult * 5;
         if (star.x < 0) star.x = canvas.width;
         if (star.x > canvas.width) star.x = 0;
         if (star.y < 0) star.y = canvas.height;
@@ -124,25 +121,27 @@ const NebulaBackground: React.FC = () => {
         ctx.fill();
         
         if (star.z > 1.5) {
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'white';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = 'white';
         } else {
-            ctx.shadowBlur = 0;
+          ctx.shadowBlur = 0;
         }
       });
 
-      animationId = requestAnimationFrame(render);
+      if (djState.nebulaMode) {
+        animationId = requestAnimationFrame(render);
+      }
     };
 
-    render();
+    if (djState.nebulaMode) {
+      render();
+    }
 
     return () => {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationId);
     };
-  }, [getAnalyserData, isPlaying, djState]);
-
-  if (!djState.nebulaMode) return null;
+  }, [djState.nebulaMode]);
 
   return (
     <canvas 
@@ -155,8 +154,10 @@ const NebulaBackground: React.FC = () => {
         height: '100vh',
         zIndex: 0,
         pointerEvents: 'none',
-        background: '#05050c', // deep space blue/black
-        transition: 'opacity 1s'
+        background: '#05050c',
+        opacity: djState.nebulaMode ? 1 : 0,
+        visibility: djState.nebulaMode ? 'visible' : 'hidden',
+        transition: 'opacity 0.6s ease',
       }}
     />
   );
