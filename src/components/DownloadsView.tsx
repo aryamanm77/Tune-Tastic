@@ -37,13 +37,13 @@ const DownloadsView: React.FC = () => {
   };
 
   return (
-    <div className="main-view">
+    <div className="main-view" style={{ background: 'transparent' }}>
       <div style={{
         display: 'flex',
         alignItems: 'flex-end',
         gap: '24px',
         padding: '24px',
-        background: 'linear-gradient(180deg, #1db954 0%, var(--bg-base) 100%)',
+        background: 'linear-gradient(180deg, rgba(29, 185, 84, 0.6) 0%, transparent 100%)',
         paddingTop: '80px',
         paddingBottom: '24px'
       }} className="playlist-header">
@@ -68,7 +68,7 @@ const DownloadsView: React.FC = () => {
         </div>
       </div>
 
-      <div style={{ padding: '0 24px 24px 24px' }}>
+      <div style={{ padding: '0 16px 24px 16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '24px', marginTop: '16px' }}>
           <button 
             onClick={handlePlayAll}
@@ -98,8 +98,8 @@ const DownloadsView: React.FC = () => {
               }}
               style={{
                 display: 'flex', alignItems: 'center', gap: '8px',
-                background: 'rgba(239, 68, 68, 0.15)',
-                border: '1px solid rgba(239, 68, 68, 0.4)',
+                background: 'rgba(239, 68, 68, 0.18)',
+                border: '1px solid rgba(239, 68, 68, 0.45)',
                 color: '#ff4d4d',
                 padding: '10px 18px',
                 borderRadius: '100px',
@@ -109,10 +109,10 @@ const DownloadsView: React.FC = () => {
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background = 'rgba(239, 68, 68, 0.25)';
+                e.currentTarget.style.background = 'rgba(239, 68, 68, 0.3)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.background = 'rgba(239, 68, 68, 0.15)';
+                e.currentTarget.style.background = 'rgba(239, 68, 68, 0.18)';
               }}
             >
               <Trash2 size={15} /> Clear All Downloads
@@ -120,14 +120,14 @@ const DownloadsView: React.FC = () => {
           )}
         </div>
 
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'fixed' }}>
           <thead>
             <tr style={{ color: 'var(--text-secondary)', borderBottom: '1px solid #282828', fontSize: '14px' }}>
-              <th className="hide-mobile" style={{ padding: '8px 16px', width: '40px', fontWeight: 'normal' }}>#</th>
-              <th style={{ padding: '8px 16px', fontWeight: 'normal' }}>Title</th>
-              <th className="hide-mobile" style={{ padding: '8px 16px', fontWeight: 'normal' }}>Album</th>
-              <th className="hide-mobile" style={{ padding: '8px 16px', textAlign: 'right', fontWeight: 'normal' }}>Duration</th>
-              <th style={{ padding: '8px 16px', textAlign: 'right', fontWeight: 'normal', width: '140px' }}>Actions</th>
+              <th className="hide-mobile" style={{ padding: '8px 12px', width: '40px', fontWeight: 'normal' }}>#</th>
+              <th style={{ padding: '8px 12px', fontWeight: 'normal' }}>Title</th>
+              <th className="hide-mobile" style={{ padding: '8px 12px', fontWeight: 'normal', width: '22%' }}>Album</th>
+              <th className="hide-mobile" style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 'normal', width: '70px' }}>Duration</th>
+              <th style={{ padding: '8px 8px', textAlign: 'right', fontWeight: 'normal', width: '110px' }}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -139,7 +139,7 @@ const DownloadsView: React.FC = () => {
                   className="song-row"
                   onClick={() => handlePlay(song)}
                 >
-                  <td className="hide-mobile" style={{ padding: '12px 16px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-secondary)' }}>
+                  <td className="hide-mobile" style={{ padding: '12px 12px', color: isCurrent ? 'var(--spotify-green)' : 'var(--text-secondary)', width: '40px' }}>
                     <div className="song-index-col">
                     {isCurrent ? (
                       <div className={'eq-bars' + (isPlaying ? '' : ' paused')}>
@@ -156,58 +156,64 @@ const DownloadsView: React.FC = () => {
                       </button>
                     </div>
                   </td>
-                  <td style={{ padding: '12px 16px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <td style={{ padding: '10px 12px', overflow: 'hidden' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
                       <img 
                         src={song.coverArt || getAudioUrl(song.audioId).replace('.mp3', '.jpg')} 
                         onError={(e) => { e.currentTarget.src = './logo.png'; }}
-                        style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
+                        style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover', flexShrink: 0 }} 
                         alt="" 
                       />
-                      <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-                        <span style={{ color: isCurrent ? 'var(--spotify-green)' : 'var(--text-primary)' }} className="ellipsis">
+                      <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0, overflow: 'hidden' }}>
+                        <span style={{ color: isCurrent ? 'var(--spotify-green)' : 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {song.title}
                         </span>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '14px' }} className="ellipsis">
+                        <span style={{ color: 'var(--text-secondary)', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {song.artist}
                         </span>
                       </div>
                     </div>
                   </td>
-                  <td className="hide-mobile" style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '14px' }}>
-                    <span className="ellipsis" style={{ display: 'block', maxWidth: '200px' }}>{song.album}</span>
+                  <td className="hide-mobile" style={{ padding: '12px 12px', color: 'var(--text-secondary)', fontSize: '14px', width: '22%' }}>
+                    <span className="ellipsis" style={{ display: 'block' }}>{song.album}</span>
                   </td>
-                  <td className="hide-mobile" style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '14px', textAlign: 'right' }}>
+                  <td className="hide-mobile" style={{ padding: '12px 12px', color: 'var(--text-secondary)', fontSize: '14px', textAlign: 'right', width: '70px' }}>
                     {formatTime(song.durationMs || 0)}
                   </td>
-                  <td style={{ padding: '12px 16px', whiteSpace: 'nowrap', textAlign: 'right' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'flex-end' }}>
+                  <td style={{ padding: '8px 8px', textAlign: 'right', width: '110px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'flex-end' }}>
                       {/* Bold, prominent Delete button */}
                       <button
                         type="button"
-                        onClick={e => { e.stopPropagation(); deleteDownload(song.id); }}
+                        onClick={e => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          deleteDownload(song.id);
+                        }}
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: '6px',
-                          background: 'rgba(239, 68, 68, 0.18)',
-                          border: '1px solid rgba(239, 68, 68, 0.45)',
+                          gap: '5px',
+                          background: 'rgba(239, 68, 68, 0.22)',
+                          border: '1px solid rgba(239, 68, 68, 0.55)',
                           color: '#ff4d4d',
-                          padding: '6px 12px',
+                          padding: '6px 10px',
                           borderRadius: '100px',
                           fontSize: '12px',
                           fontWeight: 700,
                           cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                          boxShadow: '0 2px 8px rgba(239, 68, 68, 0.2)'
+                          flexShrink: 0,
+                          transition: 'all 0.15s ease',
+                          boxShadow: '0 2px 8px rgba(239, 68, 68, 0.25)',
+                          touchAction: 'manipulation',
                         }}
                         onMouseEnter={e => {
-                          e.currentTarget.style.background = 'rgba(239, 68, 68, 0.3)';
+                          e.currentTarget.style.background = 'rgba(239, 68, 68, 0.35)';
                           e.currentTarget.style.borderColor = '#ff4d4d';
                         }}
                         onMouseLeave={e => {
-                          e.currentTarget.style.background = 'rgba(239, 68, 68, 0.18)';
-                          e.currentTarget.style.borderColor = 'rgba(239, 68, 68, 0.45)';
+                          e.currentTarget.style.background = 'rgba(239, 68, 68, 0.22)';
+                          e.currentTarget.style.borderColor = 'rgba(239, 68, 68, 0.55)';
                         }}
                         title="Remove song from offline downloads"
                       >
@@ -217,30 +223,28 @@ const DownloadsView: React.FC = () => {
 
                       <button
                         type="button"
-                        onClick={e => { e.stopPropagation(); setModalSong(song); }}
+                        onClick={e => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setModalSong(song);
+                        }}
                         style={{
                           color: 'rgba(255,255,255,0.7)',
                           background: 'rgba(255,255,255,0.08)',
-                          border: '1px solid rgba(255,255,255,0.1)',
+                          border: '1px solid rgba(255,255,255,0.12)',
                           cursor: 'pointer',
                           padding: '6px',
                           borderRadius: '50%',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          transition: 'all 0.2s ease'
-                        }}
-                        onMouseEnter={e => {
-                          e.currentTarget.style.background = 'rgba(255,255,255,0.18)';
-                          e.currentTarget.style.color = 'white';
-                        }}
-                        onMouseLeave={e => {
-                          e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-                          e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
+                          flexShrink: 0,
+                          transition: 'all 0.2s ease',
+                          touchAction: 'manipulation',
                         }}
                         title="More options"
                       >
-                        <MoreHorizontal size={16} />
+                        <MoreHorizontal size={15} />
                       </button>
                     </div>
                   </td>

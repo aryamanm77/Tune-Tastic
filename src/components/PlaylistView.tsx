@@ -88,17 +88,17 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
   };
 
   return (
-    <div className="main-view">
+    <div className="main-view" style={{ background: 'transparent' }}>
       <div style={{
         display: 'flex',
         alignItems: 'flex-end',
         gap: '24px',
         padding: '24px',
         background: isLikedPlaylist 
-          ? 'linear-gradient(180deg, #450af5 0%, var(--bg-base) 100%)' 
+          ? 'linear-gradient(180deg, rgba(69, 10, 245, 0.6) 0%, transparent 100%)' 
           : isQueue
-          ? 'linear-gradient(180deg, #ff416c 0%, var(--bg-base) 100%)'
-          : 'linear-gradient(180deg, #535353 0%, var(--bg-base) 100%)',
+          ? 'linear-gradient(180deg, rgba(255, 65, 108, 0.6) 0%, transparent 100%)'
+          : 'linear-gradient(180deg, rgba(83, 83, 83, 0.6) 0%, transparent 100%)',
         paddingTop: '80px',
         paddingBottom: '24px'
       }} className="playlist-header">
@@ -226,14 +226,14 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
             <p>Play a song or add something.</p>
           </div>
         ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'fixed' }}>
           <thead>
             <tr style={{ color: 'var(--text-secondary)', borderBottom: '1px solid #282828', fontSize: '14px' }}>
               <th className="hide-mobile" style={{ padding: '8px 16px', width: '40px', fontWeight: 'normal' }}>#</th>
               <th style={{ padding: '8px 16px', fontWeight: 'normal' }}>Title</th>
-              <th className="hide-mobile" style={{ padding: '8px 16px', fontWeight: 'normal' }}>Album</th>
-              <th className="hide-mobile" style={{ padding: '8px 16px', textAlign: 'right', fontWeight: 'normal' }}>Duration</th>
-              <th style={{ padding: '8px 16px', width: '40px' }}></th>
+              <th className="hide-mobile" style={{ padding: '8px 16px', fontWeight: 'normal', width: '25%' }}>Album</th>
+              <th className="hide-mobile" style={{ padding: '8px 16px', textAlign: 'right', fontWeight: 'normal', width: '80px' }}>Duration</th>
+              <th style={{ padding: '8px 8px', width: '70px' }}></th>
             </tr>
           </thead>
           <tbody>

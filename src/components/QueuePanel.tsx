@@ -8,7 +8,7 @@ interface QueuePanelProps {
 }
 
 const QueuePanel: React.FC<QueuePanelProps> = ({ onClose }) => {
-  const { queue, currentSong, playSong, setQueue, clearQueue, removeFromQueue } = usePlayer() as any;
+  const { queue, currentSong, playSong, setQueue, clearQueue, removeFromQueue, djState } = usePlayer() as any;
 
   const queuedSongs: Song[] = queue || [];
 
@@ -36,6 +36,8 @@ const QueuePanel: React.FC<QueuePanelProps> = ({ onClose }) => {
     }
   };
 
+  const isNebula = djState?.nebulaMode;
+
   return (
     <div style={{
       position: 'fixed',
@@ -43,8 +45,10 @@ const QueuePanel: React.FC<QueuePanelProps> = ({ onClose }) => {
       right: 0,
       bottom: '90px',
       width: '320px',
-      backgroundColor: '#121212',
-      borderLeft: '1px solid #282828',
+      backgroundColor: isNebula ? 'rgba(18, 18, 24, 0.85)' : '#121212',
+      backdropFilter: isNebula ? 'blur(20px)' : 'none',
+      WebkitBackdropFilter: isNebula ? 'blur(20px)' : 'none',
+      borderLeft: isNebula ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #282828',
       zIndex: 500,
       display: 'flex',
       flexDirection: 'column',

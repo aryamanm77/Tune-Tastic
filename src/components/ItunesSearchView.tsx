@@ -72,11 +72,11 @@ const ItunesSearchView: React.FC = () => {
 
   return (
     <>
-      <div className="main-view" style={{ padding: '0', overflowX: 'hidden', background: 'var(--bg-base)' }}>
+      <div className="main-view" style={{ padding: '0', overflowX: 'hidden', background: 'transparent' }}>
         <style>{`
           /* ── Spotify Search page styles ── */
           .sp-search-header {
-            background: linear-gradient(180deg, #1a3a2a 0%, #121212 100%);
+            background: linear-gradient(180deg, rgba(26, 58, 42, 0.7) 0%, transparent 100%);
             padding: 24px 24px 0;
             position: sticky;
             top: 0;
