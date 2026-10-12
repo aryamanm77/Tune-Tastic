@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Search, Library, PlusSquare, Heart, Sliders, Sparkles, Download, User, Edit3 } from 'lucide-react';
+import { Home, Search, Library, PlusSquare, Heart, Sliders, Sparkles, Download } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import TuneTasticLogo from './TuneTasticLogo';
 
@@ -10,7 +10,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlaylist }) => {
-  const { createPlaylist, playlists, userName, setIsNameModalOpen } = usePlayer();
+  const { createPlaylist, playlists } = usePlayer();
 
   const handleCreatePlaylist = () => {
     const name = prompt("Enter a name for your new playlist:");
@@ -109,75 +109,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onOpenPlayli
             {playlist.name}
           </button>
         ))}
-      </div>
-
-      {/* User Profile Card with Live Name & Quick Edit */}
-      <div style={{
-        marginTop: 'auto',
-        paddingTop: '14px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '10px',
-      }}>
-        <div 
-          onClick={() => setIsNameModalOpen(true)}
-          style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, cursor: 'pointer', flex: 1 }}
-          title="Click to edit your name"
-        >
-          <div style={{
-            width: '36px',
-            height: '36px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #1db954 0%, #10b981 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '15px',
-            fontWeight: 800,
-            color: 'white',
-            flexShrink: 0,
-            boxShadow: '0 0 14px rgba(29, 185, 84, 0.45)',
-          }}>
-            {userName ? userName[0].toUpperCase() : <User size={18} strokeWidth={2.5} />}
-          </div>
-          <div style={{ minWidth: 0 }}>
-            <div style={{
-              fontSize: '13px',
-              fontWeight: 700,
-              color: 'white',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}>
-              {userName || 'Set Your Name'}
-            </div>
-            <div style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.5)' }}>
-              {userName ? 'Listener' : 'Click to personalize'}
-            </div>
-          </div>
-        </div>
-        <button
-          onClick={() => setIsNameModalOpen(true)}
-          title="Change Name"
-          style={{
-            background: 'rgba(255, 255, 255, 0.08)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: '8px',
-            color: 'white',
-            padding: '6px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.2s ease',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.16)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)')}
-        >
-          <Edit3 size={14} />
-        </button>
       </div>
     </div>
   );

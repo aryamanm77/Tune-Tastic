@@ -82,25 +82,8 @@ export const PlayerProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [songs, setSongs] = useState<Song[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const [userName, setUserNameState] = useState<string>(() => {
-    const saved = localStorage.getItem('tunetastic_user_name');
-    if (!saved || saved.trim() === '' || saved === 'Aryaman') return '';
-    return saved.trim();
-  });
-
-  const [isNameModalOpen, setIsNameModalOpen] = useState<boolean>(() => {
-    const saved = localStorage.getItem('tunetastic_user_name');
-    return !saved || saved.trim() === '' || saved === 'Aryaman';
-  });
-
-  useEffect(() => {
-    const saved = localStorage.getItem('tunetastic_user_name');
-    if (saved === 'Aryaman') {
-      localStorage.removeItem('tunetastic_user_name');
-      setUserNameState('');
-      setIsNameModalOpen(true);
-    }
-  }, []);
+  const [userName, setUserNameState] = useState<string>('');
+  const [isNameModalOpen, setIsNameModalOpen] = useState<boolean>(false);
 
   const setUserName = (name: string) => {
     const trimmed = name.trim();

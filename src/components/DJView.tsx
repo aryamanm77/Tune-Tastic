@@ -193,42 +193,6 @@ const DJView: React.FC = () => {
           </div>
         )}
 
-        {/* ── Cosmic Visuals (Spotify-Style Button at Top) ─── */}
-        <SectionHeader title="Cosmic Background" />
-        <Row
-          icon={<Sparkles size={20} color={djState.nebulaMode ? 'var(--spotify-green)' : 'currentColor'} style={{ transition: 'color 0.3s' }} />}
-          title="Nebula Starfield UI"
-          desc="Immersive cosmic stardust & floating stars across entire app"
-          right={
-            <button
-              type="button"
-              onClick={e => {
-                e.preventDefault();
-                setDjState({ nebulaMode: !djState.nebulaMode, themeBackground: 'none' });
-              }}
-              style={{
-                background: djState.nebulaMode ? 'var(--spotify-green)' : 'rgba(255,255,255,0.1)',
-                color: djState.nebulaMode ? 'black' : 'white',
-                border: 'none',
-                padding: '8px 20px',
-                borderRadius: '100px',
-                fontSize: '13px',
-                fontWeight: 800,
-                cursor: 'pointer',
-                transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                boxShadow: djState.nebulaMode ? '0 0 16px rgba(29, 185, 84, 0.45)' : 'none',
-                touchAction: 'manipulation',
-              }}
-            >
-              <Sparkles size={14} fill={djState.nebulaMode ? 'black' : 'none'} />
-              <span>{djState.nebulaMode ? 'Nebula On' : 'Turn On'}</span>
-            </button>
-          }
-        />
-
         {/* ── Spiritual ─── */}
         <SectionHeader title="Spiritual" />
         <Row

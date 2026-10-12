@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useRef } from 'react';
 import { usePlayer, Song } from '../context/PlayerContext';
 import { getCoverArtUrl } from '../utils/cloudinary';
-import { Play, MoreHorizontal, Download, Check, Loader, Trash2, X, User } from 'lucide-react';
+import { Play, MoreHorizontal, Download, Check, Loader, Trash2, X } from 'lucide-react';
 import TuneTasticLogo from './TuneTasticLogo';
 import AddToPlaylistModal from './AddToPlaylistModal';
 
 const MainView: React.FC = () => {
-  const { songs, currentSong, playSong, togglePlayPause, recentlyPlayed, removeFromRecentlyPlayed, downloadedSongs, downloadProgress, downloadSong, userName, setIsNameModalOpen } = usePlayer();
+  const { songs, currentSong, playSong, togglePlayPause, recentlyPlayed, removeFromRecentlyPlayed, downloadedSongs, downloadProgress, downloadSong } = usePlayer();
   const [modalSong, setModalSong] = useState<Song | null>(null);
   const [activeArtist, setActiveArtist] = useState<string>('All');
   const [deleteRecentSong, setDeleteRecentSong] = useState<Song | null>(null);
@@ -68,11 +68,7 @@ const MainView: React.FC = () => {
 
       {/* Real Spotify-Grade Greeting Header */}
       <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
         marginBottom: '28px',
-        gap: '16px',
       }}>
         <h1 style={{
           fontSize: '32px',
@@ -82,63 +78,8 @@ const MainView: React.FC = () => {
           color: '#ffffff',
           lineHeight: 1.15,
         }}>
-          {liveGreeting}{userName ? `, ${userName}` : ''}
+          {liveGreeting}
         </h1>
-
-        {/* Minimalist Profile Pill */}
-        <button
-          type="button"
-          onClick={() => setIsNameModalOpen(true)}
-          title={userName ? `Profile: ${userName} (click to change)` : 'Set Profile Name'}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'rgba(255, 255, 255, 0.08)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: '100px',
-            padding: '4px 12px 4px 4px',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            color: 'white',
-            flexShrink: 0,
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.16)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-          }}
-        >
-          <div style={{
-            width: '28px',
-            height: '28px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #1db954 0%, #1ed760 100%)',
-            color: '#000000',
-            fontWeight: 800,
-            fontSize: '13px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-          }}>
-            {userName ? userName.trim()[0].toUpperCase() : <User size={15} strokeWidth={2.5} />}
-          </div>
-          <span style={{
-            fontSize: '13px',
-            fontWeight: 600,
-            color: '#ffffff',
-            maxWidth: '120px',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}>
-            {userName || 'Profile'}
-          </span>
-        </button>
       </div>
 
       {/* Recently Played */}

@@ -419,12 +419,13 @@ body.nebula-active {
 
 body.nebula-active .main-view,
 body.nebula-active .sidebar,
+body.nebula-active .player,
 body.nebula-active .search-view,
 body.nebula-active .library-view,
-body.nebula-active .playlist-view {
-  background-color: rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+body.nebula-active .playlist-view,
+body.nebula-active .bottom-nav {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 body.nebula-active .player-bar {
@@ -434,12 +435,6 @@ body.nebula-active .player-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-body.nebula-active .bottom-nav {
-  background: rgba(10, 10, 15, 0.8) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
 body.nebula-active .app-container {
   background: transparent !important;
 }
@@ -447,10 +442,15 @@ body.nebula-active .app-container {
 body.nebula-active .dj-header,
 body.nebula-active .sp-search-header,
 body.nebula-active .playlist-header {
+  background: transparent !important;
   background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-body.nebula-active [style*="var(--bg-base)"] {
+body.nebula-active [style*="var(--bg-base)"],
+body.nebula-active div[style*="var(--bg-base)"] {
+  background: transparent !important;
   background-color: transparent !important;
 }
 

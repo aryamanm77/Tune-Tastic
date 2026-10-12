@@ -13,7 +13,6 @@ import ItunesSearchView from './components/ItunesSearchView';
 import NebulaBackground from './components/NebulaBackground';
 import DownloadsView from './components/DownloadsView';
 import UploadsView from './components/UploadsView';
-import UserNameModal from './components/UserNameModal';
 import CreatePlaylistModal from './components/CreatePlaylistModal';
 
 const AppContent: React.FC = () => {
@@ -60,7 +59,6 @@ const AppContent: React.FC = () => {
         
         <Player />
         <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
-        <UserNameModal />
 
         {/* Stationary fixed mobile FAB for creating playlist - outside .main-view so it never moves when scrolling */}
         {activeTab !== 'dj' && (
