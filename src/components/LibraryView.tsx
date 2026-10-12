@@ -1,13 +1,14 @@
 import React from 'react';
 import { usePlayer, Playlist } from '../context/PlayerContext';
-import { Heart, Music, UploadCloud, ListMusic } from 'lucide-react';
+import { Heart, Music, UploadCloud, ListMusic, Plus } from 'lucide-react';
 
 interface LibraryViewProps {
   onOpenPlaylist: (id: string) => void;
   onOpenUploads: () => void;
+  onCreatePlaylist?: () => void;
 }
 
-const LibraryView: React.FC<LibraryViewProps> = ({ onOpenPlaylist, onOpenUploads }) => {
+const LibraryView: React.FC<LibraryViewProps> = ({ onOpenPlaylist, onOpenUploads, onCreatePlaylist }) => {
   const { playlists, likedSongs, queue } = usePlayer();
 
   return (
@@ -19,6 +20,52 @@ const LibraryView: React.FC<LibraryViewProps> = ({ onOpenPlaylist, onOpenUploads
         gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
         gap: '24px'
       }} className="library-grid">
+
+        {/* Create Playlist Tile */}
+        {onCreatePlaylist && (
+          <div 
+            style={{
+              background: 'linear-gradient(135deg, rgba(29,185,84,0.15), rgba(29,185,84,0.04))',
+              border: '2px dashed rgba(29,185,84,0.5)',
+              padding: '24px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              aspectRatio: '1',
+              textAlign: 'center',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={e => {
+              e.currentTarget.style.borderColor = 'var(--spotify-green)';
+              e.currentTarget.style.background = 'rgba(29,185,84,0.22)';
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.borderColor = 'rgba(29,185,84,0.5)';
+              e.currentTarget.style.background = 'linear-gradient(135deg, rgba(29,185,84,0.15), rgba(29,185,84,0.04))';
+            }}
+            onClick={onCreatePlaylist}
+          >
+            <div style={{
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              background: 'var(--spotify-green)',
+              color: '#000',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '14px',
+              boxShadow: '0 4px 16px rgba(29,185,84,0.4)',
+            }}>
+              <Plus size={30} strokeWidth={2.8} />
+            </div>
+            <h2 style={{ fontSize: '20px', margin: '0 0 6px', color: 'white', fontWeight: 700 }}>New Playlist</h2>
+            <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '13px' }}>Create and add songs</p>
+          </div>
+        )}
         
         {/* Liked Songs Tile */}
         <div 

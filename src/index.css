@@ -556,3 +556,35 @@ body[class*="theme-"] .player-bar {
     line-height: 1.2 !important;
   }
 }
+
+/* Stationary Floating Action Button (FAB) for Creating Playlist on Mobile */
+.mobile-create-playlist-fab {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-create-playlist-fab {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 136px !important;
+    right: 18px !important;
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    background: var(--spotify-green) !important;
+    color: #000000 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(29, 185, 84, 0.45) !important;
+    border: none !important;
+    cursor: pointer !important;
+    z-index: 120 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+  }
+
+  .mobile-create-playlist-fab:active {
+    transform: scale(0.92) !important;
+  }
+}
