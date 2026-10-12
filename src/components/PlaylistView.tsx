@@ -297,9 +297,27 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ playlistId, goHome }) => {
                         <MoreHorizontal size={16} />
                       </button>
                       <button
-                        onClick={e => { e.stopPropagation(); removeSong(song.id); }}
-                        style={{ color: 'rgba(255,255,255,0.3)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
-                        title="Remove from playlist"
+                        type="button"
+                        onClick={e => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          removeSong(song.id);
+                        }}
+                        style={{
+                          color: '#ff6b6b',
+                          background: 'rgba(255,107,107,0.1)',
+                          border: 'none',
+                          cursor: 'pointer',
+                          padding: '5px',
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          transition: 'all 0.15s ease',
+                        }}
+                        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,107,107,0.25)')}
+                        onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,107,107,0.1)')}
+                        title={isQueue ? 'Remove from queue' : isLikedPlaylist ? 'Unlike song' : 'Remove from playlist'}
                       >
                         <Trash2 size={15} />
                       </button>

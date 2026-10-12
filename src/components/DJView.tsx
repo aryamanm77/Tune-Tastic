@@ -20,8 +20,13 @@ const DJView: React.FC = () => {
   const Toggle = ({ active, onClick }: { active: boolean; onClick: () => void }) => (
     <button
       type="button"
-      onClick={onClick}
+      onClick={e => {
+        e.preventDefault();
+        e.stopPropagation();
+        onClick();
+      }}
       onMouseDown={e => e.preventDefault()}
+      onTouchStart={e => e.stopPropagation()}
       aria-checked={active}
       role="switch"
       style={{
@@ -32,6 +37,7 @@ const DJView: React.FC = () => {
         transition: 'background 0.3s cubic-bezier(0.4,0,0.2,1)',
         outline: 'none',
         WebkitTapHighlightColor: 'transparent',
+        touchAction: 'manipulation',
       }}
     >
       <div style={{
@@ -195,14 +201,19 @@ const DJView: React.FC = () => {
           desc="432Hz tuning + Theta Binaural Beats for deep meditation"
           right={
             <button
-              onClick={() => setDjState({ astralMode: !djState.astralMode })}
+              type="button"
+              onClick={e => {
+                e.preventDefault();
+                setDjState({ astralMode: !djState.astralMode });
+              }}
               style={{
                 background: djState.astralMode ? 'transparent' : 'white',
                 color: djState.astralMode ? '#b45bff' : 'black',
                 border: djState.astralMode ? '1px solid #b45bff' : '1px solid white',
                 padding: '6px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 800, cursor: 'pointer',
                 transition: 'all 0.3s ease', letterSpacing: '0.5px', textTransform: 'uppercase',
-                boxShadow: djState.astralMode ? '0 0 15px rgba(180, 91, 255, 0.3)' : 'none'
+                boxShadow: djState.astralMode ? '0 0 15px rgba(180, 91, 255, 0.3)' : 'none',
+                touchAction: 'manipulation',
               }}
             >
               {djState.astralMode ? 'Return to Earth' : 'Ascend'}
